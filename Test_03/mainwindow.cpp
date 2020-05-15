@@ -5,6 +5,8 @@
 #include <QSerialPortInfo>
 #include <QDateTime>
 #include <QTimer>
+#include <iostream>
+#include <string.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -14,25 +16,20 @@ MainWindow::MainWindow(QWidget *parent)
     this->device = new QSerialPort(this);
 
     ui->cAccel->setRenderHint(QPainter::Antialiasing);
-    ui->cAccel->setChart(AccelChart.Init(512));
-
+    ui->cAccel->setChart(AccelChart.Init(512, -40, 40));
     ui->cGyro->setRenderHint(QPainter::Antialiasing);
-    ui->cGyro->setChart(GyroChart.Init(512));
+    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateSR()));
     timer->start(1000);
-
     UpdateTimer = new QTimer(this);
     connect(UpdateTimer, SIGNAL(timeout()), this, SLOT(UpdateProgram()));
-
     DelayTimer = new QTimer(this);
     connect(DelayTimer, SIGNAL(timeout()), this, SLOT(DelayHandler()));
-    AGIntegration.Zeros();
 
     InitLvl2();
 }
-
 
 MainWindow::~MainWindow()
 {
@@ -48,13 +45,10 @@ void MainWindow::addToLogs(QString message)
 void MainWindow::readFromPort()
 {
       QByteArray line = this->device->readAll();
-
-      if (line.at(0) < (0)) {       // QByte jest signed, odbierane dane sa unsigned
-          // Funkcja
-          LVL2CommunicationHub(line);
+      if (line.at(0) < (0)) {           // QByte jest signed, odbierane dane sa unsigned
+          LVL2CommunicationHub(line);   // Funkcja
       } else {
-          // Zwykły tekst
-          this->addToLogs(line);
+          this->addToLogs(line);        // Zwykły tekst
       }
 }
 
@@ -73,14 +67,12 @@ void MainWindow::on_tB_Refresh_clicked()
 }
 
 void MainWindow::on_cB_Devices_currentIndexChanged(int index)
-{
-    // Jezeli wybralismy jakis port
-    if (index > 0){
+{  
+    if (index > 0){ // Jezeli wybralismy jakis port
         if(!device->isOpen()) {
             //if(device->open(QSerialPort::ReadWrite)) {
                 QString portName = ui->cB_Devices->currentText().split("\t").first();
                 this->device->setPortName(portName);
-
                 // OTWÓRZ I SKONFIGURUJ PORT:
                 if(device->open(QSerialPort::ReadWrite)) {
                   // CONNECT:
@@ -95,7 +87,6 @@ void MainWindow::on_cB_Devices_currentIndexChanged(int index)
                 } else {
                   this->addToLogs("Otwarcie porty szeregowego się nie powiodło!");
                 }
-
             //}
         } else {
         this->addToLogs("Port już jest otwarty!");
@@ -142,23 +133,19 @@ void MainWindow::on_lE_Message_returnPressed()
 void MainWindow::LVL2CommunicationHub(QByteArray Data)
 {
     byte length = Data.length();
-
     switch(Data[0]) {
     case -128: {
         if (length < 13) {
             this->addToLogs("Błąd funkcji 128, oczekiwano 13 znakow zamiast " + QString::number(length));
             break;
         }
-        AccelGyroData AGdata;
-        AGdata.Ax = (unsigned char)Data[1] + ((unsigned short)Data[2] << 8);
-        AGdata.Ay = (unsigned char)Data[3] + ((unsigned short)Data[4] << 8);
-        AGdata.Az = (unsigned char)Data[5] + ((unsigned short)Data[6] << 8);
-
-        AGdata.Gx = (unsigned char)Data[7] + ((unsigned short)Data[8] << 8);
-        AGdata.Gy = (unsigned char)Data[9] + ((unsigned short)Data[10] << 8);
-        AGdata.Gz = (unsigned char)Data[11] + ((unsigned short)Data[12] << 8);
-        AGAddXYZ(AGdata);
-        Samples += 1;
+        short AGData[6];
+        for(int a = 1, b = 0; a < 12; a+=2, b++){
+            AGData[b] = (unsigned char)Data[a] + ((unsigned short)Data[a+1] << 8);
+        }
+        AGData2.Adddata(AGData);
+        UpdateCharts();
+        Samples ++;
         break;
     }
     case -127: {
@@ -180,26 +167,19 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
             this->addToLogs("Błąd funkcji 128, oczekiwano 25 znakow zamiast " + QString::number(length));
             break;
         }
-        AccelGyroData AGdata;
-        AGdata.Ax = (unsigned char)Data[1] + ((unsigned short)Data[2] << 8);
-        AGdata.Ay = (unsigned char)Data[3] + ((unsigned short)Data[4] << 8);
-        AGdata.Az = (unsigned char)Data[5] + ((unsigned short)Data[6] << 8);
-
-        AGdata.Gx = (unsigned char)Data[7] + ((unsigned short)Data[8] << 8);
-        AGdata.Gy = (unsigned char)Data[9] + ((unsigned short)Data[10] << 8);
-        AGdata.Gz = (unsigned char)Data[11] + ((unsigned short)Data[12] << 8);
-        AGAddXYZ(AGdata);
-
-        Samples += 1;
-        AGdata.Ax = (unsigned char)Data[13] + ((unsigned short)Data[14] << 8);
-        AGdata.Ay = (unsigned char)Data[15] + ((unsigned short)Data[16] << 8);
-        AGdata.Az = (unsigned char)Data[17] + ((unsigned short)Data[18] << 8);
-
-        AGdata.Gx = (unsigned char)Data[19] + ((unsigned short)Data[20] << 8);
-        AGdata.Gy = (unsigned char)Data[21] + ((unsigned short)Data[22] << 8);
-        AGdata.Gz = (unsigned char)Data[23] + ((unsigned short)Data[24] << 8);
-        AGAddXYZ(AGdata);
-        Samples += 1;
+        short AGData[6];
+        for(int a = 1, b = 0; a < 12; a+=2, b++){
+            AGData[b] = (unsigned char)Data[a] + ((unsigned short)Data[a+1] << 8);
+        }
+        AGData2.Adddata(AGData);
+        UpdateCharts();
+        Samples ++;
+        for(int a = 13, b = 0; a < 24; a+=2, b++){
+            AGData[b] = (unsigned char)Data[a] + ((unsigned short)Data[a+1] << 8);
+        }
+        AGData2.Adddata(AGData);
+        UpdateCharts();
+        Samples ++;
         break;
     }
     default: {
@@ -211,7 +191,6 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
 
 void MainWindow::sendFunctionToDevice(QByteArray Data) {
   if(this->device->isOpen() && this->device->isWritable()) {
-    //this->addToLogs(Data);
     this->device->write(Data);
   } else {
     this->addToLogs("Port nie jest otwarty!");
@@ -220,51 +199,33 @@ void MainWindow::sendFunctionToDevice(QByteArray Data) {
 /////////////////////////////////////////////////////////////////////////////////////
 /// LVL - 2
 
-void MainWindow::on_tB01_clicked()
-{
-    AccelGyroData AGdata;
-    AGdata.Ax = 3000;
-    AGdata.Ay = 6000;
-    AGdata.Az = 9000;
-    AGAddXYZ(AGdata);
-}
-
-void MainWindow::on_tB02_clicked()
-{
-
-}
 double MapValue(double Val, double FromLow,double FromHigh,double ToLow,double ToHigh){
     return ToLow + ((ToHigh - ToLow) / (FromHigh - FromLow)) * (Val - FromLow);
 }
-int HomeX,HomeY;
-void MainWindow::AGAddXYZ(AccelGyroData AGdata){
-    LastRawAGdata = AGdata;
-    AGdata.Callibrate(HomeAGdata);
-    ProgramChecker(AGdata);
+void MainWindow::UpdateCharts(){
+    double AGData[6];
+    AGData2.GetAccel(AGData);
+    ProgramChecker(AGData);
     int x,y;
-    x = MapValue(AGdata.Ax, -32768/12, 32767/12, -250, 250) - HomeX;
-    y = MapValue(AGdata.Ay, -32768/12, 32767/12, -250, 250) - HomeY;
+    x = MapValue(AGData[0], -10, 10, -250, 250);
+    y = MapValue(AGData[1], -10, 10, -250, 250);
     ui->vS_x->setValue(x);
     ui->hS_y->setValue(y);
     ui->rB_xy->move(y+250-8, 250-8-x);
 
     if (IsGraphIntegration) {
-        AGIntegration.Integrate(AGdata, IntParam);
-        AGdata.Copy(AGIntegration);
+        //AGIntegration.Integrate(AGdata, IntParam);
+        //AGdata.Copy(AGIntegration);
     }
 
-    AccelChart.Append(AGdata.Ax, AGdata.Ay, AGdata.Az);
-    GyroChart.Append(AGdata.Gx, AGdata.Gy, AGdata.Gz);
+    AccelChart.Append(AGData, 0);
+    GyroChart.Append(AGData, 3);
 }
-
-
 
 void MainWindow::UpdateSR(){
     ui->l_SampleR->setNum(Samples);
     Samples = 0;
 }
-
-
 
 void MainWindow::on_pB_Pause_clicked()
 {
@@ -281,10 +242,6 @@ void MainWindow::on_pB_Pause_clicked()
     }
 }
 
-void MainWindow::on_rB_Integration_toggled(bool checked)
-{
-    IsGraphIntegration = checked;
-}
 
 void MainWindow::on_doubleSpinBox_valueChanged(double arg1)
 {
@@ -293,33 +250,49 @@ void MainWindow::on_doubleSpinBox_valueChanged(double arg1)
 
 void MainWindow::on_pB_HomeAll_clicked()
 {
-    HomeAGdata = LastRawAGdata;
+    AGData2.Callibrate(10);
 }
 
+void MainWindow::on_rB_Acceleration_clicked(bool checked)
+{
+
+}
+
+void MainWindow::on_rB_Velocity_clicked(bool checked)
+{
+
+}
+
+void MainWindow::on_rB_Distance_clicked(bool checked)
+{
+
+}
 /////////////////////////////////////////////////////////////////////////////////////
 /// LVL - 3
 
 void MainWindow::InitLvl2()
 {
-    int AGLimit = 4096;
+    double ALimit = 10;
+    int GLimit = 500;
     Updates = 200;
     StartSpeed = 128;
     SpeedX = 256;
     Accel = 1;
     for (int a = 0; a < 6; a++){
-        AGLimits[a] = AGLimit;
+        if (a < 3){
+            AGLimits[a] = ALimit;
+        } else {
+            AGLimits[a] = GLimit;
+        }
     }
     ui->sB_Update->setValue(Updates);
     ui->sB_Speed->setValue(SpeedX);
-    ui->sB_AGLimit->setValue(AGLimit);
+    ui->sB_Gyro->setValue(GLimit);
+    ui->dSB_Accel->setValue(ALimit);
     ui->sB_Accel->setValue(Accel);
     ui->sB_StartSpeed->setValue(StartSpeed);
     UpdateTimer->stop();
     UpdateTimer->start(1000/Updates);
-
-    LastAGdata.Zeros();
-    LastRawAGdata.Zeros();
-    HomeAGdata.Zeros();
 }
 
 void MainWindow::SetSpeed(int x, int y){
@@ -333,24 +306,18 @@ void MainWindow::SetSpeed(int x, int y){
     sendFunctionToDevice(Data);
 }
 
-
-
-void MainWindow::ProgramChecker(MainWindow::AccelGyroData AGdata)
+void MainWindow::ProgramChecker(double data[6])
 {
-    LastAGdata = AGdata;
-    if (AGLimits[0] < AGdata.Ax ) AGReachLimit[6] += AGReachLimit[0] += 1;
-    if (AGLimits[1] < AGdata.Ay ) AGReachLimit[6] += AGReachLimit[1] += 1;
-    if (AGLimits[2] < AGdata.Az ) AGReachLimit[6] += AGReachLimit[2] += 1;
-    if (AGLimits[3] < AGdata.Gx ) AGReachLimit[6] += AGReachLimit[3] += 1;
-    if (AGLimits[4] < AGdata.Gy ) AGReachLimit[6] += AGReachLimit[4] += 1;
-    if (AGLimits[5] < AGdata.Gz ) AGReachLimit[6] += AGReachLimit[5] += 1;
+    for (int a = 0; a < 6; a++){
+        if (AGLimits[a] < data[a] ) AGReachLimit[6] += AGReachLimit[a] += 1;
+    }
 }
 
 void MainWindow::UpdateProgram()
 {
+    double AGData[6];
+    AGData2.GetAccel(AGData);
     if (ProgramIsRunning){
-
-
         if (AGReachLimit[6] > 0) {
             AGReachLimit[6] = 0;
             Direction = !Direction;
@@ -372,7 +339,7 @@ void MainWindow::UpdateProgram()
                 SpeedX -= Accel;
             }
         }
-        SetSpeed(SpeedX, -LastAGdata.Gz/12);
+        SetSpeed(SpeedX, -AGData[5] * 2);
     }
 }
 
@@ -399,31 +366,32 @@ void MainWindow::on_sB_Update_valueChanged(int arg1)
     UpdateTimer->start(1000/arg1);
 }
 
-void MainWindow::on_spinBox_valueChanged(int arg1)
-{
-    Accel = arg1;
-}
-
 void MainWindow::on_sB_Speed_valueChanged(int arg1)
 {
     MaxSpeed = arg1;
 }
 
-void MainWindow::on_sB_AGLimit_valueChanged(int arg1)
-{
-    for (int a = 0; a < 6; a++){
-        AGLimits[a] = arg1;
-    }
-
-}
-
-void MainWindow::on_rB_xy_clicked()
-{
-    HomeX = MapValue(LastAGdata.Ax, -32768/12, 32767/12, -250, 250);
-    HomeY = MapValue(LastAGdata.Ay, -32768/12, 32767/12, -250, 250);
-}
-
 void MainWindow::on_sB_StartSpeed_valueChanged(int arg1)
 {
     StartSpeed = arg1;
+}
+
+
+void MainWindow::on_dSB_Accel_valueChanged(double arg1)
+{
+    for (int a = 0; a < 3; a++){
+        AGLimits[a] = arg1;
+    }
+}
+
+void MainWindow::on_sB_Gyro_valueChanged(int arg1)
+{
+    for (int a = 3; a < 6; a++){
+        AGLimits[a] = arg1;
+    }
+}
+
+void MainWindow::on_sB_Accel_valueChanged(int arg1)
+{
+    Accel = arg1;
 }

@@ -37,13 +37,7 @@ private slots:
 
     void on_lE_Message_returnPressed();
 
-    void on_tB01_clicked();
-
-    void on_tB02_clicked();
-
     void on_pB_Pause_clicked();
-
-    void on_rB_Integration_toggled(bool checked);
 
     void on_doubleSpinBox_valueChanged(double arg1);
 
@@ -51,17 +45,23 @@ private slots:
 
     void on_sB_Update_valueChanged(int arg1);
 
-    void on_spinBox_valueChanged(int arg1);
-
     void on_sB_Speed_valueChanged(int arg1);
-
-    void on_sB_AGLimit_valueChanged(int arg1);
-
-    void on_rB_xy_clicked();
 
     void on_pB_HomeAll_clicked();
 
     void on_sB_StartSpeed_valueChanged(int arg1);
+
+    void on_rB_Acceleration_clicked(bool checked);
+
+    void on_rB_Velocity_clicked(bool checked);
+
+    void on_rB_Distance_clicked(bool checked);
+
+    void on_dSB_Accel_valueChanged(double arg1);
+
+    void on_sB_Gyro_valueChanged(int arg1);
+
+    void on_sB_Accel_valueChanged(int arg1);
 
 public slots:
     void UpdateSR();
@@ -71,46 +71,7 @@ public slots:
 private:
     Ui::MainWindow *ui;
     /////////////////////////_LVL 0_/////////////////////////
-    struct AccelGyroData{
-    public :
-        short Ax, Ay, Az;
-        short Gx, Gy, Gz;
-        void Zeros (){
-            Ax = Ay = Az = Gx = Gy = Gz = 0;
-        }
-        void Copy (AccelGyroData item){
-            Ax = item.Ax;
-            Ay = item.Ay;
-            Az = item.Az;
-            Gx = item.Gx;
-            Gy = item.Gy;
-            Gz = item.Gz;
-        }
-        void Add (AccelGyroData item){
-            Ax += item.Ax;
-            Ay += item.Ay;
-            Az += item.Az;
-            Gx += item.Gx;
-            Gy += item.Gy;
-            Gz += item.Gz;
-        }
-        void Integrate(AccelGyroData item, float a){
-            Ax = item.Ax + Ax * a;
-            Ay = item.Ay + Ay * a;
-            Az = item.Az + Az * a;
-            Gx = item.Gx + Gx * a;
-            Gy = item.Gy + Gy * a;
-            Gz = item.Gz + Gz * a;
-        }
-        void Callibrate(AccelGyroData item){
-            Ax -= item.Ax;
-            Ay -= item.Ay;
-            Az -= item.Az;
-            Gx -= item.Gx;
-            Gy -= item.Gy;
-            Gz -= item.Gz;
-        }
-    };
+
     void sendMessageToDevice(QString message);
     void LVL2CommunicationHub(QByteArray Data);
     void sendFunctionToDevice(QByteArray Data);
@@ -118,6 +79,7 @@ private:
     QSerialPort *device;
     int Samples = 0;
     /////////////////////////_LVL 1_/////////////////////////
+
     struct AccelGyroChart{
     private:
         QLineSeries *Series[3];
@@ -130,8 +92,11 @@ private:
         QValueAxis *XAxis;
         QValueAxis *YAxis;
         QChartView *ChartView;
+        double Min, Max;
     public:
-        QChart* Init(int limit){
+        QChart* Init(int limit, double min, double max){
+            Min = min;
+            Max = max;
             Enabled = true;
             Count = 0;
             Limit = limit;
@@ -139,7 +104,7 @@ private:
             XAxis = new QValueAxis();
             XAxis->setRange(0, Limit);
             YAxis = new QValueAxis();
-            YAxis->setRange(-32768, 32767);
+            YAxis->setRange(Min, Max);
             for (int a = 0; a < 3; a++){
                 Series[a] = new QLineSeries();
                 Chart->addSeries(Series[a]);
@@ -158,7 +123,7 @@ private:
         }
         // False gdy przepelnilismy wykres
         // True w pzreciwnym razie
-        bool Append(int A, int B, int C){
+        bool Append(double data[], int start){
             bool result = true;
             if (Count > Limit){
                 if (Enabled == false) return true;
@@ -168,9 +133,9 @@ private:
                 Count = 0;
                 result = false;
             }
-            Series[0]->append(Count, A);
-            Series[1]->append(Count, B);
-            Series[2]->append(Count, C);
+            for (int a = 0; a < 3; a++){
+                Series[a]->append(Count, data[a + start]);
+            }
             Count++;
             return result;
         }
@@ -181,21 +146,63 @@ private:
             Enabled = true;
         }
     }AccelChart, GyroChart;
-    void AGAddXYZ(AccelGyroData AGdata);
+    void UpdateCharts();
     bool IsGraphRunning = true;
     bool IsGraphIntegration = false;
-    AccelGyroData AGIntegration;
     float IntParam = 1;
     /////////////////////////_LVL 2_/////////////////////////
+
+    struct AccelGyroData{
+    private:
+        short RawData[6];
+        double Accel[6];    // Acceleration
+        double Valocity[6];
+        double Distance[6];
+        QElapsedTimer *Timer;
+        short Home[6] = {0,0,0,0,0,0};
+        int TmpHome[8]; // Ostatnie to liczba próbek, przedostatni to counter
+        double AccelScale = (9.80665*4)/32768;
+        double GyroScale = 500.0/32768;
+    public:
+        void Adddata(short newData[6]){
+            for (int a = 0; a < 6; a++){
+                RawData[a] = newData[a] - Home[a];
+                if (a < 3) {
+                    Accel[a] = RawData[a] * AccelScale; // Accelerometer
+                } else {
+                    Accel[a] = RawData[a] * GyroScale;  // Gyroscope
+                }
+            }
+            if (TmpHome[6] > 0) {
+                for (int a = 0; a < 6; a++){
+                    TmpHome[a] += newData[a];
+                }
+                TmpHome[6]--;
+            } else if (TmpHome[6] == 0) {
+                for (int a = 0; a < 6; a++){
+                    Home[a] = TmpHome[a]/TmpHome[7];
+                }
+                TmpHome[6]--;
+            }
+        }
+        void GetAccel(double outData[]){
+            for (int a = 0; a < 6; a++){
+                outData[a] = Accel[a];
+            }
+        }
+        void Callibrate(int count){
+            TmpHome[6] = TmpHome[7] = count;
+            for (int a = 0; a < 6; a++){
+                TmpHome[a] = 0;
+            }
+        }
+    } AGData2;
     QTimer *UpdateTimer;
     QTimer *DelayTimer;
     void SetSpeed(int x, int y);
     bool ProgramIsRunning = false;
-    void ProgramChecker(AccelGyroData AGdata);
+    void ProgramChecker(double data[6]);
     void InitLvl2();
-    AccelGyroData LastAGdata;
-    AccelGyroData LastRawAGdata;
-    AccelGyroData HomeAGdata;
     int AGLimits[6];
     int AGReachLimit[7];
     bool Direction = false;
