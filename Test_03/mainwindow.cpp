@@ -13,83 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->device = new QSerialPort(this);
 
-    AccelXSeries = new QLineSeries();
-    AccelYSeries = new QLineSeries();
-    AccelZSeries = new QLineSeries();
-
-    GyroXSeries = new QLineSeries();
-    GyroYSeries = new QLineSeries();
-    GyroZSeries = new QLineSeries();
-
-    Achart = new QChart();
-    Achart->legend()->hide();
-    Achart->addSeries(AccelXSeries);
-    Achart->addSeries(AccelYSeries);
-    Achart->addSeries(AccelZSeries);
-    Achart->createDefaultAxes();
-
-    Gchart = new QChart();
-    Gchart->legend()->hide();
-    Gchart->addSeries(GyroXSeries);
-    Gchart->addSeries(GyroYSeries);
-    Gchart->addSeries(GyroZSeries);
-    Gchart->createDefaultAxes();
-
-    QPen pX(QRgb(0xFF3333));
-    QPen pY(QRgb(0x33FF33));
-    QPen pZ(QRgb(0x3333FF));
-
-    pX.setWidth(1);
-    pY.setWidth(1);
-    pZ.setWidth(1);
-    AccelXSeries->setPen(pX);
-    AccelYSeries->setPen(pY);
-    AccelZSeries->setPen(pZ);
-
-    GyroXSeries->setPen(pX);
-    GyroYSeries->setPen(pY);
-    GyroZSeries->setPen(pZ);
-
-    Achart->setAnimationOptions(QChart::NoAnimation);
-    Gchart->setAnimationOptions(QChart::NoAnimation);
-
-    AccelAxisX = new QValueAxis();
-    AccelAxisX->setRange(0, AGSeriesLimit);
-
-    GyroAxisX = new QValueAxis();
-    GyroAxisX->setRange(0, AGSeriesLimit);
-
-    Achart->setAxisX(AccelAxisX, AccelXSeries);
-    Achart->setAxisX(AccelAxisX, AccelYSeries);
-    Achart->setAxisX(AccelAxisX, AccelZSeries);
-
-    Gchart->setAxisX(GyroAxisX, GyroXSeries);
-    Gchart->setAxisX(GyroAxisX, GyroYSeries);
-    Gchart->setAxisX(GyroAxisX, GyroZSeries);
-
-    AaxisY = new QValueAxis();
-    AaxisY->setRange(-32768, 32767);
-    Achart->setAxisY(AaxisY, AccelXSeries);
-    Achart->setAxisY(AaxisY, AccelYSeries);
-    Achart->setAxisY(AaxisY, AccelZSeries);
-
-    GaxisY = new QValueAxis();
-    GaxisY->setRange(-32768, 32767);
-    Gchart->setAxisY(GaxisY, GyroXSeries);
-    Gchart->setAxisY(GaxisY, GyroYSeries);
-    Gchart->setAxisY(GaxisY, GyroZSeries);
-
-    AchartView = new QChartView(Achart);
-    GchartView = new QChartView(Gchart);
-
-    AchartView->setRenderHint(QPainter::Antialiasing);
-    GchartView->setRenderHint(QPainter::Antialiasing);
-
     ui->cAccel->setRenderHint(QPainter::Antialiasing);
-    ui->cAccel->setChart(Achart);
+    ui->cAccel->setChart(AccelChart.Init(512));
 
     ui->cGyro->setRenderHint(QPainter::Antialiasing);
-    ui->cGyro->setChart(Gchart);
+    ui->cGyro->setChart(GyroChart.Init(512));
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateSR()));
@@ -102,8 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(DelayTimer, SIGNAL(timeout()), this, SLOT(DelayHandler()));
     AGIntegration.Zeros();
 
-    InitPrgramValues();
+    InitLvl2();
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -120,11 +49,9 @@ void MainWindow::readFromPort()
 {
       QByteArray line = this->device->readAll();
 
-      //this->addToLogs("Długosc : " + QString::number(line.length()));
       if (line.at(0) < (0)) {       // QByte jest signed, odbierane dane sa unsigned
           // Funkcja
           LVL2CommunicationHub(line);
-          //this->addToLogs("Funkcja : " + line);
       } else {
           // Zwykły tekst
           this->addToLogs(line);
@@ -138,18 +65,15 @@ void MainWindow::on_tB_Refresh_clicked()
     this->device = new QSerialPort(this);
     ui->cB_Devices ->clear();
     ui->cB_Devices ->addItem("Not Connected");
-    //this->addToLogs("Szukam urządzeń...");
     QList<QSerialPortInfo> devices;
     devices = QSerialPortInfo::availablePorts();
     for(int i = 0; i < devices.count(); i++) {
-      //this->addToLogs("Znalazłem urządzenie: " + devices.at(i).portName() + devices.at(i).description());
       ui->cB_Devices ->addItem(devices.at(i).portName() + "\t " + devices.at(i).description());
     }
 }
 
 void MainWindow::on_cB_Devices_currentIndexChanged(int index)
 {
-    //this->addToLogs(QString::number(index));
     // Jezeli wybralismy jakis port
     if (index > 0){
         if(!device->isOpen()) {
@@ -213,140 +137,6 @@ void MainWindow::on_tB_Clear_clicked()
 void MainWindow::on_lE_Message_returnPressed()
 {
     on_pB_Send_clicked();
-}
-
-/////////////////////////////////////////////////////////////////////////////////////
-/// LVL - 2
-
-void MainWindow::on_tB01_clicked()
-{
-    AccelGyroData AGdata;
-    AGdata.Ax = 3000;
-    AGdata.Ay = 6000;
-    AGdata.Az = 9000;
-    AGAddXYZ(AGdata);
-}
-
-void MainWindow::on_tB02_clicked()
-{
-
-}
-double MapValue(double Val, double FromLow,double FromHigh,double ToLow,double ToHigh){
-    return ToLow + ((ToHigh - ToLow) / (FromHigh - FromLow)) * (Val - FromLow);
-}
-int HomeX,HomeY;
-void MainWindow::AGAddXYZ(AccelGyroData AGdata){
-    LastRawAGdata = AGdata;
-    AGdata.Callibrate(HomeAGdata);
-    ProgramChecker(AGdata);
-    int x,y;
-    x = MapValue(AGdata.Ax, -32768/12, 32767/12, -250, 250) - HomeX;
-    y = MapValue(AGdata.Ay, -32768/12, 32767/12, -250, 250) - HomeY;
-    ui->vS_x->setValue(x);
-    ui->hS_y->setValue(y);
-    ui->rB_xy->move(y+250-8, 250-8-x);
-    if (AGSeriesCount > AGSeriesLimit){
-        if (IsGraphRunning){
-            AGSeriesCount = 0;
-
-            AccelXSeries = new QLineSeries();
-            AccelYSeries = new QLineSeries();
-            AccelZSeries = new QLineSeries();
-
-            GyroXSeries = new QLineSeries();
-            GyroYSeries = new QLineSeries();
-            GyroZSeries = new QLineSeries();
-
-            Achart = new QChart();
-            Achart->legend()->hide();
-            Achart->addSeries(AccelXSeries);
-            Achart->addSeries(AccelYSeries);
-            Achart->addSeries(AccelZSeries);
-            Achart->createDefaultAxes();
-
-            Gchart = new QChart();
-            Gchart->legend()->hide();
-            Gchart->addSeries(GyroXSeries);
-            Gchart->addSeries(GyroYSeries);
-            Gchart->addSeries(GyroZSeries);
-            Gchart->createDefaultAxes();
-
-            QPen pX(QRgb(0xFF3333));
-            QPen pY(QRgb(0x33FF33));
-            QPen pZ(QRgb(0x3333FF));
-
-            pX.setWidth(1);
-            pY.setWidth(1);
-            pZ.setWidth(1);
-            AccelXSeries->setPen(pX);
-            AccelYSeries->setPen(pY);
-            AccelZSeries->setPen(pZ);
-
-            GyroXSeries->setPen(pX);
-            GyroYSeries->setPen(pY);
-            GyroZSeries->setPen(pZ);
-
-            Achart->setAnimationOptions(QChart::NoAnimation);
-            Gchart->setAnimationOptions(QChart::NoAnimation);
-
-            AccelAxisX = new QValueAxis();
-            AccelAxisX->setRange(0, AGSeriesLimit);
-
-            GyroAxisX = new QValueAxis();
-            GyroAxisX->setRange(0, AGSeriesLimit);
-
-            Achart->setAxisX(AccelAxisX, AccelXSeries);
-            Achart->setAxisX(AccelAxisX, AccelYSeries);
-            Achart->setAxisX(AccelAxisX, AccelZSeries);
-
-            Gchart->setAxisX(GyroAxisX, GyroXSeries);
-            Gchart->setAxisX(GyroAxisX, GyroYSeries);
-            Gchart->setAxisX(GyroAxisX, GyroZSeries);
-
-            AaxisY = new QValueAxis();
-            AaxisY->setRange(-32768, 32767);
-            Achart->setAxisY(AaxisY, AccelXSeries);
-            Achart->setAxisY(AaxisY, AccelYSeries);
-            Achart->setAxisY(AaxisY, AccelZSeries);
-
-            GaxisY = new QValueAxis();
-            GaxisY->setRange(-32768, 32767);
-            Gchart->setAxisY(GaxisY, GyroXSeries);
-            Gchart->setAxisY(GaxisY, GyroYSeries);
-            Gchart->setAxisY(GaxisY, GyroZSeries);
-
-            AchartView = new QChartView(Achart);
-            GchartView = new QChartView(Gchart);
-
-            AchartView->setRenderHint(QPainter::Antialiasing);
-            GchartView->setRenderHint(QPainter::Antialiasing);
-
-            ui->cAccel->setRenderHint(QPainter::Antialiasing);
-            ui->cAccel->setChart(Achart);
-
-            ui->cGyro->setRenderHint(QPainter::Antialiasing);
-            ui->cGyro->setChart(Gchart);
-
-            if (IsGraphIntegration) {
-                AGIntegration.Zeros();
-            }
-
-            AGAddXYZ(AGdata);
-        }
-    } else {
-        if (IsGraphIntegration) {
-            AGIntegration.Integrate(AGdata, IntParam);
-            AGdata.Copy(AGIntegration);
-        }
-        AccelXSeries->append(AGSeriesCount,AGdata.Ax);
-        AccelYSeries->append(AGSeriesCount,AGdata.Ay);
-        AccelZSeries->append(AGSeriesCount,AGdata.Az);
-
-        GyroXSeries->append(AGSeriesCount,AGdata.Gx);
-        GyroYSeries->append(AGSeriesCount,AGdata.Gy);
-        GyroZSeries->append(AGSeriesCount,AGdata.Gz);
-    }
-    AGSeriesCount +=1;
 }
 
 void MainWindow::LVL2CommunicationHub(QByteArray Data)
@@ -419,6 +209,56 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
     }
 }
 
+void MainWindow::sendFunctionToDevice(QByteArray Data) {
+  if(this->device->isOpen() && this->device->isWritable()) {
+    //this->addToLogs(Data);
+    this->device->write(Data);
+  } else {
+    this->addToLogs("Port nie jest otwarty!");
+  }
+}
+/////////////////////////////////////////////////////////////////////////////////////
+/// LVL - 2
+
+void MainWindow::on_tB01_clicked()
+{
+    AccelGyroData AGdata;
+    AGdata.Ax = 3000;
+    AGdata.Ay = 6000;
+    AGdata.Az = 9000;
+    AGAddXYZ(AGdata);
+}
+
+void MainWindow::on_tB02_clicked()
+{
+
+}
+double MapValue(double Val, double FromLow,double FromHigh,double ToLow,double ToHigh){
+    return ToLow + ((ToHigh - ToLow) / (FromHigh - FromLow)) * (Val - FromLow);
+}
+int HomeX,HomeY;
+void MainWindow::AGAddXYZ(AccelGyroData AGdata){
+    LastRawAGdata = AGdata;
+    AGdata.Callibrate(HomeAGdata);
+    ProgramChecker(AGdata);
+    int x,y;
+    x = MapValue(AGdata.Ax, -32768/12, 32767/12, -250, 250) - HomeX;
+    y = MapValue(AGdata.Ay, -32768/12, 32767/12, -250, 250) - HomeY;
+    ui->vS_x->setValue(x);
+    ui->hS_y->setValue(y);
+    ui->rB_xy->move(y+250-8, 250-8-x);
+
+    if (IsGraphIntegration) {
+        AGIntegration.Integrate(AGdata, IntParam);
+        AGdata.Copy(AGIntegration);
+    }
+
+    AccelChart.Append(AGdata.Ax, AGdata.Ay, AGdata.Az);
+    GyroChart.Append(AGdata.Gx, AGdata.Gy, AGdata.Gz);
+}
+
+
+
 void MainWindow::UpdateSR(){
     ui->l_SampleR->setNum(Samples);
     Samples = 0;
@@ -431,9 +271,13 @@ void MainWindow::on_pB_Pause_clicked()
     if (IsGraphRunning) {
         IsGraphRunning = false;
         ui->pB_Pause->setText("Resume");
+        AccelChart.Stop();
+        GyroChart.Stop();
     } else {
         IsGraphRunning = true;
         ui->pB_Pause->setText("Pause");
+        AccelChart.Start();
+        GyroChart.Start();
     }
 }
 
@@ -455,13 +299,27 @@ void MainWindow::on_pB_HomeAll_clicked()
 /////////////////////////////////////////////////////////////////////////////////////
 /// LVL - 3
 
-void MainWindow::sendFunctionToDevice(QByteArray Data) {
-  if(this->device->isOpen() && this->device->isWritable()) {
-    //this->addToLogs(Data);
-    this->device->write(Data);
-  } else {
-    this->addToLogs("Port nie jest otwarty!");
-  }
+void MainWindow::InitLvl2()
+{
+    int AGLimit = 4096;
+    Updates = 200;
+    StartSpeed = 128;
+    SpeedX = 256;
+    Accel = 1;
+    for (int a = 0; a < 6; a++){
+        AGLimits[a] = AGLimit;
+    }
+    ui->sB_Update->setValue(Updates);
+    ui->sB_Speed->setValue(SpeedX);
+    ui->sB_AGLimit->setValue(AGLimit);
+    ui->sB_Accel->setValue(Accel);
+    ui->sB_StartSpeed->setValue(StartSpeed);
+    UpdateTimer->stop();
+    UpdateTimer->start(1000/Updates);
+
+    LastAGdata.Zeros();
+    LastRawAGdata.Zeros();
+    HomeAGdata.Zeros();
 }
 
 void MainWindow::SetSpeed(int x, int y){
@@ -514,7 +372,7 @@ void MainWindow::UpdateProgram()
                 SpeedX -= Accel;
             }
         }
-        SetSpeed(SpeedX, -LastAGdata.Gz/6);
+        SetSpeed(SpeedX, -LastAGdata.Gz/12);
     }
 }
 
@@ -525,30 +383,13 @@ void MainWindow::DelayHandler()
     AGReachLimit[6] = 0;
 }
 
-void MainWindow::InitPrgramValues()
-{
-    int AGLimit = 4096;
-    Updates = 200;
-    SpeedX = 256;
-    Accel = 1;
-    for (int a = 0; a < 6; a++){
-        AGLimits[a] = AGLimit;
-    }
-    ui->sB_Update->setValue(Updates);
-    ui->sB_Speed->setValue(SpeedX);
-    ui->sB_AGLimit->setValue(AGLimit);
-    ui->sB_Accel->setValue(Accel);
-    UpdateTimer->stop();
-    UpdateTimer->start(1000/Updates);
-}
-
 void MainWindow::on_pB_Test_01_clicked()
 {
    ProgramIsRunning = !ProgramIsRunning;
    SetSpeed(0, 0);
-   SpeedX = 0;
+   SpeedX = StartSpeed;
    SpeedY = 0;
-   Direction = false;
+   Direction = true;
    AGReachLimit[6] = 0;
 }
 
@@ -580,4 +421,9 @@ void MainWindow::on_rB_xy_clicked()
 {
     HomeX = MapValue(LastAGdata.Ax, -32768/12, 32767/12, -250, 250);
     HomeY = MapValue(LastAGdata.Ay, -32768/12, 32767/12, -250, 250);
+}
+
+void MainWindow::on_sB_StartSpeed_valueChanged(int arg1)
+{
+    StartSpeed = arg1;
 }
