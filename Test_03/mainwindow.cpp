@@ -4,7 +4,6 @@
 #include <QList>
 #include <QSerialPortInfo>
 #include <QDateTime>
-#include <QTimer>
 #include <iostream>
 #include <string.h>
 
@@ -16,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->device = new QSerialPort(this);
 
     ui->cAccel->setRenderHint(QPainter::Antialiasing);
-    ui->cAccel->setChart(AccelChart.Init(512, -40, 40));
+    ui->cAccel->setChart(AccelChart.Init(512, -20, 20));
     ui->cGyro->setRenderHint(QPainter::Antialiasing);
     ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
 
@@ -143,7 +142,7 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
         for(int a = 1, b = 0; a < 12; a+=2, b++){
             AGData[b] = (unsigned char)Data[a] + ((unsigned short)Data[a+1] << 8);
         }
-        AGData2.Adddata(AGData);
+        AG.Adddata(AGData);
         UpdateCharts();
         Samples ++;
         break;
@@ -171,13 +170,13 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
         for(int a = 1, b = 0; a < 12; a+=2, b++){
             AGData[b] = (unsigned char)Data[a] + ((unsigned short)Data[a+1] << 8);
         }
-        AGData2.Adddata(AGData);
+        AG.Adddata(AGData);
         UpdateCharts();
         Samples ++;
         for(int a = 13, b = 0; a < 24; a+=2, b++){
             AGData[b] = (unsigned char)Data[a] + ((unsigned short)Data[a+1] << 8);
         }
-        AGData2.Adddata(AGData);
+        AG.Adddata(AGData);
         UpdateCharts();
         Samples ++;
         break;
@@ -204,7 +203,7 @@ double MapValue(double Val, double FromLow,double FromHigh,double ToLow,double T
 }
 void MainWindow::UpdateCharts(){
     double AGData[6];
-    AGData2.GetAccel(AGData);
+    AG.GetAcceleration(AGData);
     ProgramChecker(AGData);
     int x,y;
     x = MapValue(AGData[0], -10, 10, -250, 250);
@@ -250,41 +249,55 @@ void MainWindow::on_doubleSpinBox_valueChanged(double arg1)
 
 void MainWindow::on_pB_HomeAll_clicked()
 {
-    AGData2.Callibrate(10);
+    //AG.Callibrate(10);
+    QByteArray data;
+    data.resize(2);
+    data[0] = (unsigned char)PROG_CALLIBRATE;
+    data[1] = (unsigned char)254;
+    sendFunctionToDevice(data);
 }
 
 void MainWindow::on_rB_Acceleration_clicked(bool checked)
 {
-
+    QByteArray data;
+    data.resize(1);
+    data[0] = (unsigned char)MODE_ACCELERATION_BURST;
+    sendFunctionToDevice(data);
+    ui->cAccel->setChart(AccelChart.Init(512, -20, 20));
+    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
 }
 
 void MainWindow::on_rB_Velocity_clicked(bool checked)
 {
-
+    QByteArray data;
+    data.resize(1);
+    data[0] = (unsigned char)MODE_VELOCITY_BURST;
+    sendFunctionToDevice(data);
+    ui->cAccel->setChart(AccelChart.Init(512, -10, 10));
+    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
 }
 
 void MainWindow::on_rB_Distance_clicked(bool checked)
 {
-
+    QByteArray data;
+    data.resize(1);
+    data[0] = (unsigned char)MODE_DISTANCE_BURST;
+    sendFunctionToDevice(data);
+    ui->cAccel->setChart(AccelChart.Init(512, -1, 1));
+    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
 }
 /////////////////////////////////////////////////////////////////////////////////////
 /// LVL - 3
 
 void MainWindow::InitLvl2()
 {
-    double ALimit = 10;
-    int GLimit = 500;
+    ALimit = 10;
+    GLimit = 500;
     Updates = 200;
     StartSpeed = 128;
     SpeedX = 256;
     Accel = 1;
-    for (int a = 0; a < 6; a++){
-        if (a < 3){
-            AGLimits[a] = ALimit;
-        } else {
-            AGLimits[a] = GLimit;
-        }
-    }
+    Distance = 10;
     ui->sB_Update->setValue(Updates);
     ui->sB_Speed->setValue(SpeedX);
     ui->sB_Gyro->setValue(GLimit);
@@ -309,14 +322,18 @@ void MainWindow::SetSpeed(int x, int y){
 void MainWindow::ProgramChecker(double data[6])
 {
     for (int a = 0; a < 6; a++){
-        if (AGLimits[a] < data[a] ) AGReachLimit[6] += AGReachLimit[a] += 1;
+        if (a < 3){
+            if (ALimit < data[a] ) AGReachLimit[6] += AGReachLimit[a] += 1;
+        } else {
+            if (GLimit < data[a] ) AGReachLimit[6] += AGReachLimit[a] += 1;
+        }
     }
 }
 
 void MainWindow::UpdateProgram()
 {
     double AGData[6];
-    AGData2.GetAccel(AGData);
+    AG.GetAcceleration(AGData);
     if (ProgramIsRunning){
         if (AGReachLimit[6] > 0) {
             AGReachLimit[6] = 0;
@@ -379,19 +396,40 @@ void MainWindow::on_sB_StartSpeed_valueChanged(int arg1)
 
 void MainWindow::on_dSB_Accel_valueChanged(double arg1)
 {
-    for (int a = 0; a < 3; a++){
-        AGLimits[a] = arg1;
-    }
+    ALimit = arg1;
 }
 
 void MainWindow::on_sB_Gyro_valueChanged(int arg1)
 {
-    for (int a = 3; a < 6; a++){
-        AGLimits[a] = arg1;
-    }
+    GLimit = arg1;
 }
 
 void MainWindow::on_sB_Accel_valueChanged(int arg1)
 {
     Accel = arg1;
+}
+
+void MainWindow::on_spinBox_valueChanged(int arg1)
+{
+    Distance = arg1;
+}
+
+void MainWindow::on_pB_Build_1_clicked()
+{
+    short dist = Distance * (32768/(9.80665*2))/100;
+    short stop = ALimit * 32768/(9.80665*2);
+    QByteArray Data;
+    Data.resize(11);
+    Data[0] = (unsigned char)PROG_MOVE_BREAK;
+    Data[1] = (unsigned char)StartSpeed;
+    Data[2] = (unsigned char)(StartSpeed >> 8);
+    Data[3] = (unsigned char)Accel;
+    Data[4] = (unsigned char)(Accel >> 8);
+    Data[5] = (unsigned char)SpeedX;
+    Data[6] = (unsigned char)(SpeedX >> 8);
+    Data[7] = (unsigned char)dist;
+    Data[8] = (unsigned char)(dist >> 8);
+    Data[9] = (unsigned char)stop;
+    Data[10] = (unsigned char)(stop >> 8);
+    sendFunctionToDevice(Data);
 }

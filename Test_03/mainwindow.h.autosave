@@ -22,7 +22,7 @@
 #define PROG_CALLIBRATE			192
 #define PROG_RESET_VEL_DIST		193
 #define PROG_MOVE_BREAK			194
-#define PROG_Rotate				195
+#define PROG_ROTATE				195
 // Odpowiedz ze cos gotowe i zwraca wartosc
 #define OK						255
 
