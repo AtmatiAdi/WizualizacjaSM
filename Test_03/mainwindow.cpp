@@ -6,6 +6,7 @@
 #include <QDateTime>
 #include <iostream>
 #include <string.h>
+#include <QPainter>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,11 +29,26 @@ MainWindow::MainWindow(QWidget *parent)
     connect(DelayTimer, SIGNAL(timeout()), this, SLOT(DelayHandler()));
 
     InitLvl2();
+    ui->w_Maze->installEventFilter(this);
+
+    mic = new Micromouse(this);
+    connect(mic, SIGNAL(SendFunctionSig(QByteArray)), this, SLOT(SendFunctionSlot(QByteArray)));
+    connect(mic, SIGNAL(UpdateMazeSig()), this, SLOT(UpdateMazeSlot()));
 }
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+bool MainWindow::eventFilter(QObject* watched, QEvent* event)
+{
+    if (watched == ui->w_Maze && event->type() == QEvent::Paint) {
+        maze.DrawMaze(ui->w_Maze);
+        return true; // return true if you do not want to have the child widget paint on its own afterwards, otherwise, return false.
+    }
+    return false;
 }
 
 void MainWindow::addToLogs(QString message)
@@ -135,7 +151,7 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
     switch(Data[0]) {
     case -128: {
         if (length < 13) {
-            this->addToLogs("Błąd funkcji 128, oczekiwano 13 znakow zamiast " + QString::number(length));
+            this->addToLogs("#Err FUNC_ACCEL_GYRO_DATA, oczekiwano 13 znakow zamiast " + QString::number(length));
             break;
         }
         short AGData[6];
@@ -149,7 +165,7 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
     }
     case -127: {
         if (length < 11) {
-            this->addToLogs("Błąd funkcji 129, oczekiwano 9 znakow zamiast " + QString::number(length));
+            this->addToLogs("#Err FUNC_JOYSTICK_DATA, oczekiwano 9 znakow zamiast " + QString::number(length));
             break;
         }
         short V[4];
@@ -163,7 +179,7 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
     }
     case -126: {
         if (length < 25) {
-            this->addToLogs("Błąd funkcji 128, oczekiwano 25 znakow zamiast " + QString::number(length));
+            this->addToLogs("#Err FUNC_ACCEL_GYRO_DATA, oczekiwano 25 znakow zamiast " + QString::number(length));
             break;
         }
         short AGData[6];
@@ -181,6 +197,15 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
         Samples ++;
         break;
     }
+    case -1: {
+        if (length < 3) {
+            this->addToLogs("#Err OK, oczekiwano 3 znakow zamiast " + QString::number(length));
+            break;
+        }
+        short val = (unsigned char)Data[1] | ((unsigned short)Data[2] << 8);
+        FunctionReturn(val);
+        break;
+    }
     default: {
         this->addToLogs("funkcja nieznana : " + QString::number(Data[0]));
         break;
@@ -195,6 +220,10 @@ void MainWindow::sendFunctionToDevice(QByteArray Data) {
     this->addToLogs("Port nie jest otwarty!");
   }
 }
+
+void MainWindow::SendFunctionSlot(QByteArray data){
+    sendFunctionToDevice(data);
+}
 /////////////////////////////////////////////////////////////////////////////////////
 /// LVL - 2
 
@@ -206,11 +235,11 @@ void MainWindow::UpdateCharts(){
     AG.GetAcceleration(AGData);
     ProgramChecker(AGData);
     int x,y;
-    x = MapValue(AGData[0], -10, 10, -250, 250);
-    y = MapValue(AGData[1], -10, 10, -250, 250);
+    x = MapValue(AGData[0], -10, 10, -125, 125);
+    y = MapValue(AGData[1], -10, 10, -125, 125);
     ui->vS_x->setValue(x);
     ui->hS_y->setValue(y);
-    ui->rB_xy->move(y+250-8, 250-8-x);
+    ui->rB_xy->move(y+125-8, 125-8-x);
 
     if (IsGraphIntegration) {
         //AGIntegration.Integrate(AGdata, IntParam);
@@ -298,6 +327,7 @@ void MainWindow::InitLvl2()
     SpeedX = 256;
     Accel = 1;
     Distance = 10;
+    Degree = 90;
     ui->sB_Update->setValue(Updates);
     ui->sB_Speed->setValue(SpeedX);
     ui->sB_Gyro->setValue(GLimit);
@@ -414,9 +444,14 @@ void MainWindow::on_spinBox_valueChanged(int arg1)
     Distance = arg1;
 }
 
+void MainWindow::on_sB_Rotation_valueChanged(int arg1)
+{
+    Degree = arg1;
+}
+
 void MainWindow::on_pB_Build_1_clicked()
 {
-    short dist = Distance * (32768/(9.80665*2))/100;
+    short dist = Distance * (32768.0/(9.80665*2.0))/100.0;
     short stop = ALimit * 32768/(9.80665*2);
     QByteArray Data;
     Data.resize(11);
@@ -425,11 +460,54 @@ void MainWindow::on_pB_Build_1_clicked()
     Data[2] = (unsigned char)(StartSpeed >> 8);
     Data[3] = (unsigned char)Accel;
     Data[4] = (unsigned char)(Accel >> 8);
-    Data[5] = (unsigned char)SpeedX;
-    Data[6] = (unsigned char)(SpeedX >> 8);
+    Data[5] = (unsigned char)MaxSpeed;
+    Data[6] = (unsigned char)(MaxSpeed >> 8);
     Data[7] = (unsigned char)dist;
     Data[8] = (unsigned char)(dist >> 8);
     Data[9] = (unsigned char)stop;
     Data[10] = (unsigned char)(stop >> 8);
     sendFunctionToDevice(Data);
+}
+
+void MainWindow::on_pB_Build_2_clicked()
+{
+    short degree = Degree * (32768.0/500.0);
+    QByteArray Data;
+    Data.resize(9);
+    Data[0] = (unsigned char)PROG_ROTATE;
+    Data[1] = (unsigned char)StartSpeed;
+    Data[2] = (unsigned char)(StartSpeed >> 8);
+    Data[3] = (unsigned char)Accel;
+    Data[4] = (unsigned char)(Accel >> 8);
+    Data[5] = (unsigned char)MaxSpeed;
+    Data[6] = (unsigned char)(MaxSpeed >> 8);
+    Data[7] = (unsigned char)degree;
+    Data[8] = (unsigned char)(degree >> 8);
+    sendFunctionToDevice(Data);
+}
+
+
+void MainWindow::on_pB_Mic_clicked()
+{
+    if (MicIsRinning) {
+        MicIsRinning = false;
+        ui->pB_Mic->setText("Micromouse");
+        mic->Stop();
+        maze.Init(0);
+        ui->w_Maze->repaint();
+    } else {
+        MicIsRinning = true;
+        ui->pB_Mic->setText("Pause");
+        mic->start();
+        mic->Init(&maze);
+    }
+
+}
+
+void MainWindow::UpdateMazeSlot(){
+    ui->w_Maze->repaint();
+}
+
+void MainWindow::FunctionReturn(short val){
+    // Jakis super system rozsyłania zwrócoinej wartosci
 }

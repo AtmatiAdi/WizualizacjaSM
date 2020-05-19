@@ -9,6 +9,8 @@
 
 #include "accelgyro.h"
 #include "accelgyrochart.h"
+#include "maze.h"
+#include "micromouse.h"
 
 // Funkcja to paczka danych
 #define FUNC_ACCEL_GYRO_DATA	128
@@ -22,7 +24,7 @@
 #define PROG_CALLIBRATE			192
 #define PROG_RESET_VEL_DIST		193
 #define PROG_MOVE_BREAK			194
-#define PROG_Rotate				195
+#define PROG_ROTATE				195
 // Odpowiedz ze cos gotowe i zwraca wartosc
 #define OK						255
 
@@ -37,6 +39,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    virtual bool eventFilter(QObject* watched, QEvent* event);
 private slots:
     void addToLogs(QString message);
 
@@ -82,15 +85,25 @@ private slots:
 
     void on_pB_Build_1_clicked();
 
+    void on_pB_Build_2_clicked();
+
+    void on_sB_Rotation_valueChanged(int arg1);
+
+    void on_pB_Mic_clicked();
+
 public slots:
     void UpdateSR();
     void UpdateProgram();
     void DelayHandler();
+    void SendFunctionSlot(QByteArray);
+    void UpdateMazeSlot();
 
 private:
     Ui::MainWindow *ui;
     AccelGyro AG;
     AccelGyroChart AccelChart, GyroChart;
+    Maze maze;
+    Micromouse *mic;
     /////////////////////////_LVL 0_/////////////////////////
 
     void sendMessageToDevice(QString message);
@@ -108,13 +121,13 @@ private:
     float IntParam = 1;
     /////////////////////////_LVL 2_/////////////////////////
 
-
-    QTimer *UpdateTimer;
-    QTimer *DelayTimer;
     void SetSpeed(int x, int y);
-    bool ProgramIsRunning = false;
     void ProgramChecker(double data[6]);
     void InitLvl2();
+    void FunctionReturn(short val);
+    QTimer *UpdateTimer;
+    QTimer *DelayTimer;
+    bool ProgramIsRunning = false;
     int AGReachLimit[7];
     bool Direction = false;
     int StartSpeed;
@@ -123,8 +136,10 @@ private:
     int SpeedX;
     int SpeedY;
     int Distance;
+    int Degree;
     float Updates;
     double ALimit;
     int GLimit;
+    bool MicIsRinning = false;
 };
 #endif // MAINWINDOW_H

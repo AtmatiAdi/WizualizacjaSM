@@ -19,12 +19,16 @@ SOURCES += \
     accelgyro.cpp \
     accelgyrochart.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    maze.cpp \
+    micromouse.cpp
 
 HEADERS += \
     accelgyro.h \
     accelgyrochart.h \
-    mainwindow.h
+    mainwindow.h \
+    maze.h \
+    micromouse.h
 
 FORMS += \
     mainwindow.ui

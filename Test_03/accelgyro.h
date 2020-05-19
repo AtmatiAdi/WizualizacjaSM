@@ -12,8 +12,8 @@ private:
     QElapsedTimer *Timer;
     short Callibration[6] = {0,0,0,0,0,0};
     int TmpCall[6], CCount, CAll; // Ostatnie to liczba próbek, przedostatni to counter
-    double AccelScale = (9.80665*2)/32768;
-    double GyroScale = 500.0/32768;
+    double AccelScale = (9.80665*2.0)/32768.0;
+    double GyroScale = 500.0/32768.0;
     double VelParam = 1, DistParam = 1;
 public:
     AccelGyro();
