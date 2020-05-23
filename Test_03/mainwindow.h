@@ -39,7 +39,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    virtual bool eventFilter(QObject* watched, QEvent* event);
+    virtual bool eventFilter(QObject* watched, QEvent* event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 private slots:
     void addToLogs(QString message);
 
@@ -90,6 +91,8 @@ private slots:
     void on_sB_Rotation_valueChanged(int arg1);
 
     void on_pB_Mic_clicked();
+
+    void on_pB_MazeGen_clicked();
 
 public slots:
     void UpdateSR();

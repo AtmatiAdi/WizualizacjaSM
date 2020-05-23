@@ -491,7 +491,7 @@ void MainWindow::on_pB_Mic_clicked()
 {
     if (MicIsRinning) {
         MicIsRinning = false;
-        ui->pB_Mic->setText("Micromouse");
+        ui->pB_Mic->setText("Start Micromouse");
         mic->Stop();
         maze.Init(0);
         ui->w_Maze->repaint();
@@ -508,6 +508,28 @@ void MainWindow::UpdateMazeSlot(){
     ui->w_Maze->repaint();
 }
 
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    // Klikniecie na labirynt
+    QPointF local = event->localPos();
+
+    int x = local.x() - ui->w_Maze->pos().x() - ui->w_Maze->parentWidget()->pos().x() - ui->w_Maze->size().width()/2;
+    int y = local.y() - ui->w_Maze->pos().y() - ui->w_Maze->parentWidget()->pos().y() - ui->w_Maze->size().height()/2;
+    if (event->button() == Qt::LeftButton){
+         maze.SetBegin(x, y);
+    } else if (event->button() == Qt::RightButton) {
+        maze.SetEnd(x, y);
+    }
+
+    ui->w_Maze->repaint();
+}
+
 void MainWindow::FunctionReturn(short val){
     // Jakis super system rozsyłania zwrócoinej wartosci
+}
+
+void MainWindow::on_pB_MazeGen_clicked()
+{
+    maze.Init(ui->sB_MazeSize->value());
+    ui->w_Maze->repaint();
 }

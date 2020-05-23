@@ -30,6 +30,7 @@ public:
     void run() override;
     void Stop();
     void Init(Maze *maze);
+
 signals:
     void SendFunctionSig(QByteArray);
     void UpdateMazeSig();

@@ -8,8 +8,8 @@ Micromouse::Micromouse(QObject *parent)
 
 void Micromouse::Init(Maze *maze){
     MyMaze = maze;
-    MyMaze->Init(4);
-    MyMaze->Start(1,2);
+    //MyMaze->Init(4);
+    //MyMaze->Start(1,2);
     emit UpdateMazeSig();
 }
 
