@@ -493,35 +493,53 @@ void MainWindow::on_pB_Mic_clicked()
         MicIsRinning = false;
         ui->pB_Mic->setText("Start Micromouse");
         mic->Stop();
-        maze.Init(0);
+        //maze.Init(0);
         ui->w_Maze->repaint();
     } else {
         MicIsRinning = true;
         ui->pB_Mic->setText("Pause");
+        if (!ui->cB_Manual->isChecked()){
+            maze.FindPath();
+        }
         mic->start();
         mic->Init(&maze);
     }
 
 }
-
+int PixelSize = 40;
 void MainWindow::UpdateMazeSlot(){
     ui->w_Maze->repaint();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    // Klikniecie na labirynt
     QPointF local = event->localPos();
-
     int x = local.x() - ui->w_Maze->pos().x() - ui->w_Maze->parentWidget()->pos().x() - ui->w_Maze->size().width()/2;
     int y = local.y() - ui->w_Maze->pos().y() - ui->w_Maze->parentWidget()->pos().y() - ui->w_Maze->size().height()/2;
-    if (event->button() == Qt::LeftButton){
-         maze.SetBegin(x, y);
-    } else if (event->button() == Qt::RightButton) {
-        maze.SetEnd(x, y);
+    if (!MicIsRinning){
+        if (event->button() == Qt::LeftButton){
+             maze.SetBegin(x, y);
+        } else if (event->button() == Qt::RightButton) {
+            maze.SetEnd(x, y);
+        }
+    } else {
+        if (event->button() == Qt::LeftButton){
+             maze.SetTarget(x, y);
+        }
     }
-
     ui->w_Maze->repaint();
+}
+
+void MainWindow::wheelEvent(QWheelEvent * event)
+{
+    if (event->delta() > 0){
+        PixelSize += 4;
+    } else {
+        PixelSize -= 4;
+    }
+    maze.Resize(PixelSize);
+    ui->w_Maze->repaint();
+    //std::cout << zoom << std::endl;
 }
 
 void MainWindow::FunctionReturn(short val){
@@ -530,6 +548,18 @@ void MainWindow::FunctionReturn(short val){
 
 void MainWindow::on_pB_MazeGen_clicked()
 {
-    maze.Init(ui->sB_MazeSize->value());
+    maze.Init(ui->sB_MazeSize->value(), PixelSize);
+    ui->w_Maze->repaint();
+}
+
+void MainWindow::on_cB_ShowText_toggled(bool checked)
+{
+    maze.TextEnabled(checked);
+    ui->w_Maze->repaint();
+}
+
+void MainWindow::on_cB_Manual_toggled(bool checked)
+{
+    maze.ManualEnable(checked);
     ui->w_Maze->repaint();
 }

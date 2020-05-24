@@ -6,6 +6,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtCharts>
 #include <QTimer>
+#include <QWheelEvent>
 
 #include "accelgyro.h"
 #include "accelgyrochart.h"
@@ -41,6 +42,7 @@ public:
     ~MainWindow();
     virtual bool eventFilter(QObject* watched, QEvent* event) override;
     void mousePressEvent(QMouseEvent *event) override;
+    void wheelEvent(QWheelEvent * event) override;
 private slots:
     void addToLogs(QString message);
 
@@ -93,6 +95,10 @@ private slots:
     void on_pB_Mic_clicked();
 
     void on_pB_MazeGen_clicked();
+
+    void on_cB_ShowText_toggled(bool checked);
+
+    void on_cB_Manual_toggled(bool checked);
 
 public slots:
     void UpdateSR();
