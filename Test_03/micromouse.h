@@ -30,14 +30,25 @@ public:
     void run() override;
     void Stop();
     void Init(Maze *maze);
-
+    void Setup(short start, short accel, short max, short stop);
+    void FunctionReturn(short val);
 signals:
     void SendFunctionSig(QByteArray);
     void UpdateMazeSig();
+    void LogSig(QString);
 private:
-    void Move(short start, short accel, short max, short dist, short stop);
+    short Move(short dist);
+    short Rotate(short deg);
     bool IsRunning;
     Maze *MyMaze;
+    short Value;
+    bool FunctionReurned = false;
+    short StartVal;
+    short AccelVal;
+    short MaxVal;
+    short StopVal;
+    double AccelScale = (9.80665*2.0)/32768.0;
+    double GyroScale = 500.0/32768.0;
 public slots:
 };
 

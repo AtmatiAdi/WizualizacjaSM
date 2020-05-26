@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     mic = new Micromouse(this);
     connect(mic, SIGNAL(SendFunctionSig(QByteArray)), this, SLOT(SendFunctionSlot(QByteArray)));
     connect(mic, SIGNAL(UpdateMazeSig()), this, SLOT(UpdateMazeSlot()));
+    connect(mic, SIGNAL(LogSig(QString)), this, SLOT(LogSlot(QString)));
 }
 
 
@@ -397,7 +398,7 @@ void MainWindow::DelayHandler()
     AGReachLimit[6] = 0;
 }
 
-void MainWindow::on_pB_Test_01_clicked()
+/*void MainWindow::on_pB_Test_01_clicked()
 {
    ProgramIsRunning = !ProgramIsRunning;
    SetSpeed(0, 0);
@@ -405,7 +406,7 @@ void MainWindow::on_pB_Test_01_clicked()
    SpeedY = 0;
    Direction = true;
    AGReachLimit[6] = 0;
-}
+}*/
 
 void MainWindow::on_sB_Update_valueChanged(int arg1)
 {
@@ -492,6 +493,7 @@ void MainWindow::on_pB_Mic_clicked()
     if (MicIsRinning) {
         MicIsRinning = false;
         ui->pB_Mic->setText("Start Micromouse");
+        mic->FunctionReturn(0);
         mic->Stop();
         //maze.Init(0);
         ui->w_Maze->repaint();
@@ -501,14 +503,22 @@ void MainWindow::on_pB_Mic_clicked()
         if (!ui->cB_Manual->isChecked()){
             maze.FindPath();
         }
-        mic->start();
         mic->Init(&maze);
+        mic->Setup(StartSpeed, Accel, MaxSpeed, ALimit);
+        mic->start();
+
     }
 
 }
 int PixelSize = 40;
 void MainWindow::UpdateMazeSlot(){
     ui->w_Maze->repaint();
+}
+
+void MainWindow::LogSlot(QString message)
+{
+    QString currentDateTime = QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss");
+    ui->tE_MicLog->append(currentDateTime + "\t" + message);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -544,6 +554,7 @@ void MainWindow::wheelEvent(QWheelEvent * event)
 
 void MainWindow::FunctionReturn(short val){
     // Jakis super system rozsyłania zwrócoinej wartosci
+    mic->FunctionReturn(val);
 }
 
 void MainWindow::on_pB_MazeGen_clicked()

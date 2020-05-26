@@ -3,6 +3,9 @@
 #include <QPainter>
 #include <QtWidgets/QMainWindow>
 #include <iostream>
+#include <math.h>
+
+#define PI 3.14159265
 
 #define WALL_UP     0x00000300
 #define WALL_LEFT   0x00000c00
@@ -43,6 +46,10 @@ public:
     void SetTarget(int x, int y);
     void TextEnabled(bool enable);
     void ManualEnable(bool enable);
+    int GetPathRot();
+    int GetPathMov();
+    void MovResult(int mov, int res);
+    void Rotate(int rot);
 private:
     QPixmap Robot;
     int RobotRealSize = 13;

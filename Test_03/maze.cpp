@@ -61,6 +61,13 @@ long Maze::GetVal(long Cell, long mask){
 void Maze::FindPath(){
     int Val, NewVal;
     bool IsFull = false;
+    for (int a = 0; a < Size; a++){
+        for (int b = 0; b < Size; b++){
+            if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_PATH){
+                SetVal(&Cells[a][b], TYPE_UNDEFINED, CELL_TYPE);
+            }
+        }
+    }
     // Numerowanie wszystkiego
     while (!IsFull){
         IsFull = true;
@@ -198,7 +205,10 @@ void Maze::FindPath(){
         x = a;
         y = b;
         type = GetVal(Cells[x][y], CELL_TYPE);
-        if ((type != 2) && (type != 3)) SetVal(&Cells[x][y],TYPE_PATH, CELL_TYPE);
+        if ((type != 2) && (type != 3)) {
+            SetVal(&Cells[x][y],TYPE_PATH, CELL_TYPE);
+            orient = rot;
+        }
     }
 }
 
@@ -402,6 +412,134 @@ void Maze::ManualEnable(bool enable)
 
     }
     // Przywrocic komorkom end wartosc 1
+}
+
+int Maze::GetPathRot()
+{
+    int x = RobotRealX / CellRealSize;
+    int y = (Size -1) - RobotRealY / CellRealSize;
+    int Val = GetVal(Cells[x][y], PATH_WALUE);
+    int PathRot;
+    for (int a = 0; a < Size; a++){
+        for (int b = 0; b < Size; b++){
+            if ((GetVal(Cells[a][b], CELL_TYPE) > 2) && ((GetVal(Cells[a][b], PATH_WALUE) == Val - 1))){  // Nastepny element sciezki
+                // Porownac orientacje
+                if (x == a){
+                    // góra dół
+                    if (y > b){
+                        // góra
+                        PathRot = 0;
+                    } else {
+                        // dół
+                        PathRot = 180;
+                    }
+                } else {
+                    // prawo lewo
+                    if (x > a){
+                        // lewo
+                        PathRot = 270;
+                    } else {
+                        // prawo
+                        PathRot = 90;
+                    }
+                }
+                a = Size;
+                b = Size;
+            }
+        }
+    }
+    int Rot = PathRot - RobotRalRot;
+    // Skrócenie obrotu
+    if (Rot > 180) Rot -= 360;
+    if (Rot < -180) Rot += 360;
+}
+
+int Maze::GetPathMov()
+{
+    int x = RobotRealX / CellRealSize;
+    int y = (Size -1) - RobotRealY / CellRealSize;
+    int Val = GetVal(Cells[x][y], PATH_WALUE);
+    int PathDir = 0;
+    int Count = 0;
+    while (true){
+        Val--;
+        if (GetVal(Cells[x][y], WALL_UP) < 2){
+            if ((GetVal(Cells[x][y-1], CELL_TYPE) > 2) && ((GetVal(Cells[x][y-1], PATH_WALUE) == Val))){
+                y--;
+                if (PathDir == 0) {
+                    PathDir = 1;
+                    Count++;
+                    continue;
+                }
+                else if (PathDir == 1) {
+                    Count++;
+                    continue;
+                }
+                else break;
+            }
+        }
+        if (GetVal(Cells[x][y], WALL_RIGHT) < 2){
+            if ((GetVal(Cells[x+1][y], CELL_TYPE) > 2) && ((GetVal(Cells[x+1][y], PATH_WALUE) == Val))){
+                x++;
+                if (PathDir == 0) {
+                    PathDir = 2;
+                    Count++;
+                    continue;
+                }
+                else if (PathDir == 2) {
+                    Count++;
+                    continue;
+                }
+                else break;
+            }
+        }
+        if (GetVal(Cells[x][y], WALL_DOWN) < 2){
+            if ((GetVal(Cells[x][y+1], CELL_TYPE) > 2) && ((GetVal(Cells[x][y+1], PATH_WALUE) == Val))){
+                y++;
+                if (PathDir == 0) {
+                    PathDir = 3;
+                    Count++;
+                    continue;
+                }
+                else if (PathDir == 3) {
+                    Count++;
+                    continue;
+                }
+                else break;
+            }
+        }
+        if (GetVal(Cells[x][y], WALL_RIGHT) < 2){
+            if ((GetVal(Cells[x-1][y], CELL_TYPE) > 2) && ((GetVal(Cells[x-1][y], PATH_WALUE) == Val))){
+                x--;
+                if (PathDir == 0) {
+                    PathDir = 4;
+                    Count++;
+                    continue;
+                }
+                else if (PathDir == 4) {
+                    Count++;
+                    continue;
+                }
+                else break;
+            }
+        }
+        break;
+    }
+    return Count;
+    // Porownac orientracje
+    // Powtazac az orientacja zmieni sie
+    // wziasc odleglosc miedzy srdkiem ostatniego a robotem
+}
+
+void Maze::MovResult(int mov, int res)
+{
+    RobotRealX += sin(RobotRalRot*PI/180) * mov;
+    RobotRealY += cos(RobotRalRot*PI/180) * mov;
+}
+
+void Maze::Rotate(int rot)
+{
+    RobotRalRot += rot;
 }
 
 void Maze::SetTarget(int x, int y)

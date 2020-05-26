@@ -62,7 +62,7 @@ private slots:
 
     void on_doubleSpinBox_valueChanged(double arg1);
 
-    void on_pB_Test_01_clicked();
+    //void on_pB_Test_01_clicked();
 
     void on_sB_Update_valueChanged(int arg1);
 
@@ -106,6 +106,7 @@ public slots:
     void DelayHandler();
     void SendFunctionSlot(QByteArray);
     void UpdateMazeSlot();
+    void LogSlot(QString);
 
 private:
     Ui::MainWindow *ui;
