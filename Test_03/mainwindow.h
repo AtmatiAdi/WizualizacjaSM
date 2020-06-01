@@ -107,6 +107,8 @@ public slots:
     void SendFunctionSlot(QByteArray);
     void UpdateMazeSlot();
     void LogSlot(QString);
+    void PrepareForRotationSlot();
+    void PrepareForMoveSlot();
 
 private:
     Ui::MainWindow *ui;

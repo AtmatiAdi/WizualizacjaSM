@@ -35,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(mic, SIGNAL(SendFunctionSig(QByteArray)), this, SLOT(SendFunctionSlot(QByteArray)));
     connect(mic, SIGNAL(UpdateMazeSig()), this, SLOT(UpdateMazeSlot()));
     connect(mic, SIGNAL(LogSig(QString)), this, SLOT(LogSlot(QString)));
+    connect(mic, SIGNAL(PrepareForRotationSig()), this, SLOT(PrepareForRotationSlot()));
+    connect(mic, SIGNAL(PrepareForMoveSig()), this, SLOT(PrepareForMoveSlot()));
 }
 
 
@@ -204,6 +206,7 @@ void MainWindow::LVL2CommunicationHub(QByteArray Data)
             break;
         }
         short val = (unsigned char)Data[1] | ((unsigned short)Data[2] << 8);
+        this->addToLogs("OK " + QString::number(val));
         FunctionReturn(val);
         break;
     }
@@ -289,32 +292,38 @@ void MainWindow::on_pB_HomeAll_clicked()
 
 void MainWindow::on_rB_Acceleration_clicked(bool checked)
 {
-    QByteArray data;
-    data.resize(1);
-    data[0] = (unsigned char)MODE_ACCELERATION_BURST;
-    sendFunctionToDevice(data);
-    ui->cAccel->setChart(AccelChart.Init(512, -20, 20));
-    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
+    if (checked){
+        QByteArray data;
+        data.resize(1);
+        data[0] = (unsigned char)MODE_ACCELERATION_BURST;
+        sendFunctionToDevice(data);
+        ui->cAccel->setChart(AccelChart.Init(512, -20, 20));
+        ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
+    }
 }
 
 void MainWindow::on_rB_Velocity_clicked(bool checked)
 {
-    QByteArray data;
-    data.resize(1);
-    data[0] = (unsigned char)MODE_VELOCITY_BURST;
-    sendFunctionToDevice(data);
-    ui->cAccel->setChart(AccelChart.Init(512, -10, 10));
-    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
+    if (checked){
+        QByteArray data;
+        data.resize(1);
+        data[0] = (unsigned char)MODE_VELOCITY_BURST;
+        sendFunctionToDevice(data);
+        ui->cAccel->setChart(AccelChart.Init(512, -10, 10));
+        ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
+    }
 }
 
 void MainWindow::on_rB_Distance_clicked(bool checked)
 {
-    QByteArray data;
-    data.resize(1);
-    data[0] = (unsigned char)MODE_DISTANCE_BURST;
-    sendFunctionToDevice(data);
-    ui->cAccel->setChart(AccelChart.Init(512, -1, 1));
-    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
+    if (checked){
+        QByteArray data;
+        data.resize(1);
+        data[0] = (unsigned char)MODE_DISTANCE_BURST;
+        sendFunctionToDevice(data);
+        ui->cAccel->setChart(AccelChart.Init(512, -1, 1));
+        ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
+    }
 }
 /////////////////////////////////////////////////////////////////////////////////////
 /// LVL - 3
@@ -324,7 +333,7 @@ void MainWindow::InitLvl2()
     ALimit = 10;
     GLimit = 500;
     Updates = 200;
-    StartSpeed = 128;
+    StartSpeed = 160;
     SpeedX = 256;
     Accel = 1;
     Distance = 10;
@@ -503,7 +512,7 @@ void MainWindow::on_pB_Mic_clicked()
         if (!ui->cB_Manual->isChecked()){
             maze.FindPath();
         }
-        mic->Init(&maze);
+        mic->Init(&maze, &AG);
         mic->Setup(StartSpeed, Accel, MaxSpeed, ALimit);
         mic->start();
 
@@ -519,6 +528,28 @@ void MainWindow::LogSlot(QString message)
 {
     QString currentDateTime = QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss");
     ui->tE_MicLog->append(currentDateTime + "\t" + message);
+}
+
+void MainWindow::PrepareForRotationSlot()
+{
+    ui->rB_Velocity->setChecked(true);
+    QByteArray data;
+    data.resize(1);
+    data[0] = (unsigned char)MODE_VELOCITY_BURST;
+    sendFunctionToDevice(data);
+    ui->cAccel->setChart(AccelChart.Init(512, -10, 10));
+    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
+}
+
+void MainWindow::PrepareForMoveSlot()
+{
+    ui->rB_Distance->setChecked(true);
+    QByteArray data;
+    data.resize(1);
+    data[0] = (unsigned char)MODE_DISTANCE_BURST;
+    sendFunctionToDevice(data);
+    ui->cAccel->setChart(AccelChart.Init(512, -1, 1));
+    ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

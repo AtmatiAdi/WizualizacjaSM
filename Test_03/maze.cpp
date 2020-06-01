@@ -525,7 +525,7 @@ int Maze::GetPathMov()
         }
         break;
     }
-    return Count;
+    return Count *  CellRealSize;
     // Porownac orientracje
     // Powtazac az orientacja zmieni sie
     // wziasc odleglosc miedzy srdkiem ostatniego a robotem

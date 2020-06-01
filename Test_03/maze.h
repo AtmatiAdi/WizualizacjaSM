@@ -53,7 +53,7 @@ public:
 private:
     QPixmap Robot;
     int RobotRealSize = 13;
-    int CellRealSize = 18;
+    int CellRealSize = 17;
     int RobotRealX = 0;
     int RobotRealY = 0;
     float RobotRalRot = 0;

@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "maze.h"
+#include "accelgyro.h"
 
 // Funkcja to paczka danych
 #define FUNC_ACCEL_GYRO_DATA	128
@@ -29,18 +30,21 @@ public:
     explicit Micromouse(QObject *parent = 0);
     void run() override;
     void Stop();
-    void Init(Maze *maze);
+    void Init(Maze *maze, AccelGyro *ag);
     void Setup(short start, short accel, short max, short stop);
     void FunctionReturn(short val);
 signals:
     void SendFunctionSig(QByteArray);
     void UpdateMazeSig();
     void LogSig(QString);
+    void PrepareForRotationSig();
+    void PrepareForMoveSig();
 private:
     short Move(short dist);
     short Rotate(short deg);
     bool IsRunning;
     Maze *MyMaze;
+    AccelGyro *MyAg;
     short Value;
     bool FunctionReurned = false;
     short StartVal;
