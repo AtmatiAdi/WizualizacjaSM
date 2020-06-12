@@ -338,7 +338,7 @@ void MainWindow::InitLvl2()
     Accel = 1;
     Distance = 10;
     Degree = 90;
-    ui->sB_Update->setValue(Updates);
+    //ui->sB_Update->setValue(Updates);
     ui->sB_Speed->setValue(SpeedX);
     ui->sB_Gyro->setValue(GLimit);
     ui->dSB_Accel->setValue(ALimit);
