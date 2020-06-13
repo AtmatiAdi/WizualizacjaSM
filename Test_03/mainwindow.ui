@@ -374,21 +374,30 @@ p, li { white-space: pre-wrap; }
            <property name="maximum">
             <number>3600</number>
            </property>
+           <property name="singleStep">
+            <number>15</number>
+           </property>
            <property name="value">
             <number>90</number>
            </property>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="sB_Gyro">
+          <widget class="QSpinBox" name="sB_RStartSpeed">
            <property name="maximumSize">
             <size>
              <width>54</width>
              <height>16777215</height>
             </size>
            </property>
+           <property name="prefix">
+            <string extracomment="PWM value 1-1024 "/>
+           </property>
            <property name="maximum">
-            <number>500</number>
+            <number>1024</number>
+           </property>
+           <property name="singleStep">
+            <number>16</number>
            </property>
            <property name="value">
             <number>250</number>
@@ -417,12 +426,21 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_2">
+          <widget class="QSpinBox" name="sB_RMaxSpeed">
            <property name="maximumSize">
             <size>
              <width>54</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="prefix">
+            <string extracomment="PWM value 1-1024 "/>
+           </property>
+           <property name="maximum">
+            <number>1024</number>
+           </property>
+           <property name="singleStep">
+            <number>16</number>
            </property>
           </widget>
          </item>
@@ -472,24 +490,27 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QSpinBox" name="sB_Speed">
+          <widget class="QSpinBox" name="sB_MMaxSpeed">
            <property name="maximumSize">
             <size>
              <width>54</width>
              <height>16777215</height>
             </size>
            </property>
+           <property name="prefix">
+            <string extracomment="PWM value 1-1024 "/>
+           </property>
            <property name="minimum">
             <number>0</number>
            </property>
            <property name="maximum">
-            <number>6144</number>
+            <number>1024</number>
            </property>
            <property name="singleStep">
-            <number>64</number>
+            <number>16</number>
            </property>
            <property name="value">
-            <number>2048</number>
+            <number>1024</number>
            </property>
           </widget>
          </item>
@@ -511,7 +532,7 @@ p, li { white-space: pre-wrap; }
             <double>0.100000000000000</double>
            </property>
            <property name="value">
-            <double>10.000000000000000</double>
+            <double>7.000000000000000</double>
            </property>
           </widget>
          </item>
@@ -549,15 +570,21 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="sB_StartSpeed">
+          <widget class="QSpinBox" name="sB_MStartSpeed">
            <property name="maximumSize">
             <size>
              <width>54</width>
              <height>16777215</height>
             </size>
            </property>
+           <property name="prefix">
+            <string extracomment="PWM value 1-1024 "/>
+           </property>
            <property name="maximum">
-            <number>2048</number>
+            <number>1028</number>
+           </property>
+           <property name="singleStep">
+            <number>16</number>
            </property>
            <property name="value">
             <number>128</number>
@@ -622,21 +649,14 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>770</x>
        <y>440</y>
-       <width>201</width>
-       <height>198</height>
+       <width>191</width>
+       <height>232</height>
       </rect>
      </property>
      <property name="title">
       <string>Micromouse algorithm</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_6">
-      <item row="4" column="0" colspan="2">
-       <widget class="QPushButton" name="pB_Mic">
-        <property name="text">
-         <string>Start Micromouse</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0" colspan="2">
        <widget class="QCheckBox" name="cB_ShowText">
         <property name="text">
@@ -644,17 +664,24 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QPushButton" name="pB_MazeGen">
-        <property name="text">
-         <string>Generate Maze</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0" colspan="2">
        <widget class="QCheckBox" name="cB_Manual">
         <property name="text">
          <string>Manual</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QPushButton" name="pB_Mic">
+        <property name="text">
+         <string>Start Micromouse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QPushButton" name="pB_MazeGen">
+        <property name="text">
+         <string>Generate Maze</string>
         </property>
        </widget>
       </item>
@@ -691,6 +718,13 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
         </layout>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QPushButton" name="pB_ResetPos">
+        <property name="text">
+         <string>Reset Position</string>
+        </property>
        </widget>
       </item>
      </layout>

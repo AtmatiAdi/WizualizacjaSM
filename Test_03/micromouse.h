@@ -31,7 +31,7 @@ public:
     void run() override;
     void Stop();
     void Init(Maze *maze, AccelGyro *ag);
-    void Setup(short start, short accel, short max, short stop);
+    void Setup(short Mstart, short Mmax, short accel, short stop, short Rstart, short Rmax);
     void FunctionReturn(short val);
 signals:
     void SendFunctionSig(QByteArray);
@@ -47,10 +47,12 @@ private:
     AccelGyro *MyAg;
     short Value;
     bool FunctionReurned = false;
-    short StartVal;
+    short MoveStartVal;
+    short MoveMaxVal;
     short AccelVal;
-    short MaxVal;
     short StopVal;
+    short RotStartVal;
+    short RotMaxVal;
     double AccelScale = (9.80665*2.0)/32768.0;
     double GyroScale = 500.0/32768.0;
 public slots:

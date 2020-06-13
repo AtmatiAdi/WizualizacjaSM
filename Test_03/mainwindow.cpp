@@ -23,8 +23,6 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateSR()));
     timer->start(1000);
-    UpdateTimer = new QTimer(this);
-    connect(UpdateTimer, SIGNAL(timeout()), this, SLOT(UpdateProgram()));
     DelayTimer = new QTimer(this);
     connect(DelayTimer, SIGNAL(timeout()), this, SLOT(DelayHandler()));
 
@@ -237,7 +235,6 @@ double MapValue(double Val, double FromLow,double FromHigh,double ToLow,double T
 void MainWindow::UpdateCharts(){
     double AGData[6];
     AG.GetAcceleration(AGData);
-    ProgramChecker(AGData);
     int x,y;
     x = MapValue(AGData[0], -10, 10, -125, 125);
     y = MapValue(AGData[1], -10, 10, -125, 125);
@@ -330,22 +327,22 @@ void MainWindow::on_rB_Distance_clicked(bool checked)
 
 void MainWindow::InitLvl2()
 {
-    ALimit = 10;
-    GLimit = 500;
-    Updates = 200;
-    StartSpeed = 160;
-    SpeedX = 256;
+    ALimit = 7.5;
+    MoveStartSpeed = 160;
+    MoveMaxSpeed = 208;
+    RotStartSeepd = 176;
+    RotMaxSpeed = 336;
     Accel = 1;
     Distance = 10;
-    Degree = 90;
-    //ui->sB_Update->setValue(Updates);
-    ui->sB_Speed->setValue(SpeedX);
-    ui->sB_Gyro->setValue(GLimit);
+    Degree = 89;
+
+    ui->sB_MStartSpeed->setValue(MoveStartSpeed);
+    ui->sB_MMaxSpeed->setValue(MoveMaxSpeed);
     ui->dSB_Accel->setValue(ALimit);
     ui->sB_Accel->setValue(Accel);
-    ui->sB_StartSpeed->setValue(StartSpeed);
-    UpdateTimer->stop();
-    UpdateTimer->start(1000/Updates);
+    ui->sB_RStartSpeed->setValue(RotStartSeepd);
+    ui->sB_RMaxSpeed->setValue(RotMaxSpeed);
+    ui->sB_Rotation->setValue(Degree);
 }
 
 void MainWindow::SetSpeed(int x, int y){
@@ -359,119 +356,20 @@ void MainWindow::SetSpeed(int x, int y){
     sendFunctionToDevice(Data);
 }
 
-void MainWindow::ProgramChecker(double data[6])
-{
-    for (int a = 0; a < 6; a++){
-        if (a < 3){
-            if (ALimit < data[a] ) AGReachLimit[6] += AGReachLimit[a] += 1;
-        } else {
-            if (GLimit < data[a] ) AGReachLimit[6] += AGReachLimit[a] += 1;
-        }
-    }
-}
-
-void MainWindow::UpdateProgram()
-{
-    double AGData[6];
-    AG.GetAcceleration(AGData);
-    if (ProgramIsRunning){
-        if (AGReachLimit[6] > 0) {
-            AGReachLimit[6] = 0;
-            Direction = !Direction;
-            SpeedX = 0;
-
-            SetSpeed(0, 0);
-            ProgramIsRunning = false;
-            //DelayTimer->start(300);
-            //ProgramIsRunning = false;
-            return;
-        }
-
-        if (Direction) {
-            if (SpeedX < MaxSpeed) {
-                SpeedX += Accel;
-            }
-        }else {
-            if (SpeedX > -1 * MaxSpeed) {
-                SpeedX -= Accel;
-            }
-        }
-        SetSpeed(SpeedX, -AGData[5] * 2);
-    }
-}
-
-void MainWindow::DelayHandler()
-{
-    DelayTimer->stop();
-    ProgramIsRunning = true;
-    AGReachLimit[6] = 0;
-}
-
-/*void MainWindow::on_pB_Test_01_clicked()
-{
-   ProgramIsRunning = !ProgramIsRunning;
-   SetSpeed(0, 0);
-   SpeedX = StartSpeed;
-   SpeedY = 0;
-   Direction = true;
-   AGReachLimit[6] = 0;
-}*/
-
-void MainWindow::on_sB_Update_valueChanged(int arg1)
-{
-    UpdateTimer->stop();
-    UpdateTimer->start(1000/arg1);
-}
-
-void MainWindow::on_sB_Speed_valueChanged(int arg1)
-{
-    MaxSpeed = arg1;
-}
-
-void MainWindow::on_sB_StartSpeed_valueChanged(int arg1)
-{
-    StartSpeed = arg1;
-}
-
-
-void MainWindow::on_dSB_Accel_valueChanged(double arg1)
-{
-    ALimit = arg1;
-}
-
-void MainWindow::on_sB_Gyro_valueChanged(int arg1)
-{
-    GLimit = arg1;
-}
-
-void MainWindow::on_sB_Accel_valueChanged(int arg1)
-{
-    Accel = arg1;
-}
-
-void MainWindow::on_spinBox_valueChanged(int arg1)
-{
-    Distance = arg1;
-}
-
-void MainWindow::on_sB_Rotation_valueChanged(int arg1)
-{
-    Degree = arg1;
-}
-
 void MainWindow::on_pB_Build_1_clicked()
 {
     short dist = Distance * (32768.0/(9.80665*2.0))/100.0;
+    LogSlot("Zadano dystans: " + QString::number(dist));
     short stop = ALimit * 32768/(9.80665*2);
     QByteArray Data;
     Data.resize(11);
     Data[0] = (unsigned char)PROG_MOVE_BREAK;
-    Data[1] = (unsigned char)StartSpeed;
-    Data[2] = (unsigned char)(StartSpeed >> 8);
+    Data[1] = (unsigned char)MoveStartSpeed;
+    Data[2] = (unsigned char)(MoveStartSpeed >> 8);
     Data[3] = (unsigned char)Accel;
     Data[4] = (unsigned char)(Accel >> 8);
-    Data[5] = (unsigned char)MaxSpeed;
-    Data[6] = (unsigned char)(MaxSpeed >> 8);
+    Data[5] = (unsigned char)MoveMaxSpeed;
+    Data[6] = (unsigned char)(MoveMaxSpeed >> 8);
     Data[7] = (unsigned char)dist;
     Data[8] = (unsigned char)(dist >> 8);
     Data[9] = (unsigned char)stop;
@@ -485,12 +383,12 @@ void MainWindow::on_pB_Build_2_clicked()
     QByteArray Data;
     Data.resize(9);
     Data[0] = (unsigned char)PROG_ROTATE;
-    Data[1] = (unsigned char)StartSpeed;
-    Data[2] = (unsigned char)(StartSpeed >> 8);
+    Data[1] = (unsigned char)RotStartSeepd;
+    Data[2] = (unsigned char)(RotStartSeepd >> 8);
     Data[3] = (unsigned char)Accel;
     Data[4] = (unsigned char)(Accel >> 8);
-    Data[5] = (unsigned char)MaxSpeed;
-    Data[6] = (unsigned char)(MaxSpeed >> 8);
+    Data[5] = (unsigned char)RotMaxSpeed;
+    Data[6] = (unsigned char)(RotMaxSpeed >> 8);
     Data[7] = (unsigned char)degree;
     Data[8] = (unsigned char)(degree >> 8);
     sendFunctionToDevice(Data);
@@ -513,7 +411,7 @@ void MainWindow::on_pB_Mic_clicked()
             maze.FindPath();
         }
         mic->Init(&maze, &AG);
-        mic->Setup(StartSpeed, Accel, MaxSpeed, ALimit);
+        mic->Setup(MoveStartSpeed, MoveMaxSpeed, Accel, ALimit, RotStartSeepd, RotMaxSpeed);
         mic->start();
 
     }
@@ -604,4 +502,49 @@ void MainWindow::on_cB_Manual_toggled(bool checked)
 {
     maze.ManualEnable(checked);
     ui->w_Maze->repaint();
+}
+
+void MainWindow::on_sB_MMaxSpeed_valueChanged(int arg1)
+{
+    MoveMaxSpeed = arg1;
+}
+
+void MainWindow::on_sB_MStartSpeed_valueChanged(int arg1)
+{
+    MoveStartSpeed = arg1;
+}
+
+void MainWindow::on_dSB_Accel_valueChanged(double arg1)
+{
+    ALimit = arg1;
+}
+
+void MainWindow::on_spinBox_valueChanged(int arg1)
+{
+    Distance = arg1;
+}
+
+void MainWindow::on_sB_Accel_valueChanged(int arg1)
+{
+    Accel = arg1;
+}
+void MainWindow::on_sB_RMaxSpeed_valueChanged(int arg1)
+{
+    RotMaxSpeed = arg1;
+}
+
+void MainWindow::on_sB_RStartSpeed_valueChanged(int arg1)
+{
+    RotStartSeepd = arg1;
+}
+
+void MainWindow::on_sB_Rotation_valueChanged(int arg1)
+{
+    Degree = arg1;
+}
+
+void MainWindow::on_pB_ResetPos_clicked()
+{
+    mic->Stop();
+    maze.Reset();
 }

@@ -62,15 +62,7 @@ private slots:
 
     void on_doubleSpinBox_valueChanged(double arg1);
 
-    //void on_pB_Test_01_clicked();
-
-    void on_sB_Update_valueChanged(int arg1);
-
-    void on_sB_Speed_valueChanged(int arg1);
-
     void on_pB_HomeAll_clicked();
-
-    void on_sB_StartSpeed_valueChanged(int arg1);
 
     void on_rB_Acceleration_clicked(bool checked);
 
@@ -79,8 +71,6 @@ private slots:
     void on_rB_Distance_clicked(bool checked);
 
     void on_dSB_Accel_valueChanged(double arg1);
-
-    void on_sB_Gyro_valueChanged(int arg1);
 
     void on_sB_Accel_valueChanged(int arg1);
 
@@ -100,10 +90,18 @@ private slots:
 
     void on_cB_Manual_toggled(bool checked);
 
+    void on_sB_MMaxSpeed_valueChanged(int arg1);
+
+    void on_sB_MStartSpeed_valueChanged(int arg1);
+
+    void on_sB_RMaxSpeed_valueChanged(int arg1);
+
+    void on_sB_RStartSpeed_valueChanged(int arg1);
+
+    void on_pB_ResetPos_clicked();
+
 public slots:
     void UpdateSR();
-    void UpdateProgram();
-    void DelayHandler();
     void SendFunctionSlot(QByteArray);
     void UpdateMazeSlot();
     void LogSlot(QString);
@@ -137,21 +135,18 @@ private:
     void ProgramChecker(double data[6]);
     void InitLvl2();
     void FunctionReturn(short val);
-    QTimer *UpdateTimer;
     QTimer *DelayTimer;
     bool ProgramIsRunning = false;
     int AGReachLimit[7];
     bool Direction = false;
-    int StartSpeed;
-    int MaxSpeed;
+    int MoveStartSpeed;
+    int MoveMaxSpeed;
+    int RotStartSeepd;
+    int RotMaxSpeed;
     int Accel;
-    int SpeedX;
-    int SpeedY;
     int Distance;
     int Degree;
-    float Updates;
     double ALimit;
-    int GLimit;
     bool MicIsRinning = false;
 };
 #endif // MAINWINDOW_H

@@ -8,8 +8,9 @@ Maze::Maze()
 void Maze::Init(int size,int pixels)
 {
     Robot.load("D:/0.GitProjects/WizualizacjaSM/Test_03/arrow.png");
-    RobotRealX = 9;
-    RobotRealY = 9;
+    RobotX_cm = CellSize_cm/2;
+    RobotY_cm = CellSize_cm/2;
+    RobotRot_deg = 0;
     Size = size;
     PixSize = pixels;
     for (int a = 0; a < 16; a++){
@@ -127,10 +128,10 @@ void Maze::FindPath(){
 
     }
     // Wybranie sciezki
-    int x = RobotRealX / CellRealSize;
-    int y = (Size -1) - RobotRealY / CellRealSize;
+    int x = RobotX_cm / CellSize_cm;
+    int y = (Size -1) - RobotY_cm / CellSize_cm;
     Val = GetVal(Cells[x][y], PATH_WALUE);
-    int orient = (45 + RobotRalRot)/90;
+    int orient = (45 + RobotRot_deg)/90;
     if (orient == 3) orient = 1;
     if (orient == 2) orient = 0;
     int rot = 0;
@@ -289,11 +290,11 @@ void Maze::DrawMaze(QWidget *widget){
         }
     }
     // Rysowanie robota
-    int RobotPixSize = PixSize * RobotRealSize / CellRealSize;
-    int RobotX = PixSize * RobotRealX / CellRealSize;
-    int RobotY = PixSize * RobotRealY / CellRealSize;
+    int RobotPixSize = PixSize * RobotSize_cm / CellSize_cm;
+    int RobotX = PixSize * RobotX_cm / CellSize_cm;
+    int RobotY = PixSize * RobotY_cm / CellSize_cm;
     painter.translate(750/2 + RobotX - (PixSize * Size)/2,750/2 - RobotY + (PixSize * Size)/2);
-    painter.rotate(RobotRalRot);
+    painter.rotate(RobotRot_deg);
     painter.drawPixmap(-RobotPixSize/2, -RobotPixSize/2, RobotPixSize, RobotPixSize,Robot);
     painter.resetTransform();
     // Rysowanie tekstu
@@ -354,8 +355,8 @@ void Maze::SetBegin(int x, int y)
                     }
                 }
                 SetVal(&Cells[x][y], TYPE_START, CELL_TYPE);
-                RobotRealX = (x * CellRealSize) + CellRealSize/2;
-                RobotRealY = (((Size-1)-y) * CellRealSize) + CellRealSize/2;
+                RobotX_cm = (x * CellSize_cm) + CellSize_cm/2;
+                RobotY_cm = (((Size-1)-y) * CellSize_cm) + CellSize_cm/2;
             }
         }
     }
@@ -416,8 +417,8 @@ void Maze::ManualEnable(bool enable)
 
 int Maze::GetPathRot()
 {
-    int x = RobotRealX / CellRealSize;
-    int y = (Size -1) - RobotRealY / CellRealSize;
+    int x = RobotX_cm / CellSize_cm;
+    int y = (Size -1) - RobotY_cm / CellSize_cm;
     int Val = GetVal(Cells[x][y], PATH_WALUE);
     int PathRot;
     for (int a = 0; a < Size; a++){
@@ -448,7 +449,7 @@ int Maze::GetPathRot()
             }
         }
     }
-    int Rot = PathRot - RobotRalRot;
+    int Rot = PathRot - RobotRot_deg;
     // Skrócenie obrotu
     if (Rot > 180) Rot -= 360;
     if (Rot < -180) Rot += 360;
@@ -456,8 +457,8 @@ int Maze::GetPathRot()
 
 int Maze::GetPathMov()
 {
-    int x = RobotRealX / CellRealSize;
-    int y = (Size -1) - RobotRealY / CellRealSize;
+    int x = RobotX_cm / CellSize_cm;
+    int y = (Size -1) - RobotY_cm / CellSize_cm;
     int Val = GetVal(Cells[x][y], PATH_WALUE);
     int PathDir = 0;
     int Count = 0;
@@ -525,21 +526,38 @@ int Maze::GetPathMov()
         }
         break;
     }
-    return Count *  CellRealSize;
+    return Count *  CellSize_cm;
     // Porownac orientracje
     // Powtazac az orientacja zmieni sie
     // wziasc odleglosc miedzy srdkiem ostatniego a robotem
 }
 
-void Maze::MovResult(int mov, int res)
+void Maze::MovResult(int mov_cm, int res_cm)
 {
-    RobotRealX += sin(RobotRalRot*PI/180) * mov;
-    RobotRealY += cos(RobotRalRot*PI/180) * mov;
+    // Komórka w której robot był
+    int X_cell = RobotX_cm / CellSize_cm;
+    int Y_cell = (Size -1) - RobotY_cm / CellSize_cm;
+    // Przesuniecie jakie wykonał
+    int DelX_cm = sin(RobotRot_deg*PI/180) * res_cm;
+    int DelY_cm = cos(RobotRot_deg*PI/180) * res_cm;
+    // Przesuniecie w komórkach
+    int DelX_cell = DelX_cm / CellSize_cm;
+    int DelY_cell = DelY_cm / CellSize_cm;
+    // Straszne wycentrowanie do srodka komorki
+    RobotX_cm += DelX_cell * CellSize_cm;
+    RobotY_cm += DelY_cell * CellSize_cm;
 }
 
 void Maze::Rotate(int rot)
 {
-    RobotRalRot += rot;
+    RobotRot_deg += rot;
+}
+
+void Maze::Reset()
+{
+    RobotX_cm = CellSize_cm/2;
+    RobotY_cm = CellSize_cm/2;
+    RobotRot_deg = 0;
 }
 
 void Maze::SetTarget(int x, int y)

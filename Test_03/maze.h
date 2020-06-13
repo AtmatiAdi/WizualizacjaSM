@@ -50,13 +50,14 @@ public:
     int GetPathMov();
     void MovResult(int mov, int res);
     void Rotate(int rot);
+    void Reset();
 private:
     QPixmap Robot;
-    int RobotRealSize = 13;
-    int CellRealSize = 17;
-    int RobotRealX = 0;
-    int RobotRealY = 0;
-    float RobotRalRot = 0;
+    int RobotSize_cm = 13;
+    int CellSize_cm = 17;
+    int RobotX_cm = 0;
+    int RobotY_cm = 0;
+    float RobotRot_deg = 0;
     int Size = 0;
     int PixSize = 0;
     bool IsTextEnabled = false;
