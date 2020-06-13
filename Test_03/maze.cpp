@@ -67,6 +67,9 @@ void Maze::FindPath(){
             if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_PATH){
                 SetVal(&Cells[a][b], TYPE_UNDEFINED, CELL_TYPE);
             }
+            if ((GetVal(Cells[a][b], CELL_TYPE) != TYPE_END) && ((GetVal(Cells[a][b], CELL_TYPE) != TYPE_TARGET))){
+                SetVal(&Cells[a][b], 0, PATH_WALUE);
+            }
         }
     }
     // Numerowanie wszystkiego
@@ -217,14 +220,45 @@ void Maze::TextEnabled(bool enable)
 {
     IsTextEnabled = enable;
 }
-
+/*
 void Maze::SetWall(int cell, int wall, bool state){
     int x = cell % Size;
     int y = cell / Size;
     Cells[x][y] += state << wall;
+}*/
+
+void Maze::SetWall(int x_cell, int y_cell, int dir, int state){
+    int wall;
+    switch (dir) {
+    case 0:{
+        wall = WALL_UP;
+        break;
+    }
+    case 1:{
+        wall = WALL_RIGHT;
+        break;
+    }
+    case 2:{
+        wall = WALL_DOWN;
+        break;
+    }
+    case 3:{
+        wall = WALL_LEFT;
+        break;
+    }
+    }
+    std::cout<< "sciana: " << wall << std::endl;
+    SetVal(&Cells[x_cell][y_cell], state, wall);
+
+    std::cout << GetVal(Cells[x_cell][y_cell], WALL_UP);
+    std::cout << GetVal(Cells[x_cell][y_cell], WALL_LEFT);
+    std::cout << GetVal(Cells[x_cell][y_cell], WALL_DOWN);
+    std::cout << GetVal(Cells[x_cell][y_cell], WALL_RIGHT);
+
 }
 
 void Maze::DrawMaze(QWidget *widget){
+    std::cout << "Rysowanie" << std::endl;
     QPainter painter;
     painter.begin(widget);
     painter.setRenderHint(QPainter::Antialiasing, true);
@@ -453,6 +487,7 @@ int Maze::GetPathRot()
     // Skrócenie obrotu
     if (Rot > 180) Rot -= 360;
     if (Rot < -180) Rot += 360;
+    return Rot;
 }
 
 int Maze::GetPathMov()
@@ -509,7 +544,7 @@ int Maze::GetPathMov()
                 else break;
             }
         }
-        if (GetVal(Cells[x][y], WALL_RIGHT) < 2){
+        if (GetVal(Cells[x][y], WALL_LEFT) < 2){
             if ((GetVal(Cells[x-1][y], CELL_TYPE) > 2) && ((GetVal(Cells[x-1][y], PATH_WALUE) == Val))){
                 x--;
                 if (PathDir == 0) {
@@ -543,14 +578,45 @@ void Maze::MovResult(int mov_cm, int res_cm)
     // Przesuniecie w komórkach
     int DelX_cell = DelX_cm / CellSize_cm;
     int DelY_cell = DelY_cm / CellSize_cm;
+    int NewX_cell = X_cell + DelX_cell;
+    int NewY_cell = Y_cell - DelY_cell;
+    while (NewX_cell > Size - 1) {
+        NewX_cell--;
+        DelX_cell--;
+        std::cout << "Przekroczono labirynt X > Size" << std::endl;
+    }
+    while (NewY_cell > Size - 1) {
+        NewY_cell--;
+        DelY_cell--;
+        std::cout << "Przekroczono labirynt Y > Size" << std::endl;
+    }
+    while (NewX_cell < 0) {
+        NewX_cell++;
+        DelX_cell++;
+        std::cout << "Przekroczono labirynt X < 0" << std::endl;
+
+    }
+    while (NewY_cell < 0) {
+        NewY_cell++;
+        DelY_cell++;
+        std::cout << "Przekroczono labirynt Y < 0" << std::endl;
+    }
     // Straszne wycentrowanie do srodka komorki
     RobotX_cm += DelX_cell * CellSize_cm;
     RobotY_cm += DelY_cell * CellSize_cm;
+    //std::cout << "pozycja w cm: " << RobotX_cm << " " << RobotY_cm << std::endl;
+    int Direction;
+    if (RobotRot_deg < 0) Direction = (360 + RobotRot_deg + 45)/90;
+    else Direction = (RobotRot_deg + 45)/90;
+    std::cout << "Rotacja: " << RobotRot_deg << std::endl;
+    std::cout << "postaw sciane: " << (NewX_cell) << " " << (NewY_cell) << " " << Direction << std::endl;
+    SetWall(NewX_cell , NewY_cell, Direction, EXIST);
+
 }
 
-void Maze::Rotate(int rot)
+void Maze::Rotate(int rot_deg)
 {
-    RobotRot_deg += rot;
+    RobotRot_deg = (rot_deg + RobotRot_deg) % 360;
 }
 
 void Maze::Reset()
@@ -558,6 +624,19 @@ void Maze::Reset()
     RobotX_cm = CellSize_cm/2;
     RobotY_cm = CellSize_cm/2;
     RobotRot_deg = 0;
+}
+
+bool Maze::IsReady()
+{
+    bool IsStart = false;
+    bool IsEnd = false;
+    for (int a = 0; a < Size; a++){
+        for (int b = 0; b < Size; b++){
+            if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_END) IsEnd = true;
+            else if (GetVal(Cells[a][b], CELL_TYPE) != TYPE_TARGET) IsStart = true;
+        }
+    }
+    return IsStart & IsEnd;
 }
 
 void Maze::SetTarget(int x, int y)

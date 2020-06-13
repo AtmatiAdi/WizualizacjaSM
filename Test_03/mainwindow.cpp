@@ -329,7 +329,7 @@ void MainWindow::InitLvl2()
 {
     ALimit = 7.5;
     MoveStartSpeed = 160;
-    MoveMaxSpeed = 208;
+    MoveMaxSpeed = 224;
     RotStartSeepd = 176;
     RotMaxSpeed = 336;
     Accel = 1;
@@ -405,14 +405,18 @@ void MainWindow::on_pB_Mic_clicked()
         //maze.Init(0);
         ui->w_Maze->repaint();
     } else {
-        MicIsRinning = true;
-        ui->pB_Mic->setText("Pause");
-        if (!ui->cB_Manual->isChecked()){
-            maze.FindPath();
+        if (maze.IsReady()){
+            MicIsRinning = true;
+            ui->pB_Mic->setText("Pause");
+            if (!ui->cB_Manual->isChecked()){
+                maze.FindPath();
+            }
+            mic->Init(&maze, &AG);
+            mic->Setup(MoveStartSpeed, MoveMaxSpeed, Accel, ALimit, RotStartSeepd, RotMaxSpeed);
+            mic->start();
+        } else {
+            LogSlot("Labirynt nie zawiera pola Startowego lub Końcowego");
         }
-        mic->Init(&maze, &AG);
-        mic->Setup(MoveStartSpeed, MoveMaxSpeed, Accel, ALimit, RotStartSeepd, RotMaxSpeed);
-        mic->start();
 
     }
 

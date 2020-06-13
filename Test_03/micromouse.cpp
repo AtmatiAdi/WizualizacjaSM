@@ -35,13 +35,15 @@ void Micromouse::run(){
     IsRunning = true;
     emit LogSig("Micromouse started");
     QString msg;
-    int Val_cm, Val_deg, Res_cm, Res_deg;
+    int Val_cm, Val_deg, Res_cm, Res_deg, Offset;
     while(IsRunning){
         Val_deg = MyMaze->GetPathRot();
         //emit LogSig("Rot" + QString::number(Val));
         if ((Val_deg > 5) || (Val_deg < -5)) {
+            if (Val_deg > 0) Offset = 2;
+            else Offset = -2;
             emit LogSig("Rotacja: " + QString::number(Val_deg));
-            Res_deg = Rotate(Val_deg);
+            Res_deg = Rotate(Val_deg-Offset);
             emit LogSig("Rotacja: " + QString::number(Res_deg));
             MyMaze->Rotate(Val_deg);
             MyMaze->FindPath();
@@ -52,19 +54,18 @@ void Micromouse::run(){
         Val_cm = MyMaze->GetPathMov();
         //emit LogSig("Rot" + QString::number(Val));
         if (Val_cm > 1) {
-            emit LogSig("Ruch ślepy: " + QString::number(100));
+            emit LogSig("Ruch ślepy: " + QString::number(100) + "cm");
             Res_cm = Move(100);
-            emit LogSig("Prejechano: " + QString::number(Res_cm));
+            emit LogSig("Prejechano: " + QString::number(Res_cm) + "cm");
             MyMaze->MovResult(100, Res_cm);
             MyMaze->FindPath();
             emit UpdateMazeSig();
             this->msleep(1000);
 
-            emit LogSig("Ruch wycofujący: " + QString::number(-1));
+            emit LogSig("Ruch wycofujący: " + QString::number(-1) + "cm");
             Move(-1);
             this->msleep(1000);
         }
-        this->msleep(1000);
 /*
         emit PrepareForMoveSig();
         Val = 1800;
@@ -98,8 +99,8 @@ void Micromouse::run(){
 
 short Micromouse::Move(short dist){
     FunctionReurned = false;
-    dist = dist * (32768.0/(9.80665*2.0))/100.0;
-    emit LogSig("Zadano: " + QString::number(dist));
+    int Dist = dist * (32768.0/(9.80665*2.0))/100.0;
+    //emit LogSig("Zadano: " + QString::number(dist));
     short stop = StopVal * 32768/(9.80665*2);
     QByteArray Data;
     Data.resize(11);
@@ -110,19 +111,27 @@ short Micromouse::Move(short dist){
     Data[4] = (unsigned char)(AccelVal >> 8);
     Data[5] = (unsigned char)MoveMaxVal;
     Data[6] = (unsigned char)(MoveMaxVal >> 8);
-    Data[7] = (unsigned char)dist;
-    Data[8] = (unsigned char)(dist >> 8);
+    Data[7] = (unsigned char)Dist;
+    Data[8] = (unsigned char)(Dist >> 8);
     Data[9] = (unsigned char)stop;
     Data[10] = (unsigned char)(stop >> 8);
     emit SendFunctionSig(Data);
-    while(!FunctionReurned){}
-    emit LogSig("Dostano: " + QString::number(Value));
+    int timeout = 60;
+    while(!FunctionReurned){
+        this->msleep(100);
+        timeout --;
+        if (!timeout) {
+            emit LogSig("Powtarzam");
+            Move(dist);
+        }
+    }
+    //emit LogSig("Dostano: " + QString::number(Value));
     return Value * 100.0 *AccelScale;
 }
 
 short Micromouse::Rotate(short deg){
     FunctionReurned = false;
-    deg = deg * (32768.0/500.0);
+    int Deg = deg * (32768.0/500.0);
     QByteArray Data;
     Data.resize(9);
     Data[0] = (unsigned char)PROG_ROTATE;
@@ -132,10 +141,18 @@ short Micromouse::Rotate(short deg){
     Data[4] = (unsigned char)(AccelVal >> 8);
     Data[5] = (unsigned char)RotMaxVal;
     Data[6] = (unsigned char)(RotMaxVal >> 8);
-    Data[7] = (unsigned char)deg;
-    Data[8] = (unsigned char)(deg >> 8);
+    Data[7] = (unsigned char)Deg;
+    Data[8] = (unsigned char)(Deg >> 8);
     emit SendFunctionSig(Data);
-    while(!FunctionReurned){}
+    int timeout = 60;
+    while(!FunctionReurned){
+        this->msleep(100);
+        timeout --;
+        if (!timeout) {
+            emit LogSig("Powtarzam");
+            Rotate(deg);
+        }
+    }
     return Value * GyroScale;
 }
 

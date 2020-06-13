@@ -37,7 +37,8 @@ public:
     Maze();
     long Cells[16][16];
     void Init(int size, int pixels);
-    void SetWall(int cell, int wall, bool state);
+    //void SetWall(int cell, int wall, bool state);
+    void SetWall(int x_cell, int y_cell, int dir, int state);
     void DrawMaze(QWidget *widget);
     void SetBegin(int x, int y);
     void SetEnd(int x, int y);
@@ -51,13 +52,14 @@ public:
     void MovResult(int mov, int res);
     void Rotate(int rot);
     void Reset();
+    bool IsReady();
 private:
     QPixmap Robot;
     int RobotSize_cm = 13;
-    int CellSize_cm = 17;
+    int CellSize_cm = 18;
     int RobotX_cm = 0;
     int RobotY_cm = 0;
-    float RobotRot_deg = 0;
+    int RobotRot_deg = 0;   // Pilnowane jest by rotacja zamykała się w 360 stopniach, r = r % 360
     int Size = 0;
     int PixSize = 0;
     bool IsTextEnabled = false;
