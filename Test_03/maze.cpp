@@ -621,9 +621,17 @@ void Maze::Rotate(int rot_deg)
 
 void Maze::Reset()
 {
-    RobotX_cm = CellSize_cm/2;
-    RobotY_cm = CellSize_cm/2;
-    RobotRot_deg = 0;
+    for (int a = 0; a < Size; a++){
+        for (int b = 0; b < Size; b++){
+            if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_START)  {
+                RobotX_cm = a * CellSize_cm + CellSize_cm/2;
+                RobotY_cm = (Size -1 - b) * CellSize_cm + CellSize_cm/2;
+                RobotRot_deg = 0;
+                return;
+            }
+        }
+    }
+
 }
 
 bool Maze::IsReady()

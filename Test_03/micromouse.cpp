@@ -44,7 +44,7 @@ void Micromouse::run(){
             else Offset = -2;
             emit LogSig("Rotacja: " + QString::number(Val_deg));
             Res_deg = Rotate(Val_deg-Offset);
-            emit LogSig("Rotacja: " + QString::number(Res_deg));
+            //emit LogSig("Rotacja: " + QString::number(Res_deg));
             MyMaze->Rotate(Val_deg);
             MyMaze->FindPath();
             emit UpdateMazeSig();

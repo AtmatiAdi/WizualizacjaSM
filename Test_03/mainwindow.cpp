@@ -19,12 +19,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->cAccel->setChart(AccelChart.Init(512, -20, 20));
     ui->cGyro->setRenderHint(QPainter::Antialiasing);
     ui->cGyro->setChart(GyroChart.Init(512, -500, 500));
-
+    ui->tB_Refresh->setIcon(QIcon(path + "/icons/Refresh.png"));
+    ui->tB_Clear->setIcon(QIcon(path + "/icons/Clear.png"));
+    ui->pB_Send->setIcon(QIcon(path + "/icons/Send.png"));
+    ui->pB_Pause->setIcon(QIcon(path + "/icons/Pause.png"));
+    ui->pB_HomeAll->setIcon(QIcon(path + "/icons/Target.png"));
+    ui->pB_Build_2->setIcon(QIcon(path + "/icons/Rotate_1.png"));
+    ui->pB_Build_1->setIcon(QIcon(path + "/icons/Move.png"));
+    ui->pB_ResetPos->setIcon(QIcon(path + "/icons/Home.png"));
+    ui->pB_Mic->setIcon(QIcon(path + "/icons/Play.png"));
+    ui->pB_MazeGen->setIcon(QIcon(path + "/icons/Maze.png"));
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateSR()));
     timer->start(1000);
-    DelayTimer = new QTimer(this);
-    connect(DelayTimer, SIGNAL(timeout()), this, SLOT(DelayHandler()));
+    //DelayTimer = new QTimer(this);
+    //connect(DelayTimer, SIGNAL(timeout()), this, SLOT(DelayHandler()));
 
     InitLvl2();
     ui->w_Maze->installEventFilter(this);
@@ -105,7 +114,11 @@ void MainWindow::on_cB_Devices_currentIndexChanged(int index)
                 }
             //}
         } else {
-        this->addToLogs("Port już jest otwarty!");
+        //this->addToLogs("Port już jest otwarty!");
+            this->device->flush();
+            this->device->close();
+            this->addToLogs("Zamknięto połączenie.");
+            on_cB_Devices_currentIndexChanged(index);
         return;
         }
     } else {
@@ -260,11 +273,13 @@ void MainWindow::on_pB_Pause_clicked()
 {
     if (IsGraphRunning) {
         IsGraphRunning = false;
+        ui->pB_Pause->setIcon(QIcon(path + "/icons/Play.png"));
         ui->pB_Pause->setText("Resume");
         AccelChart.Stop();
         GyroChart.Stop();
     } else {
         IsGraphRunning = true;
+        ui->pB_Pause->setIcon(QIcon(path + "/icons/Pause.png"));
         ui->pB_Pause->setText("Pause");
         AccelChart.Start();
         GyroChart.Start();
@@ -399,6 +414,7 @@ void MainWindow::on_pB_Mic_clicked()
 {
     if (MicIsRinning) {
         MicIsRinning = false;
+        ui->pB_Mic->setIcon(QIcon(path + "/icons/Play.png"));
         ui->pB_Mic->setText("Start Micromouse");
         mic->FunctionReturn(0);
         mic->Stop();
@@ -407,6 +423,7 @@ void MainWindow::on_pB_Mic_clicked()
     } else {
         if (maze.IsReady()){
             MicIsRinning = true;
+            ui->pB_Mic->setIcon(QIcon(path + "/icons/Pause.png"));
             ui->pB_Mic->setText("Pause");
             if (!ui->cB_Manual->isChecked()){
                 maze.FindPath();
@@ -551,4 +568,5 @@ void MainWindow::on_pB_ResetPos_clicked()
 {
     mic->Stop();
     maze.Reset();
+    ui->w_Maze->repaint();
 }

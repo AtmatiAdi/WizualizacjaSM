@@ -33,6 +33,26 @@
      <string>Communictaion Layer</string>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
+     <item row="2" column="0">
+      <widget class="QToolButton" name="tB_Clear">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QToolButton" name="tB_Refresh">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="0" colspan="4">
       <widget class="QTextEdit" name="tE_Log">
        <property name="html">
@@ -44,15 +64,8 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
-     <item row="5" column="1" colspan="2">
-      <widget class="QComboBox" name="cB_Devices"/>
-     </item>
-     <item row="5" column="3">
-      <widget class="QCheckBox" name="checkBox">
-       <property name="text">
-        <string>Show All</string>
-       </property>
-      </widget>
+     <item row="2" column="1" colspan="2">
+      <widget class="QLineEdit" name="lE_Message"/>
      </item>
      <item row="2" column="3">
       <widget class="QPushButton" name="pB_Send">
@@ -67,22 +80,15 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
-      <widget class="QToolButton" name="tB_Refresh">
+     <item row="5" column="3">
+      <widget class="QCheckBox" name="checkBox">
        <property name="text">
-        <string>...</string>
+        <string>Show All</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1" colspan="2">
-      <widget class="QLineEdit" name="lE_Message"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QToolButton" name="tB_Clear">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
+     <item row="5" column="1" colspan="2">
+      <widget class="QComboBox" name="cB_Devices"/>
      </item>
     </layout>
    </widget>
@@ -99,20 +105,27 @@ p, li { white-space: pre-wrap; }
      <string>Sensors Layer</string>
     </property>
     <layout class="QGridLayout" name="gridLayout_10">
-     <item row="4" column="1">
-      <widget class="QLabel" name="l_SampleR">
+     <item row="4" column="0" colspan="7">
+      <widget class="QChartView" name="cAccel">
        <property name="maximumSize">
         <size>
-         <width>90</width>
-         <height>16777215</height>
+         <width>10000</width>
+         <height>500</height>
         </size>
-       </property>
-       <property name="text">
-        <string>0</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
+     <item row="1" column="0" colspan="7">
+      <widget class="QChartView" name="cGyro">
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>500</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
       <widget class="QLabel" name="label">
        <property name="maximumSize">
         <size>
@@ -125,27 +138,20 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
-     <item row="0" column="0" colspan="7">
-      <widget class="QChartView" name="cGyro">
+     <item row="5" column="1">
+      <widget class="QLabel" name="l_SampleR">
        <property name="maximumSize">
         <size>
-         <width>10000</width>
-         <height>500</height>
+         <width>90</width>
+         <height>16777215</height>
         </size>
+       </property>
+       <property name="text">
+        <string>0</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0" colspan="7">
-      <widget class="QChartView" name="cAccel">
-       <property name="maximumSize">
-        <size>
-         <width>10000</width>
-         <height>500</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" colspan="3">
+     <item row="2" column="0" colspan="4">
       <widget class="QFrame" name="frame_5">
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -217,6 +223,20 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
        </layout>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Acceleration Chart [m/s2]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Gyroscope Chart [deg]</string>
+       </property>
       </widget>
      </item>
     </layout>
@@ -340,8 +360,8 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>770</x>
        <y>30</y>
-       <width>193</width>
-       <height>402</height>
+       <width>197</width>
+       <height>414</height>
       </rect>
      </property>
      <property name="title">
@@ -352,15 +372,12 @@ p, li { white-space: pre-wrap; }
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="3" column="0">
-       <widget class="QFrame" name="frame_2">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="title">
+         <string>Move command</string>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="3" column="1">
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="2" column="1">
           <widget class="QSpinBox" name="sB_Rotation">
            <property name="maximumSize">
             <size>
@@ -382,7 +399,50 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
+         <item row="3" column="0" colspan="2">
+          <widget class="QPushButton" name="pB_Build_1">
+           <property name="text">
+            <string>Move</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Rotation [deg]</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Start speed</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="sB_RMaxSpeed">
+           <property name="maximumSize">
+            <size>
+             <width>54</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>PWM value 1-1024 </string>
+           </property>
+           <property name="prefix">
+            <string/>
+           </property>
+           <property name="maximum">
+            <number>1024</number>
+           </property>
+           <property name="singleStep">
+            <number>16</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
           <widget class="QSpinBox" name="sB_RStartSpeed">
            <property name="maximumSize">
             <size>
@@ -390,8 +450,11 @@ p, li { white-space: pre-wrap; }
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>PWM value 1-1024 </string>
+           </property>
            <property name="prefix">
-            <string extracomment="PWM value 1-1024 "/>
+            <string/>
            </property>
            <property name="maximum">
             <number>1024</number>
@@ -404,69 +467,10 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>Start speed</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_9">
-           <property name="text">
-            <string>Rotation[deg]</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
+         <item row="0" column="0">
           <widget class="QLabel" name="label_2">
            <property name="text">
             <string>Max speed</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QSpinBox" name="sB_RMaxSpeed">
-           <property name="maximumSize">
-            <size>
-             <width>54</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="prefix">
-            <string extracomment="PWM value 1-1024 "/>
-           </property>
-           <property name="maximum">
-            <number>1024</number>
-           </property>
-           <property name="singleStep">
-            <number>16</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QFrame" name="frame_3">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_5">
-         <item row="1" column="1">
-          <widget class="QPushButton" name="pB_Build_1">
-           <property name="text">
-            <string>Forward</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QPushButton" name="pB_Build_2">
-           <property name="text">
-            <string>Rotate</string>
            </property>
           </widget>
          </item>
@@ -474,18 +478,15 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QFrame" name="frame">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+       <widget class="QGroupBox" name="groupBox_5">
+        <property name="title">
+         <string>GroupBox</string>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_4">
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_6">
            <property name="text">
-            <string>Max speed</string>
+            <string>Distance [cm]</string>
            </property>
           </widget>
          </item>
@@ -497,8 +498,11 @@ p, li { white-space: pre-wrap; }
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>PWM value 1-1024 </string>
+           </property>
            <property name="prefix">
-            <string extracomment="PWM value 1-1024 "/>
+            <string/>
            </property>
            <property name="minimum">
             <number>0</number>
@@ -522,6 +526,9 @@ p, li { white-space: pre-wrap; }
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>Acceleration stop value</string>
+           </property>
            <property name="decimals">
             <number>1</number>
            </property>
@@ -533,6 +540,31 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="value">
             <double>7.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="sB_MStartSpeed">
+           <property name="maximumSize">
+            <size>
+             <width>54</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>PWM value 1-1024 </string>
+           </property>
+           <property name="prefix">
+            <string/>
+           </property>
+           <property name="maximum">
+            <number>1028</number>
+           </property>
+           <property name="singleStep">
+            <number>16</number>
+           </property>
+           <property name="value">
+            <number>128</number>
            </property>
           </widget>
          </item>
@@ -555,6 +587,13 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Max speed</string>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_7">
            <property name="text">
@@ -562,46 +601,24 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Distance[cm]</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QSpinBox" name="sB_MStartSpeed">
-           <property name="maximumSize">
-            <size>
-             <width>54</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="prefix">
-            <string extracomment="PWM value 1-1024 "/>
-           </property>
-           <property name="maximum">
-            <number>1028</number>
-           </property>
-           <property name="singleStep">
-            <number>16</number>
-           </property>
-           <property name="value">
-            <number>128</number>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>Accel limit[m/s2]</string>
+            <string>Accel limit [m/s2]</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="QPushButton" name="pB_Build_2">
+           <property name="text">
+            <string>Rotate</string>
            </property>
           </widget>
          </item>
         </layout>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="0" column="0">
        <widget class="QFrame" name="frame_7">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -610,20 +627,23 @@ p, li { white-space: pre-wrap; }
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
-         <item row="0" column="0">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_3">
            <property name="text">
             <string>Acceleration</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="1" column="1">
           <widget class="QSpinBox" name="sB_Accel">
            <property name="maximumSize">
             <size>
              <width>54</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="toolTip">
+            <string>PWM value 1-1024 </string>
            </property>
            <property name="minimum">
             <number>1</number>
@@ -648,8 +668,8 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>770</x>
-       <y>440</y>
-       <width>191</width>
+       <y>450</y>
+       <width>197</width>
        <height>232</height>
       </rect>
      </property>

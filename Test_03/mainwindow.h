@@ -135,7 +135,7 @@ private:
     void ProgramChecker(double data[6]);
     void InitLvl2();
     void FunctionReturn(short val);
-    QTimer *DelayTimer;
+    //QTimer *DelayTimer;
     bool ProgramIsRunning = false;
     int AGReachLimit[7];
     bool Direction = false;
@@ -148,5 +148,6 @@ private:
     int Degree;
     double ALimit;
     bool MicIsRinning = false;
+    QString path = "D:/0.GitProjects/WizualizacjaSM/Test_03";
 };
 #endif // MAINWINDOW_H
