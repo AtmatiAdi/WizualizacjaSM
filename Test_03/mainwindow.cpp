@@ -56,7 +56,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
 {
     if (watched == ui->w_Maze && event->type() == QEvent::Paint) {
         maze.DrawMaze(ui->w_Maze);
-        return true; // return true if you do not want to have the child widget paint on its own afterwards, otherwise, return false.
+        return true;
     }
     return false;
 }
@@ -287,10 +287,10 @@ void MainWindow::on_pB_Pause_clicked()
 }
 
 
-void MainWindow::on_doubleSpinBox_valueChanged(double arg1)
+/*void MainWindow::on_doubleSpinBox_valueChanged(double arg1)
 {
     IntParam = arg1;
-}
+}*/
 
 void MainWindow::on_pB_HomeAll_clicked()
 {
@@ -342,22 +342,22 @@ void MainWindow::on_rB_Distance_clicked(bool checked)
 
 void MainWindow::InitLvl2()
 {
-    ALimit = 7.5;
+    ALimit_m_s2 = 7.5;
     MoveStartSpeed = 160;
     MoveMaxSpeed = 224;
     RotStartSeepd = 176;
     RotMaxSpeed = 336;
     Accel = 1;
-    Distance = 10;
-    Degree = 89;
+    Distance_m = 10;
+    Degree_deg = 89;
 
     ui->sB_MStartSpeed->setValue(MoveStartSpeed);
     ui->sB_MMaxSpeed->setValue(MoveMaxSpeed);
-    ui->dSB_Accel->setValue(ALimit);
+    ui->dSB_Accel->setValue(ALimit_m_s2);
     ui->sB_Accel->setValue(Accel);
     ui->sB_RStartSpeed->setValue(RotStartSeepd);
     ui->sB_RMaxSpeed->setValue(RotMaxSpeed);
-    ui->sB_Rotation->setValue(Degree);
+    ui->sB_Rotation->setValue(Degree_deg);
 }
 
 void MainWindow::SetSpeed(int x, int y){
@@ -373,9 +373,9 @@ void MainWindow::SetSpeed(int x, int y){
 
 void MainWindow::on_pB_Build_1_clicked()
 {
-    short dist = Distance * (32768.0/(9.80665*2.0))/100.0;
+    short dist = Distance_m * (32768.0/(9.80665*2.0))/100.0;
     LogSlot("Zadano dystans: " + QString::number(dist));
-    short stop = ALimit * 32768/(9.80665*2);
+    short stop = ALimit_m_s2 * 32768/(9.80665*2);
     QByteArray Data;
     Data.resize(11);
     Data[0] = (unsigned char)PROG_MOVE_BREAK;
@@ -394,7 +394,7 @@ void MainWindow::on_pB_Build_1_clicked()
 
 void MainWindow::on_pB_Build_2_clicked()
 {
-    short degree = Degree * (32768.0/500.0);
+    short degree = Degree_deg * (32768.0/500.0);
     QByteArray Data;
     Data.resize(9);
     Data[0] = (unsigned char)PROG_ROTATE;
@@ -429,7 +429,7 @@ void MainWindow::on_pB_Mic_clicked()
                 maze.FindPath();
             }
             mic->Init(&maze, &AG);
-            mic->Setup(MoveStartSpeed, MoveMaxSpeed, Accel, ALimit, RotStartSeepd, RotMaxSpeed);
+            mic->Setup(MoveStartSpeed, MoveMaxSpeed, Accel, ALimit_m_s2, RotStartSeepd, RotMaxSpeed);
             mic->start();
         } else {
             LogSlot("Labirynt nie zawiera pola Startowego lub Końcowego");
@@ -537,12 +537,12 @@ void MainWindow::on_sB_MStartSpeed_valueChanged(int arg1)
 
 void MainWindow::on_dSB_Accel_valueChanged(double arg1)
 {
-    ALimit = arg1;
+    ALimit_m_s2 = arg1;
 }
 
 void MainWindow::on_spinBox_valueChanged(int arg1)
 {
-    Distance = arg1;
+    Distance_m = arg1;
 }
 
 void MainWindow::on_sB_Accel_valueChanged(int arg1)
@@ -561,7 +561,7 @@ void MainWindow::on_sB_RStartSpeed_valueChanged(int arg1)
 
 void MainWindow::on_sB_Rotation_valueChanged(int arg1)
 {
-    Degree = arg1;
+    Degree_deg = arg1;
 }
 
 void MainWindow::on_pB_ResetPos_clicked()

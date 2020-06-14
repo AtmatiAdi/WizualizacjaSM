@@ -1,0 +1,484 @@
+\hypertarget{classMainWindow}{}\doxysection{Main\+Window Class Reference}
+\label{classMainWindow}\index{MainWindow@{MainWindow}}
+
+
+Inheritance diagram for Main\+Window\+:
+% FIG 0
+
+
+Collaboration diagram for Main\+Window\+:
+% FIG 1
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_a9fece74ff69a9e1b50b079f778de9b2b}\label{classMainWindow_a9fece74ff69a9e1b50b079f778de9b2b}} 
+void \mbox{\hyperlink{classMainWindow_a9fece74ff69a9e1b50b079f778de9b2b}{Log\+Slot}} (Q\+String)
+\begin{DoxyCompactList}\small\item\em Appends message and date to t\+E\+\_\+\+Mic\+Log Q\+Text\+Edit Connected to S\+I\+G\+N\+A\+L(\+Log\+Sig(\+Q\+String)) of micromouse thread class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a55e1a82a6633ec3fcdfbafac77eaa1d4}\label{classMainWindow_a55e1a82a6633ec3fcdfbafac77eaa1d4}} 
+void \mbox{\hyperlink{classMainWindow_a55e1a82a6633ec3fcdfbafac77eaa1d4}{Prepare\+For\+Move\+Slot}} ()
+\begin{DoxyCompactList}\small\item\em Sends to the robot request of distance data from measurements types. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a4212072873e38127ba5637627e351171}\label{classMainWindow_a4212072873e38127ba5637627e351171}} 
+void \mbox{\hyperlink{classMainWindow_a4212072873e38127ba5637627e351171}{Prepare\+For\+Rotation\+Slot}} ()
+\begin{DoxyCompactList}\small\item\em Sends to the robot request of velocity data from measurements types. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a605dd357dd827de34e8fd07ba0a5ca14}\label{classMainWindow_a605dd357dd827de34e8fd07ba0a5ca14}} 
+void \mbox{\hyperlink{classMainWindow_a605dd357dd827de34e8fd07ba0a5ca14}{Send\+Function\+Slot}} (Q\+Byte\+Array)
+\begin{DoxyCompactList}\small\item\em Calls send\+Function\+To\+Device(\+Q\+Byte\+Array). Connected to S\+I\+G\+N\+AL(Send\+Function\+Sig(\+Q\+Byte\+Array) of micromouse thread class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_aaac48b62952bdb774dc1f615b7c157b2}\label{classMainWindow_aaac48b62952bdb774dc1f615b7c157b2}} 
+void \mbox{\hyperlink{classMainWindow_aaac48b62952bdb774dc1f615b7c157b2}{Update\+Maze\+Slot}} ()
+\begin{DoxyCompactList}\small\item\em Calls repaint function of w\+\_\+\+Maze Widget. Conneted to S\+I\+G\+N\+A\+L(\+Update\+Maze\+Sig()) of micromouse thread class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a75ab808dabc1a17b493460ab34a5bedd}\label{classMainWindow_a75ab808dabc1a17b493460ab34a5bedd}} 
+void \mbox{\hyperlink{classMainWindow_a75ab808dabc1a17b493460ab34a5bedd}{Update\+SR}} ()
+\begin{DoxyCompactList}\small\item\em Updates measurements per second value in l\+\_\+\+SampleR. This slot is connected to S\+I\+G\+N\+A\+L(\+Timeout()) of timer, its called every 1 second. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classMainWindow_ade305265b2120df2489a5ebeb07ebbe1}{event\+Filter}} (Q\+Object $\ast$watched, Q\+Event $\ast$event) override
+\begin{DoxyCompactList}\small\item\em Is used for handle Q\+Event\+::\+Paint and run drawing function for w\+\_\+\+Maze Widget. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a996c5a2b6f77944776856f08ec30858d}\label{classMainWindow_a996c5a2b6f77944776856f08ec30858d}} 
+{\bfseries Main\+Window} (Q\+Widget $\ast$parent=nullptr)
+\item 
+void \mbox{\hyperlink{classMainWindow_a1dff511c9697cbcb60150894f480b9c8}{mouse\+Press\+Event}} (Q\+Mouse\+Event $\ast$event) override
+\begin{DoxyCompactList}\small\item\em Is used for handle Qt\+::\+Left\+Button and Qt\+::\+Right\+Button for set start and end position in w\+\_\+\+Maze Widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a94c7ecea737958cac7276189bc1460f5}{wheel\+Event}} (Q\+Wheel\+Event $\ast$event) override
+\begin{DoxyCompactList}\small\item\em Is used for handle mouse wheel event for scale maze in w\+\_\+\+Maze Widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMainWindow_a4b0c1bada9e194139e65ae07c581e41c}{on\+\_\+c\+B\+\_\+\+Devices\+\_\+current\+Index\+Changed}} (int index)
+\begin{DoxyCompactList}\small\item\em Its called when new dewice is sellected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a2255bba1350b2432c13819e01b2d559d}{on\+\_\+c\+B\+\_\+\+Manual\+\_\+toggled}} (bool checked)
+\begin{DoxyCompactList}\small\item\em Toggles manual mode. Manual mode enables to set targets for to the robot in maze. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a403c97c8434fd71ec9b928bd57beb622}{on\+\_\+c\+B\+\_\+\+Show\+Text\+\_\+toggled}} (bool checked)
+\begin{DoxyCompactList}\small\item\em Toggles feature of drawing path values in w\+\_\+\+Maze Widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_ae8a20f40755690d54a5ed7bf3be3f7b7}{on\+\_\+d\+S\+B\+\_\+\+Accel\+\_\+value\+Changed}} (double arg1)
+\begin{DoxyCompactList}\small\item\em Sets A\+Limit\+\_\+m\+\_\+s2 value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a324f8d6798d82e72f69448e14ff75415}\label{classMainWindow_a324f8d6798d82e72f69448e14ff75415}} 
+void \mbox{\hyperlink{classMainWindow_a324f8d6798d82e72f69448e14ff75415}{on\+\_\+l\+E\+\_\+\+Message\+\_\+return\+Pressed}} ()
+\begin{DoxyCompactList}\small\item\em Sends Q\+String from l\+E\+\_\+\+Message to the device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a2c57dcbf001318cdc6c9f0cd841b2191}\label{classMainWindow_a2c57dcbf001318cdc6c9f0cd841b2191}} 
+void \mbox{\hyperlink{classMainWindow_a2c57dcbf001318cdc6c9f0cd841b2191}{on\+\_\+p\+B\+\_\+\+Build\+\_\+1\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Sends move command to the robot. Distance and stop values in meters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_ad46611ac15c30c75b2c8523746df5570}\label{classMainWindow_ad46611ac15c30c75b2c8523746df5570}} 
+void \mbox{\hyperlink{classMainWindow_ad46611ac15c30c75b2c8523746df5570}{on\+\_\+p\+B\+\_\+\+Build\+\_\+2\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Sends rotatecommand to the robot. Rotation in degrees. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_ae753af5c74f1d3898e2c41bb97baa402}\label{classMainWindow_ae753af5c74f1d3898e2c41bb97baa402}} 
+void \mbox{\hyperlink{classMainWindow_ae753af5c74f1d3898e2c41bb97baa402}{on\+\_\+p\+B\+\_\+\+Home\+All\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Sends callibration command to the robot. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a935ce47257868377034b667fa344881e}\label{classMainWindow_a935ce47257868377034b667fa344881e}} 
+void \mbox{\hyperlink{classMainWindow_a935ce47257868377034b667fa344881e}{on\+\_\+p\+B\+\_\+\+Maze\+Gen\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Initalize the maze. \mbox{\hyperlink{classMaze}{Maze}} will be generated based on size from s\+B\+\_\+\+Maze\+Size Q\+Spin\+Box. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a8731d8a43a953d2be2096df8e1143abd}\label{classMainWindow_a8731d8a43a953d2be2096df8e1143abd}} 
+void \mbox{\hyperlink{classMainWindow_a8731d8a43a953d2be2096df8e1143abd}{on\+\_\+p\+B\+\_\+\+Mic\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Starts \mbox{\hyperlink{classMicromouse}{Micromouse}} thread class. Pauses thread if is running, but thread loop will perform to the end of function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_aa246a7aab74da74945afd86e7f7332fa}\label{classMainWindow_aa246a7aab74da74945afd86e7f7332fa}} 
+void \mbox{\hyperlink{classMainWindow_aa246a7aab74da74945afd86e7f7332fa}{on\+\_\+p\+B\+\_\+\+Pause\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Pauses charts when measurements counter reach to the end. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a8f901ac7ff503de8050a0c056101f896}\label{classMainWindow_a8f901ac7ff503de8050a0c056101f896}} 
+void \mbox{\hyperlink{classMainWindow_a8f901ac7ff503de8050a0c056101f896}{on\+\_\+p\+B\+\_\+\+Reset\+Pos\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Resets position of the robot in maze to start position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_abf8c8d606791e5b754007d93dff8b0eb}\label{classMainWindow_abf8c8d606791e5b754007d93dff8b0eb}} 
+void \mbox{\hyperlink{classMainWindow_abf8c8d606791e5b754007d93dff8b0eb}{on\+\_\+p\+B\+\_\+\+Send\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Sends Q\+String from l\+E\+\_\+\+Message to the device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a6fee8fe2240d4ef0b0921786a94c720d}{on\+\_\+r\+B\+\_\+\+Acceleration\+\_\+clicked}} (bool checked)
+\begin{DoxyCompactList}\small\item\em Sends to the robot request of acceleration data from measurements types. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a29243420d134bdaeeff33d907de15ac0}{on\+\_\+r\+B\+\_\+\+Distance\+\_\+clicked}} (bool checked)
+\begin{DoxyCompactList}\small\item\em Sends to the robot request of distance data from measurements types. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_ae236151160361895c0a3f3a04d026ef3}{on\+\_\+r\+B\+\_\+\+Velocity\+\_\+clicked}} (bool checked)
+\begin{DoxyCompactList}\small\item\em Sends to the robot request of velocity data from measurements types. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a360fbd07b715b733f9b571ad6b2b05e6}{on\+\_\+s\+B\+\_\+\+Accel\+\_\+value\+Changed}} (int arg1)
+\begin{DoxyCompactList}\small\item\em Sets Accel value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a0b591c1aff4444c95a458a1c27bb9be8}{on\+\_\+s\+B\+\_\+\+M\+Max\+Speed\+\_\+value\+Changed}} (int arg1)
+\begin{DoxyCompactList}\small\item\em Sets Move\+Max\+Speed value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a75e82ea8e0fd2ca8bc097c9c8532c5d3}{on\+\_\+s\+B\+\_\+\+M\+Start\+Speed\+\_\+value\+Changed}} (int arg1)
+\begin{DoxyCompactList}\small\item\em Sets Move\+Start\+Speed value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_aab5012729426877227d88067ab037a35}{on\+\_\+s\+B\+\_\+\+R\+Max\+Speed\+\_\+value\+Changed}} (int arg1)
+\begin{DoxyCompactList}\small\item\em Sets Rot\+Max\+Speed value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a14177a135817465fb9cb6f070a3f76e2}{on\+\_\+s\+B\+\_\+\+Rotation\+\_\+value\+Changed}} (int arg1)
+\begin{DoxyCompactList}\small\item\em Sets Degree\+\_\+deg value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a0ee97aed257c23484f7eb26153f31aeb}{on\+\_\+s\+B\+\_\+\+R\+Start\+Speed\+\_\+value\+Changed}} (int arg1)
+\begin{DoxyCompactList}\small\item\em Sets Rot\+Start\+Seepd value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_ab563c0d9e0225b55585cbfdba998c3cc}{on\+\_\+spin\+Box\+\_\+value\+Changed}} (int arg1)
+\begin{DoxyCompactList}\small\item\em Sets Distance\+\_\+m value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a4d2dcf16de43ccdf2f46510201db87f5}\label{classMainWindow_a4d2dcf16de43ccdf2f46510201db87f5}} 
+void \mbox{\hyperlink{classMainWindow_a4d2dcf16de43ccdf2f46510201db87f5}{on\+\_\+t\+B\+\_\+\+Clear\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Clears t\+E\+\_\+\+Log window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a024f3778da1efc309bc157a957c6d5a8}\label{classMainWindow_a024f3778da1efc309bc157a957c6d5a8}} 
+void \mbox{\hyperlink{classMainWindow_a024f3778da1efc309bc157a957c6d5a8}{on\+\_\+t\+B\+\_\+\+Refresh\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Close Q\+Serial\+Port and places all found devices into Q\+Combo\+Box Items. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a42f11195758f78967e670779c4535708}\label{classMainWindow_a42f11195758f78967e670779c4535708}} 
+void \mbox{\hyperlink{classMainWindow_a42f11195758f78967e670779c4535708}{read\+From\+Port}} ()
+\begin{DoxyCompactList}\small\item\em Its called when new data arrives from Q\+Serial\+Port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_a4d32584efa9a8d85570c911a76882c2e}\label{classMainWindow_a4d32584efa9a8d85570c911a76882c2e}} 
+void {\bfseries add\+To\+Logs} (Q\+String message)
+\item 
+\mbox{\Hypertarget{classMainWindow_a01af152106bfa1ab6c101420cf55dfef}\label{classMainWindow_a01af152106bfa1ab6c101420cf55dfef}} 
+void {\bfseries Function\+Return} (short val)
+\item 
+\mbox{\Hypertarget{classMainWindow_a72ecce0e9c92e0fdb14c4ab6d6df761a}\label{classMainWindow_a72ecce0e9c92e0fdb14c4ab6d6df761a}} 
+void \mbox{\hyperlink{classMainWindow_a72ecce0e9c92e0fdb14c4ab6d6df761a}{Init\+Lvl2}} ()
+\begin{DoxyCompactList}\small\item\em L\+VL -\/ 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a84af5cdf379765d0578340a8321d365a}\label{classMainWindow_a84af5cdf379765d0578340a8321d365a}} 
+void {\bfseries L\+V\+L2\+Communication\+Hub} (Q\+Byte\+Array Data)
+\item 
+\mbox{\Hypertarget{classMainWindow_aa75a670ef9713822af36b9543de9460e}\label{classMainWindow_aa75a670ef9713822af36b9543de9460e}} 
+void {\bfseries Program\+Checker} (double data\mbox{[}6\mbox{]})
+\item 
+\mbox{\Hypertarget{classMainWindow_ab97934778ea081220890b36bca9d6aad}\label{classMainWindow_ab97934778ea081220890b36bca9d6aad}} 
+void {\bfseries send\+Function\+To\+Device} (Q\+Byte\+Array Data)
+\item 
+\mbox{\Hypertarget{classMainWindow_ac455e906758ff6a5967d66a3c55f507c}\label{classMainWindow_ac455e906758ff6a5967d66a3c55f507c}} 
+void {\bfseries send\+Message\+To\+Device} (Q\+String message)
+\item 
+\mbox{\Hypertarget{classMainWindow_a8cc7e8f4e34844d5ec6620635821b63e}\label{classMainWindow_a8cc7e8f4e34844d5ec6620635821b63e}} 
+void {\bfseries Set\+Speed} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMainWindow_a2501dae821d7c4579b159a5a5f05a264}\label{classMainWindow_a2501dae821d7c4579b159a5a5f05a264}} 
+void {\bfseries Update\+Charts} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_a4cda3a3d00aced32fbd9387a5c1c4f86}\label{classMainWindow_a4cda3a3d00aced32fbd9387a5c1c4f86}} 
+int {\bfseries Accel}
+\item 
+\mbox{\Hypertarget{classMainWindow_a2be66994ca899155f0098ebf3257a415}\label{classMainWindow_a2be66994ca899155f0098ebf3257a415}} 
+\mbox{\hyperlink{classAccelGyroChart}{Accel\+Gyro\+Chart}} {\bfseries Accel\+Chart}
+\item 
+\mbox{\Hypertarget{classMainWindow_a1ebf1f63609303a850eadcbf0883882d}\label{classMainWindow_a1ebf1f63609303a850eadcbf0883882d}} 
+\mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} {\bfseries AG}
+\item 
+\mbox{\Hypertarget{classMainWindow_ae1e7604fa071fc4b1985c7b61779b24c}\label{classMainWindow_ae1e7604fa071fc4b1985c7b61779b24c}} 
+int {\bfseries A\+G\+Reach\+Limit} \mbox{[}7\mbox{]}
+\item 
+\mbox{\Hypertarget{classMainWindow_aaab4e0e53503882481d91b2d7fd508b6}\label{classMainWindow_aaab4e0e53503882481d91b2d7fd508b6}} 
+double {\bfseries A\+Limit\+\_\+m\+\_\+s2}
+\item 
+\mbox{\Hypertarget{classMainWindow_a11d9aca6cceed65621054dedc22c38b6}\label{classMainWindow_a11d9aca6cceed65621054dedc22c38b6}} 
+int {\bfseries Degree\+\_\+deg}
+\item 
+\mbox{\Hypertarget{classMainWindow_a644ee4e747773d6ea59cdf4bee4deb49}\label{classMainWindow_a644ee4e747773d6ea59cdf4bee4deb49}} 
+Q\+Serial\+Port $\ast$ {\bfseries device}
+\item 
+\mbox{\Hypertarget{classMainWindow_a036b05d6e5289450fc1b18e4fa9a62db}\label{classMainWindow_a036b05d6e5289450fc1b18e4fa9a62db}} 
+bool {\bfseries Direction} = false
+\item 
+\mbox{\Hypertarget{classMainWindow_a35d17e78a774179c547c381d9907d9af}\label{classMainWindow_a35d17e78a774179c547c381d9907d9af}} 
+int {\bfseries Distance\+\_\+m}
+\item 
+\mbox{\Hypertarget{classMainWindow_aa2b351c90bdf7b99da2d9d3edf8d6b23}\label{classMainWindow_aa2b351c90bdf7b99da2d9d3edf8d6b23}} 
+\mbox{\hyperlink{classAccelGyroChart}{Accel\+Gyro\+Chart}} {\bfseries Gyro\+Chart}
+\item 
+\mbox{\Hypertarget{classMainWindow_a7877edf48951c33611131a44210a6270}\label{classMainWindow_a7877edf48951c33611131a44210a6270}} 
+bool {\bfseries Is\+Graph\+Integration} = false
+\item 
+\mbox{\Hypertarget{classMainWindow_aa7f2db8088cd81386312746c1ad91b34}\label{classMainWindow_aa7f2db8088cd81386312746c1ad91b34}} 
+bool {\bfseries Is\+Graph\+Running} = true
+\item 
+\mbox{\Hypertarget{classMainWindow_a5089f8c8a10500bcafcf044579658e5d}\label{classMainWindow_a5089f8c8a10500bcafcf044579658e5d}} 
+\mbox{\hyperlink{classMaze}{Maze}} {\bfseries maze}
+\item 
+\mbox{\Hypertarget{classMainWindow_a3973fb90c1830a98ae3fa994bb1deb4f}\label{classMainWindow_a3973fb90c1830a98ae3fa994bb1deb4f}} 
+\mbox{\hyperlink{classMicromouse}{Micromouse}} $\ast$ {\bfseries mic}
+\item 
+\mbox{\Hypertarget{classMainWindow_a294c94404c1e0c14d0c75ce867f96f4f}\label{classMainWindow_a294c94404c1e0c14d0c75ce867f96f4f}} 
+bool {\bfseries Mic\+Is\+Rinning} = false
+\item 
+\mbox{\Hypertarget{classMainWindow_a57fb69ea9ce84e4c12ebe44b2db8dea5}\label{classMainWindow_a57fb69ea9ce84e4c12ebe44b2db8dea5}} 
+int {\bfseries Move\+Max\+Speed}
+\item 
+\mbox{\Hypertarget{classMainWindow_a853ae14115de512b0e7b740b4ecc7345}\label{classMainWindow_a853ae14115de512b0e7b740b4ecc7345}} 
+int {\bfseries Move\+Start\+Speed}
+\item 
+\mbox{\Hypertarget{classMainWindow_a6a3fad0f15ecad43de05aa2a42ddee38}\label{classMainWindow_a6a3fad0f15ecad43de05aa2a42ddee38}} 
+Q\+String {\bfseries path} = \char`\"{}D\+:/0.Git\+Projects/Wizualizacja\+SM/Test\+\_\+03\char`\"{}
+\item 
+\mbox{\Hypertarget{classMainWindow_ac1c6e840462f33129a4e97b199b66350}\label{classMainWindow_ac1c6e840462f33129a4e97b199b66350}} 
+bool {\bfseries Program\+Is\+Running} = false
+\item 
+\mbox{\Hypertarget{classMainWindow_af21fbc042a5e406b811baf366bb13039}\label{classMainWindow_af21fbc042a5e406b811baf366bb13039}} 
+int {\bfseries Rot\+Max\+Speed}
+\item 
+\mbox{\Hypertarget{classMainWindow_a9b72b60c75441916222ae58950375d34}\label{classMainWindow_a9b72b60c75441916222ae58950375d34}} 
+int {\bfseries Rot\+Start\+Seepd}
+\item 
+\mbox{\Hypertarget{classMainWindow_a43977f08cca8d5c8949b227dd0d4f273}\label{classMainWindow_a43977f08cca8d5c8949b227dd0d4f273}} 
+int {\bfseries Samples} = 0
+\item 
+\mbox{\Hypertarget{classMainWindow_a356578805ed1248a7f2807434cb0e5ee}\label{classMainWindow_a356578805ed1248a7f2807434cb0e5ee}} 
+Q\+Timer $\ast$ {\bfseries timer}
+\item 
+\mbox{\Hypertarget{classMainWindow_a35466a70ed47252a0191168126a352a5}\label{classMainWindow_a35466a70ed47252a0191168126a352a5}} 
+Ui\+::\+Main\+Window $\ast$ {\bfseries ui}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMainWindow_ade305265b2120df2489a5ebeb07ebbe1}\label{classMainWindow_ade305265b2120df2489a5ebeb07ebbe1}} 
+\index{MainWindow@{MainWindow}!eventFilter@{eventFilter}}
+\index{eventFilter@{eventFilter}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{eventFilter()}{eventFilter()}}
+{\footnotesize\ttfamily bool Main\+Window\+::event\+Filter (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{watched,  }\item[{Q\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Is used for handle Q\+Event\+::\+Paint and run drawing function for w\+\_\+\+Maze Widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em watched.} & \\
+\hline
+{\em event.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if you do not want to have the child widget paint on its own afterwards, otherwise, return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_a1dff511c9697cbcb60150894f480b9c8}\label{classMainWindow_a1dff511c9697cbcb60150894f480b9c8}} 
+\index{MainWindow@{MainWindow}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily void Main\+Window\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Is used for handle Qt\+::\+Left\+Button and Qt\+::\+Right\+Button for set start and end position in w\+\_\+\+Maze Widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event.} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a4b0c1bada9e194139e65ae07c581e41c}\label{classMainWindow_a4b0c1bada9e194139e65ae07c581e41c}} 
+\index{MainWindow@{MainWindow}!on\_cB\_Devices\_currentIndexChanged@{on\_cB\_Devices\_currentIndexChanged}}
+\index{on\_cB\_Devices\_currentIndexChanged@{on\_cB\_Devices\_currentIndexChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_cB\_Devices\_currentIndexChanged}{on\_cB\_Devices\_currentIndexChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+c\+B\+\_\+\+Devices\+\_\+current\+Index\+Changed (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Its called when new dewice is sellected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Current} & selected item. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a2255bba1350b2432c13819e01b2d559d}\label{classMainWindow_a2255bba1350b2432c13819e01b2d559d}} 
+\index{MainWindow@{MainWindow}!on\_cB\_Manual\_toggled@{on\_cB\_Manual\_toggled}}
+\index{on\_cB\_Manual\_toggled@{on\_cB\_Manual\_toggled}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_cB\_Manual\_toggled}{on\_cB\_Manual\_toggled}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+c\+B\+\_\+\+Manual\+\_\+toggled (\begin{DoxyParamCaption}\item[{bool}]{checked }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Toggles manual mode. Manual mode enables to set targets for to the robot in maze. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em When} & true manual mode is enabled, otherwise disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a403c97c8434fd71ec9b928bd57beb622}\label{classMainWindow_a403c97c8434fd71ec9b928bd57beb622}} 
+\index{MainWindow@{MainWindow}!on\_cB\_ShowText\_toggled@{on\_cB\_ShowText\_toggled}}
+\index{on\_cB\_ShowText\_toggled@{on\_cB\_ShowText\_toggled}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_cB\_ShowText\_toggled}{on\_cB\_ShowText\_toggled}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+c\+B\+\_\+\+Show\+Text\+\_\+toggled (\begin{DoxyParamCaption}\item[{bool}]{checked }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Toggles feature of drawing path values in w\+\_\+\+Maze Widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em When} & true function enables drawing, otherwise disables drawing. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_ae8a20f40755690d54a5ed7bf3be3f7b7}\label{classMainWindow_ae8a20f40755690d54a5ed7bf3be3f7b7}} 
+\index{MainWindow@{MainWindow}!on\_dSB\_Accel\_valueChanged@{on\_dSB\_Accel\_valueChanged}}
+\index{on\_dSB\_Accel\_valueChanged@{on\_dSB\_Accel\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_dSB\_Accel\_valueChanged}{on\_dSB\_Accel\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+d\+S\+B\+\_\+\+Accel\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{double}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets A\+Limit\+\_\+m\+\_\+s2 value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Meters} & per second squared. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a6fee8fe2240d4ef0b0921786a94c720d}\label{classMainWindow_a6fee8fe2240d4ef0b0921786a94c720d}} 
+\index{MainWindow@{MainWindow}!on\_rB\_Acceleration\_clicked@{on\_rB\_Acceleration\_clicked}}
+\index{on\_rB\_Acceleration\_clicked@{on\_rB\_Acceleration\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_rB\_Acceleration\_clicked}{on\_rB\_Acceleration\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+r\+B\+\_\+\+Acceleration\+\_\+clicked (\begin{DoxyParamCaption}\item[{bool}]{checked }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sends to the robot request of acceleration data from measurements types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Only} & if checked = true. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a29243420d134bdaeeff33d907de15ac0}\label{classMainWindow_a29243420d134bdaeeff33d907de15ac0}} 
+\index{MainWindow@{MainWindow}!on\_rB\_Distance\_clicked@{on\_rB\_Distance\_clicked}}
+\index{on\_rB\_Distance\_clicked@{on\_rB\_Distance\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_rB\_Distance\_clicked}{on\_rB\_Distance\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+r\+B\+\_\+\+Distance\+\_\+clicked (\begin{DoxyParamCaption}\item[{bool}]{checked }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sends to the robot request of distance data from measurements types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Only} & if checked = true. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_ae236151160361895c0a3f3a04d026ef3}\label{classMainWindow_ae236151160361895c0a3f3a04d026ef3}} 
+\index{MainWindow@{MainWindow}!on\_rB\_Velocity\_clicked@{on\_rB\_Velocity\_clicked}}
+\index{on\_rB\_Velocity\_clicked@{on\_rB\_Velocity\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_rB\_Velocity\_clicked}{on\_rB\_Velocity\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+r\+B\+\_\+\+Velocity\+\_\+clicked (\begin{DoxyParamCaption}\item[{bool}]{checked }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sends to the robot request of velocity data from measurements types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Only} & if checked = true. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a360fbd07b715b733f9b571ad6b2b05e6}\label{classMainWindow_a360fbd07b715b733f9b571ad6b2b05e6}} 
+\index{MainWindow@{MainWindow}!on\_sB\_Accel\_valueChanged@{on\_sB\_Accel\_valueChanged}}
+\index{on\_sB\_Accel\_valueChanged@{on\_sB\_Accel\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_sB\_Accel\_valueChanged}{on\_sB\_Accel\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+s\+B\+\_\+\+Accel\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{int}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets Accel value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+WM} & value 0 -\/ 1024. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a0b591c1aff4444c95a458a1c27bb9be8}\label{classMainWindow_a0b591c1aff4444c95a458a1c27bb9be8}} 
+\index{MainWindow@{MainWindow}!on\_sB\_MMaxSpeed\_valueChanged@{on\_sB\_MMaxSpeed\_valueChanged}}
+\index{on\_sB\_MMaxSpeed\_valueChanged@{on\_sB\_MMaxSpeed\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_sB\_MMaxSpeed\_valueChanged}{on\_sB\_MMaxSpeed\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+s\+B\+\_\+\+M\+Max\+Speed\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{int}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets Move\+Max\+Speed value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+WM} & value 0 -\/ 1024. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a75e82ea8e0fd2ca8bc097c9c8532c5d3}\label{classMainWindow_a75e82ea8e0fd2ca8bc097c9c8532c5d3}} 
+\index{MainWindow@{MainWindow}!on\_sB\_MStartSpeed\_valueChanged@{on\_sB\_MStartSpeed\_valueChanged}}
+\index{on\_sB\_MStartSpeed\_valueChanged@{on\_sB\_MStartSpeed\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_sB\_MStartSpeed\_valueChanged}{on\_sB\_MStartSpeed\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+s\+B\+\_\+\+M\+Start\+Speed\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{int}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets Move\+Start\+Speed value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+WM} & value 0 -\/ 1024. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_aab5012729426877227d88067ab037a35}\label{classMainWindow_aab5012729426877227d88067ab037a35}} 
+\index{MainWindow@{MainWindow}!on\_sB\_RMaxSpeed\_valueChanged@{on\_sB\_RMaxSpeed\_valueChanged}}
+\index{on\_sB\_RMaxSpeed\_valueChanged@{on\_sB\_RMaxSpeed\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_sB\_RMaxSpeed\_valueChanged}{on\_sB\_RMaxSpeed\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+s\+B\+\_\+\+R\+Max\+Speed\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{int}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets Rot\+Max\+Speed value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+WM} & value 0 -\/ 1024. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a14177a135817465fb9cb6f070a3f76e2}\label{classMainWindow_a14177a135817465fb9cb6f070a3f76e2}} 
+\index{MainWindow@{MainWindow}!on\_sB\_Rotation\_valueChanged@{on\_sB\_Rotation\_valueChanged}}
+\index{on\_sB\_Rotation\_valueChanged@{on\_sB\_Rotation\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_sB\_Rotation\_valueChanged}{on\_sB\_Rotation\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+s\+B\+\_\+\+Rotation\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{int}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets Degree\+\_\+deg value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Deegres.} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a0ee97aed257c23484f7eb26153f31aeb}\label{classMainWindow_a0ee97aed257c23484f7eb26153f31aeb}} 
+\index{MainWindow@{MainWindow}!on\_sB\_RStartSpeed\_valueChanged@{on\_sB\_RStartSpeed\_valueChanged}}
+\index{on\_sB\_RStartSpeed\_valueChanged@{on\_sB\_RStartSpeed\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_sB\_RStartSpeed\_valueChanged}{on\_sB\_RStartSpeed\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+s\+B\+\_\+\+R\+Start\+Speed\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{int}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets Rot\+Start\+Seepd value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+WM} & value 0 -\/ 1024. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_ab563c0d9e0225b55585cbfdba998c3cc}\label{classMainWindow_ab563c0d9e0225b55585cbfdba998c3cc}} 
+\index{MainWindow@{MainWindow}!on\_spinBox\_valueChanged@{on\_spinBox\_valueChanged}}
+\index{on\_spinBox\_valueChanged@{on\_spinBox\_valueChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_spinBox\_valueChanged}{on\_spinBox\_valueChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+spin\+Box\+\_\+value\+Changed (\begin{DoxyParamCaption}\item[{int}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Sets Distance\+\_\+m value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Meters} & 0 -\/ 100. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a94c7ecea737958cac7276189bc1460f5}\label{classMainWindow_a94c7ecea737958cac7276189bc1460f5}} 
+\index{MainWindow@{MainWindow}!wheelEvent@{wheelEvent}}
+\index{wheelEvent@{wheelEvent}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{wheelEvent()}{wheelEvent()}}
+{\footnotesize\ttfamily void Main\+Window\+::wheel\+Event (\begin{DoxyParamCaption}\item[{Q\+Wheel\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Is used for handle mouse wheel event for scale maze in w\+\_\+\+Maze Widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event.} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

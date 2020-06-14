@@ -26,19 +26,45 @@
 #define TYPE_PATH       4
 #define TYPE_TARGET     5
 
-// long  => BBBB BBBB BBBB BBBB BBBB BBBB BBBB BBBB
-// Cells => BBBB BBBB BBBB TTTT RRDD LLUU VVVV VVVV
-// R-right, D-down, L-left, U-up
-// T-type, V-path value
-
+/*!
+ * \brief The Maze class.
+ * This class holds maze cells information and the robot position and size in centimeters.
+ * This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of maze class.
+ */
 class Maze
 {
 public:
     Maze();
+    /*!
+     * \brief Cells array
+     * Every cell consist informations about their type and walls existence.
+     * Cell  => BBBB BBBB BBBB TTTT RRDD LLUU VVVV VVVV
+     * B-Not used
+     * Walls values: R-right, D-down, L-left, U-up
+     * T-Types values , see #define
+     * V-Path value.
+     */
     long Cells[16][16];
+    /*!
+     * \brief Initializes maze and the robot position and rotaion.
+     * Sets walls for sides of maze.
+     * \param size in number of cells.
+     * \param size of every cel in pixels on scrren.
+     */
     void Init(int size, int pixels);
     //void SetWall(int cell, int wall, bool state);
+    /*!
+     * \brief Sets Wall in a cell
+     * \param x_cell
+     * \param y_cell
+     * \param direction of wall. 0-up, 1-right, 2-down, 3-left. Other values are invalid.
+     * \param state of existences, value range is from 0 to 2, see #define
+     */
     void SetWall(int x_cell, int y_cell, int dir, int state);
+    /*!
+     * \brief Draws maze and robot on widget
+     * \param widget
+     */
     void DrawMaze(QWidget *widget);
     void SetBegin(int x, int y);
     void SetEnd(int x, int y);

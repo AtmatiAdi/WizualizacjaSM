@@ -1,0 +1,106 @@
+\hypertarget{classMicromouse}{}\doxysection{Micromouse Class Reference}
+\label{classMicromouse}\index{Micromouse@{Micromouse}}
+
+
+Inheritance diagram for Micromouse\+:
+% FIG 0
+
+
+Collaboration diagram for Micromouse\+:
+% FIG 1
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMicromouse_a380f12aca4d8898c5356e9b0871abf94}\label{classMicromouse_a380f12aca4d8898c5356e9b0871abf94}} 
+void {\bfseries Log\+Sig} (Q\+String)
+\item 
+\mbox{\Hypertarget{classMicromouse_a5d23b80b19b286664e99b63304bdf188}\label{classMicromouse_a5d23b80b19b286664e99b63304bdf188}} 
+void {\bfseries Prepare\+For\+Move\+Sig} ()
+\item 
+\mbox{\Hypertarget{classMicromouse_aa40b8c970781fe2596ac24f3b6d65f23}\label{classMicromouse_aa40b8c970781fe2596ac24f3b6d65f23}} 
+void {\bfseries Prepare\+For\+Rotation\+Sig} ()
+\item 
+\mbox{\Hypertarget{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}\label{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}} 
+void {\bfseries Send\+Function\+Sig} (Q\+Byte\+Array)
+\item 
+\mbox{\Hypertarget{classMicromouse_a366a965403e5366e30283c3972773b5b}\label{classMicromouse_a366a965403e5366e30283c3972773b5b}} 
+void {\bfseries Update\+Maze\+Sig} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMicromouse_aff4965481ec5fa15e5d653bbfe385b0b}\label{classMicromouse_aff4965481ec5fa15e5d653bbfe385b0b}} 
+void {\bfseries Function\+Return} (short val)
+\item 
+\mbox{\Hypertarget{classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6}\label{classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6}} 
+void {\bfseries Init} (\mbox{\hyperlink{classMaze}{Maze}} $\ast$maze, \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} $\ast$ag)
+\item 
+\mbox{\Hypertarget{classMicromouse_ac26c207dc057c56774db79e91d6dfa43}\label{classMicromouse_ac26c207dc057c56774db79e91d6dfa43}} 
+{\bfseries Micromouse} (Q\+Object $\ast$parent=0)
+\item 
+\mbox{\Hypertarget{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f}\label{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f}} 
+void {\bfseries run} () override
+\item 
+\mbox{\Hypertarget{classMicromouse_a92c4c7eb59e46a8ab252441ba775c3c1}\label{classMicromouse_a92c4c7eb59e46a8ab252441ba775c3c1}} 
+void {\bfseries Setup} (short Mstart, short Mmax, short accel, short stop, short Rstart, short Rmax)
+\item 
+\mbox{\Hypertarget{classMicromouse_a70be1967c291e86b87372fb654258001}\label{classMicromouse_a70be1967c291e86b87372fb654258001}} 
+void {\bfseries Stop} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMicromouse_a929f61bba709d7cf79b7202da0063a38}\label{classMicromouse_a929f61bba709d7cf79b7202da0063a38}} 
+short {\bfseries Move} (short dist)
+\item 
+\mbox{\Hypertarget{classMicromouse_a62ce47d760522ef47fd40568f10c0c52}\label{classMicromouse_a62ce47d760522ef47fd40568f10c0c52}} 
+short {\bfseries Rotate} (short deg)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMicromouse_aa9b9b56700a16b68f6c2993980acc679}\label{classMicromouse_aa9b9b56700a16b68f6c2993980acc679}} 
+double {\bfseries Accel\+Scale} = (9.\+80665$\ast$2.\+0)/32768.\+0
+\item 
+\mbox{\Hypertarget{classMicromouse_a7ff56577d4f1e39692074e02a621215b}\label{classMicromouse_a7ff56577d4f1e39692074e02a621215b}} 
+short {\bfseries Accel\+Val}
+\item 
+\mbox{\Hypertarget{classMicromouse_acaf55e7b8912d2a169924b049e9a68cd}\label{classMicromouse_acaf55e7b8912d2a169924b049e9a68cd}} 
+bool {\bfseries Function\+Reurned} = false
+\item 
+\mbox{\Hypertarget{classMicromouse_ad92f0525c09e19425a753f81b00258e6}\label{classMicromouse_ad92f0525c09e19425a753f81b00258e6}} 
+double {\bfseries Gyro\+Scale} = 500.\+0/32768.\+0
+\item 
+\mbox{\Hypertarget{classMicromouse_a2b061bd28fb66cb6ddc0e5956f7cf6e3}\label{classMicromouse_a2b061bd28fb66cb6ddc0e5956f7cf6e3}} 
+bool {\bfseries Is\+Running}
+\item 
+\mbox{\Hypertarget{classMicromouse_afb4497967cecb8128117b25be7926909}\label{classMicromouse_afb4497967cecb8128117b25be7926909}} 
+short {\bfseries Move\+Max\+Val}
+\item 
+\mbox{\Hypertarget{classMicromouse_af030bde295ba49b5550dfc6b7efb3e28}\label{classMicromouse_af030bde295ba49b5550dfc6b7efb3e28}} 
+short {\bfseries Move\+Start\+Val}
+\item 
+\mbox{\Hypertarget{classMicromouse_a0c194eed25ad8c7015e237f2c177f04c}\label{classMicromouse_a0c194eed25ad8c7015e237f2c177f04c}} 
+\mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} $\ast$ {\bfseries My\+Ag}
+\item 
+\mbox{\Hypertarget{classMicromouse_a29ba624bffc1139916cd2be3f8d647ad}\label{classMicromouse_a29ba624bffc1139916cd2be3f8d647ad}} 
+\mbox{\hyperlink{classMaze}{Maze}} $\ast$ {\bfseries My\+Maze}
+\item 
+\mbox{\Hypertarget{classMicromouse_a95437b4240a0e921fd057b7506698df1}\label{classMicromouse_a95437b4240a0e921fd057b7506698df1}} 
+short {\bfseries Rot\+Max\+Val}
+\item 
+\mbox{\Hypertarget{classMicromouse_a95085e2daffe3bcd34cae3a9b1ac66f0}\label{classMicromouse_a95085e2daffe3bcd34cae3a9b1ac66f0}} 
+short {\bfseries Rot\+Start\+Val}
+\item 
+\mbox{\Hypertarget{classMicromouse_a2fb56e1f51a4ec3ae19f2b894e984cdc}\label{classMicromouse_a2fb56e1f51a4ec3ae19f2b894e984cdc}} 
+short {\bfseries Stop\+Val}
+\item 
+\mbox{\Hypertarget{classMicromouse_aee10d33653644c2749f2b1b39c4510f2}\label{classMicromouse_aee10d33653644c2749f2b1b39c4510f2}} 
+short {\bfseries Value}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+micromouse.\+h\item 
+micromouse.\+cpp\end{DoxyCompactItemize}

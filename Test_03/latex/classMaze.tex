@@ -1,0 +1,178 @@
+\hypertarget{classMaze}{}\doxysection{Maze Class Reference}
+\label{classMaze}\index{Maze@{Maze}}
+
+
+The \mbox{\hyperlink{classMaze}{Maze}} class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of maze class.  
+
+
+
+
+{\ttfamily \#include $<$maze.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMaze_ad310092201d2cb6e6e88862b438cd9b2}{Draw\+Maze}} (Q\+Widget $\ast$widget)
+\begin{DoxyCompactList}\small\item\em Draws maze and robot on widget. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2}\label{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2}} 
+void {\bfseries Find\+Path} ()
+\item 
+\mbox{\Hypertarget{classMaze_aeda787a62e587557c83d062e5394f6ba}\label{classMaze_aeda787a62e587557c83d062e5394f6ba}} 
+int {\bfseries Get\+Path\+Mov} ()
+\item 
+\mbox{\Hypertarget{classMaze_ac62b495006239af7105ef57e63c3261e}\label{classMaze_ac62b495006239af7105ef57e63c3261e}} 
+int {\bfseries Get\+Path\+Rot} ()
+\item 
+void \mbox{\hyperlink{classMaze_ad6d6ca126b093e5abaf0a3fc120dc680}{Init}} (int size, int pixels)
+\begin{DoxyCompactList}\small\item\em Initializes maze and the robot position and rotaion. Sets walls for sides of maze. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaze_a934417b883b23fc9d944cd2f70a8cdc4}\label{classMaze_a934417b883b23fc9d944cd2f70a8cdc4}} 
+bool {\bfseries Is\+Ready} ()
+\item 
+\mbox{\Hypertarget{classMaze_a661c42b551f461dc1c645c9e757e71df}\label{classMaze_a661c42b551f461dc1c645c9e757e71df}} 
+void {\bfseries Manual\+Enable} (bool enable)
+\item 
+\mbox{\Hypertarget{classMaze_ab97b0950b706b60e6345bff10861ba91}\label{classMaze_ab97b0950b706b60e6345bff10861ba91}} 
+void {\bfseries Mov\+Result} (int mov, int res)
+\item 
+\mbox{\Hypertarget{classMaze_af6ac1cd73cc6e1b9c053b3b859e91ec0}\label{classMaze_af6ac1cd73cc6e1b9c053b3b859e91ec0}} 
+void {\bfseries Reset} ()
+\item 
+\mbox{\Hypertarget{classMaze_a317ee69a28c8f9b98354b4d61d1b6174}\label{classMaze_a317ee69a28c8f9b98354b4d61d1b6174}} 
+void {\bfseries Resize} (int size)
+\item 
+\mbox{\Hypertarget{classMaze_abe8a7a1fe6671ac6ab9ababba40c0592}\label{classMaze_abe8a7a1fe6671ac6ab9ababba40c0592}} 
+void {\bfseries Rotate} (int rot)
+\item 
+\mbox{\Hypertarget{classMaze_a45183f8d6db8e19aa42b1dd62144b046}\label{classMaze_a45183f8d6db8e19aa42b1dd62144b046}} 
+void {\bfseries Set\+Begin} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMaze_a0c883c80ed6daf4d619b6ed42c81af09}\label{classMaze_a0c883c80ed6daf4d619b6ed42c81af09}} 
+void {\bfseries Set\+End} (int x, int y)
+\item 
+\mbox{\Hypertarget{classMaze_ab7d56db16b057cda15587e9b3d52cddb}\label{classMaze_ab7d56db16b057cda15587e9b3d52cddb}} 
+void {\bfseries Set\+Target} (int x, int y)
+\item 
+void \mbox{\hyperlink{classMaze_a1c4e0acd6d49a6d6550509abd1705076}{Set\+Wall}} (int x\+\_\+cell, int y\+\_\+cell, int dir, int state)
+\begin{DoxyCompactList}\small\item\em Sets Wall in a cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaze_a68ef1c13577f7ce02456c6dde0947a8e}\label{classMaze_a68ef1c13577f7ce02456c6dde0947a8e}} 
+void {\bfseries Text\+Enabled} (bool enable)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}\label{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}} 
+long \mbox{\hyperlink{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}{Cells}} \mbox{[}16\mbox{]}\mbox{[}16\mbox{]}
+\begin{DoxyCompactList}\small\item\em Cells array Every cell consist informations about their type and walls existence. Cell =$>$ B\+B\+BB B\+B\+BB B\+B\+BB T\+T\+TT R\+R\+DD L\+L\+UU V\+V\+VV V\+V\+VV B-\/\+Not used Walls values\+: R-\/right, D-\/down, L-\/left, U-\/up T-\/\+Types values , see \#define V-\/\+Path value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMaze_afca8afde3798233b859304c2ca4b745a}\label{classMaze_afca8afde3798233b859304c2ca4b745a}} 
+void {\bfseries Draw\+Centered\+Text} (int x, int y, Q\+String s, Q\+Painter $\ast$p)
+\item 
+\mbox{\Hypertarget{classMaze_a7a1eeb9d06ad4efd858387132eee3729}\label{classMaze_a7a1eeb9d06ad4efd858387132eee3729}} 
+void {\bfseries Get\+Robot\+Cell} (int $\ast$a, int $\ast$b)
+\item 
+\mbox{\Hypertarget{classMaze_af20ceee16cdfa33289e4256ddf384cb0}\label{classMaze_af20ceee16cdfa33289e4256ddf384cb0}} 
+long {\bfseries Get\+Val} (long Cell, long mask)
+\item 
+\mbox{\Hypertarget{classMaze_a3d9bd55fadf4f69e63d614785b7d38aa}\label{classMaze_a3d9bd55fadf4f69e63d614785b7d38aa}} 
+void {\bfseries Set\+Val} (long $\ast$Cell, long val, long mask)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMaze_ac98c84e844d6c97488d50ac72f403cbc}\label{classMaze_ac98c84e844d6c97488d50ac72f403cbc}} 
+int {\bfseries Cell\+Size\+\_\+cm} = 18
+\item 
+\mbox{\Hypertarget{classMaze_a1e3be0b9a2e5b6ce0fa6f540aa591e85}\label{classMaze_a1e3be0b9a2e5b6ce0fa6f540aa591e85}} 
+bool {\bfseries Is\+Manual} = false
+\item 
+\mbox{\Hypertarget{classMaze_aee04f37c7e19138e8aea285f6efc5315}\label{classMaze_aee04f37c7e19138e8aea285f6efc5315}} 
+bool {\bfseries Is\+Text\+Enabled} = false
+\item 
+\mbox{\Hypertarget{classMaze_ac6d68dc052eec3b5606edc93862358a9}\label{classMaze_ac6d68dc052eec3b5606edc93862358a9}} 
+int {\bfseries Pix\+Size} = 0
+\item 
+\mbox{\Hypertarget{classMaze_a9bb271bb8be1f93b181fffa43e1a7444}\label{classMaze_a9bb271bb8be1f93b181fffa43e1a7444}} 
+Q\+Pixmap {\bfseries Robot}
+\item 
+\mbox{\Hypertarget{classMaze_a8734cd92b9bd8bbd4294b1395afd1036}\label{classMaze_a8734cd92b9bd8bbd4294b1395afd1036}} 
+int {\bfseries Robot\+Rot\+\_\+deg} = 0
+\item 
+\mbox{\Hypertarget{classMaze_af69db422061b7d03f4111c49f04e9e4d}\label{classMaze_af69db422061b7d03f4111c49f04e9e4d}} 
+int {\bfseries Robot\+Size\+\_\+cm} = 13
+\item 
+\mbox{\Hypertarget{classMaze_a24695db4f613ba442ff8f701ff2e6570}\label{classMaze_a24695db4f613ba442ff8f701ff2e6570}} 
+int {\bfseries Robot\+X\+\_\+cm} = 0
+\item 
+\mbox{\Hypertarget{classMaze_afe5d1c4bcd9a699c51d71a933162cb4e}\label{classMaze_afe5d1c4bcd9a699c51d71a933162cb4e}} 
+int {\bfseries Robot\+Y\+\_\+cm} = 0
+\item 
+\mbox{\Hypertarget{classMaze_a61d46a291de531d3c1841624ec2aecff}\label{classMaze_a61d46a291de531d3c1841624ec2aecff}} 
+int {\bfseries Size} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classMaze}{Maze}} class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of maze class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMaze_ad310092201d2cb6e6e88862b438cd9b2}\label{classMaze_ad310092201d2cb6e6e88862b438cd9b2}} 
+\index{Maze@{Maze}!DrawMaze@{DrawMaze}}
+\index{DrawMaze@{DrawMaze}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{DrawMaze()}{DrawMaze()}}
+{\footnotesize\ttfamily void Maze\+::\+Draw\+Maze (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{widget }\end{DoxyParamCaption})}
+
+
+
+Draws maze and robot on widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMaze_ad6d6ca126b093e5abaf0a3fc120dc680}\label{classMaze_ad6d6ca126b093e5abaf0a3fc120dc680}} 
+\index{Maze@{Maze}!Init@{Init}}
+\index{Init@{Init}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Maze\+::\+Init (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int}]{pixels }\end{DoxyParamCaption})}
+
+
+
+Initializes maze and the robot position and rotaion. Sets walls for sides of maze. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & in number of cells. \\
+\hline
+{\em size} & of every cel in pixels on scrren. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMaze_a1c4e0acd6d49a6d6550509abd1705076}\label{classMaze_a1c4e0acd6d49a6d6550509abd1705076}} 
+\index{Maze@{Maze}!SetWall@{SetWall}}
+\index{SetWall@{SetWall}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{SetWall()}{SetWall()}}
+{\footnotesize\ttfamily void Maze\+::\+Set\+Wall (\begin{DoxyParamCaption}\item[{int}]{x\+\_\+cell,  }\item[{int}]{y\+\_\+cell,  }\item[{int}]{dir,  }\item[{int}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets Wall in a cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+cell} & \\
+\hline
+{\em y\+\_\+cell} & \\
+\hline
+{\em direction} & of wall. 0-\/up, 1-\/right, 2-\/down, 3-\/left. Other values are invalid. \\
+\hline
+{\em state} & of existences, value range is from 0 to 2, see \#define \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+maze.\+h\item 
+maze.\+cpp\end{DoxyCompactItemize}

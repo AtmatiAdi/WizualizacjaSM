@@ -1,0 +1,74 @@
+\hypertarget{classAccelGyro}{}\doxysection{Accel\+Gyro Class Reference}
+\label{classAccelGyro}\index{AccelGyro@{AccelGyro}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a54f8c9cbdebda957de177bdf3e4ee14e}\label{classAccelGyro_a54f8c9cbdebda957de177bdf3e4ee14e}} 
+void {\bfseries Adddata} (short new\+Data\mbox{[}6\mbox{]})
+\item 
+\mbox{\Hypertarget{classAccelGyro_af035c6fd93fb718f90b46a2f792dec35}\label{classAccelGyro_af035c6fd93fb718f90b46a2f792dec35}} 
+void {\bfseries Callibrate} (int count)
+\item 
+\mbox{\Hypertarget{classAccelGyro_a264c3744a607f99309ee2ed4db42d8c3}\label{classAccelGyro_a264c3744a607f99309ee2ed4db42d8c3}} 
+void {\bfseries Get\+Acceleration} (double out\+Data\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{classAccelGyro_a5de50026e70ff3179b8e88ad87092244}\label{classAccelGyro_a5de50026e70ff3179b8e88ad87092244}} 
+void {\bfseries Get\+Distance} (double out\+Data\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{classAccelGyro_a1caa9bea2b0878a426c3eeedac504a61}\label{classAccelGyro_a1caa9bea2b0878a426c3eeedac504a61}} 
+void {\bfseries Get\+Velocity} (double out\+Data\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{classAccelGyro_ae7e545aca1486c8ae83dc5825581f35f}\label{classAccelGyro_ae7e545aca1486c8ae83dc5825581f35f}} 
+void {\bfseries Reset\+Distance} ()
+\item 
+\mbox{\Hypertarget{classAccelGyro_ac2eaeddb96bd8fdadb374368d6187ef1}\label{classAccelGyro_ac2eaeddb96bd8fdadb374368d6187ef1}} 
+void {\bfseries Reset\+Velocity} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a231a7cde7e422d4a3e0a166e57fadca4}\label{classAccelGyro_a231a7cde7e422d4a3e0a166e57fadca4}} 
+double {\bfseries Acceleration} \mbox{[}6\mbox{]}
+\item 
+\mbox{\Hypertarget{classAccelGyro_aa029446caaff9263f40512ebaccec298}\label{classAccelGyro_aa029446caaff9263f40512ebaccec298}} 
+double {\bfseries Accel\+Scale} = (9.\+80665$\ast$2.\+0)/32768.\+0
+\item 
+\mbox{\Hypertarget{classAccelGyro_a3b699fdfdf1bf6d66005d3fb4ee63a0f}\label{classAccelGyro_a3b699fdfdf1bf6d66005d3fb4ee63a0f}} 
+int {\bfseries C\+All}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a3ef0f2c80c4ec00ae1620b5e9bc4bbe9}\label{classAccelGyro_a3ef0f2c80c4ec00ae1620b5e9bc4bbe9}} 
+short {\bfseries Callibration} \mbox{[}6\mbox{]} = \{0,0,0,0,0,0\}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a738d7b50b0366243463831deb6afa434}\label{classAccelGyro_a738d7b50b0366243463831deb6afa434}} 
+int {\bfseries C\+Count}
+\item 
+\mbox{\Hypertarget{classAccelGyro_ad8abc07ada23ca8b748f7b5b7acb7b8e}\label{classAccelGyro_ad8abc07ada23ca8b748f7b5b7acb7b8e}} 
+double {\bfseries Distance} \mbox{[}6\mbox{]}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a28f8f1891ede63533dcaa05cd290d437}\label{classAccelGyro_a28f8f1891ede63533dcaa05cd290d437}} 
+double {\bfseries Dist\+Param} = 1
+\item 
+\mbox{\Hypertarget{classAccelGyro_ab544f3143d78cb455005dd07fb90c252}\label{classAccelGyro_ab544f3143d78cb455005dd07fb90c252}} 
+double {\bfseries Gyro\+Scale} = 500.\+0/32768.\+0
+\item 
+\mbox{\Hypertarget{classAccelGyro_ab66466fdc48019ff53a55841f151775e}\label{classAccelGyro_ab66466fdc48019ff53a55841f151775e}} 
+short {\bfseries Raw\+Data} \mbox{[}6\mbox{]}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a5f092f0b0f476bde8ca5420707356122}\label{classAccelGyro_a5f092f0b0f476bde8ca5420707356122}} 
+Q\+Elapsed\+Timer $\ast$ {\bfseries Timer}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a0312cfe111dc411afc2b9fd5a687d85e}\label{classAccelGyro_a0312cfe111dc411afc2b9fd5a687d85e}} 
+int {\bfseries Tmp\+Call} \mbox{[}6\mbox{]}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a4a07749f0c34b023681f7afe4f4e8221}\label{classAccelGyro_a4a07749f0c34b023681f7afe4f4e8221}} 
+double {\bfseries Velocity} \mbox{[}6\mbox{]}
+\item 
+\mbox{\Hypertarget{classAccelGyro_a37cfa3f27bd24a3c6a47e77bae443159}\label{classAccelGyro_a37cfa3f27bd24a3c6a47e77bae443159}} 
+double {\bfseries Vel\+Param} = 1
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+accelgyro.\+h\item 
+accelgyro.\+cpp\end{DoxyCompactItemize}
