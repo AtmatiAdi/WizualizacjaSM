@@ -1,0 +1,4 @@
+<map id="MainWindow::wheelEvent" name="MainWindow::wheelEvent">
+<area shape="rect" id="node1" title="Is used for handle mouse wheel event for scale maze in w_Maze QWidget." alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node2" href="$classMaze.html#a22c09c03e8b30edc98ec16ee03ed54ea" title="Changes PixSize_px of maze and calls repaint event for /link Maze /endlink." alt="" coords="223,5,325,32"/>
+</map>

@@ -12,7 +12,7 @@ void Maze::Init(int size,int pixels)
     RobotY_cm = CellSize_cm/2;
     RobotRot_deg = 0;
     Size = size;
-    PixSize = pixels;
+    PixSize_px = pixels;
     for (int a = 0; a < 16; a++){
         for (int b = 0; b < 16; b++){
             Cells[a][b] = 0;
@@ -263,24 +263,24 @@ void Maze::DrawMaze(QWidget *widget){
     painter.begin(widget);
     painter.setRenderHint(QPainter::Antialiasing, true);
     // Rysowanie całej planszy
-    int of = (750 - (Size * PixSize))/2;
+    int of = (750 - (Size * PixSize_px))/2;
     for (int a = 0; a < Size + 1; a++){
         if (a == 0 || a == Size) {
             painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap));
-            painter.drawLine(0, (a * PixSize) + of, 750, (a * PixSize) + of);
+            painter.drawLine(0, (a * PixSize_px) + of, 750, (a * PixSize_px) + of);
         } else {
             painter.setPen(QPen(Qt::black, 1, Qt::DashLine, Qt::RoundCap));
-            painter.drawLine(of, (a * PixSize) + of, Size*PixSize + of, (a * PixSize) + of);
+            painter.drawLine(of, (a * PixSize_px) + of, Size*PixSize_px + of, (a * PixSize_px) + of);
         }
     }
     for (int b = 0; b < Size + 1; b++){
         if (b == 0 || b == Size) {
             painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap));
-            painter.drawLine((b * PixSize) + of, 0, (b * PixSize) + of, 750);
+            painter.drawLine((b * PixSize_px) + of, 0, (b * PixSize_px) + of, 750);
         }
         else {
             painter.setPen(QPen(Qt::black, 1, Qt::DashLine, Qt::RoundCap));
-            painter.drawLine((b * PixSize) + of, of, (b * PixSize) + of, Size*PixSize + of);
+            painter.drawLine((b * PixSize_px) + of, of, (b * PixSize_px) + of, Size*PixSize_px + of);
         }
     }
     // Rysowanie scian i kolorowych pól
@@ -289,45 +289,45 @@ void Maze::DrawMaze(QWidget *widget){
             if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_TARGET){
                 painter.setPen(QPen(Qt::black, 0, Qt::NoPen, Qt::RoundCap));
                 painter.setBrush(QBrush(Qt::red, Qt::Dense5Pattern));
-                painter.drawRect((a)*PixSize + of + 1,b*PixSize + of + 1, PixSize - 2, PixSize - 2);
+                painter.drawRect((a)*PixSize_px + of + 1,b*PixSize_px + of + 1, PixSize_px - 2, PixSize_px - 2);
             }
             if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_START){
                 painter.setPen(QPen(Qt::black, 0, Qt::NoPen, Qt::RoundCap));
                 painter.setBrush(QBrush(Qt::green, Qt::Dense5Pattern));
-                painter.drawRect((a)*PixSize + of + 1,b*PixSize + of + 1, PixSize - 2, PixSize - 2);
+                painter.drawRect((a)*PixSize_px + of + 1,b*PixSize_px + of + 1, PixSize_px - 2, PixSize_px - 2);
             }
             if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_END){
                 QColor orange(255,165,0);
                 painter.setPen(QPen(Qt::black, 0, Qt::NoPen, Qt::RoundCap));
                 painter.setBrush(QBrush(orange, Qt::Dense5Pattern));
-                painter.drawRect((a)*PixSize + of + 1,b*PixSize + of + 1, PixSize - 2, PixSize - 2);
+                painter.drawRect((a)*PixSize_px + of + 1,b*PixSize_px + of + 1, PixSize_px - 2, PixSize_px - 2);
             }
             if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_PATH){
                 QColor blueviolet(138,43,226);
                 painter.setPen(QPen(Qt::black, 0, Qt::NoPen, Qt::RoundCap));
                 painter.setBrush(QBrush(blueviolet, Qt::Dense5Pattern));
-                painter.drawRect((a)*PixSize + of + 1,b*PixSize + of + 1, PixSize - 2, PixSize - 2);
+                painter.drawRect((a)*PixSize_px + of + 1,b*PixSize_px + of + 1, PixSize_px - 2, PixSize_px - 2);
             }
             painter.setPen(QPen(Qt::blue, 3, Qt::SolidLine, Qt::RoundCap));
             if (GetVal(Cells[a][b], WALL_UP) == EXIST){
-                painter.drawLine(a*PixSize + of,b*PixSize + of, a*PixSize + of + PixSize, b*PixSize + of);
+                painter.drawLine(a*PixSize_px + of,b*PixSize_px + of, a*PixSize_px + of + PixSize_px, b*PixSize_px + of);
             }
             if (GetVal(Cells[a][b], WALL_LEFT) == EXIST){
-                painter.drawLine(a*PixSize + of,b*PixSize + of, a*PixSize + of, b*PixSize + of + PixSize);
+                painter.drawLine(a*PixSize_px + of,b*PixSize_px + of, a*PixSize_px + of, b*PixSize_px + of + PixSize_px);
             }
             if (GetVal(Cells[a][b], WALL_DOWN) == EXIST){
-                painter.drawLine(a*PixSize + of,(b+1)*PixSize + of, a*PixSize + of + PixSize, (b+1)*PixSize + of);
+                painter.drawLine(a*PixSize_px + of,(b+1)*PixSize_px + of, a*PixSize_px + of + PixSize_px, (b+1)*PixSize_px + of);
             }
             if (GetVal(Cells[a][b], WALL_RIGHT) == EXIST){
-                painter.drawLine((a+1)*PixSize + of,b*PixSize + of, (a+1)*PixSize + of, b*PixSize + of + PixSize);
+                painter.drawLine((a+1)*PixSize_px + of,b*PixSize_px + of, (a+1)*PixSize_px + of, b*PixSize_px + of + PixSize_px);
             }
         }
     }
     // Rysowanie robota
-    int RobotPixSize = PixSize * RobotSize_cm / CellSize_cm;
-    int RobotX = PixSize * RobotX_cm / CellSize_cm;
-    int RobotY = PixSize * RobotY_cm / CellSize_cm;
-    painter.translate(750/2 + RobotX - (PixSize * Size)/2,750/2 - RobotY + (PixSize * Size)/2);
+    int RobotPixSize = PixSize_px * RobotSize_cm / CellSize_cm;
+    int RobotX = PixSize_px * RobotX_cm / CellSize_cm;
+    int RobotY = PixSize_px * RobotY_cm / CellSize_cm;
+    painter.translate(750/2 + RobotX - (PixSize_px * Size)/2,750/2 - RobotY + (PixSize_px * Size)/2);
     painter.rotate(RobotRot_deg);
     painter.drawPixmap(-RobotPixSize/2, -RobotPixSize/2, RobotPixSize, RobotPixSize,Robot);
     painter.resetTransform();
@@ -336,13 +336,13 @@ void Maze::DrawMaze(QWidget *widget){
         for (int a = 0; a < Size; a++){
             for (int b = 0; b < Size; b++){
                 if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_START){
-                    DrawCenteredText((a)*PixSize + of,b*PixSize + of, "START", &painter);
+                    DrawCenteredText((a)*PixSize_px + of,b*PixSize_px + of, "START", &painter);
                 }
                 if (GetVal(Cells[a][b], CELL_TYPE) == TYPE_END){
-                    DrawCenteredText((a)*PixSize + of,b*PixSize + of , "META", &painter);
+                    DrawCenteredText((a)*PixSize_px + of,b*PixSize_px + of , "META", &painter);
                 }
                 if (GetVal(Cells[a][b], PATH_WALUE) > 0){
-                    DrawCenteredText((a)*PixSize + of,b*PixSize + of + PixSize/4, QString::number(GetVal(Cells[a][b], PATH_WALUE)), &painter);
+                    DrawCenteredText((a)*PixSize_px + of,b*PixSize_px + of + PixSize_px/4, QString::number(GetVal(Cells[a][b], PATH_WALUE)), &painter);
                 }
             }
         }
@@ -354,12 +354,12 @@ void Maze::DrawMaze(QWidget *widget){
 void Maze::DrawCenteredText(int x, int y, QString s, QPainter *p){
     QFont font = p->font();
     QPainterPath path;
-    font.setPointSize(PixSize/6);
+    font.setPointSize(PixSize_px/6);
     p->setFont(font);
     QFontMetrics m = p->fontMetrics();
     p->setPen(QPen(Qt::white, 4));
-    int a = x - (m.width(s) - PixSize) / 2;
-    int b = y + (m.height() + PixSize) / 2;
+    int a = x - (m.width(s) - PixSize_px) / 2;
+    int b = y + (m.height() + PixSize_px) / 2;
     path.addText(a, b, font, s);
     p->drawPath(path);
     p->setPen(Qt::red);
@@ -370,12 +370,12 @@ void Maze::DrawCenteredText(int x, int y, QString s, QPainter *p){
 void Maze::SetBegin(int x, int y)
 {
     // Wyrównanie no górnego lewego rogu
-    x += (Size * PixSize)/2;
-    y += (Size * PixSize)/2;
+    x += (Size * PixSize_px)/2;
+    y += (Size * PixSize_px)/2;
     if ((x >= 0) && (y >= 0) && Size > 0){
         // Numer komorki
-        x = x/PixSize;
-        y = y/PixSize;
+        x = x/PixSize_px;
+        y = y/PixSize_px;
         if ((x < Size) && (y < Size)){
             if (GetVal(Cells[x][y], CELL_TYPE) > 0){
                 SetVal(&Cells[x][y], TYPE_UNDEFINED, CELL_TYPE);
@@ -401,12 +401,12 @@ void Maze::SetBegin(int x, int y)
 void Maze::SetEnd(int x, int y)
 {
     // Wyrównanie no górnego lewego rogu
-    x += (Size * PixSize)/2;
-    y += (Size * PixSize)/2;
+    x += (Size * PixSize_px)/2;
+    y += (Size * PixSize_px)/2;
     if ((x >= 0) && (y >= 0) && Size > 0){
         // Numer komorki
-        x = x/PixSize;
-        y = y/PixSize;
+        x = x/PixSize_px;
+        y = y/PixSize_px;
         if ((x >= 0) && (y >= 0) && (x < Size) && (y < Size)){
             if (GetVal(Cells[x][y], CELL_TYPE) > 0){
                 SetVal(&Cells[x][y], TYPE_UNDEFINED, CELL_TYPE);
@@ -654,12 +654,12 @@ void Maze::SetTarget(int x, int y)
     int type;
     if (IsManual){
         // Wyrównanie no górnego lewego rogu
-        x += (Size * PixSize)/2;
-        y += (Size * PixSize)/2;
+        x += (Size * PixSize_px)/2;
+        y += (Size * PixSize_px)/2;
         if ((x >= 0) && (y >= 0) && Size > 0){
             // Numer komorki
-            x = x/PixSize;
-            y = y/PixSize;
+            x = x/PixSize_px;
+            y = y/PixSize_px;
             if ((x >= 0) && (y >= 0) && (x < Size) && (y < Size)){
                 type = GetVal(Cells[x][y], CELL_TYPE);
                 if (type == 5) IsTarget = true;
@@ -684,7 +684,7 @@ void Maze::SetTarget(int x, int y)
     }
 }
 
-void Maze::Resize(int size)
+void Maze::Resize(int size_px)
 {
-    PixSize = size;
+    PixSize_px = size_px;
 }

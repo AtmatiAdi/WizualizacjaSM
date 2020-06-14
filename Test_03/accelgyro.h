@@ -2,6 +2,9 @@
 #define ACCELGYRO_H
 #include <QElapsedTimer>
 
+/*!
+ * \brief This class is obsolete, but in future can be useful
+ */
 class AccelGyro
 {
 private:

@@ -1,0 +1,9 @@
+<map id="MainWindow" name="MainWindow">
+<area shape="rect" id="node1" title="The MainWindow class its base class of the application." alt="" coords="168,887,387,1595"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,607,112,685"/>
+<area shape="rect" id="node3" href="$classAccelGyro.html" title="This class is obsolete, but in future can be useful." alt="" coords="79,35,214,391"/>
+<area shape="rect" id="node4" href="$classMicromouse.html" title="The Micromouse thread class. This class communicates with MainWindow by signals, can send move and ro..." alt="" coords="212,483,343,809"/>
+<area shape="rect" id="node5" title=" " alt="" coords="238,174,309,251"/>
+<area shape="rect" id="node6" href="$classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter..." alt="" coords="333,5,477,420"/>
+<area shape="rect" id="node7" href="$classAccelGyroChart.html" title="This class is used for Initialize charts and append data to it." alt="" coords="462,497,597,795"/>
+</map>

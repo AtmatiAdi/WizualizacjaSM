@@ -1,0 +1,3 @@
+<map id="Maze" name="Maze">
+<area shape="rect" id="node1" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter..." alt="" coords="5,5,149,420"/>
+</map>

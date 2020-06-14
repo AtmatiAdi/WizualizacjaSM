@@ -1,0 +1,5 @@
+<map id="Maze::SetBegin" name="Maze::SetBegin">
+<area shape="rect" id="node1" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="5,31,120,57"/>
+<area shape="rect" id="node2" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="168,5,271,32"/>
+<area shape="rect" id="node3" href="$classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="169,56,270,83"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Maze::IsReady" name="Maze::IsReady">
+<area shape="rect" id="node1" title="Checks if /link Maze /endlink have start and finish field." alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="163,5,265,32"/>
+</map>

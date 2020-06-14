@@ -1,0 +1,5 @@
+<map id="MainWindow::sendMessageToDevice" name="MainWindow::sendMessageToDevice">
+<area shape="rect" id="node1" title="Sends simple message to the robot." alt="" coords="477,5,676,47"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#abf8c8d606791e5b754007d93dff8b0eb" title="Sends QString from lE_Message to the device." alt="" coords="251,5,429,47"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a324f8d6798d82e72f69448e14ff75415" title="Sends QString from lE_Message to the device." alt="" coords="5,5,203,47"/>
+</map>

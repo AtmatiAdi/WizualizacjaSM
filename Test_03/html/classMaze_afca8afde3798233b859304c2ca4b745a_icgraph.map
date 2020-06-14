@@ -1,0 +1,5 @@
+<map id="Maze::DrawCenteredText" name="Maze::DrawCenteredText">
+<area shape="rect" id="node1" title="Draws centered text." alt="" coords="387,5,555,32"/>
+<area shape="rect" id="node2" href="$classMaze.html#ad310092201d2cb6e6e88862b438cd9b2" title="Draws maze and robot on QWidget." alt="" coords="216,5,339,32"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#ade305265b2120df2489a5ebeb07ebbe1" title="Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget." alt="" coords="5,5,168,32"/>
+</map>

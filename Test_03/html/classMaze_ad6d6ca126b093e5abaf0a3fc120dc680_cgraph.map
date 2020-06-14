@@ -1,0 +1,4 @@
+<map id="Maze::Init" name="Maze::Init">
+<area shape="rect" id="node1" title="Initializes maze and the robot position and rotaion. Sets walls for sides of maze." alt="" coords="5,5,84,32"/>
+<area shape="rect" id="node2" href="$classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="132,5,233,32"/>
+</map>

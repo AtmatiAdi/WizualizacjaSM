@@ -1,0 +1,10 @@
+<map id="MainWindow::on_cB_Devices_currentIndexChanged" name="MainWindow::on_cB_Devices_currentIndexChanged">
+<area shape="rect" id="node1" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a4d32584efa9a8d85570c911a76882c2e" title="Appends log with date to tE_Log QTextEdit." alt="" coords="785,38,951,65"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,38,429,65"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="477,89,724,115"/>
+<area shape="rect" id="node5" href="$classMainWindow.html#a01af152106bfa1ab6c101420cf55dfef" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="772,89,964,115"/>
+<area shape="rect" id="node7" href="$classMainWindow.html#a2501dae821d7c4579b159a5a5f05a264" title="Appends and scales data to charts." alt="" coords="777,139,959,166"/>
+<area shape="rect" id="node6" href="$classMicromouse.html#aff4965481ec5fa15e5d653bbfe385b0b" title="When MainWindow gets return value from the robot just calls this function." alt="" coords="1012,89,1201,115"/>
+<area shape="rect" id="node8" href="$classAccelGyroChart.html#a65d91403c1b8729e9c1b15e20a2450bb" title="Append new data to chart series and displays it, if count reach to limit, resets series...." alt="" coords="1023,139,1190,166"/>
+</map>

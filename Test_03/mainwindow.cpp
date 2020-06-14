@@ -255,11 +255,6 @@ void MainWindow::UpdateCharts(){
     ui->hS_y->setValue(y);
     ui->rB_xy->move(y+125-8, 125-8-x);
 
-    if (IsGraphIntegration) {
-        //AGIntegration.Integrate(AGdata, IntParam);
-        //AGdata.Copy(AGIntegration);
-    }
-
     AccelChart.Append(AGData, 0);
     GyroChart.Append(AGData, 3);
 }
@@ -285,12 +280,6 @@ void MainWindow::on_pB_Pause_clicked()
         GyroChart.Start();
     }
 }
-
-
-/*void MainWindow::on_doubleSpinBox_valueChanged(double arg1)
-{
-    IntParam = arg1;
-}*/
 
 void MainWindow::on_pB_HomeAll_clicked()
 {
@@ -348,7 +337,7 @@ void MainWindow::InitLvl2()
     RotStartSeepd = 176;
     RotMaxSpeed = 336;
     Accel = 1;
-    Distance_m = 10;
+    Distance_cm = 10;
     Degree_deg = 89;
 
     ui->sB_MStartSpeed->setValue(MoveStartSpeed);
@@ -360,20 +349,9 @@ void MainWindow::InitLvl2()
     ui->sB_Rotation->setValue(Degree_deg);
 }
 
-void MainWindow::SetSpeed(int x, int y){
-    QByteArray Data;
-    Data.resize(5);
-    Data[0] = (unsigned char)FUNC_JOYSTICK_DATA;
-    Data[1] = (unsigned char)x;
-    Data[2] = (unsigned char)(x >> 8);
-    Data[3] = (unsigned char)y;
-    Data[4] = (unsigned char)(y >> 8);
-    sendFunctionToDevice(Data);
-}
-
 void MainWindow::on_pB_Build_1_clicked()
 {
-    short dist = Distance_m * (32768.0/(9.80665*2.0))/100.0;
+    short dist = Distance_cm * (32768.0/(9.80665*2.0))/100.0;
     LogSlot("Zadano dystans: " + QString::number(dist));
     short stop = ALimit_m_s2 * 32768/(9.80665*2);
     QByteArray Data;
@@ -542,7 +520,7 @@ void MainWindow::on_dSB_Accel_valueChanged(double arg1)
 
 void MainWindow::on_spinBox_valueChanged(int arg1)
 {
-    Distance_m = arg1;
+    Distance_cm = arg1;
 }
 
 void MainWindow::on_sB_Accel_valueChanged(int arg1)

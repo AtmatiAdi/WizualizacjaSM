@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['logslot_7',['LogSlot',['../classMainWindow.html#a9fece74ff69a9e1b50b079f778de9b2b',1,'MainWindow']]]
+  ['getpathmov_23',['GetPathMov',['../classMaze.html#aeda787a62e587557c83d062e5394f6ba',1,'Maze']]],
+  ['getpathrot_24',['GetPathRot',['../classMaze.html#ac62b495006239af7105ef57e63c3261e',1,'Maze']]],
+  ['getval_25',['GetVal',['../classMaze.html#af20ceee16cdfa33289e4256ddf384cb0',1,'Maze']]],
+  ['gyroscale_26',['GyroScale',['../classMicromouse.html#ad92f0525c09e19425a753f81b00258e6',1,'Micromouse']]]
 ];

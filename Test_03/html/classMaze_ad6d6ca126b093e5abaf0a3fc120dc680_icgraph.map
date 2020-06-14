@@ -1,0 +1,4 @@
+<map id="Maze::Init" name="Maze::Init">
+<area shape="rect" id="node1" title="Initializes maze and the robot position and rotaion. Sets walls for sides of maze." alt="" coords="257,13,336,39"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a935ce47257868377034b667fa344881e" title="Initalize the Maze class instance. Maze will be generated based on size from sB_MazeSize QSpinBox." alt="" coords="5,5,209,47"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="MainWindow::on_cB_ShowText_toggled" name="MainWindow::on_cB_ShowText_toggled">
+<area shape="rect" id="node1" title="Toggles feature of drawing path values in w_Maze QWidget." alt="" coords="5,5,211,47"/>
+<area shape="rect" id="node2" href="$classMaze.html#a68ef1c13577f7ce02456c6dde0947a8e" title="Enables or Disables drawing values of every field in maze." alt="" coords="259,13,393,39"/>
+</map>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['eventfilter_51',['eventFilter',['../classMainWindow.html#ade305265b2120df2489a5ebeb07ebbe1',1,'MainWindow']]]
+  ['drawcenteredtext_127',['DrawCenteredText',['../classMaze.html#afca8afde3798233b859304c2ca4b745a',1,'Maze']]],
+  ['drawmaze_128',['DrawMaze',['../classMaze.html#ad310092201d2cb6e6e88862b438cd9b2',1,'Maze']]]
 ];

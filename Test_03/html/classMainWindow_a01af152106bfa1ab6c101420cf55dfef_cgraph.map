@@ -1,0 +1,4 @@
+<map id="MainWindow::FunctionReturn" name="MainWindow::FunctionReturn">
+<area shape="rect" id="node1" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="5,5,197,32"/>
+<area shape="rect" id="node2" href="$classMicromouse.html#aff4965481ec5fa15e5d653bbfe385b0b" title="When MainWindow gets return value from the robot just calls this function." alt="" coords="245,5,435,32"/>
+</map>

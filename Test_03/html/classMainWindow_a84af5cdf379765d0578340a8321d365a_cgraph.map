@@ -1,0 +1,8 @@
+<map id="MainWindow::LVL2CommunicationHub" name="MainWindow::LVL2CommunicationHub">
+<area shape="rect" id="node1" title="This function recognises commands and calls corresponding function." alt="" coords="5,56,252,83"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a4d32584efa9a8d85570c911a76882c2e" title="Appends log with date to tE_Log QTextEdit." alt="" coords="313,5,479,32"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a01af152106bfa1ab6c101420cf55dfef" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="300,56,492,83"/>
+<area shape="rect" id="node5" href="$classMainWindow.html#a2501dae821d7c4579b159a5a5f05a264" title="Appends and scales data to charts." alt="" coords="305,107,487,133"/>
+<area shape="rect" id="node4" href="$classMicromouse.html#aff4965481ec5fa15e5d653bbfe385b0b" title="When MainWindow gets return value from the robot just calls this function." alt="" coords="540,56,729,83"/>
+<area shape="rect" id="node6" href="$classAccelGyroChart.html#a65d91403c1b8729e9c1b15e20a2450bb" title="Append new data to chart series and displays it, if count reach to limit, resets series...." alt="" coords="551,107,718,133"/>
+</map>

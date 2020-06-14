@@ -1,0 +1,4 @@
+<map id="MainWindow::sendMessageToDevice" name="MainWindow::sendMessageToDevice">
+<area shape="rect" id="node1" title="Sends simple message to the robot." alt="" coords="5,5,204,47"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a4d32584efa9a8d85570c911a76882c2e" title="Appends log with date to tE_Log QTextEdit." alt="" coords="252,13,419,39"/>
+</map>

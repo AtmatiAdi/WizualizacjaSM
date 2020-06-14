@@ -1,0 +1,4 @@
+<map id="Maze::SetTarget" name="Maze::SetTarget">
+<area shape="rect" id="node1" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="263,5,381,32"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,5,215,32"/>
+</map>

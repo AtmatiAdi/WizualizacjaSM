@@ -1,0 +1,4 @@
+<map id="Maze::IsReady" name="Maze::IsReady">
+<area shape="rect" id="node1" title="Checks if /link Maze /endlink have start and finish field." alt="" coords="223,13,332,39"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="5,5,175,47"/>
+</map>

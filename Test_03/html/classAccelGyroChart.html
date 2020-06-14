@@ -69,20 +69,35 @@ $(function() {
 <div class="title">AccelGyroChart Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class is used for Initialize charts and append data to it.  
+ <a href="classAccelGyroChart.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="accelgyrochart_8h_source.html">accelgyrochart.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for AccelGyroChart:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAccelGyroChart__coll__graph.png" border="0" usemap="#AccelGyroChart_coll__map" alt="Collaboration graph"/></div>
+<map name="AccelGyroChart_coll__map" id="AccelGyroChart_coll__map">
+<area shape="rect" title="This class is used for Initialize charts and append data to it." alt="" coords="5,5,140,303"/>
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a65d91403c1b8729e9c1b15e20a2450bb"><td class="memItemLeft" align="right" valign="top"><a id="a65d91403c1b8729e9c1b15e20a2450bb"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Append</b> (double data[], int start)</td></tr>
+<tr class="memitem:a65d91403c1b8729e9c1b15e20a2450bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAccelGyroChart.html#a65d91403c1b8729e9c1b15e20a2450bb">Append</a> (double data[], int start)</td></tr>
+<tr class="memdesc:a65d91403c1b8729e9c1b15e20a2450bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append new data to chart series and displays it, if count reach to limit, resets series. This function will append ony 3 values of data array.  <a href="classAccelGyroChart.html#a65d91403c1b8729e9c1b15e20a2450bb">More...</a><br /></td></tr>
 <tr class="separator:a65d91403c1b8729e9c1b15e20a2450bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0343525c9e1769919dbd8205fc0917f0"><td class="memItemLeft" align="right" valign="top"><a id="a0343525c9e1769919dbd8205fc0917f0"></a>
-QChart *&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> (int limit, double min, double max)</td></tr>
+<tr class="memitem:a0343525c9e1769919dbd8205fc0917f0"><td class="memItemLeft" align="right" valign="top">QChart *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAccelGyroChart.html#a0343525c9e1769919dbd8205fc0917f0">Init</a> (int limit, double min, double max)</td></tr>
+<tr class="memdesc:a0343525c9e1769919dbd8205fc0917f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalizes chart, units are not defined here.  <a href="classAccelGyroChart.html#a0343525c9e1769919dbd8205fc0917f0">More...</a><br /></td></tr>
 <tr class="separator:a0343525c9e1769919dbd8205fc0917f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5cda8e22f4ff0ea9bacf3d43da2b08d"><td class="memItemLeft" align="right" valign="top"><a id="af5cda8e22f4ff0ea9bacf3d43da2b08d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAccelGyroChart.html#af5cda8e22f4ff0ea9bacf3d43da2b08d">Start</a> ()</td></tr>
+<tr class="memdesc:af5cda8e22f4ff0ea9bacf3d43da2b08d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables resetting series when it reach to the limit. <br /></td></tr>
 <tr class="separator:af5cda8e22f4ff0ea9bacf3d43da2b08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af817b0d513742bc53b3426bd096b3508"><td class="memItemLeft" align="right" valign="top"><a id="af817b0d513742bc53b3426bd096b3508"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAccelGyroChart.html#af817b0d513742bc53b3426bd096b3508">Stop</a> ()</td></tr>
+<tr class="memdesc:af817b0d513742bc53b3426bd096b3508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disableds resetting series when it reach to the limit. <br /></td></tr>
 <tr class="separator:af817b0d513742bc53b3426bd096b3508"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -97,13 +112,16 @@ QChartView *&#160;</td><td class="memItemRight" valign="bottom"><b>ChartView</b>
 QRgb&#160;</td><td class="memItemRight" valign="bottom"><b>Color</b> [3] = {(0xFF3333), (0x33FF33), (0x3333FF)}</td></tr>
 <tr class="separator:a35522db9fb8f04815608c61c0b8ba9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a1590ab32832f5774ff936e3892f9c7"><td class="memItemLeft" align="right" valign="top"><a id="a6a1590ab32832f5774ff936e3892f9c7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Count</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAccelGyroChart.html#a6a1590ab32832f5774ff936e3892f9c7">Count</a></td></tr>
+<tr class="memdesc:a6a1590ab32832f5774ff936e3892f9c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of measurement in series. <br /></td></tr>
 <tr class="separator:a6a1590ab32832f5774ff936e3892f9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4ac836a1556d6df5cb346ff77b12def"><td class="memItemLeft" align="right" valign="top"><a id="af4ac836a1556d6df5cb346ff77b12def"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Enabled</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAccelGyroChart.html#af4ac836a1556d6df5cb346ff77b12def">Enabled</a></td></tr>
+<tr class="memdesc:af4ac836a1556d6df5cb346ff77b12def"><td class="mdescLeft">&#160;</td><td class="mdescRight">when true enables resetting series when it reach to the limit, otherwise disableds resetting series. <br /></td></tr>
 <tr class="separator:af4ac836a1556d6df5cb346ff77b12def"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f842003c54315bf4be3b33a55d8a469"><td class="memItemLeft" align="right" valign="top"><a id="a6f842003c54315bf4be3b33a55d8a469"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Limit</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAccelGyroChart.html#a6f842003c54315bf4be3b33a55d8a469">Limit</a></td></tr>
+<tr class="memdesc:a6f842003c54315bf4be3b33a55d8a469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limit of measurement in series. <br /></td></tr>
 <tr class="separator:a6f842003c54315bf4be3b33a55d8a469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a334f75d3279460d7f5347b864a929f35"><td class="memItemLeft" align="right" valign="top"><a id="a334f75d3279460d7f5347b864a929f35"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>Max</b></td></tr>
@@ -124,6 +142,117 @@ QValueAxis *&#160;</td><td class="memItemRight" valign="bottom"><b>XAxis</b></td
 QValueAxis *&#160;</td><td class="memItemRight" valign="bottom"><b>YAxis</b></td></tr>
 <tr class="separator:a71edf373f0e3bf6f4739a7f137a7dee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class is used for Initialize charts and append data to it. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a65d91403c1b8729e9c1b15e20a2450bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d91403c1b8729e9c1b15e20a2450bb">&#9670;&nbsp;</a></span>Append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AccelGyroChart::Append </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>data</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Append new data to chart series and displays it, if count reach to limit, resets series. This function will append ony 3 values of data array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>array, minimum 3 values. </td></tr>
+    <tr><td class="paramname">index</td><td>of first value data array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb_icgraph.png" border="0" usemap="#classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb_icgraph" alt=""/></div>
+<map name="classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb_icgraph" id="classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb_icgraph">
+<area shape="rect" title="Append new data to chart series and displays it, if count reach to limit, resets series...." alt="" coords="1003,13,1169,39"/>
+<area shape="rect" href="classMainWindow.html#a2501dae821d7c4579b159a5a5f05a264" title="Appends and scales data to charts." alt="" coords="772,13,955,39"/>
+<area shape="rect" href="classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="477,13,724,39"/>
+<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,13,429,39"/>
+<area shape="rect" href="classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0343525c9e1769919dbd8205fc0917f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0343525c9e1769919dbd8205fc0917f0">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QChart * AccelGyroChart::Init </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>limit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initalizes chart, units are not defined here. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Maximum</td><td>measurement count. </td></tr>
+    <tr><td class="paramname">Y</td><td>axis minimum value. </td></tr>
+    <tr><td class="paramname">X</td><td>axis maximum value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to initalized QChart to set in QWidget </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0_icgraph.png" border="0" usemap="#classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0_icgraph" alt=""/></div>
+<map name="classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0_icgraph" id="classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0_icgraph">
+<area shape="rect" title="Initalizes chart, units are not defined here." alt="" coords="292,143,431,170"/>
+<area shape="rect" href="classMainWindow.html#a6fee8fe2240d4ef0b0921786a94c720d" title="Sends to the robot request of acceleration data from measurements types." alt="" coords="16,5,233,47"/>
+<area shape="rect" href="classMainWindow.html#a29243420d134bdaeeff33d907de15ac0" title="Sends to the robot request of distance data from measurements types." alt="" coords="27,71,223,112"/>
+<area shape="rect" href="classMainWindow.html#ae236151160361895c0a3f3a04d026ef3" title="Sends to the robot request of velocity data from measurements types." alt="" coords="29,136,221,177"/>
+<area shape="rect" href="classMainWindow.html#a55e1a82a6633ec3fcdfbafac77eaa1d4" title="Sends to the robot request of distance data from measurements types." alt="" coords="14,202,235,229"/>
+<area shape="rect" href="classMainWindow.html#a4212072873e38127ba5637627e351171" title="Sends to the robot request of velocity data from measurements types." alt="" coords="5,253,244,279"/>
+</map>
+</div>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="accelgyrochart_8h_source.html">accelgyrochart.h</a></li>
 <li>accelgyrochart.cpp</li>

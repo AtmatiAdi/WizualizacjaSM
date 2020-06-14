@@ -1,0 +1,4 @@
+<map id="Maze::GetPathMov" name="Maze::GetPathMov">
+<area shape="rect" id="node1" title="Returns distance from robot to last field of all same direction fields." alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node2" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="187,5,289,32"/>
+</map>

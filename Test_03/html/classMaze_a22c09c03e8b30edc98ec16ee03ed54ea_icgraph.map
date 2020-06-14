@@ -1,0 +1,4 @@
+<map id="Maze::Resize" name="Maze::Resize">
+<area shape="rect" id="node1" title="Changes PixSize_px of maze and calls repaint event for /link Maze /endlink." alt="" coords="223,5,325,32"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a94c7ecea737958cac7276189bc1460f5" title="Is used for handle mouse wheel event for scale maze in w_Maze QWidget." alt="" coords="5,5,175,32"/>
+</map>

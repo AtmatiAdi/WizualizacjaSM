@@ -1,0 +1,9 @@
+<map id="MainWindow::mousePressEvent" name="MainWindow::mousePressEvent">
+<area shape="rect" id="node1" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,127,215,153"/>
+<area shape="rect" id="node2" href="$classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="429,127,544,153"/>
+<area shape="rect" id="node5" href="$classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="434,177,539,204"/>
+<area shape="rect" id="node6" href="$classMaze.html#ab7d56db16b057cda15587e9b3d52cddb" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="263,51,381,77"/>
+<area shape="rect" id="node3" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="592,39,695,65"/>
+<area shape="rect" id="node4" href="$classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="593,115,694,141"/>
+<area shape="rect" id="node7" href="$classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="429,25,544,52"/>
+</map>

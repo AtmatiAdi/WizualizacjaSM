@@ -1,0 +1,4 @@
+<map id="Maze::TextEnabled" name="Maze::TextEnabled">
+<area shape="rect" id="node1" title="Enables or Disables drawing values of every field in maze." alt="" coords="259,13,393,39"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a403c97c8434fd71ec9b928bd57beb622" title="Toggles feature of drawing path values in w_Maze QWidget." alt="" coords="5,5,211,47"/>
+</map>

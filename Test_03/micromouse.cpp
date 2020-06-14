@@ -97,9 +97,9 @@ void Micromouse::run(){
     }
 }
 
-short Micromouse::Move(short dist){
+short Micromouse::Move(short dist_cm){
     FunctionReurned = false;
-    int Dist = dist * (32768.0/(9.80665*2.0))/100.0;
+    int Dist = dist_cm * (32768.0/(9.80665*2.0))/100.0;
     //emit LogSig("Zadano: " + QString::number(dist));
     short stop = StopVal * 32768/(9.80665*2);
     QByteArray Data;
@@ -122,16 +122,16 @@ short Micromouse::Move(short dist){
         timeout --;
         if (!timeout) {
             emit LogSig("Powtarzam");
-            Move(dist);
+            Move(dist_cm);
         }
     }
     //emit LogSig("Dostano: " + QString::number(Value));
     return Value * 100.0 *AccelScale;
 }
 
-short Micromouse::Rotate(short deg){
+short Micromouse::Rotate(short deg_deg){
     FunctionReurned = false;
-    int Deg = deg * (32768.0/500.0);
+    int Deg = deg_deg * (32768.0/500.0);
     QByteArray Data;
     Data.resize(9);
     Data[0] = (unsigned char)PROG_ROTATE;
@@ -150,7 +150,7 @@ short Micromouse::Rotate(short deg){
         timeout --;
         if (!timeout) {
             emit LogSig("Powtarzam");
-            Rotate(deg);
+            Rotate(deg_deg);
         }
     }
     return Value * GyroScale;

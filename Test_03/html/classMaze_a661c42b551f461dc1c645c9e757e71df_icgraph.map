@@ -1,0 +1,4 @@
+<map id="Maze::ManualEnable" name="Maze::ManualEnable">
+<area shape="rect" id="node1" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="244,13,388,39"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a2255bba1350b2432c13819e01b2d559d" title="Toggles manual mode. Manual mode enables to set targets for to the robot in Maze class instance." alt="" coords="5,5,196,47"/>
+</map>

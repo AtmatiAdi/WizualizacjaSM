@@ -1,0 +1,8 @@
+<map id="AccelGyroChart::Init" name="AccelGyroChart::Init">
+<area shape="rect" id="node1" title="Initalizes chart, units are not defined here." alt="" coords="292,143,431,170"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a6fee8fe2240d4ef0b0921786a94c720d" title="Sends to the robot request of acceleration data from measurements types." alt="" coords="16,5,233,47"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a29243420d134bdaeeff33d907de15ac0" title="Sends to the robot request of distance data from measurements types." alt="" coords="27,71,223,112"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#ae236151160361895c0a3f3a04d026ef3" title="Sends to the robot request of velocity data from measurements types." alt="" coords="29,136,221,177"/>
+<area shape="rect" id="node5" href="$classMainWindow.html#a55e1a82a6633ec3fcdfbafac77eaa1d4" title="Sends to the robot request of distance data from measurements types." alt="" coords="14,202,235,229"/>
+<area shape="rect" id="node6" href="$classMainWindow.html#a4212072873e38127ba5637627e351171" title="Sends to the robot request of velocity data from measurements types." alt="" coords="5,253,244,279"/>
+</map>

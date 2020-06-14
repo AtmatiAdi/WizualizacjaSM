@@ -1,0 +1,6 @@
+<map id="Micromouse" name="Micromouse">
+<area shape="rect" id="node1" title="The Micromouse thread class. This class communicates with MainWindow by signals, can send move and ro..." alt="" coords="102,483,233,809"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,174,76,251"/>
+<area shape="rect" id="node3" href="$classAccelGyro.html" title="This class is obsolete, but in future can be useful." alt="" coords="100,35,235,391"/>
+<area shape="rect" id="node4" href="$classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter..." alt="" coords="259,5,403,420"/>
+</map>

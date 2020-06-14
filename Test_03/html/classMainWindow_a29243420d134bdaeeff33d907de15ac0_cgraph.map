@@ -1,0 +1,6 @@
+<map id="MainWindow::on_rB_Distance_clicked" name="MainWindow::on_rB_Distance_clicked">
+<area shape="rect" id="node1" title="Sends to the robot request of distance data from measurements types." alt="" coords="5,27,201,69"/>
+<area shape="rect" id="node2" href="$classAccelGyroChart.html#a0343525c9e1769919dbd8205fc0917f0" title="Initalizes chart, units are not defined here." alt="" coords="271,5,410,32"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#ab97934778ea081220890b36bca9d6aad" title="Sends command to the robot." alt="" coords="249,57,432,98"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a4d32584efa9a8d85570c911a76882c2e" title="Appends log with date to tE_Log QTextEdit." alt="" coords="480,64,647,91"/>
+</map>

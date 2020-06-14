@@ -1,20 +1,37 @@
 \hypertarget{classAccelGyroChart}{}\doxysection{Accel\+Gyro\+Chart Class Reference}
 \label{classAccelGyroChart}\index{AccelGyroChart@{AccelGyroChart}}
+
+
+This class is used for Initialize charts and append data to it.  
+
+
+
+
+{\ttfamily \#include $<$accelgyrochart.\+h$>$}
+
+
+
+Collaboration diagram for Accel\+Gyro\+Chart\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{classAccelGyroChart__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb}\label{classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb}} 
-bool {\bfseries Append} (double data\mbox{[}$\,$\mbox{]}, int start)
-\item 
-\mbox{\Hypertarget{classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0}\label{classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0}} 
-Q\+Chart $\ast$ {\bfseries Init} (int limit, double min, double max)
-\item 
+bool \mbox{\hyperlink{classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb}{Append}} (double data\mbox{[}$\,$\mbox{]}, int start)
+\begin{DoxyCompactList}\small\item\em Append new data to chart series and displays it, if count reach to limit, resets series. This function will append ony 3 values of data array. \end{DoxyCompactList}\item 
+Q\+Chart $\ast$ \mbox{\hyperlink{classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0}{Init}} (int limit, double min, double max)
+\begin{DoxyCompactList}\small\item\em Initalizes chart, units are not defined here. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAccelGyroChart_af5cda8e22f4ff0ea9bacf3d43da2b08d}\label{classAccelGyroChart_af5cda8e22f4ff0ea9bacf3d43da2b08d}} 
-void {\bfseries Start} ()
-\item 
+void \mbox{\hyperlink{classAccelGyroChart_af5cda8e22f4ff0ea9bacf3d43da2b08d}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Enables resetting series when it reach to the limit. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAccelGyroChart_af817b0d513742bc53b3426bd096b3508}\label{classAccelGyroChart_af817b0d513742bc53b3426bd096b3508}} 
-void {\bfseries Stop} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classAccelGyroChart_af817b0d513742bc53b3426bd096b3508}{Stop}} ()
+\begin{DoxyCompactList}\small\item\em Disableds resetting series when it reach to the limit. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,14 +45,14 @@ Q\+Chart\+View $\ast$ {\bfseries Chart\+View}
 Q\+Rgb {\bfseries Color} \mbox{[}3\mbox{]} = \{(0x\+F\+F3333), (0x33\+F\+F33), (0x3333\+FF)\}
 \item 
 \mbox{\Hypertarget{classAccelGyroChart_a6a1590ab32832f5774ff936e3892f9c7}\label{classAccelGyroChart_a6a1590ab32832f5774ff936e3892f9c7}} 
-int {\bfseries Count}
-\item 
+int \mbox{\hyperlink{classAccelGyroChart_a6a1590ab32832f5774ff936e3892f9c7}{Count}}
+\begin{DoxyCompactList}\small\item\em Count of measurement in series. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAccelGyroChart_af4ac836a1556d6df5cb346ff77b12def}\label{classAccelGyroChart_af4ac836a1556d6df5cb346ff77b12def}} 
-bool {\bfseries Enabled}
-\item 
+bool \mbox{\hyperlink{classAccelGyroChart_af4ac836a1556d6df5cb346ff77b12def}{Enabled}}
+\begin{DoxyCompactList}\small\item\em when true enables resetting series when it reach to the limit, otherwise disableds resetting series. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAccelGyroChart_a6f842003c54315bf4be3b33a55d8a469}\label{classAccelGyroChart_a6f842003c54315bf4be3b33a55d8a469}} 
-int {\bfseries Limit}
-\item 
+int \mbox{\hyperlink{classAccelGyroChart_a6f842003c54315bf4be3b33a55d8a469}{Limit}}
+\begin{DoxyCompactList}\small\item\em Limit of measurement in series. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAccelGyroChart_a334f75d3279460d7f5347b864a929f35}\label{classAccelGyroChart_a334f75d3279460d7f5347b864a929f35}} 
 double {\bfseries Max}
 \item 
@@ -54,6 +71,68 @@ Q\+Value\+Axis $\ast$ {\bfseries X\+Axis}
 \mbox{\Hypertarget{classAccelGyroChart_a71edf373f0e3bf6f4739a7f137a7dee2}\label{classAccelGyroChart_a71edf373f0e3bf6f4739a7f137a7dee2}} 
 Q\+Value\+Axis $\ast$ {\bfseries Y\+Axis}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used for Initialize charts and append data to it. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb}\label{classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb}} 
+\index{AccelGyroChart@{AccelGyroChart}!Append@{Append}}
+\index{Append@{Append}!AccelGyroChart@{AccelGyroChart}}
+\doxysubsubsection{\texorpdfstring{Append()}{Append()}}
+{\footnotesize\ttfamily bool Accel\+Gyro\+Chart\+::\+Append (\begin{DoxyParamCaption}\item[{double}]{data\mbox{[}$\,$\mbox{]},  }\item[{int}]{start }\end{DoxyParamCaption})}
+
+
+
+Append new data to chart series and displays it, if count reach to limit, resets series. This function will append ony 3 values of data array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & array, minimum 3 values. \\
+\hline
+{\em index} & of first value data array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAccelGyroChart_a65d91403c1b8729e9c1b15e20a2450bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0}\label{classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0}} 
+\index{AccelGyroChart@{AccelGyroChart}!Init@{Init}}
+\index{Init@{Init}!AccelGyroChart@{AccelGyroChart}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily Q\+Chart $\ast$ Accel\+Gyro\+Chart\+::\+Init (\begin{DoxyParamCaption}\item[{int}]{limit,  }\item[{double}]{min,  }\item[{double}]{max }\end{DoxyParamCaption})}
+
+
+
+Initalizes chart, units are not defined here. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Maximum} & measurement count. \\
+\hline
+{\em Y} & axis minimum value. \\
+\hline
+{\em X} & axis maximum value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to initalized Q\+Chart to set in Q\+Widget 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAccelGyroChart_a0343525c9e1769919dbd8205fc0917f0_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

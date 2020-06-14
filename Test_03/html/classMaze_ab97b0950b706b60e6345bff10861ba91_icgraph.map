@@ -1,0 +1,4 @@
+<map id="Maze::MovResult" name="Maze::MovResult">
+<area shape="rect" id="node1" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="172,5,295,32"/>
+<area shape="rect" id="node2" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+</map>

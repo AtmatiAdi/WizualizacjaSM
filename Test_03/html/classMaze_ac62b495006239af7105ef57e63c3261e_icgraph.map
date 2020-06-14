@@ -1,0 +1,4 @@
+<map id="Maze::GetPathRot" name="Maze::GetPathRot">
+<area shape="rect" id="node1" title="Returns rotaion to next path field." alt="" coords="172,5,303,32"/>
+<area shape="rect" id="node2" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+</map>

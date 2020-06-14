@@ -68,35 +68,39 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef ACCELGYROCHART_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ACCELGYROCHART_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;QtCharts&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classAccelGyroChart.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAccelGyroChart.html">AccelGyroChart</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{ </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    QLineSeries *Series[3];</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> Count;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> Limit;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">bool</span> Enabled;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    QChart *Chart;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    QPen Pen[3];</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    QRgb Color[3] = {(0xFF3333), (0x33FF33), (0x3333FF)};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    QValueAxis *XAxis;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    QValueAxis *YAxis;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    QChartView *ChartView;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">double</span> Min, Max;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classAccelGyroChart.html">AccelGyroChart</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    QChart* Init(<span class="keywordtype">int</span> limit, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// False gdy przepelnilismy wykres</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// True w pzreciwnym razie</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> Append(<span class="keywordtype">double</span> data[], <span class="keywordtype">int</span> start);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> Stop();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> Start();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif // ACCELGYROCHART_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classAccelGyroChart.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAccelGyroChart.html">AccelGyroChart</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{ </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    QLineSeries *Series[3];</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classAccelGyroChart.html#a6a1590ab32832f5774ff936e3892f9c7">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classAccelGyroChart.html#a6a1590ab32832f5774ff936e3892f9c7">Count</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classAccelGyroChart.html#a6f842003c54315bf4be3b33a55d8a469">   18</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classAccelGyroChart.html#a6f842003c54315bf4be3b33a55d8a469">Limit</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classAccelGyroChart.html#af4ac836a1556d6df5cb346ff77b12def">   23</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAccelGyroChart.html#af4ac836a1556d6df5cb346ff77b12def">Enabled</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    QChart *Chart;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    QPen Pen[3];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    QRgb Color[3] = {(0xFF3333), (0x33FF33), (0x3333FF)};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    QValueAxis *XAxis;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    QValueAxis *YAxis;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    QChartView *ChartView;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">double</span> Min, Max;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classAccelGyroChart.html">AccelGyroChart</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    QChart* <a class="code" href="classAccelGyroChart.html#a0343525c9e1769919dbd8205fc0917f0">Init</a>(<span class="keywordtype">int</span> limit, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAccelGyroChart.html#a65d91403c1b8729e9c1b15e20a2450bb">Append</a>(<span class="keywordtype">double</span> data[], <span class="keywordtype">int</span> start);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAccelGyroChart.html#af817b0d513742bc53b3426bd096b3508">Stop</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAccelGyroChart.html#af5cda8e22f4ff0ea9bacf3d43da2b08d">Start</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif // ACCELGYROCHART_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassAccelGyroChart_html"><div class="ttname"><a href="classAccelGyroChart.html">AccelGyroChart</a></div><div class="ttdef"><b>Definition:</b> accelgyrochart.h:6</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html_af5cda8e22f4ff0ea9bacf3d43da2b08d"><div class="ttname"><a href="classAccelGyroChart.html#af5cda8e22f4ff0ea9bacf3d43da2b08d">AccelGyroChart::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Enables resetting series when it reach to the limit.</div><div class="ttdef"><b>Definition:</b> accelgyrochart.cpp:53</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html"><div class="ttname"><a href="classAccelGyroChart.html">AccelGyroChart</a></div><div class="ttdoc">This class is used for Initialize charts and append data to it.</div><div class="ttdef"><b>Definition:</b> accelgyrochart.h:8</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html_a6f842003c54315bf4be3b33a55d8a469"><div class="ttname"><a href="classAccelGyroChart.html#a6f842003c54315bf4be3b33a55d8a469">AccelGyroChart::Limit</a></div><div class="ttdeci">int Limit</div><div class="ttdoc">Limit of measurement in series.</div><div class="ttdef"><b>Definition:</b> accelgyrochart.h:18</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html_af4ac836a1556d6df5cb346ff77b12def"><div class="ttname"><a href="classAccelGyroChart.html#af4ac836a1556d6df5cb346ff77b12def">AccelGyroChart::Enabled</a></div><div class="ttdeci">bool Enabled</div><div class="ttdoc">when true enables resetting series when it reach to the limit, otherwise disableds resetting series.</div><div class="ttdef"><b>Definition:</b> accelgyrochart.h:23</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html_a65d91403c1b8729e9c1b15e20a2450bb"><div class="ttname"><a href="classAccelGyroChart.html#a65d91403c1b8729e9c1b15e20a2450bb">AccelGyroChart::Append</a></div><div class="ttdeci">bool Append(double data[], int start)</div><div class="ttdoc">Append new data to chart series and displays it, if count reach to limit, resets series....</div><div class="ttdef"><b>Definition:</b> accelgyrochart.cpp:34</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html_af817b0d513742bc53b3426bd096b3508"><div class="ttname"><a href="classAccelGyroChart.html#af817b0d513742bc53b3426bd096b3508">AccelGyroChart::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdoc">Disableds resetting series when it reach to the limit.</div><div class="ttdef"><b>Definition:</b> accelgyrochart.cpp:50</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html_a0343525c9e1769919dbd8205fc0917f0"><div class="ttname"><a href="classAccelGyroChart.html#a0343525c9e1769919dbd8205fc0917f0">AccelGyroChart::Init</a></div><div class="ttdeci">QChart * Init(int limit, double min, double max)</div><div class="ttdoc">Initalizes chart, units are not defined here.</div><div class="ttdef"><b>Definition:</b> accelgyrochart.cpp:7</div></div>
+<div class="ttc" id="aclassAccelGyroChart_html_a6a1590ab32832f5774ff936e3892f9c7"><div class="ttname"><a href="classAccelGyroChart.html#a6a1590ab32832f5774ff936e3892f9c7">AccelGyroChart::Count</a></div><div class="ttdeci">int Count</div><div class="ttdoc">Count of measurement in series.</div><div class="ttdef"><b>Definition:</b> accelgyrochart.h:14</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

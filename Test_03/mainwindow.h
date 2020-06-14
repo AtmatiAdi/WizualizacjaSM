@@ -38,6 +38,9 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+/*!
+ * \brief The MainWindow class its base class of the application.
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -46,25 +49,27 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     /*!
-     * \brief Is used for handle QEvent::Paint and run drawing function for w_Maze Widget.
+     * \brief Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget.
      * \param watched.
      * \param event.
      * \return true if you do not want to have the child widget paint on its own afterwards, otherwise, return false.
      */
     virtual bool eventFilter(QObject* watched, QEvent* event) override;
     /*!
-     * \brief Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze Widget.
+     * \brief Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidget.
      * \param event.
      */
     void mousePressEvent(QMouseEvent *event) override;
     /*!
-     * \brief Is used for handle mouse wheel event for scale maze in w_Maze Widget.
+     * \brief Is used for handle mouse wheel event for scale maze in w_Maze QWidget.
      * \param event.
      */
     void wheelEvent(QWheelEvent * event) override;
 private slots:
     /*!
      * \brief Its called when new data arrives from QSerialPort.
+     * Detects if arrived data are command or normal message.
+     * Calls LVL2CommunicationHub function wgen command data arrived.
      */
     void readFromPort();
     /*!
@@ -149,18 +154,18 @@ private slots:
      */
     void on_pB_Mic_clicked();
     /*!
-     * \brief Initalize the maze.
+     * \brief Initalize the \link Maze \endlink class instance.
      * Maze will be generated based on size from sB_MazeSize QSpinBox.
      */
     void on_pB_MazeGen_clicked();
     /*!
-     * \brief Toggles feature of drawing path values in w_Maze Widget.
+     * \brief Toggles feature of drawing path values in w_Maze QWidget.
      * \param When true function enables drawing, otherwise disables drawing.
      */
     void on_cB_ShowText_toggled(bool checked);
     /*!
      * \brief Toggles manual mode.
-     * Manual mode enables to set targets for to the robot in maze.
+     * Manual mode enables to set targets for to the robot in \link Maze \endlink class instance.
      * \param When true manual mode is enabled, otherwise disabled.
      */
     void on_cB_Manual_toggled(bool checked);
@@ -197,17 +202,17 @@ public slots:
     void UpdateSR();
     /*!
      * \brief Calls sendFunctionToDevice(QByteArray).
-     * Connected to SIGNAL(SendFunctionSig(QByteArray) of micromouse thread class.
+     * Connected to SIGNAL(SendFunctionSig(QByteArray) of \link Micromouse \endlink thread class instance.
      */
     void SendFunctionSlot(QByteArray);
     /*!
-     * \brief Calls repaint function of w_Maze Widget.
-     * Conneted to SIGNAL(UpdateMazeSig()) of micromouse thread class.
+     * \brief Calls repaint function of w_Maze QWidget.
+     * Conneted to SIGNAL(UpdateMazeSig()) of \link Micromouse \endlink thread class instance.
      */
     void UpdateMazeSlot();
     /*!
      * \brief Appends message and date to tE_MicLog QTextEdit
-     * Connected to SIGNAL(LogSig(QString)) of micromouse thread class
+     * Connected to SIGNAL(LogSig(QString)) of \link Micromouse \endlink thread class instance.
      */
     void LogSlot(QString);
     /*!
@@ -221,41 +226,110 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    /*!
+     * \brief Instance of /link AccelGyro /endlink class, obsolete.
+     */
     AccelGyro AG;
+    /*!
+     * \brief Instances of /link AccelGyroChart /endlink class.
+     */
     AccelGyroChart AccelChart, GyroChart;
+    /*!
+     * \brief /link Maze /endlink class instance.
+     */
     Maze maze;
+    /*!
+     * \brief link Micromouse /endlink thread class instance
+     */
     Micromouse *mic;
-    /////////////////////////_LVL 0_/////////////////////////
+    /*!
+     * \brief Appends log with date to tE_Log QTextEdit
+     * \param Message to send
+     */
     void addToLogs(QString message);
+    /*!
+     * \brief Sends simple message to the robot.
+     * \param Message as QString.
+     */
     void sendMessageToDevice(QString message);
+    /*!
+     * \brief This function recognises commands and calls corresponding function.
+     * \param Qmessage as unsigned chars.
+     */
     void LVL2CommunicationHub(QByteArray Data);
+    /*!
+     * \brief Sends command to the robot.
+     * \param Lenght of array is determined by protocol function, see #defines.
+     */
     void sendFunctionToDevice(QByteArray Data);
+    /*!
+     * \brief Used for calculate samples rate per second.
+     */
     QTimer *timer;
+    /*!
+     * \brief Device, used for communication with bridge.
+     */
     QSerialPort *device;
+    /*!
+     * \brief Samples counter, used for display samples rate per second.
+     */
     int Samples = 0;
-    /////////////////////////_LVL 1_/////////////////////////
+    /*!
+     * \brief Appends and scales data to charts.
+     */
     void UpdateCharts();
+    /*!
+     * \brief When true, charts will stop when count reach to the maximum, otherwise series will be reseted.
+     */
     bool IsGraphRunning = true;
-    bool IsGraphIntegration = false;
-    //float IntParam = 1;
-    /////////////////////////_LVL 2_/////////////////////////
-    void SetSpeed(int x, int y);
-    void ProgramChecker(double data[6]);
+    /*!
+     * \brief Initalize values for move and rotation command
+     */
     void InitLvl2();
+    /*!
+     * \brief Calls FunctionReturn(val) i \link Micromouse \endlink class instance
+     * \param returned vale from the robot.
+     */
     void FunctionReturn(short val);
-    //QTimer *DelayTimer;
-    bool ProgramIsRunning = false;
-    int AGReachLimit[7];
-    bool Direction = false;
+    /*!
+     * \brief Stores start PWM value for move command.
+     */
     int MoveStartSpeed;
+    /*!
+     * \brief Stores maximum PWM value for move command.
+     */
     int MoveMaxSpeed;
+    /*!
+     * \brief Stores start PWM value for rotation command.
+     */
     int RotStartSeepd;
+    /*!
+     * \brief Stores maximum PWM value for rotation command.
+     */
     int RotMaxSpeed;
+    /*!
+     * \brief Acceleration PWM value
+     */
     int Accel;
-    int Distance_m;
+    /*!
+     * \brief Distance value in centimeters for manual controlling
+     */
+    int Distance_cm;
+    /*!
+     * \brief Rotation value in deegres for manual controlling.
+     */
     int Degree_deg;
+    /*!
+     * \brief Stop condition value in m/s2
+     */
     double ALimit_m_s2;
+    /*!
+     * \brief State of \link Micromouse \endlink thread
+     */
     bool MicIsRinning = false;
+    /*!
+     * \brief Path to home directory of application where icons are stored.
+     */
     QString path = "D:/0.GitProjects/WizualizacjaSM/Test_03";
 };
 #endif // MAINWINDOW_H
