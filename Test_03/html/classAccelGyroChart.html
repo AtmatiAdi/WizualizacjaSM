@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classAccelGyroChart.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -74,14 +94,6 @@ $(function() {
  <a href="classAccelGyroChart.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="accelgyrochart_8h_source.html">accelgyrochart.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for AccelGyroChart:</div>
-<div class="dyncontent">
-<div class="center"><img src="classAccelGyroChart__coll__graph.png" border="0" usemap="#AccelGyroChart_coll__map" alt="Collaboration graph"/></div>
-<map name="AccelGyroChart_coll__map" id="AccelGyroChart_coll__map">
-<area shape="rect" title="This class is used for Initialize charts and append data to it." alt="" coords="5,5,140,303"/>
-</map>
-</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -174,8 +186,8 @@ QValueAxis *&#160;</td><td class="memItemRight" valign="bottom"><b>YAxis</b></td
 <p>Append new data to chart series and displays it, if count reach to limit, resets series. This function will append ony 3 values of data array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>array, minimum 3 values. </td></tr>
-    <tr><td class="paramname">index</td><td>of first value data array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Array of data to append, minimum 3 values. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">start</td><td>Index of first value data array. </td></tr>
   </table>
   </dd>
 </dl>
@@ -188,7 +200,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Append new data to chart series and displays it, if count reach to limit, resets series...." alt="" coords="1003,13,1169,39"/>
 <area shape="rect" href="classMainWindow.html#a2501dae821d7c4579b159a5a5f05a264" title="Appends and scales data to charts." alt="" coords="772,13,955,39"/>
 <area shape="rect" href="classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="477,13,724,39"/>
-<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,13,429,39"/>
+<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="247,13,429,39"/>
 <area shape="rect" href="classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
 </map>
 </div>
@@ -230,9 +242,9 @@ Here is the caller graph for this function:</div>
 <p>Initalizes chart, units are not defined here. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Maximum</td><td>measurement count. </td></tr>
-    <tr><td class="paramname">Y</td><td>axis minimum value. </td></tr>
-    <tr><td class="paramname">X</td><td>axis maximum value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">limit</td><td>Maximum measurement count. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">min</td><td>Y axis minimum value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max</td><td>X axis maximum value. </td></tr>
   </table>
   </dd>
 </dl>
@@ -258,11 +270,15 @@ Here is the caller graph for this function:</div>
 <li>accelgyrochart.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.18
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classAccelGyroChart.html">AccelGyroChart</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
 </body>
 </html>

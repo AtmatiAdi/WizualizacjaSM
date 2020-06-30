@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classMaze.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Maze Member List</div>  </div>
@@ -82,16 +102,16 @@ $(function() {
   <tr><td class="entry"><a class="el" href="classMaze.html#aee04f37c7e19138e8aea285f6efc5315">IsTextEnabled</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classMaze.html#a661c42b551f461dc1c645c9e757e71df">ManualEnable</a>(bool enable)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>Maze</b>() (defined in <a class="el" href="classMaze.html">Maze</a>)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classMaze.html#ab97b0950b706b60e6345bff10861ba91">MovResult</a>(int mov, int res)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973">MovResult</a>(int mov_cm, int res_cm)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classMaze.html#a2b4bb709eec3d00efa5d0939c9792e45">PixSize_px</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classMaze.html#af6ac1cd73cc6e1b9c053b3b859e91ec0">Reset</a>()</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classMaze.html#a22c09c03e8b30edc98ec16ee03ed54ea">Resize</a>(int size_px)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Robot</b> (defined in <a class="el" href="classMaze.html">Maze</a>)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMaze.html#a9bb271bb8be1f93b181fffa43e1a7444">Robot</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="classMaze.html#a8734cd92b9bd8bbd4294b1395afd1036">RobotRot_deg</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classMaze.html#af69db422061b7d03f4111c49f04e9e4d">RobotSize_cm</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="classMaze.html#a24695db4f613ba442ff8f701ff2e6570">RobotX_cm</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classMaze.html#afe5d1c4bcd9a699c51d71a933162cb4e">RobotY_cm</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classMaze.html#a142163f942d6d5fd58172723b1ce4de2">Rotate</a>(int rot_deg)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMaze.html#a721467b20f98ed20e588eeef947477b3">Rotate</a>(int angle_deg)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046">SetBegin</a>(int x, int y)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09">SetEnd</a>(int x, int y)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classMaze.html#ab7d56db16b057cda15587e9b3d52cddb">SetTarget</a>(int x, int y)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
@@ -100,11 +120,14 @@ $(function() {
   <tr><td class="entry"><a class="el" href="classMaze.html#a61d46a291de531d3c1841624ec2aecff">Size</a></td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classMaze.html#a68ef1c13577f7ce02456c6dde0947a8e">TextEnabled</a>(bool enable)</td><td class="entry"><a class="el" href="classMaze.html">Maze</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.18
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
 </body>
 </html>

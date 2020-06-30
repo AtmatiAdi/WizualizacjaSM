@@ -1,21 +1,21 @@
 <map id="Maze::GetVal" name="Maze::GetVal">
 <area shape="rect" id="node1" title="Gets vale of specified 2 bits." alt="" coords="687,275,789,301"/>
 <area shape="rect" id="node2" href="$classMaze.html#ad310092201d2cb6e6e88862b438cd9b2" title="Draws maze and robot on QWidget." alt="" coords="516,9,639,36"/>
-<area shape="rect" id="node4" href="$classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="520,173,635,200"/>
+<area shape="rect" id="node4" href="$classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="520,173,635,200"/>
 <area shape="rect" id="node5" href="$classMaze.html#a661c42b551f461dc1c645c9e757e71df" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="293,56,437,83"/>
 <area shape="rect" id="node9" href="$classMaze.html#ab7d56db16b057cda15587e9b3d52cddb" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="306,376,425,403"/>
-<area shape="rect" id="node11" href="$classMaze.html#aeda787a62e587557c83d062e5394f6ba" title="Returns distance from robot to last field of all same direction fields." alt="" coords="299,224,432,251"/>
-<area shape="rect" id="node12" href="$classMaze.html#ac62b495006239af7105ef57e63c3261e" title="Returns rotaion to next path field." alt="" coords="300,275,431,301"/>
+<area shape="rect" id="node11" href="$classMaze.html#aeda787a62e587557c83d062e5394f6ba" title="Returns distance from the robot to last field of all same direction fields." alt="" coords="299,224,432,251"/>
+<area shape="rect" id="node12" href="$classMaze.html#ac62b495006239af7105ef57e63c3261e" title="Returns angle to next path field." alt="" coords="300,275,431,301"/>
 <area shape="rect" id="node13" href="$classMaze.html#a934417b883b23fc9d944cd2f70a8cdc4" title="Checks if /link Maze /endlink have start and finish field." alt="" coords="523,119,632,145"/>
-<area shape="rect" id="node14" href="$classMaze.html#af6ac1cd73cc6e1b9c053b3b859e91ec0" title="Sets position of the robot to the start field in /link Maze /endlink." alt="" coords="529,532,625,559"/>
-<area shape="rect" id="node16" href="$classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="520,427,635,453"/>
-<area shape="rect" id="node17" href="$classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="525,477,630,504"/>
+<area shape="rect" id="node14" href="$classMaze.html#af6ac1cd73cc6e1b9c053b3b859e91ec0" title="Sets position of the robot to the start field in maze." alt="" coords="529,532,625,559"/>
+<area shape="rect" id="node16" href="$classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells for QWidget and will remove old start field." alt="" coords="520,427,635,453"/>
+<area shape="rect" id="node17" href="$classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells for QWidget, you can set multiple finish fields." alt="" coords="525,477,630,504"/>
 <area shape="rect" id="node18" href="$classMaze.html#a1c4e0acd6d49a6d6550509abd1705076" title="Sets Wall in a cell." alt="" coords="523,325,631,352"/>
 <area shape="rect" id="node3" href="$classMainWindow.html#ade305265b2120df2489a5ebeb07ebbe1" title="Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget." alt="" coords="284,5,447,32"/>
 <area shape="rect" id="node7" href="$classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="281,107,450,149"/>
-<area shape="rect" id="node8" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="51,249,169,276"/>
+<area shape="rect" id="node8" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="51,249,169,276"/>
 <area shape="rect" id="node6" href="$classMainWindow.html#a2255bba1350b2432c13819e01b2d559d" title="Toggles manual mode. Manual mode enables to set targets for to the robot in Maze class instance." alt="" coords="15,49,205,90"/>
 <area shape="rect" id="node10" href="$classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,427,215,453"/>
 <area shape="rect" id="node15" href="$classMainWindow.html#a8f901ac7ff503de8050a0c056101f896" title="Resets position of the robot in maze to start position." alt="" coords="263,529,468,570"/>
-<area shape="rect" id="node19" href="$classMaze.html#ab97b0950b706b60e6345bff10861ba91" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="304,325,427,352"/>
+<area shape="rect" id="node19" href="$classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="304,325,427,352"/>
 </map>

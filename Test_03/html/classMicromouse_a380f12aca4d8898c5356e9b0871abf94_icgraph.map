@@ -1,0 +1,6 @@
+<map id="Micromouse::LogSig" name="Micromouse::LogSig">
+<area shape="rect" id="node1" title="This slot is connetced to SLOT(MainWindow::LogSlot(QString)) in MainWindow. Sends QString to append t..." alt="" coords="359,56,500,83"/>
+<area shape="rect" id="node2" href="$classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b" title="Sends to the robot move command by calling SendFunctionSig, Function wil repeat command untill ralue ..." alt="" coords="176,5,307,32"/>
+<area shape="rect" id="node3" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,56,124,83"/>
+<area shape="rect" id="node4" href="$classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8" title="Sends to the robot rotation command by calling SendFunctionSig,." alt="" coords="172,107,311,133"/>
+</map>

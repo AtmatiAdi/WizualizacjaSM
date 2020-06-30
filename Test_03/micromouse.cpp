@@ -40,8 +40,8 @@ void Micromouse::run(){
         Val_deg = MyMaze->GetPathRot();
         //emit LogSig("Rot" + QString::number(Val));
         if ((Val_deg > 5) || (Val_deg < -5)) {
-            if (Val_deg > 0) Offset = 2;
-            else Offset = -2;
+            if (Val_deg > 0) Offset = 3;
+            else Offset = -3;
             emit LogSig("Rotacja: " + QString::number(Val_deg));
             Res_deg = Rotate(Val_deg-Offset);
             //emit LogSig("Rotacja: " + QString::number(Res_deg));
@@ -129,9 +129,9 @@ short Micromouse::Move(short dist_cm){
     return Value * 100.0 *AccelScale;
 }
 
-short Micromouse::Rotate(short deg_deg){
+short Micromouse::Rotate(short angle_deg){
     FunctionReurned = false;
-    int Deg = deg_deg * (32768.0/500.0);
+    int Deg = angle_deg * (32768.0/500.0);
     QByteArray Data;
     Data.resize(9);
     Data[0] = (unsigned char)PROG_ROTATE;
@@ -150,7 +150,7 @@ short Micromouse::Rotate(short deg_deg){
         timeout --;
         if (!timeout) {
             emit LogSig("Powtarzam");
-            Rotate(deg_deg);
+            Rotate(angle_deg);
         }
     }
     return Value * GyroScale;

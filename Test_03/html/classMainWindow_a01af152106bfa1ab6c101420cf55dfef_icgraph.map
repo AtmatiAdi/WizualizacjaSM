@@ -1,6 +1,6 @@
 <map id="MainWindow::FunctionReturn" name="MainWindow::FunctionReturn">
 <area shape="rect" id="node1" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="772,13,964,39"/>
 <area shape="rect" id="node2" href="$classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="477,13,724,39"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,13,429,39"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="247,13,429,39"/>
 <area shape="rect" id="node4" href="$classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
 </map>

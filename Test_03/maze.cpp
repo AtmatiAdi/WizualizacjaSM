@@ -614,9 +614,9 @@ void Maze::MovResult(int mov_cm, int res_cm)
 
 }
 
-void Maze::Rotate(int rot_deg)
+void Maze::Rotate(int angle_deg)
 {
-    RobotRot_deg = (rot_deg + RobotRot_deg) % 360;
+    RobotRot_deg = (angle_deg + RobotRot_deg) % 360;
 }
 
 void Maze::Reset()

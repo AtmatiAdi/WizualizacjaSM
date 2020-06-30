@@ -1,6 +1,6 @@
 <map id="MainWindow::eventFilter" name="MainWindow::eventFilter">
 <area shape="rect" id="node1" title="Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget." alt="" coords="5,31,168,57"/>
 <area shape="rect" id="node2" href="$classMaze.html#ad310092201d2cb6e6e88862b438cd9b2" title="Draws maze and robot on QWidget." alt="" coords="216,31,339,57"/>
-<area shape="rect" id="node3" href="$classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text." alt="" coords="387,5,555,32"/>
+<area shape="rect" id="node3" href="$classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text in widget." alt="" coords="387,5,555,32"/>
 <area shape="rect" id="node4" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="419,56,522,83"/>
 </map>

@@ -1,0 +1,6 @@
+<map id="Micromouse::UpdateMazeSig" name="Micromouse::UpdateMazeSig">
+<area shape="rect" id="node1" title="This signal is connected to SLOT(MainWindow::UpdateMazeSlot()) in MainWindow. Calls repaint event to ..." alt="" coords="389,38,583,65"/>
+<area shape="rect" id="node2" href="$classMicromouse.html#a0f42f7b8a3c40da7e0e86be76dacf5f6" title="Gets pointer to Maze and AccelGyro instance from MainWindow and stores it in MyMaze and MyAg ." alt="" coords="223,13,341,39"/>
+<area shape="rect" id="node4" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="223,63,341,90"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="5,5,175,47"/>
+</map>

@@ -1,7 +1,7 @@
 <map id="MainWindow::addToLogs" name="MainWindow::addToLogs">
 <area shape="rect" id="node1" title="Appends log with date to tE_Log QTextEdit." alt="" coords="832,107,999,133"/>
 <area shape="rect" id="node2" href="$classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="537,5,784,32"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="279,56,461,83"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="279,56,461,83"/>
 <area shape="rect" id="node4" href="$classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="7,74,201,115"/>
 <area shape="rect" id="node5" href="$classMainWindow.html#ab97934778ea081220890b36bca9d6aad" title="Sends command to the robot." alt="" coords="569,386,752,427"/>
 <area shape="rect" id="node15" href="$classMainWindow.html#ac455e906758ff6a5967d66a3c55f507c" title="Sends simple message to the robot." alt="" coords="561,593,760,634"/>

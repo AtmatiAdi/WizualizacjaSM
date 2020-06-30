@@ -32,17 +32,19 @@ public:
     AccelGyroChart();
     /*!
      * \brief Initalizes chart, units are not defined here.
-     * \param Maximum measurement count.
-     * \param Y axis minimum value.
-     * \param X axis maximum value.
+     *
+     * \param[in] limit Maximum measurement count.
+     * \param[in] min Y axis minimum value.
+     * \param[in] max X axis maximum value.
      * \return Pointer to initalized QChart to set in QWidget
      */
     QChart* Init(int limit, double min, double max);
     /*!
      * \brief Append new data to chart series and displays it, if count reach to limit, resets series.
      * This function will append ony 3 values of data array.
-     * \param data array, minimum 3 values.
-     * \param index of first value data array.
+     *
+     * \param[in] data  Array of data to append, minimum 3 values.
+     * \param[in] start Index of first value data array.
      * \return
      */
     bool Append(double data[], int start);

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classMainWindow.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
@@ -77,29 +97,6 @@ $(function() {
  <a href="classMainWindow.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for MainWindow:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMainWindow__inherit__graph.png" border="0" usemap="#MainWindow_inherit__map" alt="Inheritance graph"/></div>
-<map name="MainWindow_inherit__map" id="MainWindow_inherit__map">
-<area shape="rect" title="The MainWindow class its base class of the application." alt="" coords="5,131,224,780"/>
-<area shape="rect" title=" " alt="" coords="61,5,168,83"/>
-</map>
-</div>
-<div class="dynheader">
-Collaboration diagram for MainWindow:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMainWindow__coll__graph.png" border="0" usemap="#MainWindow_coll__map" alt="Collaboration graph"/></div>
-<map name="MainWindow_coll__map" id="MainWindow_coll__map">
-<area shape="rect" title="The MainWindow class its base class of the application." alt="" coords="168,887,387,1595"/>
-<area shape="rect" title=" " alt="" coords="5,607,112,685"/>
-<area shape="rect" href="classAccelGyro.html" title="This class is obsolete, but in future can be useful." alt="" coords="79,35,214,391"/>
-<area shape="rect" href="classMicromouse.html" title="The Micromouse thread class. This class communicates with MainWindow by signals, can send move and ro..." alt="" coords="212,483,343,809"/>
-<area shape="rect" title=" " alt="" coords="238,174,309,251"/>
-<area shape="rect" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter..." alt="" coords="333,5,477,420"/>
-<area shape="rect" href="classAccelGyroChart.html" title="This class is used for Initialize charts and append data to it." alt="" coords="462,497,597,795"/>
-</map>
-</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
@@ -231,9 +228,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a024f3778da1efc309bc157a957c6d5a8">on_tB_Refresh_clicked</a> ()</td></tr>
 <tr class="memdesc:a024f3778da1efc309bc157a957c6d5a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close QSerialPort and places all found devices into QComboBox Items. <br /></td></tr>
 <tr class="separator:a024f3778da1efc309bc157a957c6d5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f11195758f78967e670779c4535708"><td class="memItemLeft" align="right" valign="top"><a id="a42f11195758f78967e670779c4535708"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a42f11195758f78967e670779c4535708">readFromPort</a> ()</td></tr>
-<tr class="memdesc:a42f11195758f78967e670779c4535708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal message. Calls LVL2CommunicationHub function wgen command data arrived. <br /></td></tr>
+<tr class="memitem:a42f11195758f78967e670779c4535708"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a42f11195758f78967e670779c4535708">readFromPort</a> ()</td></tr>
+<tr class="memdesc:a42f11195758f78967e670779c4535708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Its called when new data arrives from QSerialPort.  <a href="classMainWindow.html#a42f11195758f78967e670779c4535708">More...</a><br /></td></tr>
 <tr class="separator:a42f11195758f78967e670779c4535708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -372,7 +368,7 @@ Ui::MainWindow *&#160;</td><td class="memItemRight" valign="bottom"><b>ui</b></t
 <p>Appends log with date to tE_Log QTextEdit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Message</td><td>to send </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">message</td><td>Message to send </td></tr>
   </table>
   </dd>
 </dl>
@@ -383,7 +379,7 @@ Here is the caller graph for this function:</div>
 <map name="classMainWindow_a4d32584efa9a8d85570c911a76882c2e_icgraph" id="classMainWindow_a4d32584efa9a8d85570c911a76882c2e_icgraph">
 <area shape="rect" title="Appends log with date to tE_Log QTextEdit." alt="" coords="832,107,999,133"/>
 <area shape="rect" href="classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="537,5,784,32"/>
-<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="279,56,461,83"/>
+<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="279,56,461,83"/>
 <area shape="rect" href="classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="7,74,201,115"/>
 <area shape="rect" href="classMainWindow.html#ab97934778ea081220890b36bca9d6aad" title="Sends command to the robot." alt="" coords="569,386,752,427"/>
 <area shape="rect" href="classMainWindow.html#ac455e906758ff6a5967d66a3c55f507c" title="Sends simple message to the robot." alt="" coords="561,593,760,634"/>
@@ -440,8 +436,8 @@ Here is the caller graph for this function:</div>
 <p>Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">watched.</td><td></td></tr>
-    <tr><td class="paramname">event.</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">watched.</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">event.</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -453,7 +449,7 @@ Here is the call graph for this function:</div>
 <map name="classMainWindow_ade305265b2120df2489a5ebeb07ebbe1_cgraph" id="classMainWindow_ade305265b2120df2489a5ebeb07ebbe1_cgraph">
 <area shape="rect" title="Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget." alt="" coords="5,31,168,57"/>
 <area shape="rect" href="classMaze.html#ad310092201d2cb6e6e88862b438cd9b2" title="Draws maze and robot on QWidget." alt="" coords="216,31,339,57"/>
-<area shape="rect" href="classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text." alt="" coords="387,5,555,32"/>
+<area shape="rect" href="classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text in widget." alt="" coords="387,5,555,32"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="419,56,522,83"/>
 </map>
 </div>
@@ -487,7 +483,7 @@ Here is the call graph for this function:</div>
 <p>Calls FunctionReturn(val) i <a class="el" href="classMicromouse.html">Micromouse</a> class instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">returned</td><td>vale from the robot. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>Returned vale from the robot. </td></tr>
   </table>
   </dd>
 </dl>
@@ -507,7 +503,7 @@ Here is the caller graph for this function:</div>
 <map name="classMainWindow_a01af152106bfa1ab6c101420cf55dfef_icgraph" id="classMainWindow_a01af152106bfa1ab6c101420cf55dfef_icgraph">
 <area shape="rect" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="772,13,964,39"/>
 <area shape="rect" href="classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="477,13,724,39"/>
-<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,13,429,39"/>
+<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="247,13,429,39"/>
 <area shape="rect" href="classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
 </map>
 </div>
@@ -569,7 +565,7 @@ Here is the caller graph for this function:</div>
 <p>This function recognises commands and calls corresponding function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Qmessage</td><td>as unsigned chars. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Data</td><td>Qmessage as unsigned chars. </td></tr>
   </table>
   </dd>
 </dl>
@@ -592,7 +588,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classMainWindow_a84af5cdf379765d0578340a8321d365a_icgraph.png" border="0" usemap="#classMainWindow_a84af5cdf379765d0578340a8321d365a_icgraph" alt=""/></div>
 <map name="classMainWindow_a84af5cdf379765d0578340a8321d365a_icgraph" id="classMainWindow_a84af5cdf379765d0578340a8321d365a_icgraph">
 <area shape="rect" title="This function recognises commands and calls corresponding function." alt="" coords="477,13,724,39"/>
-<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,13,429,39"/>
+<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="247,13,429,39"/>
 <area shape="rect" href="classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
 </map>
 </div>
@@ -626,7 +622,7 @@ Here is the caller graph for this function:</div>
 <p>Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event.</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">event.</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -636,12 +632,12 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classMainWindow_a1dff511c9697cbcb60150894f480b9c8_cgraph.png" border="0" usemap="#classMainWindow_a1dff511c9697cbcb60150894f480b9c8_cgraph" alt=""/></div>
 <map name="classMainWindow_a1dff511c9697cbcb60150894f480b9c8_cgraph" id="classMainWindow_a1dff511c9697cbcb60150894f480b9c8_cgraph">
 <area shape="rect" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,127,215,153"/>
-<area shape="rect" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="429,127,544,153"/>
-<area shape="rect" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="434,177,539,204"/>
+<area shape="rect" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells for QWidget and will remove old start field." alt="" coords="429,127,544,153"/>
+<area shape="rect" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells for QWidget, you can set multiple finish fields." alt="" coords="434,177,539,204"/>
 <area shape="rect" href="classMaze.html#ab7d56db16b057cda15587e9b3d52cddb" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="263,51,381,77"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="592,39,695,65"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="593,115,694,141"/>
-<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="429,25,544,52"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="593,115,694,141"/>
+<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="429,25,544,52"/>
 </map>
 </div>
 
@@ -674,7 +670,7 @@ Here is the call graph for this function:</div>
 <p>Its called when new dewice is sellected. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Current</td><td>selected item. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Current</td><td>selected item. </td></tr>
   </table>
   </dd>
 </dl>
@@ -685,7 +681,7 @@ Here is the call graph for this function:</div>
 <map name="classMainWindow_a4b0c1bada9e194139e65ae07c581e41c_cgraph" id="classMainWindow_a4b0c1bada9e194139e65ae07c581e41c_cgraph">
 <area shape="rect" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
 <area shape="rect" href="classMainWindow.html#a4d32584efa9a8d85570c911a76882c2e" title="Appends log with date to tE_Log QTextEdit." alt="" coords="785,38,951,65"/>
-<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,38,429,65"/>
+<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="247,38,429,65"/>
 <area shape="rect" href="classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="477,89,724,115"/>
 <area shape="rect" href="classMainWindow.html#a01af152106bfa1ab6c101420cf55dfef" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="772,89,964,115"/>
 <area shape="rect" href="classMainWindow.html#a2501dae821d7c4579b159a5a5f05a264" title="Appends and scales data to charts." alt="" coords="777,139,959,166"/>
@@ -723,7 +719,7 @@ Here is the call graph for this function:</div>
 <p>Toggles manual mode. Manual mode enables to set targets for to the robot in <a class="el" href="classMaze.html">Maze</a> class instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">When</td><td>true manual mode is enabled, otherwise disabled. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">checked</td><td>When true manual mode is enabled, otherwise disabled. </td></tr>
   </table>
   </dd>
 </dl>
@@ -734,9 +730,9 @@ Here is the call graph for this function:</div>
 <map name="classMainWindow_a2255bba1350b2432c13819e01b2d559d_cgraph" id="classMainWindow_a2255bba1350b2432c13819e01b2d559d_cgraph">
 <area shape="rect" title="Toggles manual mode. Manual mode enables to set targets for to the robot in Maze class instance." alt="" coords="5,23,196,65"/>
 <area shape="rect" href="classMaze.html#a661c42b551f461dc1c645c9e757e71df" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="244,31,388,57"/>
-<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="436,31,551,57"/>
+<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="436,31,551,57"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="599,5,701,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="599,68,701,95"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="599,68,701,95"/>
 </map>
 </div>
 
@@ -769,7 +765,7 @@ Here is the call graph for this function:</div>
 <p>Toggles feature of drawing path values in w_Maze QWidget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">When</td><td>true function enables drawing, otherwise disables drawing. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">checked</td><td>When true function enables drawing, otherwise disables drawing. </td></tr>
   </table>
   </dd>
 </dl>
@@ -812,7 +808,7 @@ Here is the call graph for this function:</div>
 <p>Sets ALimit_m_s2 value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Meters</td><td>per second squared. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>Meters per second squared. </td></tr>
   </table>
   </dd>
 </dl>
@@ -846,7 +842,7 @@ Here is the call graph for this function:</div>
 <p>Sends to the robot request of acceleration data from measurements types. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Only</td><td>if checked = true. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">checked</td><td>Only if checked = true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -891,7 +887,7 @@ Here is the call graph for this function:</div>
 <p>Sends to the robot request of distance data from measurements types. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Only</td><td>if checked = true. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">checked</td><td>Only if checked = true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -936,7 +932,7 @@ Here is the call graph for this function:</div>
 <p>Sends to the robot request of velocity data from measurements types. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Only</td><td>if checked = true. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">checked</td><td>Only if checked = true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -981,7 +977,7 @@ Here is the call graph for this function:</div>
 <p>Sets Accel value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">PWM</td><td>value 0 - 1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>PWM value 0 - 1024. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1015,7 +1011,7 @@ Here is the call graph for this function:</div>
 <p>Sets MoveMaxSpeed value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">PWM</td><td>value 0 - 1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>PWM value 0 - 1024. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1049,7 +1045,7 @@ Here is the call graph for this function:</div>
 <p>Sets MoveStartSpeed value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">PWM</td><td>value 0 - 1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>PWM value 0 - 1024. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1083,7 +1079,7 @@ Here is the call graph for this function:</div>
 <p>Sets RotMaxSpeed value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">PWM</td><td>value 0 - 1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>PWM value 0 - 1024. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1117,7 +1113,7 @@ Here is the call graph for this function:</div>
 <p>Sets Degree_deg value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Deegres.</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">1rg1</td><td>Angle i degrees. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1151,7 +1147,7 @@ Here is the call graph for this function:</div>
 <p>Sets RotStartSeepd value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">PWM</td><td>value 0 - 1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>PWM value 0 - 1024. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1185,10 +1181,61 @@ Here is the call graph for this function:</div>
 <p>Sets Distance_m value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Meters</td><td>0 - 100. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>Meters 0 - 100. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a42f11195758f78967e670779c4535708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f11195758f78967e670779c4535708">&#9670;&nbsp;</a></span>readFromPort</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::readFromPort </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Its called when new data arrives from QSerialPort. </p>
+<p>Detects if arrived data are command or normal message. Calls LVL2CommunicationHub function wgen command data arrived. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMainWindow_a42f11195758f78967e670779c4535708_cgraph.png" border="0" usemap="#classMainWindow_a42f11195758f78967e670779c4535708_cgraph" alt=""/></div>
+<map name="classMainWindow_a42f11195758f78967e670779c4535708_cgraph" id="classMainWindow_a42f11195758f78967e670779c4535708_cgraph">
+<area shape="rect" title="Its called when new data arrives from QSerialPort." alt="" coords="5,31,188,57"/>
+<area shape="rect" href="classMainWindow.html#a4d32584efa9a8d85570c911a76882c2e" title="Appends log with date to tE_Log QTextEdit." alt="" coords="543,5,710,32"/>
+<area shape="rect" href="classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="236,56,483,83"/>
+<area shape="rect" href="classMainWindow.html#a01af152106bfa1ab6c101420cf55dfef" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="531,56,723,83"/>
+<area shape="rect" href="classMainWindow.html#a2501dae821d7c4579b159a5a5f05a264" title="Appends and scales data to charts." alt="" coords="535,107,718,133"/>
+<area shape="rect" href="classMicromouse.html#aff4965481ec5fa15e5d653bbfe385b0b" title="When MainWindow gets return value from the robot just calls this function." alt="" coords="771,56,960,83"/>
+<area shape="rect" href="classAccelGyroChart.html#a65d91403c1b8729e9c1b15e20a2450bb" title="Append new data to chart series and displays it, if count reach to limit, resets series...." alt="" coords="782,107,949,133"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMainWindow_a42f11195758f78967e670779c4535708_icgraph.png" border="0" usemap="#classMainWindow_a42f11195758f78967e670779c4535708_icgraph" alt=""/></div>
+<map name="classMainWindow_a42f11195758f78967e670779c4535708_icgraph" id="classMainWindow_a42f11195758f78967e670779c4535708_icgraph">
+<area shape="rect" title="Its called when new data arrives from QSerialPort." alt="" coords="247,13,429,39"/>
+<area shape="rect" href="classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1219,7 +1266,7 @@ Here is the call graph for this function:</div>
 <p>Sends command to the robot. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Lenght</td><td>of array is determined by protocol function, see #defines. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Data</td><td>Lenght of array is determined by protocol function, see #defines. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1279,7 +1326,7 @@ Here is the caller graph for this function:</div>
 <p>Sends simple message to the robot. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Message</td><td>as QString. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">message</td><td>Message to send. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1332,7 +1379,7 @@ Here is the caller graph for this function:</div>
 <p>Is used for handle mouse wheel event for scale maze in w_Maze QWidget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event.</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">event.</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -1353,11 +1400,15 @@ Here is the call graph for this function:</div>
 <li>mainwindow.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.18
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classMainWindow.html">MainWindow</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
 </body>
 </html>

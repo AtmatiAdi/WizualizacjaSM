@@ -1,4 +1,4 @@
 <map id="Maze::GetPathRot" name="Maze::GetPathRot">
-<area shape="rect" id="node1" title="Returns rotaion to next path field." alt="" coords="5,5,136,32"/>
+<area shape="rect" id="node1" title="Returns angle to next path field." alt="" coords="5,5,136,32"/>
 <area shape="rect" id="node2" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="184,5,287,32"/>
 </map>

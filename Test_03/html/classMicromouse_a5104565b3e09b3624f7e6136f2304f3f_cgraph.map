@@ -1,0 +1,13 @@
+<map id="Micromouse::run" name="Micromouse::run">
+<area shape="rect" id="node1" title="main thread loop." alt="" coords="5,157,124,184"/>
+<area shape="rect" id="node2" href="$classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="368,107,483,133"/>
+<area shape="rect" id="node5" href="$classMaze.html#aeda787a62e587557c83d062e5394f6ba" title="Returns distance from the robot to last field of all same direction fields." alt="" coords="359,5,492,32"/>
+<area shape="rect" id="node6" href="$classMaze.html#ac62b495006239af7105ef57e63c3261e" title="Returns angle to next path field." alt="" coords="360,56,491,83"/>
+<area shape="rect" id="node7" href="$classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b" title="Sends to the robot move command by calling SendFunctionSig, Function wil repeat command untill ralue ..." alt="" coords="176,208,307,235"/>
+<area shape="rect" id="node8" href="$classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="180,157,303,184"/>
+<area shape="rect" id="node10" href="$classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8" title="Sends to the robot rotation command by calling SendFunctionSig,." alt="" coords="172,259,311,285"/>
+<area shape="rect" id="node11" href="$classMaze.html#a721467b20f98ed20e588eeef947477b3" title="Sum value of RobotRot_deg with input parameter and trim this value to 360." alt="" coords="191,309,291,336"/>
+<area shape="rect" id="node3" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="540,81,643,108"/>
+<area shape="rect" id="node4" href="$classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="541,132,642,159"/>
+<area shape="rect" id="node9" href="$classMaze.html#a1c4e0acd6d49a6d6550509abd1705076" title="Sets Wall in a cell." alt="" coords="371,157,479,184"/>
+</map>

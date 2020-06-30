@@ -34,60 +34,72 @@ public:
     explicit Micromouse(QObject *parent = 0);
     /*!
      * \brief main thread loop.
-     * Simple algorithm gets current distance and rotation to next path cell and simple sends command to the robot.
-     * This function continuously check if IsRunning is true to execute algorithm. If you set IsRunning to false this function will break the loop,
+     *
+     * Algorithm gets current distance and rotation to next path cell and simple sends command to the robot from \link Maze \endlink class instance.
+     * This function continuously check if \link IsRunning \endlink = true to execute algorithm. If you set IsRunning to false this function will execute to end and skip loop to finish thread,
      * all informations are saved and you can start micromouse thread again.
      * For better results of reaching to the  target, improve this function.
      */
     void run() override;
     /*!
-     * \brief Sets IsRunning to false.
+     * \brief Sets \link IsRunning \endlink to false. Main loop will execute to end and skip loop to finish thread.
      */
     void Stop();
     /*!
-     * \brief Gets pointer to \link Maze \endlink and AccelGyro instance from \link MainWindow \endlink.
-     * \param \link Maze \endlink class instance.
-     * \param ag class instance, obsolete functionality, only the robot can integrate data from IMU.
+     * \brief Gets pointer to \link Maze \endlink and AccelGyro instance from \link MainWindow \endlink and stores it in \link MyMaze \endlink
+     * and \link MyAg \endlink .
+     *
+     * \param[in] maze \link Maze \endlink class instance, micromouse class need this pointer to operate on maze.
+     * \param[in] ag   \link AccelGyro \endlink class instance, obsolete functionality, only the robot can integrate data from IMU.
      */
     void Init(Maze *maze, AccelGyro *ag);
     /*!
      * \brief Initalize algorithm settings
-     * \param Move start PWM value
-     * \param Move maximum PWM value
-     * \param Acceleration PWM value
-     * \param Acceleration stop condition in meters per second squared
-     * \param Rotation start PWM value
-     * \param Rotation maximum PWM value
+     *
+     * \param[in] Mstart Starting motor speed for \link Move \endlink command, PWM value range is 0-1024.
+     * \param[in] Mmax   Maximum motor speed for \link Move \endlink command, PWM value range is 0-1024.
+     * \param[in] accel  Starting value is incremented every iteration by accel, for move and rotation command.
+     * \param[in] stop   Condition value, if reached by accelerometer then \link Move \endlink command is stopped.
+     * \param[in] Rstart Starting motor speed for \link Rotate \endlink command, PWM value range is 0-1024.
+     * \param[in] Rmax   Maximum motor speed for \link Rotate \endlink command, PWM value range is 0-1024.
      */
     void Setup(short Mstart, short Mmax, short accel, short stop, short Rstart, short Rmax);
     /*!
      * \brief When \link MainWindow \endlink gets return value from the robot just calls this function.
-     * \param returned vale from robot.
+     *
+     * Return value will be saved and \link FunctionReurned \endlink will be set to true.
+     * When \link Move \endlink and \link Rotate \endlink functions are called, they will wait for returning value form the robot.
+     * \param[in] val Returned vale from robot.
      */
     void FunctionReturn(short val);
 signals:
     /*!
-     * \brief This signal is connected to SLOT(\link SendFunctionSlot(QByteArray)\endlink) in \link MainWindow \endlink.
-     * Just sends commands to the robot.
+     * \brief This signal is connected to SLOT(\link MainWindow::SendFunctionSlot(QByteArray)\endlink) in \link MainWindow \endlink.
+     * Sends command to the robot
+     *
+     * \param[in] QByteArray First byte is command definition value, other bytes depend on protocol definition.
      */
     void SendFunctionSig(QByteArray);
     /*!
-     * \brief This signal is connected to SLOT(\link UpdateMazeSlot() \endlink) in \link MainWindow \endlink.
-     * Just calls repaint event to w_Maze QWidget, use this function if something has changed in \link Maze \endlink instance.
+     * \brief This signal is connected to SLOT(\link MainWindow::UpdateMazeSlot() \endlink) in \link MainWindow \endlink. Calls repaint event to w_Maze QWidget.
+     *
+     * Use this function if something has changed in \link Maze \endlink instance.
      */
     void UpdateMazeSig();
     /*!
-     * \brief This slot is connetced to SLOT(\link LogSlot(QString) \endlink) in \link MainWindow \endlink.
-     * Sends QString and to append to tE_MicLog QTextEdit.
+     * \brief This slot is connetced to SLOT(\link MainWindow::LogSlot(QString) \endlink) in \link MainWindow \endlink.
+     * Sends QString to append to tE_MicLog QTextEdit.
+     *
+     * \param[in] QString Message to append to log window.
      */
     void LogSig(QString);
     /*!
-     * \brief Is connected to SLOT(\link PrepareForRotationSlot() \endlink) in \link MainWindow \endlink.
+     * \brief Is connected to SLOT(\link MainWindow::PrepareForRotationSlot() \endlink) in \link MainWindow \endlink.
      * Changes charts data type to velocity
      */
     void PrepareForRotationSig();
     /*!
-     * \brief Is connected to SLOT(\link PrepareForMoveSlot() \endlink) in \link MainWindow \endlink.
+     * \brief Is connected to SLOT(\link MainWindow::PrepareForMoveSlot() \endlink) in \link MainWindow \endlink.
      * Changes charts data type to distance
      */
     void PrepareForMoveSig();
@@ -95,17 +107,19 @@ private:
     /*!
      * \brief Sends to the robot move command by calling \link SendFunctionSig \endlink,
      * Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout.
-     * \param distance value, range is +-1000 cm.
-     * \return traveled distance by the robot, same range.
+     *
+     * \param[in] dist_cm Distance value to move in straight line by the robot, range is +-1000 cm.
+     * \return Traveled distance by the robot, same range.
      */
     short Move(short dist_cm);
     /*!
      * \brief Sends to the robot rotation command by calling \link SendFunctionSig \endlink,
+     *
      * Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout.
-     * \param deegres value, range is +-500 deg.
-     * \return rotated degrees  by the robot, same range. Better to ignore this value.
+     * \param[in] angle_deg Angle to rotate by the robot, range is +-500 degrees.
+     * \return Rotated degrees  by the robot, same range. Better to ignore this value.
      */
-    short Rotate(short deg_deg);
+    short Rotate(short angle_deg);
     /*!
      * \brief When true, enables main loop, otherwise disables.
      */
@@ -127,23 +141,23 @@ private:
      */
     bool FunctionReurned = false;
     /*!
-     * \brief Stores start PWM value for move command.
+     * \brief Stores starting PWM value for move command, range is 0-1024.
      */
     short MoveStartVal;
     /*!
-     * \brief Stores maximum PWM value for move command.
+     * \brief Stores maximum PWM value for move command, range is 0-1024.
      */
     short MoveMaxVal;
     /*!
-     * \brief Stores acceleration PWM value for move command
+     * \brief Stores acceleration PWM value for move command, range is 0-1024.
      */
     short AccelVal;
     /*!
-     * \brief Stores stop value in meters for move command.
+     * \brief Stores stop condition value in meters for move command.
      */
     short StopVal;
     /*!
-     * \brief Stores start PWM value for rotation command.
+     * \brief Stores startstarting PWM value for rotation command.
      */
     short RotStartVal;
     /*!

@@ -50,24 +50,28 @@ public:
     ~MainWindow();
     /*!
      * \brief Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget.
-     * \param watched.
-     * \param event.
+     *
+     * \param[in] watched.
+     * \param[in] event.
      * \return true if you do not want to have the child widget paint on its own afterwards, otherwise, return false.
      */
     virtual bool eventFilter(QObject* watched, QEvent* event) override;
     /*!
      * \brief Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidget.
-     * \param event.
+     *
+     * \param[in] event.
      */
     void mousePressEvent(QMouseEvent *event) override;
     /*!
      * \brief Is used for handle mouse wheel event for scale maze in w_Maze QWidget.
-     * \param event.
+     *
+     * \param[in] event.
      */
     void wheelEvent(QWheelEvent * event) override;
 private slots:
     /*!
      * \brief Its called when new data arrives from QSerialPort.
+     *
      * Detects if arrived data are command or normal message.
      * Calls LVL2CommunicationHub function wgen command data arrived.
      */
@@ -78,7 +82,8 @@ private slots:
     void on_tB_Refresh_clicked();
     /*!
      * \brief Its called when new dewice is sellected.
-     * \param Current selected item.
+     *
+     * \param[in] Current selected item.
      */
     void on_cB_Devices_currentIndexChanged(int index);
     /*!
@@ -105,32 +110,35 @@ private slots:
     void on_pB_HomeAll_clicked();
     /*!
      * \brief Sends to the robot request of acceleration data from measurements types.
-     * \param Only if checked = true.
+     *
+     * \param[in] checked Only if checked = true.
      */
     void on_rB_Acceleration_clicked(bool checked);
     /*!
      * \brief Sends to the robot request of velocity data from measurements types.
-     * \param Only if checked = true.
+     *
+     * \param[in] checked Only if checked = true.
      */
     void on_rB_Velocity_clicked(bool checked);
     /*!
      * \brief Sends to the robot request of distance data from measurements types.
-     * \param Only if checked = true.
+     *
+     * \param[in] checked Only if checked = true.
      */
     void on_rB_Distance_clicked(bool checked);
     /*!
      * \brief Sets ALimit_m_s2 value.
-     * \param Meters per second squared.
+     * \param[in] arg1 Meters per second squared.
      */
     void on_dSB_Accel_valueChanged(double arg1);
     /*!
      * \brief Sets Accel value.
-     * \param PWM value 0 - 1024.
+     * \param[in] arg1 PWM value 0 - 1024.
      */
     void on_sB_Accel_valueChanged(int arg1);
     /*!
      * \brief Sets Distance_m value.
-     * \param Meters 0 - 100.
+     * \param[in] arg1 Meters 0 - 100.
      */
     void on_spinBox_valueChanged(int arg1);
     /*!
@@ -145,7 +153,7 @@ private slots:
     void on_pB_Build_2_clicked();
     /*!
      * \brief Sets Degree_deg value.
-     * \param Deegres.
+     * \param[in] 1rg1 Angle i degrees.
      */
     void on_sB_Rotation_valueChanged(int arg1);
     /*!
@@ -160,33 +168,34 @@ private slots:
     void on_pB_MazeGen_clicked();
     /*!
      * \brief Toggles feature of drawing path values in w_Maze QWidget.
-     * \param When true function enables drawing, otherwise disables drawing.
+     * \param[in] checked When true function enables drawing, otherwise disables drawing.
      */
     void on_cB_ShowText_toggled(bool checked);
     /*!
      * \brief Toggles manual mode.
      * Manual mode enables to set targets for to the robot in \link Maze \endlink class instance.
-     * \param When true manual mode is enabled, otherwise disabled.
+     *
+     * \param[in] checked When true manual mode is enabled, otherwise disabled.
      */
     void on_cB_Manual_toggled(bool checked);
     /*!
      * \brief Sets MoveMaxSpeed value.
-     * \param PWM value 0 - 1024.
+     * \param[in] arg1 PWM value 0 - 1024.
      */
     void on_sB_MMaxSpeed_valueChanged(int arg1);
     /*!
      * \brief Sets MoveStartSpeed value.
-     * \param PWM value 0 - 1024.
+     * \param[in] arg1 PWM value 0 - 1024.
      */
     void on_sB_MStartSpeed_valueChanged(int arg1);
     /*!
      * \brief Sets RotMaxSpeed value.
-     * \param PWM value 0 - 1024.
+     * \param[in] arg1 PWM value 0 - 1024.
      */
     void on_sB_RMaxSpeed_valueChanged(int arg1);
     /*!
      * \brief Sets RotStartSeepd value.
-     * \param PWM value 0 - 1024.
+     * \param[in] arg1 PWM value 0 - 1024.
      */
     void on_sB_RStartSpeed_valueChanged(int arg1);
     /*!
@@ -244,22 +253,22 @@ private:
     Micromouse *mic;
     /*!
      * \brief Appends log with date to tE_Log QTextEdit
-     * \param Message to send
+     * \param[in] message Message to send
      */
     void addToLogs(QString message);
     /*!
      * \brief Sends simple message to the robot.
-     * \param Message as QString.
+     * \param[in] message Message to send.
      */
     void sendMessageToDevice(QString message);
     /*!
      * \brief This function recognises commands and calls corresponding function.
-     * \param Qmessage as unsigned chars.
+     * \param[in] Data Qmessage as unsigned chars.
      */
     void LVL2CommunicationHub(QByteArray Data);
     /*!
      * \brief Sends command to the robot.
-     * \param Lenght of array is determined by protocol function, see #defines.
+     * \param[in] Data Lenght of array is determined by protocol function, see #defines.
      */
     void sendFunctionToDevice(QByteArray Data);
     /*!
@@ -288,7 +297,8 @@ private:
     void InitLvl2();
     /*!
      * \brief Calls FunctionReturn(val) i \link Micromouse \endlink class instance
-     * \param returned vale from the robot.
+     *
+     * \param[in] val Returned vale from the robot.
      */
     void FunctionReturn(short val);
     /*!

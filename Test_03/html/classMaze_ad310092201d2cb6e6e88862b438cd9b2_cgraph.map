@@ -1,5 +1,5 @@
 <map id="Maze::DrawMaze" name="Maze::DrawMaze">
 <area shape="rect" id="node1" title="Draws maze and robot on QWidget." alt="" coords="5,31,128,57"/>
-<area shape="rect" id="node2" href="$classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text." alt="" coords="176,5,344,32"/>
+<area shape="rect" id="node2" href="$classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text in widget." alt="" coords="176,5,344,32"/>
 <area shape="rect" id="node3" href="$classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="209,56,311,83"/>
 </map>

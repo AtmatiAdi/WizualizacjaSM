@@ -2,53 +2,43 @@
 \label{classMaze}\index{Maze@{Maze}}
 
 
-The \mbox{\hyperlink{classMaze}{Maze}} class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of \mbox{\hyperlink{classMaze}{Maze}} class.  
+The \mbox{\hyperlink{classMaze}{Maze}} class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll this class.  
 
 
 
 
 {\ttfamily \#include $<$maze.\+h$>$}
 
-
-
-Collaboration diagram for Maze\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=188pt]{classMaze__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classMaze_ad310092201d2cb6e6e88862b438cd9b2}{Draw\+Maze}} (Q\+Widget $\ast$widget)
 \begin{DoxyCompactList}\small\item\em Draws maze and robot on Q\+Widget. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2}\label{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2}} 
 void \mbox{\hyperlink{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2}{Find\+Path}} ()
-\begin{DoxyCompactList}\small\item\em Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds path from currnet robot field to the end. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classMaze_aeda787a62e587557c83d062e5394f6ba}{Get\+Path\+Mov}} ()
-\begin{DoxyCompactList}\small\item\em Returns distance from robot to last field of all same direction fields. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns distance from the robot to last field of all same direction fields. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classMaze_ac62b495006239af7105ef57e63c3261e}{Get\+Path\+Rot}} ()
-\begin{DoxyCompactList}\small\item\em Returns rotaion to next path field. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns angle to next path field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_ad6d6ca126b093e5abaf0a3fc120dc680}{Init}} (int size, int pixels)
 \begin{DoxyCompactList}\small\item\em Initializes maze and the robot position and rotaion. Sets walls for sides of maze. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classMaze_a934417b883b23fc9d944cd2f70a8cdc4}{Is\+Ready}} ()
 \begin{DoxyCompactList}\small\item\em Checks if /link \mbox{\hyperlink{classMaze}{Maze}} /endlink have start and finish field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_a661c42b551f461dc1c645c9e757e71df}{Manual\+Enable}} (bool enable)
 \begin{DoxyCompactList}\small\item\em Enables or Disables manual mode, the path will be generated from the robot to the target. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classMaze_ab97b0950b706b60e6345bff10861ba91}{Mov\+Result}} (int mov, int res)
-\begin{DoxyCompactList}\small\item\em This function changes position in /link \mbox{\hyperlink{classMaze}{Maze}} /endlink and detects walls depending on differences betweeen the returned value and setpoint. The robot can not break trought closed maze, this function will trim position to the edge of maze, cause distance callculation are very inaccurate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaze_a01cf96ff1e9a4ee19161ba035afa7973}{Mov\+Result}} (int mov\+\_\+cm, int res\+\_\+cm)
+\begin{DoxyCompactList}\small\item\em This function changes position in /link \mbox{\hyperlink{classMaze}{Maze}} /endlink and detects walls depending on differences betweeen the returned value and setpoint. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMaze_af6ac1cd73cc6e1b9c053b3b859e91ec0}\label{classMaze_af6ac1cd73cc6e1b9c053b3b859e91ec0}} 
 void \mbox{\hyperlink{classMaze_af6ac1cd73cc6e1b9c053b3b859e91ec0}{Reset}} ()
-\begin{DoxyCompactList}\small\item\em Sets position of the robot to the start field in /link \mbox{\hyperlink{classMaze}{Maze}} /endlink. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets position of the robot to the start field in maze. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_a22c09c03e8b30edc98ec16ee03ed54ea}{Resize}} (int size\+\_\+px)
 \begin{DoxyCompactList}\small\item\em Changes Pix\+Size\+\_\+px of maze and calls repaint event for /link \mbox{\hyperlink{classMaze}{Maze}} /endlink. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classMaze_a142163f942d6d5fd58172723b1ce4de2}{Rotate}} (int rot\+\_\+deg)
-\begin{DoxyCompactList}\small\item\em Changes rotation in /link \mbox{\hyperlink{classMaze}{Maze}} /endlink and trim this value to 360 . \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMaze_a721467b20f98ed20e588eeef947477b3}{Rotate}} (int angle\+\_\+deg)
+\begin{DoxyCompactList}\small\item\em Sum value of \mbox{\hyperlink{classMaze_a8734cd92b9bd8bbd4294b1395afd1036}{Robot\+Rot\+\_\+deg}} with input parameter and trim this value to 360. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_a45183f8d6db8e19aa42b1dd62144b046}{Set\+Begin}} (int x, int y)
-\begin{DoxyCompactList}\small\item\em Sets start field in Cells\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} for Q\+Widget and will remove old start field. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets start field in \mbox{\hyperlink{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}{Cells}} for Q\+Widget and will remove old start field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_a0c883c80ed6daf4d619b6ed42c81af09}{Set\+End}} (int x, int y)
-\begin{DoxyCompactList}\small\item\em Sets finish field in Cells\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} for Q\+Widget, you can set multiple finish fields. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets finish field in \mbox{\hyperlink{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}{Cells}} for Q\+Widget, you can set multiple finish fields. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_ab7d56db16b057cda15587e9b3d52cddb}{Set\+Target}} (int x, int y)
 \begin{DoxyCompactList}\small\item\em Sets target field in Cells\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} for Q\+Widget and will remove old target field. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_a1c4e0acd6d49a6d6550509abd1705076}{Set\+Wall}} (int x\+\_\+cell, int y\+\_\+cell, int dir, int state)
@@ -58,18 +48,17 @@ void \mbox{\hyperlink{classMaze_a68ef1c13577f7ce02456c6dde0947a8e}{Text\+Enabled
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}\label{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}} 
 long \mbox{\hyperlink{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}{Cells}} \mbox{[}16\mbox{]}\mbox{[}16\mbox{]}
-\begin{DoxyCompactList}\small\item\em Cells array Every cell consist informations about their type and walls existence. Cell =$>$ B\+B\+BB B\+B\+BB B\+B\+BB T\+T\+TT R\+R\+DD L\+L\+UU V\+V\+VV V\+V\+VV B-\/\+Not used Walls values\+: R-\/right, D-\/down, L-\/left, U-\/up T-\/\+Types values , see \#define V-\/\+Path value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Cells array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classMaze_afca8afde3798233b859304c2ca4b745a}{Draw\+Centered\+Text}} (int x, int y, Q\+String s, Q\+Painter $\ast$p)
-\begin{DoxyCompactList}\small\item\em Draws centered text. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Draws centered text in widget. \end{DoxyCompactList}\item 
 long \mbox{\hyperlink{classMaze_af20ceee16cdfa33289e4256ddf384cb0}{Get\+Val}} (long Cell, long mask)
 \begin{DoxyCompactList}\small\item\em Gets vale of specified 2 bits. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMaze_a3d9bd55fadf4f69e63d614785b7d38aa}{Set\+Val}} (long $\ast$Cell, long val, long mask)
-\begin{DoxyCompactList}\small\item\em Sets value of specified bits in single cell of /link \mbox{\hyperlink{classMaze}{Maze}} /endlink. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets value of specified bits in single cell in \mbox{\hyperlink{}{cells}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -86,27 +75,27 @@ bool \mbox{\hyperlink{classMaze_aee04f37c7e19138e8aea285f6efc5315}{Is\+Text\+Ena
 int \mbox{\hyperlink{classMaze_a2b4bb709eec3d00efa5d0939c9792e45}{Pix\+Size\+\_\+px}} = 0
 \begin{DoxyCompactList}\small\item\em Size of field in pixels on screen. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMaze_a9bb271bb8be1f93b181fffa43e1a7444}\label{classMaze_a9bb271bb8be1f93b181fffa43e1a7444}} 
-Q\+Pixmap {\bfseries Robot}
-\item 
+Q\+Pixmap \mbox{\hyperlink{classMaze_a9bb271bb8be1f93b181fffa43e1a7444}{Robot}}
+\begin{DoxyCompactList}\small\item\em Image of robot. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMaze_a8734cd92b9bd8bbd4294b1395afd1036}\label{classMaze_a8734cd92b9bd8bbd4294b1395afd1036}} 
 int \mbox{\hyperlink{classMaze_a8734cd92b9bd8bbd4294b1395afd1036}{Robot\+Rot\+\_\+deg}} = 0
-\begin{DoxyCompactList}\small\item\em Rotation of the robot in degrees. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Rotation of the robot in degrees in maze. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMaze_af69db422061b7d03f4111c49f04e9e4d}\label{classMaze_af69db422061b7d03f4111c49f04e9e4d}} 
 int \mbox{\hyperlink{classMaze_af69db422061b7d03f4111c49f04e9e4d}{Robot\+Size\+\_\+cm}} = 13
 \begin{DoxyCompactList}\small\item\em Size of the robot in centimeters. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMaze_a24695db4f613ba442ff8f701ff2e6570}\label{classMaze_a24695db4f613ba442ff8f701ff2e6570}} 
 int \mbox{\hyperlink{classMaze_a24695db4f613ba442ff8f701ff2e6570}{Robot\+X\+\_\+cm}} = 0
-\begin{DoxyCompactList}\small\item\em Position on X axis of the robot in centimeters. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Position on X axis of the robot in centimeters in maze. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMaze_afe5d1c4bcd9a699c51d71a933162cb4e}\label{classMaze_afe5d1c4bcd9a699c51d71a933162cb4e}} 
 int \mbox{\hyperlink{classMaze_afe5d1c4bcd9a699c51d71a933162cb4e}{Robot\+Y\+\_\+cm}} = 0
-\begin{DoxyCompactList}\small\item\em Position on Y axis of the robot in centimeters. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Position on Y axis of the robot in centimeters in maze. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMaze_a61d46a291de531d3c1841624ec2aecff}\label{classMaze_a61d46a291de531d3c1841624ec2aecff}} 
 int \mbox{\hyperlink{classMaze_a61d46a291de531d3c1841624ec2aecff}{Size}} = 0
 \begin{DoxyCompactList}\small\item\em Size of maze. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-The \mbox{\hyperlink{classMaze}{Maze}} class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of \mbox{\hyperlink{classMaze}{Maze}} class. 
+The \mbox{\hyperlink{classMaze}{Maze}} class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll this class. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classMaze_afca8afde3798233b859304c2ca4b745a}\label{classMaze_afca8afde3798233b859304c2ca4b745a}} 
@@ -117,17 +106,17 @@ The \mbox{\hyperlink{classMaze}{Maze}} class. This class holds maze cells inform
 
 
 
-Draws centered text. 
+Draws centered text in widget. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & position in pixels. \\
+{\em x\mbox{[}in\mbox{]}} & Position in pixels in widget. \\
 \hline
-{\em y} & position in pixels. \\
+{\em y\mbox{[}in\mbox{]}} & Position in pixels in widget. \\
 \hline
-{\em Q\+String} & \\
+{\em s\mbox{[}in\mbox{]}} & Text to draw. \\
 \hline
-{\em Q\+Painter} & of Q\+Widget. \\
+{\em p\mbox{[}out\mbox{]}} & Pointer to painter of Q\+Widget. \\
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
@@ -148,8 +137,8 @@ Here is the caller graph for this function\+:\nopagebreak
 Draws maze and robot on Q\+Widget. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em widget} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em widget} & On this widget maze, walls and robot will be drawn. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -166,6 +155,30 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=330pt]{classMaze_ad310092201d2cb6e6e88862b438cd9b2_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2}\label{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2}} 
+\index{Maze@{Maze}!FindPath@{FindPath}}
+\index{FindPath@{FindPath}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{FindPath()}{FindPath()}}
+{\footnotesize\ttfamily void Maze\+::\+Find\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds path from currnet robot field to the end. 
+
+first numbers all fields and convert them to a path. Path are stored in \mbox{\hyperlink{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}{Cells}} as values on specific bytes of every cell. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classMaze_aeda787a62e587557c83d062e5394f6ba}\label{classMaze_aeda787a62e587557c83d062e5394f6ba}} 
 \index{Maze@{Maze}!GetPathMov@{GetPathMov}}
 \index{GetPathMov@{GetPathMov}!Maze@{Maze}}
@@ -174,7 +187,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Returns distance from robot to last field of all same direction fields. 
+Returns distance from the robot to last field of all same direction fields. 
 
 \begin{DoxyReturn}{Returns}
 value in centimeters. 
@@ -201,7 +214,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Returns rotaion to next path field. 
+Returns angle to next path field. 
 
 \begin{DoxyReturn}{Returns}
 vale is in degrees. 
@@ -231,14 +244,14 @@ Here is the caller graph for this function\+:\nopagebreak
 Gets vale of specified 2 bits. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Cell.} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Cell} & Value of the cell. \\
 \hline
-{\em mask.} & \\
+\mbox{\texttt{ in}}  & {\em mask} & Mask tells which bits have to be read, length of mask can be only 2 bits, set \#defines. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-value of specified 2 bits. 
+Value of specified 2 bits. 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -258,10 +271,10 @@ Here is the caller graph for this function\+:\nopagebreak
 Initializes maze and the robot position and rotaion. Sets walls for sides of maze. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em size} & in number of cells. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em size} & Number of cells in a row and collumn. \\
 \hline
-{\em size} & of every cel in pixels on scrren. \\
+\mbox{\texttt{ in}}  & {\em pixels} & Size of every cel in pixels on scrren. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -288,9 +301,13 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Checks if /link \mbox{\hyperlink{classMaze}{Maze}} /endlink have start and finish field. 
 
-\begin{DoxyReturn}{Returns}
-Returns true when /link \mbox{\hyperlink{classMaze}{Maze}} /endlink have start and finish field, otherwise returns false. 
-\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & /link \mbox{\hyperlink{classMaze}{Maze}} /endlink have start and finish field \\
+\hline
+{\em false} & Start or finish fields are undefined. \\
+\hline
+\end{DoxyRetVals}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -316,8 +333,8 @@ Here is the caller graph for this function\+:\nopagebreak
 Enables or Disables manual mode, the path will be generated from the robot to the target. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Enables} & if true, otherwise disables. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Enables} & if true, otherwise disables. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -334,35 +351,37 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classMaze_a661c42b551f461dc1c645c9e757e71df_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classMaze_ab97b0950b706b60e6345bff10861ba91}\label{classMaze_ab97b0950b706b60e6345bff10861ba91}} 
+\mbox{\Hypertarget{classMaze_a01cf96ff1e9a4ee19161ba035afa7973}\label{classMaze_a01cf96ff1e9a4ee19161ba035afa7973}} 
 \index{Maze@{Maze}!MovResult@{MovResult}}
 \index{MovResult@{MovResult}!Maze@{Maze}}
 \doxysubsubsection{\texorpdfstring{MovResult()}{MovResult()}}
-{\footnotesize\ttfamily void Maze\+::\+Mov\+Result (\begin{DoxyParamCaption}\item[{int}]{mov,  }\item[{int}]{res }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Maze\+::\+Mov\+Result (\begin{DoxyParamCaption}\item[{int}]{mov\+\_\+cm,  }\item[{int}]{res\+\_\+cm }\end{DoxyParamCaption})}
 
 
 
-This function changes position in /link \mbox{\hyperlink{classMaze}{Maze}} /endlink and detects walls depending on differences betweeen the returned value and setpoint. The robot can not break trought closed maze, this function will trim position to the edge of maze, cause distance callculation are very inaccurate. 
+This function changes position in /link \mbox{\hyperlink{classMaze}{Maze}} /endlink and detects walls depending on differences betweeen the returned value and setpoint. 
+
+The robot can not break trought closed maze, this function will trim position to the edge of maze, cause distance callculation are very inaccurate.
 
 
-\begin{DoxyParams}{Parameters}
-{\em setpoint} & in cenitmeters. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mov\+\_\+cm} & setpoint distance to travel by the robot. Value is in centimeters \\
 \hline
-{\em result} & value in centimeters. \\
+\mbox{\texttt{ in}}  & {\em res\+\_\+cm} & result distance value in centimeters. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classMaze_ab97b0950b706b60e6345bff10861ba91_cgraph}
+\includegraphics[width=350pt]{classMaze_a01cf96ff1e9a4ee19161ba035afa7973_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=297pt]{classMaze_ab97b0950b706b60e6345bff10861ba91_icgraph}
+\includegraphics[width=297pt]{classMaze_a01cf96ff1e9a4ee19161ba035afa7973_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMaze_a22c09c03e8b30edc98ec16ee03ed54ea}\label{classMaze_a22c09c03e8b30edc98ec16ee03ed54ea}} 
@@ -375,9 +394,9 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Changes Pix\+Size\+\_\+px of maze and calls repaint event for /link \mbox{\hyperlink{classMaze}{Maze}} /endlink. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em size} & in pixels \\
+Used for change whole maze size in widget. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em size\+\_\+px} & New size of fields in pixels on the scrren. \\
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
@@ -387,26 +406,26 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=320pt]{classMaze_a22c09c03e8b30edc98ec16ee03ed54ea_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classMaze_a142163f942d6d5fd58172723b1ce4de2}\label{classMaze_a142163f942d6d5fd58172723b1ce4de2}} 
+\mbox{\Hypertarget{classMaze_a721467b20f98ed20e588eeef947477b3}\label{classMaze_a721467b20f98ed20e588eeef947477b3}} 
 \index{Maze@{Maze}!Rotate@{Rotate}}
 \index{Rotate@{Rotate}!Maze@{Maze}}
 \doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
-{\footnotesize\ttfamily void Maze\+::\+Rotate (\begin{DoxyParamCaption}\item[{int}]{rot\+\_\+deg }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Maze\+::\+Rotate (\begin{DoxyParamCaption}\item[{int}]{angle\+\_\+deg }\end{DoxyParamCaption})}
 
 
 
-Changes rotation in /link \mbox{\hyperlink{classMaze}{Maze}} /endlink and trim this value to 360 . 
+Sum value of \mbox{\hyperlink{classMaze_a8734cd92b9bd8bbd4294b1395afd1036}{Robot\+Rot\+\_\+deg}} with input parameter and trim this value to 360. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em vale} & in degrees \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em angle\+\_\+deg} & Angle to add with actual rotation. \\
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=280pt]{classMaze_a142163f942d6d5fd58172723b1ce4de2_icgraph}
+\includegraphics[width=280pt]{classMaze_a721467b20f98ed20e588eeef947477b3_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMaze_a45183f8d6db8e19aa42b1dd62144b046}\label{classMaze_a45183f8d6db8e19aa42b1dd62144b046}} 
@@ -417,13 +436,13 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Sets start field in Cells\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} for Q\+Widget and will remove old start field. 
+Sets start field in \mbox{\hyperlink{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}{Cells}} for Q\+Widget and will remove old start field. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em x} & \\
+Start field is the cell what robot will begin his adventure from. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & Coordinates of the cell. \\
 \hline
-{\em y} & \\
+\mbox{\texttt{ in}}  & {\em y} & Coordinates of the cell. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -448,13 +467,13 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Sets finish field in Cells\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} for Q\+Widget, you can set multiple finish fields. 
+Sets finish field in \mbox{\hyperlink{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}{Cells}} for Q\+Widget, you can set multiple finish fields. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em x} & \\
+Finish field is the cell what robot will end his adventure to. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & Coordinates of the cell. \\
 \hline
-{\em y} & \\
+\mbox{\texttt{ in}}  & {\em y} & Coordinates of the cell. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -482,10 +501,10 @@ Here is the caller graph for this function\+:\nopagebreak
 Sets target field in Cells\mbox{[}x\mbox{]}\mbox{[}y\mbox{]} for Q\+Widget and will remove old target field. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em x} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & Coordinates of the cell. \\
 \hline
-{\em y} & \\
+\mbox{\texttt{ in}}  & {\em y} & Coordinates of the cell. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -510,15 +529,15 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Sets value of specified bits in single cell of /link \mbox{\hyperlink{classMaze}{Maze}} /endlink. 
+Sets value of specified bits in single cell in \mbox{\hyperlink{}{cells}}. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Pointer} & to the cell. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em Cell} & Pointer to the cell. \\
 \hline
-{\em value,length} & of value can be only 2 bits. \\
+\mbox{\texttt{ in}}  & {\em val} & Value to set on specific bits, length of value can be only 2 bits. \\
 \hline
-{\em mask,length} & of value can be only 2 bits, see \#defines. \\
+\mbox{\texttt{ in}}  & {\em mask} & Mask tells which bits have to be set, length of mask can be only 2 bits, set \#defines. \\
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
@@ -539,14 +558,14 @@ Here is the caller graph for this function\+:\nopagebreak
 Sets Wall in a cell. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em x\+\_\+cell} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x\+\_\+cell} & Coordinates of the cell \\
 \hline
-{\em y\+\_\+cell} & \\
+\mbox{\texttt{ in}}  & {\em y\+\_\+cell} & Coordinates of the cell \\
 \hline
-{\em direction} & of wall. 0-\/up, 1-\/right, 2-\/down, 3-\/left. Other values are invalid. \\
+\mbox{\texttt{ in}}  & {\em dir} & Direction of wall. 0-\/up, 1-\/right, 2-\/down, 3-\/left. Other values are invalid. \\
 \hline
-{\em state} & of existences, value range is from 0 to 2, see \#define. \\
+\mbox{\texttt{ in}}  & {\em state} & State of existences of wall in cell, 0 -\/ U\+N\+D\+E\+F\+I\+N\+ED, 1 -\/ E\+P\+TY, 2 -\/ E\+X\+I\+S\+TS. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -574,8 +593,8 @@ Here is the caller graph for this function\+:\nopagebreak
 Enables or Disables drawing values of every field in maze. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Enables} & if true, otherwise disables. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Enables} & if true, otherwise disables. \\
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
@@ -586,6 +605,19 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}\label{classMaze_ae3bf7a22dd1b2d3d277a3548b2922738}} 
+\index{Maze@{Maze}!Cells@{Cells}}
+\index{Cells@{Cells}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{Cells}{Cells}}
+{\footnotesize\ttfamily long Maze\+::\+Cells\mbox{[}16\mbox{]}\mbox{[}16\mbox{]}}
+
+
+
+Cells array. 
+
+Every cell consist informations about their type and walls existence. Cell =$>$ B\+B\+BB B\+B\+BB B\+B\+BB T\+T\+TT R\+R\+DD L\+L\+UU V\+V\+VV V\+V\+VV B-\/\+Not used Walls values\+: R-\/right, D-\/down, L-\/left, U-\/up T-\/\+Types values , see \#define V-\/\+Path value. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

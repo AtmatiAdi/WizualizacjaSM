@@ -1,0 +1,9 @@
+<map id="Maze::FindPath" name="Maze::FindPath">
+<area shape="rect" id="node1" title="Finds path from currnet robot field to the end." alt="" coords="480,101,595,127"/>
+<area shape="rect" id="node2" href="$classMaze.html#a661c42b551f461dc1c645c9e757e71df" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="275,13,419,39"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="263,64,432,105"/>
+<area shape="rect" id="node5" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="288,130,407,157"/>
+<area shape="rect" id="node6" href="$classMaze.html#ab7d56db16b057cda15587e9b3d52cddb" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="288,181,407,207"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a2255bba1350b2432c13819e01b2d559d" title="Toggles manual mode. Manual mode enables to set targets for to the robot in Maze class instance." alt="" coords="15,5,205,47"/>
+<area shape="rect" id="node7" href="$classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,181,215,207"/>
+</map>

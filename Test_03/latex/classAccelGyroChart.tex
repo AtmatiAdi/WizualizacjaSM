@@ -9,16 +9,6 @@ This class is used for Initialize charts and append data to it.
 
 {\ttfamily \#include $<$accelgyrochart.\+h$>$}
 
-
-
-Collaboration diagram for Accel\+Gyro\+Chart\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=181pt]{classAccelGyroChart__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -88,16 +78,17 @@ This class is used for Initialize charts and append data to it.
 Append new data to chart series and displays it, if count reach to limit, resets series. This function will append ony 3 values of data array. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em data} & array, minimum 3 values. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & Array of data to append, minimum 3 values. \\
 \hline
-{\em index} & of first value data array. \\
+\mbox{\texttt{ in}}  & {\em start} & Index of first value data array. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -115,12 +106,12 @@ Here is the caller graph for this function\+:\nopagebreak
 Initalizes chart, units are not defined here. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Maximum} & measurement count. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em limit} & Maximum measurement count. \\
 \hline
-{\em Y} & axis minimum value. \\
+\mbox{\texttt{ in}}  & {\em min} & Y axis minimum value. \\
 \hline
-{\em X} & axis maximum value. \\
+\mbox{\texttt{ in}}  & {\em max} & X axis maximum value. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

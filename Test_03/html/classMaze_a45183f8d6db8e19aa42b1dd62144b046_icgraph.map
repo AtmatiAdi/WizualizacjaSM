@@ -1,4 +1,4 @@
 <map id="Maze::SetBegin" name="Maze::SetBegin">
-<area shape="rect" id="node1" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="263,5,377,32"/>
+<area shape="rect" id="node1" title="Sets start field in Cells for QWidget and will remove old start field." alt="" coords="263,5,377,32"/>
 <area shape="rect" id="node2" href="$classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,5,215,32"/>
 </map>

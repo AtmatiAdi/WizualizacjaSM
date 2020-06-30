@@ -1,4 +1,4 @@
 <map id="Maze::SetEnd" name="Maze::SetEnd">
-<area shape="rect" id="node1" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="263,5,368,32"/>
+<area shape="rect" id="node1" title="Sets finish field in Cells for QWidget, you can set multiple finish fields." alt="" coords="263,5,368,32"/>
 <area shape="rect" id="node2" href="$classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,5,215,32"/>
 </map>

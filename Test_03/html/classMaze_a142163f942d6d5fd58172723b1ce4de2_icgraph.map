@@ -1,4 +1,4 @@
 <map id="Maze::Rotate" name="Maze::Rotate">
 <area shape="rect" id="node1" title="Changes rotation in /link Maze /endlink and trim this value to 360 ." alt="" coords="172,5,272,32"/>
-<area shape="rect" id="node2" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<area shape="rect" id="node2" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
 </map>

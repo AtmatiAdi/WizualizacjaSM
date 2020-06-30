@@ -9,67 +9,45 @@ The \mbox{\hyperlink{classMicromouse}{Micromouse}} thread class. This class comm
 
 {\ttfamily \#include $<$micromouse.\+h$>$}
 
-
-
-Inheritance diagram for Micromouse\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=178pt]{classMicromouse__inherit__graph}
-\end{center}
-\end{figure}
-
-
-Collaboration diagram for Micromouse\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classMicromouse__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classMicromouse_a380f12aca4d8898c5356e9b0871abf94}\label{classMicromouse_a380f12aca4d8898c5356e9b0871abf94}} 
 void \mbox{\hyperlink{classMicromouse_a380f12aca4d8898c5356e9b0871abf94}{Log\+Sig}} (Q\+String)
-\begin{DoxyCompactList}\small\item\em This slot is connetced to S\+L\+OT(\mbox{\hyperlink{}{Log\+Slot(\+Q\+String)}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Sends Q\+String and to append to t\+E\+\_\+\+Mic\+Log Q\+Text\+Edit. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em This slot is connetced to S\+L\+OT(\mbox{\hyperlink{classMainWindow_a9fece74ff69a9e1b50b079f778de9b2b}{Main\+Window\+::\+Log\+Slot(\+Q\+String)}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Sends Q\+String to append to t\+E\+\_\+\+Mic\+Log Q\+Text\+Edit. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_a5d23b80b19b286664e99b63304bdf188}\label{classMicromouse_a5d23b80b19b286664e99b63304bdf188}} 
 void \mbox{\hyperlink{classMicromouse_a5d23b80b19b286664e99b63304bdf188}{Prepare\+For\+Move\+Sig}} ()
-\begin{DoxyCompactList}\small\item\em Is connected to S\+L\+OT(\mbox{\hyperlink{}{Prepare\+For\+Move\+Slot()}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Changes charts data type to distance. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Is connected to S\+L\+OT(\mbox{\hyperlink{classMainWindow_a55e1a82a6633ec3fcdfbafac77eaa1d4}{Main\+Window\+::\+Prepare\+For\+Move\+Slot()}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Changes charts data type to distance. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_aa40b8c970781fe2596ac24f3b6d65f23}\label{classMicromouse_aa40b8c970781fe2596ac24f3b6d65f23}} 
 void \mbox{\hyperlink{classMicromouse_aa40b8c970781fe2596ac24f3b6d65f23}{Prepare\+For\+Rotation\+Sig}} ()
-\begin{DoxyCompactList}\small\item\em Is connected to S\+L\+OT(\mbox{\hyperlink{}{Prepare\+For\+Rotation\+Slot()}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Changes charts data type to velocity. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}\label{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}} 
+\begin{DoxyCompactList}\small\item\em Is connected to S\+L\+OT(\mbox{\hyperlink{classMainWindow_a4212072873e38127ba5637627e351171}{Main\+Window\+::\+Prepare\+For\+Rotation\+Slot()}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Changes charts data type to velocity. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}{Send\+Function\+Sig}} (Q\+Byte\+Array)
-\begin{DoxyCompactList}\small\item\em This signal is connected to S\+L\+OT(\mbox{\hyperlink{}{Send\+Function\+Slot(\+Q\+Byte\+Array)}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Just sends commands to the robot. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classMicromouse_a366a965403e5366e30283c3972773b5b}\label{classMicromouse_a366a965403e5366e30283c3972773b5b}} 
+\begin{DoxyCompactList}\small\item\em This signal is connected to S\+L\+OT(\mbox{\hyperlink{classMainWindow_a605dd357dd827de34e8fd07ba0a5ca14}{Main\+Window\+::\+Send\+Function\+Slot(\+Q\+Byte\+Array)}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Sends command to the robot. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMicromouse_a366a965403e5366e30283c3972773b5b}{Update\+Maze\+Sig}} ()
-\begin{DoxyCompactList}\small\item\em This signal is connected to S\+L\+OT(\mbox{\hyperlink{}{Update\+Maze\+Slot()}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Just calls repaint event to w\+\_\+\+Maze Q\+Widget, use this function if something has changed in \mbox{\hyperlink{classMaze}{Maze}} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em This signal is connected to S\+L\+OT(\mbox{\hyperlink{classMainWindow_aaac48b62952bdb774dc1f615b7c157b2}{Main\+Window\+::\+Update\+Maze\+Slot()}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Calls repaint event to w\+\_\+\+Maze Q\+Widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classMicromouse_aff4965481ec5fa15e5d653bbfe385b0b}{Function\+Return}} (short val)
 \begin{DoxyCompactList}\small\item\em When \mbox{\hyperlink{classMainWindow}{Main\+Window}} gets return value from the robot just calls this function. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6}{Init}} (\mbox{\hyperlink{classMaze}{Maze}} $\ast$maze, \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} $\ast$ag)
-\begin{DoxyCompactList}\small\item\em Gets pointer to \mbox{\hyperlink{classMaze}{Maze}} and \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} instance from \mbox{\hyperlink{classMainWindow}{Main\+Window}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets pointer to \mbox{\hyperlink{classMaze}{Maze}} and \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} instance from \mbox{\hyperlink{classMainWindow}{Main\+Window}} and stores it in \mbox{\hyperlink{classMicromouse_a29ba624bffc1139916cd2be3f8d647ad}{My\+Maze}} and \mbox{\hyperlink{classMicromouse_a0c194eed25ad8c7015e237f2c177f04c}{My\+Ag}} . \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_ac26c207dc057c56774db79e91d6dfa43}\label{classMicromouse_ac26c207dc057c56774db79e91d6dfa43}} 
 {\bfseries Micromouse} (Q\+Object $\ast$parent=0)
 \item 
-\mbox{\Hypertarget{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f}\label{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f}} 
 void \mbox{\hyperlink{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f}{run}} () override
-\begin{DoxyCompactList}\small\item\em main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple sends command to the robot. This function continuously check if Is\+Running is true to execute algorithm. If you set Is\+Running to false this function will break the loop, all informations are saved and you can start micromouse thread again. For better results of reaching to the target, improve this function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em main thread loop. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMicromouse_a92c4c7eb59e46a8ab252441ba775c3c1}{Setup}} (short Mstart, short Mmax, short accel, short stop, short Rstart, short Rmax)
 \begin{DoxyCompactList}\small\item\em Initalize algorithm settings. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_a70be1967c291e86b87372fb654258001}\label{classMicromouse_a70be1967c291e86b87372fb654258001}} 
 void \mbox{\hyperlink{classMicromouse_a70be1967c291e86b87372fb654258001}{Stop}} ()
-\begin{DoxyCompactList}\small\item\em Sets Is\+Running to false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets \mbox{\hyperlink{classMicromouse_a2b061bd28fb66cb6ddc0e5956f7cf6e3}{Is\+Running}} to false. Main loop will execute to end and skip loop to finish thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 short \mbox{\hyperlink{classMicromouse_a3530504ddc23e5f33543867f8ac9538b}{Move}} (short dist\+\_\+cm)
 \begin{DoxyCompactList}\small\item\em Sends to the robot move command by calling \mbox{\hyperlink{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}{Send\+Function\+Sig}}, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. \end{DoxyCompactList}\item 
-short \mbox{\hyperlink{classMicromouse_a3d576b7701bc98c1aa6931cd521b164b}{Rotate}} (short deg\+\_\+deg)
-\begin{DoxyCompactList}\small\item\em Sends to the robot rotation command by calling \mbox{\hyperlink{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}{Send\+Function\+Sig}}, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+short \mbox{\hyperlink{classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8}{Rotate}} (short angle\+\_\+deg)
+\begin{DoxyCompactList}\small\item\em Sends to the robot rotation command by calling \mbox{\hyperlink{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}{Send\+Function\+Sig}},. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -78,7 +56,7 @@ double \mbox{\hyperlink{classMicromouse_aa9b9b56700a16b68f6c2993980acc679}{Accel
 \begin{DoxyCompactList}\small\item\em Scale factor from meters in range +-\/10000cm to binary walue (signed short). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_a7ff56577d4f1e39692074e02a621215b}\label{classMicromouse_a7ff56577d4f1e39692074e02a621215b}} 
 short \mbox{\hyperlink{classMicromouse_a7ff56577d4f1e39692074e02a621215b}{Accel\+Val}}
-\begin{DoxyCompactList}\small\item\em Stores acceleration P\+WM value for move command. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stores acceleration P\+WM value for move command, range is 0-\/1024. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_acaf55e7b8912d2a169924b049e9a68cd}\label{classMicromouse_acaf55e7b8912d2a169924b049e9a68cd}} 
 bool \mbox{\hyperlink{classMicromouse_acaf55e7b8912d2a169924b049e9a68cd}{Function\+Reurned}} = false
 \begin{DoxyCompactList}\small\item\em When true, it tells that the robot have executed task and return a value to read. \end{DoxyCompactList}\item 
@@ -90,10 +68,10 @@ bool \mbox{\hyperlink{classMicromouse_a2b061bd28fb66cb6ddc0e5956f7cf6e3}{Is\+Run
 \begin{DoxyCompactList}\small\item\em When true, enables main loop, otherwise disables. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_afb4497967cecb8128117b25be7926909}\label{classMicromouse_afb4497967cecb8128117b25be7926909}} 
 short \mbox{\hyperlink{classMicromouse_afb4497967cecb8128117b25be7926909}{Move\+Max\+Val}}
-\begin{DoxyCompactList}\small\item\em Stores maximum P\+WM value for move command. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stores maximum P\+WM value for move command, range is 0-\/1024. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_af030bde295ba49b5550dfc6b7efb3e28}\label{classMicromouse_af030bde295ba49b5550dfc6b7efb3e28}} 
 short \mbox{\hyperlink{classMicromouse_af030bde295ba49b5550dfc6b7efb3e28}{Move\+Start\+Val}}
-\begin{DoxyCompactList}\small\item\em Stores start P\+WM value for move command. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stores starting P\+WM value for move command, range is 0-\/1024. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_a0c194eed25ad8c7015e237f2c177f04c}\label{classMicromouse_a0c194eed25ad8c7015e237f2c177f04c}} 
 \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} $\ast$ \mbox{\hyperlink{classMicromouse_a0c194eed25ad8c7015e237f2c177f04c}{My\+Ag}}
 \begin{DoxyCompactList}\small\item\em Pointer to instance of \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. \end{DoxyCompactList}\item 
@@ -105,10 +83,10 @@ short \mbox{\hyperlink{classMicromouse_a95437b4240a0e921fd057b7506698df1}{Rot\+M
 \begin{DoxyCompactList}\small\item\em Stores maximum P\+WM value for rotation command. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_a95085e2daffe3bcd34cae3a9b1ac66f0}\label{classMicromouse_a95085e2daffe3bcd34cae3a9b1ac66f0}} 
 short \mbox{\hyperlink{classMicromouse_a95085e2daffe3bcd34cae3a9b1ac66f0}{Rot\+Start\+Val}}
-\begin{DoxyCompactList}\small\item\em Stores start P\+WM value for rotation command. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stores startstarting P\+WM value for rotation command. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_a2fb56e1f51a4ec3ae19f2b894e984cdc}\label{classMicromouse_a2fb56e1f51a4ec3ae19f2b894e984cdc}} 
 short \mbox{\hyperlink{classMicromouse_a2fb56e1f51a4ec3ae19f2b894e984cdc}{Stop\+Val}}
-\begin{DoxyCompactList}\small\item\em Stores stop value in meters for move command. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stores stop condition value in meters for move command. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMicromouse_aee10d33653644c2749f2b1b39c4510f2}\label{classMicromouse_aee10d33653644c2749f2b1b39c4510f2}} 
 short \mbox{\hyperlink{classMicromouse_aee10d33653644c2749f2b1b39c4510f2}{Value}}
 \begin{DoxyCompactList}\small\item\em Returned value od the robot . \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -128,18 +106,13 @@ The \mbox{\hyperlink{classMicromouse}{Micromouse}} thread class. This class comm
 
 When \mbox{\hyperlink{classMainWindow}{Main\+Window}} gets return value from the robot just calls this function. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em returned} & vale from robot. \\
+Return value will be saved and \mbox{\hyperlink{classMicromouse_acaf55e7b8912d2a169924b049e9a68cd}{Function\+Reurned}} will be set to true. When \mbox{\hyperlink{classMicromouse_a3530504ddc23e5f33543867f8ac9538b}{Move}} and \mbox{\hyperlink{classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8}{Rotate}} functions are called, they will wait for returning value form the robot. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em val} & Returned vale from robot. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classMicromouse_aff4965481ec5fa15e5d653bbfe385b0b_icgraph}
-\end{center}
-\end{figure}
+Here is the caller graph for this function\+:
+% FIG 0
 \mbox{\Hypertarget{classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6}\label{classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6}} 
 \index{Micromouse@{Micromouse}!Init@{Init}}
 \index{Init@{Init}!Micromouse@{Micromouse}}
@@ -148,11 +121,13 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Gets pointer to \mbox{\hyperlink{classMaze}{Maze}} and \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} instance from \mbox{\hyperlink{classMainWindow}{Main\+Window}}. 
+Gets pointer to \mbox{\hyperlink{classMaze}{Maze}} and \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} instance from \mbox{\hyperlink{classMainWindow}{Main\+Window}} and stores it in \mbox{\hyperlink{classMicromouse_a29ba624bffc1139916cd2be3f8d647ad}{My\+Maze}} and \mbox{\hyperlink{classMicromouse_a0c194eed25ad8c7015e237f2c177f04c}{My\+Ag}} . 
 
 
-\begin{DoxyParams}{Parameters}
-{\em } & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maze} & \mbox{\hyperlink{classMaze}{Maze}} class instance, micromouse class need this pointer to operate on maze. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ag} & \mbox{\hyperlink{classAccelGyro}{Accel\+Gyro}} class instance, obsolete functionality, only the robot can integrate data from I\+MU. \\
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
@@ -160,6 +135,28 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=332pt]{classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMicromouse_a380f12aca4d8898c5356e9b0871abf94}\label{classMicromouse_a380f12aca4d8898c5356e9b0871abf94}} 
+\index{Micromouse@{Micromouse}!LogSig@{LogSig}}
+\index{LogSig@{LogSig}!Micromouse@{Micromouse}}
+\doxysubsubsection{\texorpdfstring{LogSig}{LogSig}}
+{\footnotesize\ttfamily void Micromouse\+::\+Log\+Sig (\begin{DoxyParamCaption}\item[{Q\+String}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+This slot is connetced to S\+L\+OT(\mbox{\hyperlink{classMainWindow_a9fece74ff69a9e1b50b079f778de9b2b}{Main\+Window\+::\+Log\+Slot(\+Q\+String)}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Sends Q\+String to append to t\+E\+\_\+\+Mic\+Log Q\+Text\+Edit. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Q\+String} & Message to append to log window. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMicromouse_a380f12aca4d8898c5356e9b0871abf94_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMicromouse_a3530504ddc23e5f33543867f8ac9538b}\label{classMicromouse_a3530504ddc23e5f33543867f8ac9538b}} 
@@ -173,12 +170,12 @@ Here is the caller graph for this function\+:\nopagebreak
 Sends to the robot move command by calling \mbox{\hyperlink{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}{Send\+Function\+Sig}}, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em distance} & value, range is +-\/1000 cm. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dist\+\_\+cm} & Distance value to move in straight line by the robot, range is +-\/1000 cm. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-traveled distance by the robot, same range. 
+Traveled distance by the robot, same range. 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -187,29 +184,68 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=303pt]{classMicromouse_a3530504ddc23e5f33543867f8ac9538b_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classMicromouse_a3d576b7701bc98c1aa6931cd521b164b}\label{classMicromouse_a3d576b7701bc98c1aa6931cd521b164b}} 
+\mbox{\Hypertarget{classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8}\label{classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8}} 
 \index{Micromouse@{Micromouse}!Rotate@{Rotate}}
 \index{Rotate@{Rotate}!Micromouse@{Micromouse}}
 \doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
-{\footnotesize\ttfamily short Micromouse\+::\+Rotate (\begin{DoxyParamCaption}\item[{short}]{deg\+\_\+deg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily short Micromouse\+::\+Rotate (\begin{DoxyParamCaption}\item[{short}]{angle\+\_\+deg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Sends to the robot rotation command by calling \mbox{\hyperlink{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}{Send\+Function\+Sig}}, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. 
+Sends to the robot rotation command by calling \mbox{\hyperlink{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}{Send\+Function\+Sig}},. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em deegres} & value, range is +-\/500 deg. \\
+Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em angle\+\_\+deg} & Angle to rotate by the robot, range is +-\/500 degrees. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-rotated degrees by the robot, same range. Better to ignore this value. 
+Rotated degrees by the robot, same range. Better to ignore this value. 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=309pt]{classMicromouse_a3d576b7701bc98c1aa6931cd521b164b_icgraph}
+\includegraphics[width=309pt]{classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f}\label{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f}} 
+\index{Micromouse@{Micromouse}!run@{run}}
+\index{run@{run}!Micromouse@{Micromouse}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Micromouse\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+main thread loop. 
+
+Algorithm gets current distance and rotation to next path cell and simple sends command to the robot from \mbox{\hyperlink{classMaze}{Maze}} class instance. This function continuously check if \mbox{\hyperlink{classMicromouse_a2b061bd28fb66cb6ddc0e5956f7cf6e3}{Is\+Running}} = true to execute algorithm. If you set Is\+Running to false this function will execute to end and skip loop to finish thread, all informations are saved and you can start micromouse thread again. For better results of reaching to the target, improve this function. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMicromouse_a5104565b3e09b3624f7e6136f2304f3f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}\label{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb}} 
+\index{Micromouse@{Micromouse}!SendFunctionSig@{SendFunctionSig}}
+\index{SendFunctionSig@{SendFunctionSig}!Micromouse@{Micromouse}}
+\doxysubsubsection{\texorpdfstring{SendFunctionSig}{SendFunctionSig}}
+{\footnotesize\ttfamily void Micromouse\+::\+Send\+Function\+Sig (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+This signal is connected to S\+L\+OT(\mbox{\hyperlink{classMainWindow_a605dd357dd827de34e8fd07ba0a5ca14}{Main\+Window\+::\+Send\+Function\+Slot(\+Q\+Byte\+Array)}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Sends command to the robot. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Q\+Byte\+Array} & First byte is command definition value, other bytes depend on protocol definition. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMicromouse_a92c4c7eb59e46a8ab252441ba775c3c1}\label{classMicromouse_a92c4c7eb59e46a8ab252441ba775c3c1}} 
@@ -223,18 +259,18 @@ Here is the caller graph for this function\+:\nopagebreak
 Initalize algorithm settings. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Move} & start P\+WM value \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Mstart} & Starting motor speed for \mbox{\hyperlink{classMicromouse_a3530504ddc23e5f33543867f8ac9538b}{Move}} command, P\+WM value range is 0-\/1024. \\
 \hline
-{\em Move} & maximum P\+WM value \\
+\mbox{\texttt{ in}}  & {\em Mmax} & Maximum motor speed for \mbox{\hyperlink{classMicromouse_a3530504ddc23e5f33543867f8ac9538b}{Move}} command, P\+WM value range is 0-\/1024. \\
 \hline
-{\em Acceleration} & P\+WM value \\
+\mbox{\texttt{ in}}  & {\em accel} & Starting value is incremented every iteration by accel, for move and rotation command. \\
 \hline
-{\em Acceleration} & stop condition in meters per second squared \\
+\mbox{\texttt{ in}}  & {\em stop} & Condition value, if reached by accelerometer then \mbox{\hyperlink{classMicromouse_a3530504ddc23e5f33543867f8ac9538b}{Move}} command is stopped. \\
 \hline
-{\em Rotation} & start P\+WM value \\
+\mbox{\texttt{ in}}  & {\em Rstart} & Starting motor speed for \mbox{\hyperlink{classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8}{Rotate}} command, P\+WM value range is 0-\/1024. \\
 \hline
-{\em Rotation} & maximum P\+WM value \\
+\mbox{\texttt{ in}}  & {\em Rmax} & Maximum motor speed for \mbox{\hyperlink{classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8}{Rotate}} command, P\+WM value range is 0-\/1024. \\
 \hline
 \end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
@@ -242,6 +278,23 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=344pt]{classMicromouse_a92c4c7eb59e46a8ab252441ba775c3c1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMicromouse_a366a965403e5366e30283c3972773b5b}\label{classMicromouse_a366a965403e5366e30283c3972773b5b}} 
+\index{Micromouse@{Micromouse}!UpdateMazeSig@{UpdateMazeSig}}
+\index{UpdateMazeSig@{UpdateMazeSig}!Micromouse@{Micromouse}}
+\doxysubsubsection{\texorpdfstring{UpdateMazeSig}{UpdateMazeSig}}
+{\footnotesize\ttfamily void Micromouse\+::\+Update\+Maze\+Sig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+This signal is connected to S\+L\+OT(\mbox{\hyperlink{classMainWindow_aaac48b62952bdb774dc1f615b7c157b2}{Main\+Window\+::\+Update\+Maze\+Slot()}}) in \mbox{\hyperlink{classMainWindow}{Main\+Window}}. Calls repaint event to w\+\_\+\+Maze Q\+Widget. 
+
+Use this function if something has changed in \mbox{\hyperlink{classMaze}{Maze}} instance. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMicromouse_a366a965403e5366e30283c3972773b5b_icgraph}
 \end{center}
 \end{figure}
 

@@ -9,19 +9,6 @@ The \mbox{\hyperlink{classMainWindow}{Main\+Window}} class its base class of the
 
 {\ttfamily \#include $<$mainwindow.\+h$>$}
 
-
-
-Inheritance diagram for Main\+Window\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{classMainWindow__inherit__graph}
-\end{center}
-\end{figure}
-
-
-Collaboration diagram for Main\+Window\+:
-% FIG 0
 \doxysubsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
@@ -119,9 +106,8 @@ void \mbox{\hyperlink{classMainWindow_a4d2dcf16de43ccdf2f46510201db87f5}{on\+\_\
 \mbox{\Hypertarget{classMainWindow_a024f3778da1efc309bc157a957c6d5a8}\label{classMainWindow_a024f3778da1efc309bc157a957c6d5a8}} 
 void \mbox{\hyperlink{classMainWindow_a024f3778da1efc309bc157a957c6d5a8}{on\+\_\+t\+B\+\_\+\+Refresh\+\_\+clicked}} ()
 \begin{DoxyCompactList}\small\item\em Close Q\+Serial\+Port and places all found devices into Q\+Combo\+Box Items. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classMainWindow_a42f11195758f78967e670779c4535708}\label{classMainWindow_a42f11195758f78967e670779c4535708}} 
 void \mbox{\hyperlink{classMainWindow_a42f11195758f78967e670779c4535708}{read\+From\+Port}} ()
-\begin{DoxyCompactList}\small\item\em Its called when new data arrives from Q\+Serial\+Port. Detects if arrived data are command or normal message. Calls L\+V\+L2\+Communication\+Hub function wgen command data arrived. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Its called when new data arrives from Q\+Serial\+Port. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -220,17 +206,12 @@ The \mbox{\hyperlink{classMainWindow}{Main\+Window}} class its base class of the
 Appends log with date to t\+E\+\_\+\+Log Q\+Text\+Edit. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Message} & to send \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em message} & Message to send \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classMainWindow_a4d32584efa9a8d85570c911a76882c2e_icgraph}
-\end{center}
-\end{figure}
+Here is the caller graph for this function\+:
+% FIG 0
 \mbox{\Hypertarget{classMainWindow_ade305265b2120df2489a5ebeb07ebbe1}\label{classMainWindow_ade305265b2120df2489a5ebeb07ebbe1}} 
 \index{MainWindow@{MainWindow}!eventFilter@{eventFilter}}
 \index{eventFilter@{eventFilter}!MainWindow@{MainWindow}}
@@ -242,10 +223,10 @@ Here is the caller graph for this function\+:\nopagebreak
 Is used for handle Q\+Event\+::\+Paint and run drawing function for w\+\_\+\+Maze Q\+Widget. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em watched.} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em watched.} & \\
 \hline
-{\em event.} & \\
+\mbox{\texttt{ in}}  & {\em event.} & \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -269,8 +250,8 @@ Here is the call graph for this function\+:\nopagebreak
 Calls Function\+Return(val) i \mbox{\hyperlink{classMicromouse}{Micromouse}} class instance. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em returned} & vale from the robot. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em val} & Returned vale from the robot. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -280,13 +261,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classMainWindow_a01af152106bfa1ab6c101420cf55dfef_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classMainWindow_a01af152106bfa1ab6c101420cf55dfef_icgraph}
-\end{center}
-\end{figure}
+Here is the caller graph for this function\+:
+% FIG 1
 \mbox{\Hypertarget{classMainWindow_a72ecce0e9c92e0fdb14c4ab6d6df761a}\label{classMainWindow_a72ecce0e9c92e0fdb14c4ab6d6df761a}} 
 \index{MainWindow@{MainWindow}!InitLvl2@{InitLvl2}}
 \index{InitLvl2@{InitLvl2}!MainWindow@{MainWindow}}
@@ -308,8 +284,8 @@ L\+VL -\/ 3. \mbox{\Hypertarget{classMainWindow_a84af5cdf379765d0578340a8321d365
 This function recognises commands and calls corresponding function. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Qmessage} & as unsigned chars. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Data} & Qmessage as unsigned chars. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -319,13 +295,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classMainWindow_a84af5cdf379765d0578340a8321d365a_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classMainWindow_a84af5cdf379765d0578340a8321d365a_icgraph}
-\end{center}
-\end{figure}
+Here is the caller graph for this function\+:
+% FIG 2
 \mbox{\Hypertarget{classMainWindow_a1dff511c9697cbcb60150894f480b9c8}\label{classMainWindow_a1dff511c9697cbcb60150894f480b9c8}} 
 \index{MainWindow@{MainWindow}!mousePressEvent@{mousePressEvent}}
 \index{mousePressEvent@{mousePressEvent}!MainWindow@{MainWindow}}
@@ -337,8 +308,8 @@ Here is the caller graph for this function\+:\nopagebreak
 Is used for handle Qt\+::\+Left\+Button and Qt\+::\+Right\+Button for set start and end position in w\+\_\+\+Maze Q\+Widget. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em event.} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event.} & \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -359,17 +330,12 @@ Here is the call graph for this function\+:\nopagebreak
 Its called when new dewice is sellected. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Current} & selected item. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Current} & selected item. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classMainWindow_a4b0c1bada9e194139e65ae07c581e41c_cgraph}
-\end{center}
-\end{figure}
+Here is the call graph for this function\+:
+% FIG 3
 \mbox{\Hypertarget{classMainWindow_a2255bba1350b2432c13819e01b2d559d}\label{classMainWindow_a2255bba1350b2432c13819e01b2d559d}} 
 \index{MainWindow@{MainWindow}!on\_cB\_Manual\_toggled@{on\_cB\_Manual\_toggled}}
 \index{on\_cB\_Manual\_toggled@{on\_cB\_Manual\_toggled}!MainWindow@{MainWindow}}
@@ -381,8 +347,8 @@ Here is the call graph for this function\+:\nopagebreak
 Toggles manual mode. Manual mode enables to set targets for to the robot in \mbox{\hyperlink{classMaze}{Maze}} class instance. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em When} & true manual mode is enabled, otherwise disabled. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em checked} & When true manual mode is enabled, otherwise disabled. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -403,8 +369,8 @@ Here is the call graph for this function\+:\nopagebreak
 Toggles feature of drawing path values in w\+\_\+\+Maze Q\+Widget. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em When} & true function enables drawing, otherwise disables drawing. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em checked} & When true function enables drawing, otherwise disables drawing. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -425,8 +391,8 @@ Here is the call graph for this function\+:\nopagebreak
 Sets A\+Limit\+\_\+m\+\_\+s2 value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Meters} & per second squared. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em arg1} & Meters per second squared. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classMainWindow_a6fee8fe2240d4ef0b0921786a94c720d}\label{classMainWindow_a6fee8fe2240d4ef0b0921786a94c720d}} 
@@ -440,8 +406,8 @@ Sets A\+Limit\+\_\+m\+\_\+s2 value.
 Sends to the robot request of acceleration data from measurements types. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Only} & if checked = true. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em checked} & Only if checked = true. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -462,8 +428,8 @@ Here is the call graph for this function\+:\nopagebreak
 Sends to the robot request of distance data from measurements types. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Only} & if checked = true. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em checked} & Only if checked = true. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -484,8 +450,8 @@ Here is the call graph for this function\+:\nopagebreak
 Sends to the robot request of velocity data from measurements types. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Only} & if checked = true. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em checked} & Only if checked = true. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -506,8 +472,8 @@ Here is the call graph for this function\+:\nopagebreak
 Sets Accel value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em P\+WM} & value 0 -\/ 1024. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em arg1} & P\+WM value 0 -\/ 1024. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classMainWindow_a0b591c1aff4444c95a458a1c27bb9be8}\label{classMainWindow_a0b591c1aff4444c95a458a1c27bb9be8}} 
@@ -521,8 +487,8 @@ Sets Accel value.
 Sets Move\+Max\+Speed value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em P\+WM} & value 0 -\/ 1024. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em arg1} & P\+WM value 0 -\/ 1024. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classMainWindow_a75e82ea8e0fd2ca8bc097c9c8532c5d3}\label{classMainWindow_a75e82ea8e0fd2ca8bc097c9c8532c5d3}} 
@@ -536,8 +502,8 @@ Sets Move\+Max\+Speed value.
 Sets Move\+Start\+Speed value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em P\+WM} & value 0 -\/ 1024. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em arg1} & P\+WM value 0 -\/ 1024. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classMainWindow_aab5012729426877227d88067ab037a35}\label{classMainWindow_aab5012729426877227d88067ab037a35}} 
@@ -551,8 +517,8 @@ Sets Move\+Start\+Speed value.
 Sets Rot\+Max\+Speed value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em P\+WM} & value 0 -\/ 1024. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em arg1} & P\+WM value 0 -\/ 1024. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classMainWindow_a14177a135817465fb9cb6f070a3f76e2}\label{classMainWindow_a14177a135817465fb9cb6f070a3f76e2}} 
@@ -566,8 +532,8 @@ Sets Rot\+Max\+Speed value.
 Sets Degree\+\_\+deg value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Deegres.} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em 1rg1} & Angle i degrees. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classMainWindow_a0ee97aed257c23484f7eb26153f31aeb}\label{classMainWindow_a0ee97aed257c23484f7eb26153f31aeb}} 
@@ -581,8 +547,8 @@ Sets Degree\+\_\+deg value.
 Sets Rot\+Start\+Seepd value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em P\+WM} & value 0 -\/ 1024. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em arg1} & P\+WM value 0 -\/ 1024. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classMainWindow_ab563c0d9e0225b55585cbfdba998c3cc}\label{classMainWindow_ab563c0d9e0225b55585cbfdba998c3cc}} 
@@ -596,10 +562,24 @@ Sets Rot\+Start\+Seepd value.
 Sets Distance\+\_\+m value. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Meters} & 0 -\/ 100. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em arg1} & Meters 0 -\/ 100. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a42f11195758f78967e670779c4535708}\label{classMainWindow_a42f11195758f78967e670779c4535708}} 
+\index{MainWindow@{MainWindow}!readFromPort@{readFromPort}}
+\index{readFromPort@{readFromPort}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{readFromPort}{readFromPort}}
+{\footnotesize\ttfamily void Main\+Window\+::read\+From\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Its called when new data arrives from Q\+Serial\+Port. 
+
+Detects if arrived data are command or normal message. Calls L\+V\+L2\+Communication\+Hub function wgen command data arrived. Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
 \mbox{\Hypertarget{classMainWindow_ab97934778ea081220890b36bca9d6aad}\label{classMainWindow_ab97934778ea081220890b36bca9d6aad}} 
 \index{MainWindow@{MainWindow}!sendFunctionToDevice@{sendFunctionToDevice}}
 \index{sendFunctionToDevice@{sendFunctionToDevice}!MainWindow@{MainWindow}}
@@ -611,8 +591,8 @@ Sets Distance\+\_\+m value.
 Sends command to the robot. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Lenght} & of array is determined by protocol function, see \#defines. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Data} & Lenght of array is determined by protocol function, see \#defines. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -640,8 +620,8 @@ Here is the caller graph for this function\+:\nopagebreak
 Sends simple message to the robot. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Message} & as Q\+String. \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em message} & Message to send. \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
@@ -669,8 +649,8 @@ Here is the caller graph for this function\+:\nopagebreak
 Is used for handle mouse wheel event for scale maze in w\+\_\+\+Maze Q\+Widget. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em event.} & \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event.} & \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak

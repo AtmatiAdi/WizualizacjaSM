@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classMaze.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -72,33 +92,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of <a class="el" href="classMaze.html">Maze</a> class.  
+<p>The <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll this class.  
  <a href="classMaze.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="maze_8h_source.html">maze.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for Maze:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMaze__coll__graph.png" border="0" usemap="#Maze_coll__map" alt="Collaboration graph"/></div>
-<map name="Maze_coll__map" id="Maze_coll__map">
-<area shape="rect" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter..." alt="" coords="5,5,149,420"/>
-</map>
-</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad310092201d2cb6e6e88862b438cd9b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ad310092201d2cb6e6e88862b438cd9b2">DrawMaze</a> (QWidget *widget)</td></tr>
 <tr class="memdesc:ad310092201d2cb6e6e88862b438cd9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws maze and robot on QWidget.  <a href="classMaze.html#ad310092201d2cb6e6e88862b438cd9b2">More...</a><br /></td></tr>
 <tr class="separator:ad310092201d2cb6e6e88862b438cd9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d950f9d113109bdd8d1f1c6566ac9b2"><td class="memItemLeft" align="right" valign="top"><a id="a3d950f9d113109bdd8d1f1c6566ac9b2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2">FindPath</a> ()</td></tr>
-<tr class="memdesc:a3d950f9d113109bdd8d1f1c6566ac9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path. <br /></td></tr>
+<tr class="memitem:a3d950f9d113109bdd8d1f1c6566ac9b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2">FindPath</a> ()</td></tr>
+<tr class="memdesc:a3d950f9d113109bdd8d1f1c6566ac9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds path from currnet robot field to the end.  <a href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2">More...</a><br /></td></tr>
 <tr class="separator:a3d950f9d113109bdd8d1f1c6566ac9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda787a62e587557c83d062e5394f6ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#aeda787a62e587557c83d062e5394f6ba">GetPathMov</a> ()</td></tr>
-<tr class="memdesc:aeda787a62e587557c83d062e5394f6ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns distance from robot to last field of all same direction fields.  <a href="classMaze.html#aeda787a62e587557c83d062e5394f6ba">More...</a><br /></td></tr>
+<tr class="memdesc:aeda787a62e587557c83d062e5394f6ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns distance from the robot to last field of all same direction fields.  <a href="classMaze.html#aeda787a62e587557c83d062e5394f6ba">More...</a><br /></td></tr>
 <tr class="separator:aeda787a62e587557c83d062e5394f6ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62b495006239af7105ef57e63c3261e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ac62b495006239af7105ef57e63c3261e">GetPathRot</a> ()</td></tr>
-<tr class="memdesc:ac62b495006239af7105ef57e63c3261e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns rotaion to next path field.  <a href="classMaze.html#ac62b495006239af7105ef57e63c3261e">More...</a><br /></td></tr>
+<tr class="memdesc:ac62b495006239af7105ef57e63c3261e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns angle to next path field.  <a href="classMaze.html#ac62b495006239af7105ef57e63c3261e">More...</a><br /></td></tr>
 <tr class="separator:ac62b495006239af7105ef57e63c3261e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6d6ca126b093e5abaf0a3fc120dc680"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ad6d6ca126b093e5abaf0a3fc120dc680">Init</a> (int size, int pixels)</td></tr>
 <tr class="memdesc:ad6d6ca126b093e5abaf0a3fc120dc680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes maze and the robot position and rotaion. Sets walls for sides of maze.  <a href="classMaze.html#ad6d6ca126b093e5abaf0a3fc120dc680">More...</a><br /></td></tr>
@@ -109,24 +120,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a661c42b551f461dc1c645c9e757e71df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a661c42b551f461dc1c645c9e757e71df">ManualEnable</a> (bool enable)</td></tr>
 <tr class="memdesc:a661c42b551f461dc1c645c9e757e71df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or Disables manual mode, the path will be generated from the robot to the target.  <a href="classMaze.html#a661c42b551f461dc1c645c9e757e71df">More...</a><br /></td></tr>
 <tr class="separator:a661c42b551f461dc1c645c9e757e71df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab97b0950b706b60e6345bff10861ba91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ab97b0950b706b60e6345bff10861ba91">MovResult</a> (int mov, int res)</td></tr>
-<tr class="memdesc:ab97b0950b706b60e6345bff10861ba91"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function changes position in /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink and detects walls depending on differences betweeen the returned value and setpoint. The robot can not break trought closed maze, this function will trim position to the edge of maze, cause distance callculation are very inaccurate.  <a href="classMaze.html#ab97b0950b706b60e6345bff10861ba91">More...</a><br /></td></tr>
-<tr class="separator:ab97b0950b706b60e6345bff10861ba91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01cf96ff1e9a4ee19161ba035afa7973"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973">MovResult</a> (int mov_cm, int res_cm)</td></tr>
+<tr class="memdesc:a01cf96ff1e9a4ee19161ba035afa7973"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function changes position in /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink and detects walls depending on differences betweeen the returned value and setpoint.  <a href="classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973">More...</a><br /></td></tr>
+<tr class="separator:a01cf96ff1e9a4ee19161ba035afa7973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ac1cd73cc6e1b9c053b3b859e91ec0"><td class="memItemLeft" align="right" valign="top"><a id="af6ac1cd73cc6e1b9c053b3b859e91ec0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#af6ac1cd73cc6e1b9c053b3b859e91ec0">Reset</a> ()</td></tr>
-<tr class="memdesc:af6ac1cd73cc6e1b9c053b3b859e91ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets position of the robot to the start field in /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink. <br /></td></tr>
+<tr class="memdesc:af6ac1cd73cc6e1b9c053b3b859e91ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets position of the robot to the start field in maze. <br /></td></tr>
 <tr class="separator:af6ac1cd73cc6e1b9c053b3b859e91ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22c09c03e8b30edc98ec16ee03ed54ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a22c09c03e8b30edc98ec16ee03ed54ea">Resize</a> (int size_px)</td></tr>
 <tr class="memdesc:a22c09c03e8b30edc98ec16ee03ed54ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes PixSize_px of maze and calls repaint event for /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink.  <a href="classMaze.html#a22c09c03e8b30edc98ec16ee03ed54ea">More...</a><br /></td></tr>
 <tr class="separator:a22c09c03e8b30edc98ec16ee03ed54ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a142163f942d6d5fd58172723b1ce4de2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a142163f942d6d5fd58172723b1ce4de2">Rotate</a> (int rot_deg)</td></tr>
-<tr class="memdesc:a142163f942d6d5fd58172723b1ce4de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes rotation in /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink and trim this value to 360 .  <a href="classMaze.html#a142163f942d6d5fd58172723b1ce4de2">More...</a><br /></td></tr>
-<tr class="separator:a142163f942d6d5fd58172723b1ce4de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a721467b20f98ed20e588eeef947477b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a721467b20f98ed20e588eeef947477b3">Rotate</a> (int angle_deg)</td></tr>
+<tr class="memdesc:a721467b20f98ed20e588eeef947477b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum value of <a class="el" href="classMaze.html#a8734cd92b9bd8bbd4294b1395afd1036">RobotRot_deg</a> with input parameter and trim this value to 360.  <a href="classMaze.html#a721467b20f98ed20e588eeef947477b3">More...</a><br /></td></tr>
+<tr class="separator:a721467b20f98ed20e588eeef947477b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45183f8d6db8e19aa42b1dd62144b046"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046">SetBegin</a> (int x, int y)</td></tr>
-<tr class="memdesc:a45183f8d6db8e19aa42b1dd62144b046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets start field in Cells[x][y] for QWidget and will remove old start field.  <a href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046">More...</a><br /></td></tr>
+<tr class="memdesc:a45183f8d6db8e19aa42b1dd62144b046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets start field in <a class="el" href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">Cells</a> for QWidget and will remove old start field.  <a href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046">More...</a><br /></td></tr>
 <tr class="separator:a45183f8d6db8e19aa42b1dd62144b046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c883c80ed6daf4d619b6ed42c81af09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09">SetEnd</a> (int x, int y)</td></tr>
-<tr class="memdesc:a0c883c80ed6daf4d619b6ed42c81af09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields.  <a href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09">More...</a><br /></td></tr>
+<tr class="memdesc:a0c883c80ed6daf4d619b6ed42c81af09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets finish field in <a class="el" href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">Cells</a> for QWidget, you can set multiple finish fields.  <a href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09">More...</a><br /></td></tr>
 <tr class="separator:a0c883c80ed6daf4d619b6ed42c81af09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7d56db16b057cda15587e9b3d52cddb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ab7d56db16b057cda15587e9b3d52cddb">SetTarget</a> (int x, int y)</td></tr>
 <tr class="memdesc:ab7d56db16b057cda15587e9b3d52cddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets target field in Cells[x][y] for QWidget and will remove old target field.  <a href="classMaze.html#ab7d56db16b057cda15587e9b3d52cddb">More...</a><br /></td></tr>
@@ -140,21 +151,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ae3bf7a22dd1b2d3d277a3548b2922738"><td class="memItemLeft" align="right" valign="top"><a id="ae3bf7a22dd1b2d3d277a3548b2922738"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">Cells</a> [16][16]</td></tr>
-<tr class="memdesc:ae3bf7a22dd1b2d3d277a3548b2922738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cells array Every cell consist informations about their type and walls existence. Cell =&gt; BBBB BBBB BBBB TTTT RRDD LLUU VVVV VVVV B-Not used Walls values: R-right, D-down, L-left, U-up T-Types values , see #define V-Path value. <br /></td></tr>
+<tr class="memitem:ae3bf7a22dd1b2d3d277a3548b2922738"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">Cells</a> [16][16]</td></tr>
+<tr class="memdesc:ae3bf7a22dd1b2d3d277a3548b2922738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cells array.  <a href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">More...</a><br /></td></tr>
 <tr class="separator:ae3bf7a22dd1b2d3d277a3548b2922738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:afca8afde3798233b859304c2ca4b745a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#afca8afde3798233b859304c2ca4b745a">DrawCenteredText</a> (int x, int y, QString s, QPainter *p)</td></tr>
-<tr class="memdesc:afca8afde3798233b859304c2ca4b745a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws centered text.  <a href="classMaze.html#afca8afde3798233b859304c2ca4b745a">More...</a><br /></td></tr>
+<tr class="memdesc:afca8afde3798233b859304c2ca4b745a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws centered text in widget.  <a href="classMaze.html#afca8afde3798233b859304c2ca4b745a">More...</a><br /></td></tr>
 <tr class="separator:afca8afde3798233b859304c2ca4b745a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af20ceee16cdfa33289e4256ddf384cb0"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0">GetVal</a> (long Cell, long mask)</td></tr>
 <tr class="memdesc:af20ceee16cdfa33289e4256ddf384cb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets vale of specified 2 bits.  <a href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0">More...</a><br /></td></tr>
 <tr class="separator:af20ceee16cdfa33289e4256ddf384cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d9bd55fadf4f69e63d614785b7d38aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa">SetVal</a> (long *Cell, long val, long mask)</td></tr>
-<tr class="memdesc:a3d9bd55fadf4f69e63d614785b7d38aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets value of specified bits in single cell of /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink.  <a href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa">More...</a><br /></td></tr>
+<tr class="memdesc:a3d9bd55fadf4f69e63d614785b7d38aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets value of specified bits in single cell in <a class="el" href="">cells</a>.  <a href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa">More...</a><br /></td></tr>
 <tr class="separator:a3d9bd55fadf4f69e63d614785b7d38aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -176,11 +186,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <tr class="memdesc:a2b4bb709eec3d00efa5d0939c9792e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of field in pixels on screen. <br /></td></tr>
 <tr class="separator:a2b4bb709eec3d00efa5d0939c9792e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bb271bb8be1f93b181fffa43e1a7444"><td class="memItemLeft" align="right" valign="top"><a id="a9bb271bb8be1f93b181fffa43e1a7444"></a>
-QPixmap&#160;</td><td class="memItemRight" valign="bottom"><b>Robot</b></td></tr>
+QPixmap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a9bb271bb8be1f93b181fffa43e1a7444">Robot</a></td></tr>
+<tr class="memdesc:a9bb271bb8be1f93b181fffa43e1a7444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image of robot. <br /></td></tr>
 <tr class="separator:a9bb271bb8be1f93b181fffa43e1a7444"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8734cd92b9bd8bbd4294b1395afd1036"><td class="memItemLeft" align="right" valign="top"><a id="a8734cd92b9bd8bbd4294b1395afd1036"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a8734cd92b9bd8bbd4294b1395afd1036">RobotRot_deg</a> = 0</td></tr>
-<tr class="memdesc:a8734cd92b9bd8bbd4294b1395afd1036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotation of the robot in degrees. <br /></td></tr>
+<tr class="memdesc:a8734cd92b9bd8bbd4294b1395afd1036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotation of the robot in degrees in maze. <br /></td></tr>
 <tr class="separator:a8734cd92b9bd8bbd4294b1395afd1036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af69db422061b7d03f4111c49f04e9e4d"><td class="memItemLeft" align="right" valign="top"><a id="af69db422061b7d03f4111c49f04e9e4d"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#af69db422061b7d03f4111c49f04e9e4d">RobotSize_cm</a> = 13</td></tr>
@@ -188,11 +199,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <tr class="separator:af69db422061b7d03f4111c49f04e9e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24695db4f613ba442ff8f701ff2e6570"><td class="memItemLeft" align="right" valign="top"><a id="a24695db4f613ba442ff8f701ff2e6570"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a24695db4f613ba442ff8f701ff2e6570">RobotX_cm</a> = 0</td></tr>
-<tr class="memdesc:a24695db4f613ba442ff8f701ff2e6570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position on X axis of the robot in centimeters. <br /></td></tr>
+<tr class="memdesc:a24695db4f613ba442ff8f701ff2e6570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position on X axis of the robot in centimeters in maze. <br /></td></tr>
 <tr class="separator:a24695db4f613ba442ff8f701ff2e6570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe5d1c4bcd9a699c51d71a933162cb4e"><td class="memItemLeft" align="right" valign="top"><a id="afe5d1c4bcd9a699c51d71a933162cb4e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#afe5d1c4bcd9a699c51d71a933162cb4e">RobotY_cm</a> = 0</td></tr>
-<tr class="memdesc:afe5d1c4bcd9a699c51d71a933162cb4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position on Y axis of the robot in centimeters. <br /></td></tr>
+<tr class="memdesc:afe5d1c4bcd9a699c51d71a933162cb4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position on Y axis of the robot in centimeters in maze. <br /></td></tr>
 <tr class="separator:afe5d1c4bcd9a699c51d71a933162cb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61d46a291de531d3c1841624ec2aecff"><td class="memItemLeft" align="right" valign="top"><a id="a61d46a291de531d3c1841624ec2aecff"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMaze.html#a61d46a291de531d3c1841624ec2aecff">Size</a> = 0</td></tr>
@@ -200,7 +211,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <tr class="separator:a61d46a291de531d3c1841624ec2aecff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of <a class="el" href="classMaze.html">Maze</a> class. </p>
+<div class="textblock"><p>The <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> class. This class holds maze cells information and the robot position and size in centimeters. This class is used to draw and manipulate robot in maze, but micromouse thread class will controll this class. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afca8afde3798233b859304c2ca4b745a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afca8afde3798233b859304c2ca4b745a">&#9670;&nbsp;</a></span>DrawCenteredText()</h2>
@@ -248,13 +259,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </table>
 </div><div class="memdoc">
 
-<p>Draws centered text. </p>
+<p>Draws centered text in widget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>position in pixels. </td></tr>
-    <tr><td class="paramname">y</td><td>position in pixels. </td></tr>
-    <tr><td class="paramname">QString</td><td></td></tr>
-    <tr><td class="paramname">QPainter</td><td>of QWidget. </td></tr>
+    <tr><td class="paramname">x[in]</td><td>Position in pixels in widget. </td></tr>
+    <tr><td class="paramname">y[in]</td><td>Position in pixels in widget. </td></tr>
+    <tr><td class="paramname">s[in]</td><td>Text to draw. </td></tr>
+    <tr><td class="paramname">p[out]</td><td>Pointer to painter of QWidget. </td></tr>
   </table>
   </dd>
 </dl>
@@ -263,7 +274,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_afca8afde3798233b859304c2ca4b745a_icgraph.png" border="0" usemap="#classMaze_afca8afde3798233b859304c2ca4b745a_icgraph" alt=""/></div>
 <map name="classMaze_afca8afde3798233b859304c2ca4b745a_icgraph" id="classMaze_afca8afde3798233b859304c2ca4b745a_icgraph">
-<area shape="rect" title="Draws centered text." alt="" coords="387,5,555,32"/>
+<area shape="rect" title="Draws centered text in widget." alt="" coords="387,5,555,32"/>
 <area shape="rect" href="classMaze.html#ad310092201d2cb6e6e88862b438cd9b2" title="Draws maze and robot on QWidget." alt="" coords="216,5,339,32"/>
 <area shape="rect" href="classMainWindow.html#ade305265b2120df2489a5ebeb07ebbe1" title="Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget." alt="" coords="5,5,168,32"/>
 </map>
@@ -290,7 +301,7 @@ Here is the caller graph for this function:</div>
 <p>Draws maze and robot on QWidget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">widget</td><td></td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">widget</td><td>On this widget maze, walls and robot will be drawn. </td></tr>
   </table>
   </dd>
 </dl>
@@ -300,7 +311,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classMaze_ad310092201d2cb6e6e88862b438cd9b2_cgraph.png" border="0" usemap="#classMaze_ad310092201d2cb6e6e88862b438cd9b2_cgraph" alt=""/></div>
 <map name="classMaze_ad310092201d2cb6e6e88862b438cd9b2_cgraph" id="classMaze_ad310092201d2cb6e6e88862b438cd9b2_cgraph">
 <area shape="rect" title="Draws maze and robot on QWidget." alt="" coords="5,31,128,57"/>
-<area shape="rect" href="classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text." alt="" coords="176,5,344,32"/>
+<area shape="rect" href="classMaze.html#afca8afde3798233b859304c2ca4b745a" title="Draws centered text in widget." alt="" coords="176,5,344,32"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="209,56,311,83"/>
 </map>
 </div>
@@ -311,6 +322,50 @@ Here is the caller graph for this function:</div>
 <map name="classMaze_ad310092201d2cb6e6e88862b438cd9b2_icgraph" id="classMaze_ad310092201d2cb6e6e88862b438cd9b2_icgraph">
 <area shape="rect" title="Draws maze and robot on QWidget." alt="" coords="216,5,339,32"/>
 <area shape="rect" href="classMainWindow.html#ade305265b2120df2489a5ebeb07ebbe1" title="Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget." alt="" coords="5,5,168,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3d950f9d113109bdd8d1f1c6566ac9b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d950f9d113109bdd8d1f1c6566ac9b2">&#9670;&nbsp;</a></span>FindPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Maze::FindPath </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds path from currnet robot field to the end. </p>
+<p>first numbers all fields and convert them to a path. Path are stored in <a class="el" href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">Cells</a> as values on specific bytes of every cell. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_cgraph.png" border="0" usemap="#classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_cgraph" alt=""/></div>
+<map name="classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_cgraph" id="classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_cgraph">
+<area shape="rect" title="Finds path from currnet robot field to the end." alt="" coords="5,31,120,57"/>
+<area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="168,5,271,32"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="169,56,270,83"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_icgraph.png" border="0" usemap="#classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_icgraph" alt=""/></div>
+<map name="classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_icgraph" id="classMaze_a3d950f9d113109bdd8d1f1c6566ac9b2_icgraph">
+<area shape="rect" title="Finds path from currnet robot field to the end." alt="" coords="480,101,595,127"/>
+<area shape="rect" href="classMaze.html#a661c42b551f461dc1c645c9e757e71df" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="275,13,419,39"/>
+<area shape="rect" href="classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="263,64,432,105"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="288,130,407,157"/>
+<area shape="rect" href="classMaze.html#ab7d56db16b057cda15587e9b3d52cddb" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="288,181,407,207"/>
+<area shape="rect" href="classMainWindow.html#a2255bba1350b2432c13819e01b2d559d" title="Toggles manual mode. Manual mode enables to set targets for to the robot in Maze class instance." alt="" coords="15,5,205,47"/>
+<area shape="rect" href="classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,181,215,207"/>
 </map>
 </div>
 
@@ -331,14 +386,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Returns distance from robot to last field of all same direction fields. </p>
+<p>Returns distance from the robot to last field of all same direction fields. </p>
 <dl class="section return"><dt>Returns</dt><dd>value in centimeters. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_aeda787a62e587557c83d062e5394f6ba_cgraph.png" border="0" usemap="#classMaze_aeda787a62e587557c83d062e5394f6ba_cgraph" alt=""/></div>
 <map name="classMaze_aeda787a62e587557c83d062e5394f6ba_cgraph" id="classMaze_aeda787a62e587557c83d062e5394f6ba_cgraph">
-<area shape="rect" title="Returns distance from robot to last field of all same direction fields." alt="" coords="5,5,139,32"/>
+<area shape="rect" title="Returns distance from the robot to last field of all same direction fields." alt="" coords="5,5,139,32"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="187,5,289,32"/>
 </map>
 </div>
@@ -347,8 +402,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_aeda787a62e587557c83d062e5394f6ba_icgraph.png" border="0" usemap="#classMaze_aeda787a62e587557c83d062e5394f6ba_icgraph" alt=""/></div>
 <map name="classMaze_aeda787a62e587557c83d062e5394f6ba_icgraph" id="classMaze_aeda787a62e587557c83d062e5394f6ba_icgraph">
-<area shape="rect" title="Returns distance from robot to last field of all same direction fields." alt="" coords="172,5,305,32"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<area shape="rect" title="Returns distance from the robot to last field of all same direction fields." alt="" coords="172,5,305,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
 </map>
 </div>
 
@@ -369,14 +424,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Returns rotaion to next path field. </p>
+<p>Returns angle to next path field. </p>
 <dl class="section return"><dt>Returns</dt><dd>vale is in degrees. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_ac62b495006239af7105ef57e63c3261e_cgraph.png" border="0" usemap="#classMaze_ac62b495006239af7105ef57e63c3261e_cgraph" alt=""/></div>
 <map name="classMaze_ac62b495006239af7105ef57e63c3261e_cgraph" id="classMaze_ac62b495006239af7105ef57e63c3261e_cgraph">
-<area shape="rect" title="Returns rotaion to next path field." alt="" coords="5,5,136,32"/>
+<area shape="rect" title="Returns angle to next path field." alt="" coords="5,5,136,32"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="184,5,287,32"/>
 </map>
 </div>
@@ -385,8 +440,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_ac62b495006239af7105ef57e63c3261e_icgraph.png" border="0" usemap="#classMaze_ac62b495006239af7105ef57e63c3261e_icgraph" alt=""/></div>
 <map name="classMaze_ac62b495006239af7105ef57e63c3261e_icgraph" id="classMaze_ac62b495006239af7105ef57e63c3261e_icgraph">
-<area shape="rect" title="Returns rotaion to next path field." alt="" coords="172,5,303,32"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<area shape="rect" title="Returns angle to next path field." alt="" coords="172,5,303,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
 </map>
 </div>
 
@@ -429,12 +484,12 @@ Here is the caller graph for this function:</div>
 <p>Gets vale of specified 2 bits. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Cell.</td><td></td></tr>
-    <tr><td class="paramname">mask.</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Cell</td><td>Value of the cell. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mask</td><td>Mask tells which bits have to be read, length of mask can be only 2 bits, set #defines. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>value of specified 2 bits. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Value of specified 2 bits. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -442,23 +497,23 @@ Here is the caller graph for this function:</div>
 <map name="classMaze_af20ceee16cdfa33289e4256ddf384cb0_icgraph" id="classMaze_af20ceee16cdfa33289e4256ddf384cb0_icgraph">
 <area shape="rect" title="Gets vale of specified 2 bits." alt="" coords="687,275,789,301"/>
 <area shape="rect" href="classMaze.html#ad310092201d2cb6e6e88862b438cd9b2" title="Draws maze and robot on QWidget." alt="" coords="516,9,639,36"/>
-<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="520,173,635,200"/>
+<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="520,173,635,200"/>
 <area shape="rect" href="classMaze.html#a661c42b551f461dc1c645c9e757e71df" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="293,56,437,83"/>
 <area shape="rect" href="classMaze.html#ab7d56db16b057cda15587e9b3d52cddb" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="306,376,425,403"/>
-<area shape="rect" href="classMaze.html#aeda787a62e587557c83d062e5394f6ba" title="Returns distance from robot to last field of all same direction fields." alt="" coords="299,224,432,251"/>
-<area shape="rect" href="classMaze.html#ac62b495006239af7105ef57e63c3261e" title="Returns rotaion to next path field." alt="" coords="300,275,431,301"/>
+<area shape="rect" href="classMaze.html#aeda787a62e587557c83d062e5394f6ba" title="Returns distance from the robot to last field of all same direction fields." alt="" coords="299,224,432,251"/>
+<area shape="rect" href="classMaze.html#ac62b495006239af7105ef57e63c3261e" title="Returns angle to next path field." alt="" coords="300,275,431,301"/>
 <area shape="rect" href="classMaze.html#a934417b883b23fc9d944cd2f70a8cdc4" title="Checks if /link Maze /endlink have start and finish field." alt="" coords="523,119,632,145"/>
-<area shape="rect" href="classMaze.html#af6ac1cd73cc6e1b9c053b3b859e91ec0" title="Sets position of the robot to the start field in /link Maze /endlink." alt="" coords="529,532,625,559"/>
-<area shape="rect" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="520,427,635,453"/>
-<area shape="rect" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="525,477,630,504"/>
+<area shape="rect" href="classMaze.html#af6ac1cd73cc6e1b9c053b3b859e91ec0" title="Sets position of the robot to the start field in maze." alt="" coords="529,532,625,559"/>
+<area shape="rect" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells for QWidget and will remove old start field." alt="" coords="520,427,635,453"/>
+<area shape="rect" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells for QWidget, you can set multiple finish fields." alt="" coords="525,477,630,504"/>
 <area shape="rect" href="classMaze.html#a1c4e0acd6d49a6d6550509abd1705076" title="Sets Wall in a cell." alt="" coords="523,325,631,352"/>
 <area shape="rect" href="classMainWindow.html#ade305265b2120df2489a5ebeb07ebbe1" title="Is used for handle QEvent::Paint and run drawing function for w_Maze QWidget." alt="" coords="284,5,447,32"/>
 <area shape="rect" href="classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="281,107,450,149"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="51,249,169,276"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="51,249,169,276"/>
 <area shape="rect" href="classMainWindow.html#a2255bba1350b2432c13819e01b2d559d" title="Toggles manual mode. Manual mode enables to set targets for to the robot in Maze class instance." alt="" coords="15,49,205,90"/>
 <area shape="rect" href="classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,427,215,453"/>
 <area shape="rect" href="classMainWindow.html#a8f901ac7ff503de8050a0c056101f896" title="Resets position of the robot in maze to start position." alt="" coords="263,529,468,570"/>
-<area shape="rect" href="classMaze.html#ab97b0950b706b60e6345bff10861ba91" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="304,325,427,352"/>
+<area shape="rect" href="classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="304,325,427,352"/>
 </map>
 </div>
 
@@ -493,8 +548,8 @@ Here is the caller graph for this function:</div>
 <p>Initializes maze and the robot position and rotaion. Sets walls for sides of maze. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">size</td><td>in number of cells. </td></tr>
-    <tr><td class="paramname">size</td><td>of every cel in pixels on scrren. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Number of cells in a row and collumn. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pixels</td><td>Size of every cel in pixels on scrren. </td></tr>
   </table>
   </dd>
 </dl>
@@ -504,7 +559,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classMaze_ad6d6ca126b093e5abaf0a3fc120dc680_cgraph.png" border="0" usemap="#classMaze_ad6d6ca126b093e5abaf0a3fc120dc680_cgraph" alt=""/></div>
 <map name="classMaze_ad6d6ca126b093e5abaf0a3fc120dc680_cgraph" id="classMaze_ad6d6ca126b093e5abaf0a3fc120dc680_cgraph">
 <area shape="rect" title="Initializes maze and the robot position and rotaion. Sets walls for sides of maze." alt="" coords="5,5,84,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="132,5,233,32"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="132,5,233,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -535,7 +590,13 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Checks if /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink have start and finish field. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns true when /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink have start and finish field, otherwise returns false. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>/link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink have start and finish field </td></tr>
+    <tr><td class="paramname">false</td><td>Start or finish fields are undefined. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -576,7 +637,7 @@ Here is the caller graph for this function:</div>
 <p>Enables or Disables manual mode, the path will be generated from the robot to the target. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Enables</td><td>if true, otherwise disables. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Enables</td><td>if true, otherwise disables. </td></tr>
   </table>
   </dd>
 </dl>
@@ -586,9 +647,9 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classMaze_a661c42b551f461dc1c645c9e757e71df_cgraph.png" border="0" usemap="#classMaze_a661c42b551f461dc1c645c9e757e71df_cgraph" alt=""/></div>
 <map name="classMaze_a661c42b551f461dc1c645c9e757e71df_cgraph" id="classMaze_a661c42b551f461dc1c645c9e757e71df_cgraph">
 <area shape="rect" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="5,31,149,57"/>
-<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="197,31,312,57"/>
+<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="197,31,312,57"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="360,5,463,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="361,68,462,95"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="361,68,462,95"/>
 </map>
 </div>
 <div class="dynheader">
@@ -603,8 +664,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab97b0950b706b60e6345bff10861ba91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab97b0950b706b60e6345bff10861ba91">&#9670;&nbsp;</a></span>MovResult()</h2>
+<a id="a01cf96ff1e9a4ee19161ba035afa7973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01cf96ff1e9a4ee19161ba035afa7973">&#9670;&nbsp;</a></span>MovResult()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -613,13 +674,13 @@ Here is the caller graph for this function:</div>
           <td class="memname">void Maze::MovResult </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>mov</em>, </td>
+          <td class="paramname"><em>mov_cm</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>res</em>&#160;</td>
+          <td class="paramname"><em>res_cm</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -629,32 +690,33 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>This function changes position in /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink and detects walls depending on differences betweeen the returned value and setpoint. The robot can not break trought closed maze, this function will trim position to the edge of maze, cause distance callculation are very inaccurate. </p>
+<p>This function changes position in /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink and detects walls depending on differences betweeen the returned value and setpoint. </p>
+<p>The robot can not break trought closed maze, this function will trim position to the edge of maze, cause distance callculation are very inaccurate.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">setpoint</td><td>in cenitmeters. </td></tr>
-    <tr><td class="paramname">result</td><td>value in centimeters. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mov_cm</td><td>setpoint distance to travel by the robot. Value is in centimeters </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">res_cm</td><td>result distance value in centimeters. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMaze_ab97b0950b706b60e6345bff10861ba91_cgraph.png" border="0" usemap="#classMaze_ab97b0950b706b60e6345bff10861ba91_cgraph" alt=""/></div>
-<map name="classMaze_ab97b0950b706b60e6345bff10861ba91_cgraph" id="classMaze_ab97b0950b706b60e6345bff10861ba91_cgraph">
+<div class="center"><img src="classMaze_a01cf96ff1e9a4ee19161ba035afa7973_cgraph.png" border="0" usemap="#classMaze_a01cf96ff1e9a4ee19161ba035afa7973_cgraph" alt=""/></div>
+<map name="classMaze_a01cf96ff1e9a4ee19161ba035afa7973_cgraph" id="classMaze_a01cf96ff1e9a4ee19161ba035afa7973_cgraph">
 <area shape="rect" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="5,31,128,57"/>
 <area shape="rect" href="classMaze.html#a1c4e0acd6d49a6d6550509abd1705076" title="Sets Wall in a cell." alt="" coords="176,31,284,57"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="332,5,435,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="333,56,434,83"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="333,56,434,83"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMaze_ab97b0950b706b60e6345bff10861ba91_icgraph.png" border="0" usemap="#classMaze_ab97b0950b706b60e6345bff10861ba91_icgraph" alt=""/></div>
-<map name="classMaze_ab97b0950b706b60e6345bff10861ba91_icgraph" id="classMaze_ab97b0950b706b60e6345bff10861ba91_icgraph">
+<div class="center"><img src="classMaze_a01cf96ff1e9a4ee19161ba035afa7973_icgraph.png" border="0" usemap="#classMaze_a01cf96ff1e9a4ee19161ba035afa7973_icgraph" alt=""/></div>
+<map name="classMaze_a01cf96ff1e9a4ee19161ba035afa7973_icgraph" id="classMaze_a01cf96ff1e9a4ee19161ba035afa7973_icgraph">
 <area shape="rect" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="172,5,295,32"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
 </map>
 </div>
 
@@ -677,9 +739,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Changes PixSize_px of maze and calls repaint event for /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Used for change whole maze size in widget. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">size</td><td>in pixels </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size_px</td><td>New size of fields in pixels on the scrren. </td></tr>
   </table>
   </dd>
 </dl>
@@ -695,8 +757,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a142163f942d6d5fd58172723b1ce4de2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a142163f942d6d5fd58172723b1ce4de2">&#9670;&nbsp;</a></span>Rotate()</h2>
+<a id="a721467b20f98ed20e588eeef947477b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a721467b20f98ed20e588eeef947477b3">&#9670;&nbsp;</a></span>Rotate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -705,26 +767,26 @@ Here is the caller graph for this function:</div>
           <td class="memname">void Maze::Rotate </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>rot_deg</em></td><td>)</td>
+          <td class="paramname"><em>angle_deg</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Changes rotation in /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink and trim this value to 360 . </p>
+<p>Sum value of <a class="el" href="classMaze.html#a8734cd92b9bd8bbd4294b1395afd1036">RobotRot_deg</a> with input parameter and trim this value to 360. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vale</td><td>in degrees </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">angle_deg</td><td>Angle to add with actual rotation. </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMaze_a142163f942d6d5fd58172723b1ce4de2_icgraph.png" border="0" usemap="#classMaze_a142163f942d6d5fd58172723b1ce4de2_icgraph" alt=""/></div>
-<map name="classMaze_a142163f942d6d5fd58172723b1ce4de2_icgraph" id="classMaze_a142163f942d6d5fd58172723b1ce4de2_icgraph">
-<area shape="rect" title="Changes rotation in /link Maze /endlink and trim this value to 360 ." alt="" coords="172,5,272,32"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<div class="center"><img src="classMaze_a721467b20f98ed20e588eeef947477b3_icgraph.png" border="0" usemap="#classMaze_a721467b20f98ed20e588eeef947477b3_icgraph" alt=""/></div>
+<map name="classMaze_a721467b20f98ed20e588eeef947477b3_icgraph" id="classMaze_a721467b20f98ed20e588eeef947477b3_icgraph">
+<area shape="rect" title="Sum value of RobotRot_deg with input parameter and trim this value to 360." alt="" coords="172,5,272,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
 </map>
 </div>
 
@@ -756,11 +818,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Sets start field in Cells[x][y] for QWidget and will remove old start field. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Sets start field in <a class="el" href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">Cells</a> for QWidget and will remove old start field. </p>
+<p>Start field is the cell what robot will begin his adventure from. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td></td></tr>
-    <tr><td class="paramname">y</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Coordinates of the cell. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>Coordinates of the cell. </td></tr>
   </table>
   </dd>
 </dl>
@@ -769,9 +831,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_a45183f8d6db8e19aa42b1dd62144b046_cgraph.png" border="0" usemap="#classMaze_a45183f8d6db8e19aa42b1dd62144b046_cgraph" alt=""/></div>
 <map name="classMaze_a45183f8d6db8e19aa42b1dd62144b046_cgraph" id="classMaze_a45183f8d6db8e19aa42b1dd62144b046_cgraph">
-<area shape="rect" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="5,31,120,57"/>
+<area shape="rect" title="Sets start field in Cells for QWidget and will remove old start field." alt="" coords="5,31,120,57"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="168,5,271,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="169,56,270,83"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="169,56,270,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -779,7 +841,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_a45183f8d6db8e19aa42b1dd62144b046_icgraph.png" border="0" usemap="#classMaze_a45183f8d6db8e19aa42b1dd62144b046_icgraph" alt=""/></div>
 <map name="classMaze_a45183f8d6db8e19aa42b1dd62144b046_icgraph" id="classMaze_a45183f8d6db8e19aa42b1dd62144b046_icgraph">
-<area shape="rect" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="263,5,377,32"/>
+<area shape="rect" title="Sets start field in Cells for QWidget and will remove old start field." alt="" coords="263,5,377,32"/>
 <area shape="rect" href="classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,5,215,32"/>
 </map>
 </div>
@@ -812,11 +874,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Sets finish field in <a class="el" href="classMaze.html#ae3bf7a22dd1b2d3d277a3548b2922738">Cells</a> for QWidget, you can set multiple finish fields. </p>
+<p>Finish field is the cell what robot will end his adventure to. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td></td></tr>
-    <tr><td class="paramname">y</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Coordinates of the cell. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>Coordinates of the cell. </td></tr>
   </table>
   </dd>
 </dl>
@@ -825,9 +887,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_a0c883c80ed6daf4d619b6ed42c81af09_cgraph.png" border="0" usemap="#classMaze_a0c883c80ed6daf4d619b6ed42c81af09_cgraph" alt=""/></div>
 <map name="classMaze_a0c883c80ed6daf4d619b6ed42c81af09_cgraph" id="classMaze_a0c883c80ed6daf4d619b6ed42c81af09_cgraph">
-<area shape="rect" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="5,31,111,57"/>
+<area shape="rect" title="Sets finish field in Cells for QWidget, you can set multiple finish fields." alt="" coords="5,31,111,57"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="159,5,261,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="159,56,261,83"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="159,56,261,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -835,7 +897,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_a0c883c80ed6daf4d619b6ed42c81af09_icgraph.png" border="0" usemap="#classMaze_a0c883c80ed6daf4d619b6ed42c81af09_icgraph" alt=""/></div>
 <map name="classMaze_a0c883c80ed6daf4d619b6ed42c81af09_icgraph" id="classMaze_a0c883c80ed6daf4d619b6ed42c81af09_icgraph">
-<area shape="rect" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="263,5,368,32"/>
+<area shape="rect" title="Sets finish field in Cells for QWidget, you can set multiple finish fields." alt="" coords="263,5,368,32"/>
 <area shape="rect" href="classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,5,215,32"/>
 </map>
 </div>
@@ -871,8 +933,8 @@ Here is the caller graph for this function:</div>
 <p>Sets target field in Cells[x][y] for QWidget and will remove old target field. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td></td></tr>
-    <tr><td class="paramname">y</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Coordinates of the cell. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>Coordinates of the cell. </td></tr>
   </table>
   </dd>
 </dl>
@@ -882,9 +944,9 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classMaze_ab7d56db16b057cda15587e9b3d52cddb_cgraph.png" border="0" usemap="#classMaze_ab7d56db16b057cda15587e9b3d52cddb_cgraph" alt=""/></div>
 <map name="classMaze_ab7d56db16b057cda15587e9b3d52cddb_cgraph" id="classMaze_ab7d56db16b057cda15587e9b3d52cddb_cgraph">
 <area shape="rect" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="5,31,124,57"/>
-<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="172,31,287,57"/>
+<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="172,31,287,57"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="335,5,437,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="335,68,437,95"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="335,68,437,95"/>
 </map>
 </div>
 <div class="dynheader">
@@ -939,12 +1001,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets value of specified bits in single cell of /link <a class="el" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter...">Maze</a> /endlink. </p>
+<p>Sets value of specified bits in single cell in <a class="el" href="">cells</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pointer</td><td>to the cell. </td></tr>
-    <tr><td class="paramname">value,length</td><td>of value can be only 2 bits. </td></tr>
-    <tr><td class="paramname">mask,length</td><td>of value can be only 2 bits, see #defines. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">Cell</td><td>Pointer to the cell. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>Value to set on specific bits, length of value can be only 2 bits. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mask</td><td>Mask tells which bits have to be set, length of mask can be only 2 bits, set #defines. </td></tr>
   </table>
   </dd>
 </dl>
@@ -953,20 +1015,20 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMaze_a3d9bd55fadf4f69e63d614785b7d38aa_icgraph.png" border="0" usemap="#classMaze_a3d9bd55fadf4f69e63d614785b7d38aa_icgraph" alt=""/></div>
 <map name="classMaze_a3d9bd55fadf4f69e63d614785b7d38aa_icgraph" id="classMaze_a3d9bd55fadf4f69e63d614785b7d38aa_icgraph">
-<area shape="rect" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="677,231,779,258"/>
-<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot fiels to the end. first numbers all fields and convert them to a path." alt="" coords="515,130,629,157"/>
+<area shape="rect" title="Sets value of specified bits in single cell in cells." alt="" coords="677,231,779,258"/>
+<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="515,130,629,157"/>
 <area shape="rect" href="classMaze.html#a661c42b551f461dc1c645c9e757e71df" title="Enables or Disables manual mode, the path will be generated from the robot to the target." alt="" coords="293,13,437,39"/>
 <area shape="rect" href="classMaze.html#ab7d56db16b057cda15587e9b3d52cddb" title="Sets target field in Cells[x][y] for QWidget and will remove old target field." alt="" coords="305,231,424,258"/>
 <area shape="rect" href="classMaze.html#ad6d6ca126b093e5abaf0a3fc120dc680" title="Initializes maze and the robot position and rotaion. Sets walls for sides of maze." alt="" coords="533,387,611,414"/>
-<area shape="rect" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells[x][y] for QWidget and will remove old start field." alt="" coords="515,282,629,309"/>
-<area shape="rect" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields." alt="" coords="519,333,625,359"/>
+<area shape="rect" href="classMaze.html#a45183f8d6db8e19aa42b1dd62144b046" title="Sets start field in Cells for QWidget and will remove old start field." alt="" coords="515,282,629,309"/>
+<area shape="rect" href="classMaze.html#a0c883c80ed6daf4d619b6ed42c81af09" title="Sets finish field in Cells for QWidget, you can set multiple finish fields." alt="" coords="519,333,625,359"/>
 <area shape="rect" href="classMaze.html#a1c4e0acd6d49a6d6550509abd1705076" title="Sets Wall in a cell." alt="" coords="518,181,626,207"/>
 <area shape="rect" href="classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="280,64,449,105"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="51,155,169,182"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="51,155,169,182"/>
 <area shape="rect" href="classMainWindow.html#a2255bba1350b2432c13819e01b2d559d" title="Toggles manual mode. Manual mode enables to set targets for to the robot in Maze class instance." alt="" coords="15,5,205,47"/>
 <area shape="rect" href="classMainWindow.html#a1dff511c9697cbcb60150894f480b9c8" title="Is used for handle Qt::LeftButton and Qt::RightButton for set start and end position in w_Maze QWidge..." alt="" coords="5,282,215,309"/>
 <area shape="rect" href="classMainWindow.html#a935ce47257868377034b667fa344881e" title="Initalize the Maze class instance. Maze will be generated based on size from sB_MazeSize QSpinBox." alt="" coords="263,384,467,425"/>
-<area shape="rect" href="classMaze.html#ab97b0950b706b60e6345bff10861ba91" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="303,181,426,207"/>
+<area shape="rect" href="classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="303,181,426,207"/>
 </map>
 </div>
 
@@ -1013,10 +1075,10 @@ Here is the caller graph for this function:</div>
 <p>Sets Wall in a cell. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x_cell</td><td></td></tr>
-    <tr><td class="paramname">y_cell</td><td></td></tr>
-    <tr><td class="paramname">direction</td><td>of wall. 0-up, 1-right, 2-down, 3-left. Other values are invalid. </td></tr>
-    <tr><td class="paramname">state</td><td>of existences, value range is from 0 to 2, see #define. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_cell</td><td>Coordinates of the cell </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y_cell</td><td>Coordinates of the cell </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dir</td><td>Direction of wall. 0-up, 1-right, 2-down, 3-left. Other values are invalid. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>State of existences of wall in cell, 0 - UNDEFINED, 1 - EPTY, 2 - EXISTS. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1027,7 +1089,7 @@ Here is the call graph for this function:</div>
 <map name="classMaze_a1c4e0acd6d49a6d6550509abd1705076_cgraph" id="classMaze_a1c4e0acd6d49a6d6550509abd1705076_cgraph">
 <area shape="rect" title="Sets Wall in a cell." alt="" coords="5,31,113,57"/>
 <area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="161,5,264,32"/>
-<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell of /link Maze /endlink." alt="" coords="162,56,263,83"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="162,56,263,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1036,8 +1098,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classMaze_a1c4e0acd6d49a6d6550509abd1705076_icgraph.png" border="0" usemap="#classMaze_a1c4e0acd6d49a6d6550509abd1705076_icgraph" alt=""/></div>
 <map name="classMaze_a1c4e0acd6d49a6d6550509abd1705076_icgraph" id="classMaze_a1c4e0acd6d49a6d6550509abd1705076_icgraph">
 <area shape="rect" title="Sets Wall in a cell." alt="" coords="343,5,451,32"/>
-<area shape="rect" href="classMaze.html#ab97b0950b706b60e6345bff10861ba91" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="172,5,295,32"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<area shape="rect" href="classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="172,5,295,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
 </map>
 </div>
 
@@ -1062,7 +1124,7 @@ Here is the caller graph for this function:</div>
 <p>Enables or Disables drawing values of every field in maze. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Enables</td><td>if true, otherwise disables. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Enables</td><td>if true, otherwise disables. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1078,16 +1140,38 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae3bf7a22dd1b2d3d277a3548b2922738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3bf7a22dd1b2d3d277a3548b2922738">&#9670;&nbsp;</a></span>Cells</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long Maze::Cells[16][16]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cells array. </p>
+<p>Every cell consist informations about their type and walls existence. Cell =&gt; BBBB BBBB BBBB TTTT RRDD LLUU VVVV VVVV B-Not used Walls values: R-right, D-down, L-left, U-up T-Types values , see #define V-Path value. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="maze_8h_source.html">maze.h</a></li>
 <li>maze.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.18
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classMaze.html">Maze</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
 </body>
 </html>

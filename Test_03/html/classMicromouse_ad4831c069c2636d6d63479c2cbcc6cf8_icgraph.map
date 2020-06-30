@@ -1,0 +1,4 @@
+<map id="Micromouse::Rotate" name="Micromouse::Rotate">
+<area shape="rect" id="node1" title="Sends to the robot rotation command by calling SendFunctionSig,." alt="" coords="172,5,311,32"/>
+<area shape="rect" id="node2" href="$classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
+</map>

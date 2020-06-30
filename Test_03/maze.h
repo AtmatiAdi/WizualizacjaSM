@@ -29,7 +29,7 @@
 /*!
  * \brief The Maze class.
  * This class holds maze cells information and the robot position and size in centimeters.
- * This class is used to draw and manipulate robot in maze, but micromouse thread class will controll instance of \link Maze \endlink class.
+ * This class is used to draw and manipulate robot in maze, but micromouse thread class will controll this class.
  */
 class Maze
 {
@@ -37,6 +37,7 @@ public:
     Maze();
     /*!
      * \brief Cells array
+     *
      * Every cell consist informations about their type and walls existence.
      * Cell  => BBBB BBBB BBBB TTTT RRDD LLUU VVVV VVVV
      * B-Not used
@@ -46,97 +47,119 @@ public:
      */
     long Cells[16][16];
     /*!
-     * \brief Initializes maze and the robot position and rotaion.
-     * Sets walls for sides of maze.
-     * \param size in number of cells.
-     * \param size of every cel in pixels on scrren.
+     * \brief Initializes maze and the robot position and rotaion. Sets walls for sides of maze.
+     *
+     * \param[in] size   Number of cells in a row and collumn.
+     * \param[in] pixels Size of every cel in pixels on scrren.
      */
     void Init(int size, int pixels);
     //void SetWall(int cell, int wall, bool state);
     /*!
      * \brief Sets Wall in a cell.
-     * \param x_cell
-     * \param y_cell
-     * \param direction of wall. 0-up, 1-right, 2-down, 3-left. Other values are invalid.
-     * \param state of existences, value range is from 0 to 2, see #define.
+     *
+     * \param[in] x_cell Coordinates of the cell
+     * \param[in] y_cell Coordinates of the cell
+     * \param[in] dir Direction of wall. 0-up, 1-right, 2-down, 3-left. Other values are invalid.
+     * \param[in] state State of existences of wall in cell, 0 - UNDEFINED, 1 - EPTY, 2 - EXISTS.
      */
     void SetWall(int x_cell, int y_cell, int dir, int state);
     /*!
      * \brief Draws maze and robot on QWidget
-     * \param widget
+     *
+     * \param[in, out] widget On this widget maze, walls and robot will be drawn.
      */
     void DrawMaze(QWidget *widget);
     /*!
-     * \brief Sets start field in Cells[x][y] for QWidget and will remove old start field.
-     * \param x
-     * \param y
+     * \brief Sets start field in \link Cells \endlink for QWidget and will remove old start field.
+     *
+     * Start field is the cell what robot will begin his adventure from.
+     * \param[in] x Coordinates of the cell.
+     * \param[in] y Coordinates of the cell.
      */
     void SetBegin(int x, int y);
     /*!
-     * \brief Sets finish field in Cells[x][y] for QWidget, you can set multiple finish fields.
-     * \param x
-     * \param y
+     * \brief Sets finish field in \link Cells \endlink for QWidget, you can set multiple finish fields.
+     *
+     * Finish field is the cell what robot will end his adventure to.
+     * \param[in] x Coordinates of the cell.
+     * \param[in] y Coordinates of the cell.
      */
     void SetEnd(int x, int y);
     /*!
      * \brief Changes PixSize_px of maze and calls repaint event for /link Maze /endlink
-     * \param size in pixels
+     *
+     * Used for change whole maze size in widget.
+     * \param[in] size_px New size of fields in pixels on the scrren.
      */
     void Resize(int size_px);
     /*!
-     * \brief Finds path from currnet robot fiels to the end.
-     * first numbers all fields and convert them to a path.
+     * \brief Finds path from currnet robot field to the end.
+     *
+     * First numbers all fields and convert them to a path. Path are stored in \link Cells \endlink
+     * as values on specific bytes of every cell.
      */
     void FindPath();
     /*!
      * \brief Sets target field in Cells[x][y] for QWidget and will remove old target field.
-     * \param x
-     * \param y
+     * \param[in] x Coordinates of the cell.
+     * \param[in] y Coordinates of the cell.
      */
     void SetTarget(int x, int y);
     /*!
      * \brief Enables or Disables drawing values of every field in maze.
-     * \param Enables if true, otherwise disables.
+     *
+     * \param[in] Enables if true, otherwise disables.
      */
     void TextEnabled(bool enable);
     /*!
      * \brief Enables or Disables manual mode, the path will be generated from the robot to the target.
-     * \param Enables if true, otherwise disables.
+     *
+     * \param[in] Enables if true, otherwise disables.
      */
     void ManualEnable(bool enable);
     /*!
-     * \brief Returns rotaion to next path field.
+     * \brief Returns angle to next path field.
+     *
      * \return vale is in degrees.
      */
     int GetPathRot();
     /*!
-     * \brief Returns distance from robot to last field of all same direction fields.
+     * \brief Returns distance from the robot to last field of all same direction fields.
+     *
      * \return value in centimeters.
      */
     int GetPathMov();
     /*!
-     * \brief This function changes position in /link Maze /endlink and detects walls depending on differences  betweeen the returned value and setpoint.
+     * \brief This function changes position in /link Maze /endlink and detects walls depending on differences betweeen the returned value and setpoint.
+     *
      * The robot can not break trought closed maze, this function will trim position to the edge of maze,
      * cause distance callculation are very inaccurate.
-     * \param setpoint in cenitmeters.
-     * \param result value in centimeters.
+     *
+     * \param[in] mov_cm setpoint distance to travel by the robot. Value is in centimeters
+     * \param[in] res_cm result distance value in centimeters.
      */
-    void MovResult(int mov, int res);
+    void MovResult(int mov_cm, int res_cm);
     /*!
-     * \brief Changes rotation  in /link Maze /endlink and trim this value to 360 .
-     * \param vale in degrees
+     * \brief Sum value of \link RobotRot_deg \endlink with input parameter and trim this value to 360.
+     *
+     * \param[in] angle_deg Angle to add with actual rotation.
      */
-    void Rotate(int rot_deg);
+    void Rotate(int angle_deg);
     /*!
-     * \brief Sets position of the robot to the start field in /link Maze /endlink.
+     * \brief Sets position of the robot to the start field in maze.
      */
     void Reset();
     /*!
      * \brief Checks if /link Maze /endlink have start and finish field.
-     * \return Returns true when /link Maze /endlink have start and finish field, otherwise returns false.
+     *
+     * \retval true /link Maze /endlink have start and finish field
+     * \retval false Start or finish fields are undefined.
      */
     bool IsReady();
 private:
+    /*!
+     * \brief Image of robot.
+     */
     QPixmap Robot;
     /*!
      * \brief Size of the robot in centimeters.
@@ -147,15 +170,15 @@ private:
      */
     int CellSize_cm = 18;
     /*!
-     * \brief Position on X axis of the robot in centimeters.
+     * \brief Position on X axis of the robot in centimeters in maze.
      */
     int RobotX_cm = 0;
     /*!
-     * \brief Position on Y axis of the robot in centimeters.
+     * \brief Position on Y axis of the robot in centimeters in maze.
      */
     int RobotY_cm = 0;
     /*!
-     * \brief Rotation of the robot in degrees.
+     * \brief Rotation of the robot in degrees in maze.
      */
     int RobotRot_deg = 0;   // Pilnowane jest by rotacja zamykała się w 360 stopniach, r = r % 360
     /*!
@@ -175,25 +198,27 @@ private:
      */
     bool IsManual = false;
     /*!
-     * \brief Sets value of specified bits in single cell of /link Maze /endlink.
-     * \param Pointer to the cell.
-     * \param value, length of value can be only 2 bits.
-     * \param mask, length of value can be only 2 bits, see #defines.
+     * \brief Sets value of specified bits in single cell in \link cells \endlink.
+     *
+     * \param[out] Cell Pointer to the cell.
+     * \param[in] val   Value to set on specific  bits, length of value can be only 2 bits.
+     * \param[in] mask  Mask tells which bits have to be set, length of mask can be only 2 bits, set #defines.
      */
     void SetVal(long *Cell,long val, long mask);
     /*!
      * \brief Gets vale of specified 2 bits.
-     * \param Cell.
-     * \param mask.
-     * \return value of specified 2 bits.
+     *
+     * \param[in] Cell Value of the cell.
+     * \param[in] mask  Mask tells which bits have to be read, length of mask can be only 2 bits, set #defines.
+     * \return Value of specified 2 bits.
      */
     long GetVal(long Cell, long mask);
     /*!
-     * \brief Draws centered text.
-     * \param x position in pixels.
-     * \param y position in pixels.
-     * \param QString
-     * \param QPainter of QWidget.
+     * \brief Draws centered text in widget.
+     * \param x[in] Position in pixels in widget.
+     * \param y[in] Position in pixels in widget.
+     * \param s[in] Text to draw.
+     * \param p[out] Pointer to painter of QWidget.
      */
     void DrawCenteredText(int x, int y, QString s, QPainter *p);
 };

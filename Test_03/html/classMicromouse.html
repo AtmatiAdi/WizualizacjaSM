@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classMicromouse.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#signals">Signals</a> &#124;
@@ -76,48 +96,25 @@ $(function() {
  <a href="classMicromouse.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="micromouse_8h_source.html">micromouse.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Micromouse:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMicromouse__inherit__graph.png" border="0" usemap="#Micromouse_inherit__map" alt="Inheritance graph"/></div>
-<map name="Micromouse_inherit__map" id="Micromouse_inherit__map">
-<area shape="rect" title="The Micromouse thread class. This class communicates with MainWindow by signals, can send move and ro..." alt="" coords="5,131,136,487"/>
-<area shape="rect" title=" " alt="" coords="35,5,106,83"/>
-</map>
-</div>
-<div class="dynheader">
-Collaboration diagram for Micromouse:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMicromouse__coll__graph.png" border="0" usemap="#Micromouse_coll__map" alt="Collaboration graph"/></div>
-<map name="Micromouse_coll__map" id="Micromouse_coll__map">
-<area shape="rect" title="The Micromouse thread class. This class communicates with MainWindow by signals, can send move and ro..." alt="" coords="102,483,233,809"/>
-<area shape="rect" title=" " alt="" coords="5,174,76,251"/>
-<area shape="rect" href="classAccelGyro.html" title="This class is obsolete, but in future can be useful." alt="" coords="100,35,235,391"/>
-<area shape="rect" href="classMaze.html" title="The Maze class. This class holds maze cells information and the robot position and size in centimeter..." alt="" coords="259,5,403,420"/>
-</map>
-</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
-<tr class="memitem:a380f12aca4d8898c5356e9b0871abf94"><td class="memItemLeft" align="right" valign="top"><a id="a380f12aca4d8898c5356e9b0871abf94"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a380f12aca4d8898c5356e9b0871abf94">LogSig</a> (QString)</td></tr>
-<tr class="memdesc:a380f12aca4d8898c5356e9b0871abf94"><td class="mdescLeft">&#160;</td><td class="mdescRight">This slot is connetced to SLOT(<a class="el" href="">LogSlot(QString)</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Sends QString and to append to tE_MicLog QTextEdit. <br /></td></tr>
+<tr class="memitem:a380f12aca4d8898c5356e9b0871abf94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a380f12aca4d8898c5356e9b0871abf94">LogSig</a> (QString)</td></tr>
+<tr class="memdesc:a380f12aca4d8898c5356e9b0871abf94"><td class="mdescLeft">&#160;</td><td class="mdescRight">This slot is connetced to SLOT(<a class="el" href="classMainWindow.html#a9fece74ff69a9e1b50b079f778de9b2b">MainWindow::LogSlot(QString)</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Sends QString to append to tE_MicLog QTextEdit.  <a href="classMicromouse.html#a380f12aca4d8898c5356e9b0871abf94">More...</a><br /></td></tr>
 <tr class="separator:a380f12aca4d8898c5356e9b0871abf94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d23b80b19b286664e99b63304bdf188"><td class="memItemLeft" align="right" valign="top"><a id="a5d23b80b19b286664e99b63304bdf188"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a5d23b80b19b286664e99b63304bdf188">PrepareForMoveSig</a> ()</td></tr>
-<tr class="memdesc:a5d23b80b19b286664e99b63304bdf188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is connected to SLOT(<a class="el" href="">PrepareForMoveSlot()</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Changes charts data type to distance. <br /></td></tr>
+<tr class="memdesc:a5d23b80b19b286664e99b63304bdf188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is connected to SLOT(<a class="el" href="classMainWindow.html#a55e1a82a6633ec3fcdfbafac77eaa1d4">MainWindow::PrepareForMoveSlot()</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Changes charts data type to distance. <br /></td></tr>
 <tr class="separator:a5d23b80b19b286664e99b63304bdf188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa40b8c970781fe2596ac24f3b6d65f23"><td class="memItemLeft" align="right" valign="top"><a id="aa40b8c970781fe2596ac24f3b6d65f23"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#aa40b8c970781fe2596ac24f3b6d65f23">PrepareForRotationSig</a> ()</td></tr>
-<tr class="memdesc:aa40b8c970781fe2596ac24f3b6d65f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is connected to SLOT(<a class="el" href="">PrepareForRotationSlot()</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Changes charts data type to velocity. <br /></td></tr>
+<tr class="memdesc:aa40b8c970781fe2596ac24f3b6d65f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is connected to SLOT(<a class="el" href="classMainWindow.html#a4212072873e38127ba5637627e351171">MainWindow::PrepareForRotationSlot()</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Changes charts data type to velocity. <br /></td></tr>
 <tr class="separator:aa40b8c970781fe2596ac24f3b6d65f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4888aa4ef831c01e14c5d03531c31fb"><td class="memItemLeft" align="right" valign="top"><a id="ac4888aa4ef831c01e14c5d03531c31fb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a> (QByteArray)</td></tr>
-<tr class="memdesc:ac4888aa4ef831c01e14c5d03531c31fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is connected to SLOT(<a class="el" href="">SendFunctionSlot(QByteArray)</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Just sends commands to the robot. <br /></td></tr>
+<tr class="memitem:ac4888aa4ef831c01e14c5d03531c31fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a> (QByteArray)</td></tr>
+<tr class="memdesc:ac4888aa4ef831c01e14c5d03531c31fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is connected to SLOT(<a class="el" href="classMainWindow.html#a605dd357dd827de34e8fd07ba0a5ca14">MainWindow::SendFunctionSlot(QByteArray)</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Sends command to the robot.  <a href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">More...</a><br /></td></tr>
 <tr class="separator:ac4888aa4ef831c01e14c5d03531c31fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a366a965403e5366e30283c3972773b5b"><td class="memItemLeft" align="right" valign="top"><a id="a366a965403e5366e30283c3972773b5b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a366a965403e5366e30283c3972773b5b">UpdateMazeSig</a> ()</td></tr>
-<tr class="memdesc:a366a965403e5366e30283c3972773b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is connected to SLOT(<a class="el" href="">UpdateMazeSlot()</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Just calls repaint event to w_Maze QWidget, use this function if something has changed in <a class="el" href="classMaze.html">Maze</a> instance. <br /></td></tr>
+<tr class="memitem:a366a965403e5366e30283c3972773b5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a366a965403e5366e30283c3972773b5b">UpdateMazeSig</a> ()</td></tr>
+<tr class="memdesc:a366a965403e5366e30283c3972773b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is connected to SLOT(<a class="el" href="classMainWindow.html#aaac48b62952bdb774dc1f615b7c157b2">MainWindow::UpdateMazeSlot()</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Calls repaint event to w_Maze QWidget.  <a href="classMicromouse.html#a366a965403e5366e30283c3972773b5b">More...</a><br /></td></tr>
 <tr class="separator:a366a965403e5366e30283c3972773b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -126,21 +123,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aff4965481ec5fa15e5d653bbfe385b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">When <a class="el" href="classMainWindow.html">MainWindow</a> gets return value from the robot just calls this function.  <a href="classMicromouse.html#aff4965481ec5fa15e5d653bbfe385b0b">More...</a><br /></td></tr>
 <tr class="separator:aff4965481ec5fa15e5d653bbfe385b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f42f7b8a3c40da7e0e86be76dacf5f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a0f42f7b8a3c40da7e0e86be76dacf5f6">Init</a> (<a class="el" href="classMaze.html">Maze</a> *maze, <a class="el" href="classAccelGyro.html">AccelGyro</a> *ag)</td></tr>
-<tr class="memdesc:a0f42f7b8a3c40da7e0e86be76dacf5f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets pointer to <a class="el" href="classMaze.html">Maze</a> and <a class="el" href="classAccelGyro.html" title="This class is obsolete, but in future can be useful.">AccelGyro</a> instance from <a class="el" href="classMainWindow.html">MainWindow</a>.  <a href="classMicromouse.html#a0f42f7b8a3c40da7e0e86be76dacf5f6">More...</a><br /></td></tr>
+<tr class="memdesc:a0f42f7b8a3c40da7e0e86be76dacf5f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets pointer to <a class="el" href="classMaze.html">Maze</a> and <a class="el" href="classAccelGyro.html" title="This class is obsolete, but in future can be useful.">AccelGyro</a> instance from <a class="el" href="classMainWindow.html">MainWindow</a> and stores it in <a class="el" href="classMicromouse.html#a29ba624bffc1139916cd2be3f8d647ad">MyMaze</a> and <a class="el" href="classMicromouse.html#a0c194eed25ad8c7015e237f2c177f04c">MyAg</a> .  <a href="classMicromouse.html#a0f42f7b8a3c40da7e0e86be76dacf5f6">More...</a><br /></td></tr>
 <tr class="separator:a0f42f7b8a3c40da7e0e86be76dacf5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac26c207dc057c56774db79e91d6dfa43"><td class="memItemLeft" align="right" valign="top"><a id="ac26c207dc057c56774db79e91d6dfa43"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Micromouse</b> (QObject *parent=0)</td></tr>
 <tr class="separator:ac26c207dc057c56774db79e91d6dfa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5104565b3e09b3624f7e6136f2304f3f"><td class="memItemLeft" align="right" valign="top"><a id="a5104565b3e09b3624f7e6136f2304f3f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f">run</a> () override</td></tr>
-<tr class="memdesc:a5104565b3e09b3624f7e6136f2304f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple sends command to the robot. This function continuously check if IsRunning is true to execute algorithm. If you set IsRunning to false this function will break the loop, all informations are saved and you can start micromouse thread again. For better results of reaching to the target, improve this function. <br /></td></tr>
+<tr class="memitem:a5104565b3e09b3624f7e6136f2304f3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f">run</a> () override</td></tr>
+<tr class="memdesc:a5104565b3e09b3624f7e6136f2304f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">main thread loop.  <a href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f">More...</a><br /></td></tr>
 <tr class="separator:a5104565b3e09b3624f7e6136f2304f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92c4c7eb59e46a8ab252441ba775c3c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a92c4c7eb59e46a8ab252441ba775c3c1">Setup</a> (short Mstart, short Mmax, short accel, short stop, short Rstart, short Rmax)</td></tr>
 <tr class="memdesc:a92c4c7eb59e46a8ab252441ba775c3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalize algorithm settings.  <a href="classMicromouse.html#a92c4c7eb59e46a8ab252441ba775c3c1">More...</a><br /></td></tr>
 <tr class="separator:a92c4c7eb59e46a8ab252441ba775c3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70be1967c291e86b87372fb654258001"><td class="memItemLeft" align="right" valign="top"><a id="a70be1967c291e86b87372fb654258001"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a70be1967c291e86b87372fb654258001">Stop</a> ()</td></tr>
-<tr class="memdesc:a70be1967c291e86b87372fb654258001"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets IsRunning to false. <br /></td></tr>
+<tr class="memdesc:a70be1967c291e86b87372fb654258001"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets <a class="el" href="classMicromouse.html#a2b061bd28fb66cb6ddc0e5956f7cf6e3">IsRunning</a> to false. Main loop will execute to end and skip loop to finish thread. <br /></td></tr>
 <tr class="separator:a70be1967c291e86b87372fb654258001"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -148,9 +144,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a3530504ddc23e5f33543867f8ac9538b"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b">Move</a> (short dist_cm)</td></tr>
 <tr class="memdesc:a3530504ddc23e5f33543867f8ac9538b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends to the robot move command by calling <a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a>, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout.  <a href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b">More...</a><br /></td></tr>
 <tr class="separator:a3530504ddc23e5f33543867f8ac9538b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d576b7701bc98c1aa6931cd521b164b"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a3d576b7701bc98c1aa6931cd521b164b">Rotate</a> (short deg_deg)</td></tr>
-<tr class="memdesc:a3d576b7701bc98c1aa6931cd521b164b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends to the robot rotation command by calling <a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a>, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout.  <a href="classMicromouse.html#a3d576b7701bc98c1aa6931cd521b164b">More...</a><br /></td></tr>
-<tr class="separator:a3d576b7701bc98c1aa6931cd521b164b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4831c069c2636d6d63479c2cbcc6cf8"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8">Rotate</a> (short angle_deg)</td></tr>
+<tr class="memdesc:ad4831c069c2636d6d63479c2cbcc6cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends to the robot rotation command by calling <a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a>,.  <a href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8">More...</a><br /></td></tr>
+<tr class="separator:ad4831c069c2636d6d63479c2cbcc6cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -160,7 +156,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="separator:aa9b9b56700a16b68f6c2993980acc679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ff56577d4f1e39692074e02a621215b"><td class="memItemLeft" align="right" valign="top"><a id="a7ff56577d4f1e39692074e02a621215b"></a>
 short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a7ff56577d4f1e39692074e02a621215b">AccelVal</a></td></tr>
-<tr class="memdesc:a7ff56577d4f1e39692074e02a621215b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores acceleration PWM value for move command. <br /></td></tr>
+<tr class="memdesc:a7ff56577d4f1e39692074e02a621215b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores acceleration PWM value for move command, range is 0-1024. <br /></td></tr>
 <tr class="separator:a7ff56577d4f1e39692074e02a621215b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaf55e7b8912d2a169924b049e9a68cd"><td class="memItemLeft" align="right" valign="top"><a id="acaf55e7b8912d2a169924b049e9a68cd"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#acaf55e7b8912d2a169924b049e9a68cd">FunctionReurned</a> = false</td></tr>
@@ -176,11 +172,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a2b061bd28fb66cb6ddc0e5956f7cf6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb4497967cecb8128117b25be7926909"><td class="memItemLeft" align="right" valign="top"><a id="afb4497967cecb8128117b25be7926909"></a>
 short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#afb4497967cecb8128117b25be7926909">MoveMaxVal</a></td></tr>
-<tr class="memdesc:afb4497967cecb8128117b25be7926909"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores maximum PWM value for move command. <br /></td></tr>
+<tr class="memdesc:afb4497967cecb8128117b25be7926909"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores maximum PWM value for move command, range is 0-1024. <br /></td></tr>
 <tr class="separator:afb4497967cecb8128117b25be7926909"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af030bde295ba49b5550dfc6b7efb3e28"><td class="memItemLeft" align="right" valign="top"><a id="af030bde295ba49b5550dfc6b7efb3e28"></a>
 short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#af030bde295ba49b5550dfc6b7efb3e28">MoveStartVal</a></td></tr>
-<tr class="memdesc:af030bde295ba49b5550dfc6b7efb3e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores start PWM value for move command. <br /></td></tr>
+<tr class="memdesc:af030bde295ba49b5550dfc6b7efb3e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores starting PWM value for move command, range is 0-1024. <br /></td></tr>
 <tr class="separator:af030bde295ba49b5550dfc6b7efb3e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c194eed25ad8c7015e237f2c177f04c"><td class="memItemLeft" align="right" valign="top"><a id="a0c194eed25ad8c7015e237f2c177f04c"></a>
 <a class="el" href="classAccelGyro.html">AccelGyro</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a0c194eed25ad8c7015e237f2c177f04c">MyAg</a></td></tr>
@@ -196,11 +192,11 @@ short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <tr class="separator:a95437b4240a0e921fd057b7506698df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95085e2daffe3bcd34cae3a9b1ac66f0"><td class="memItemLeft" align="right" valign="top"><a id="a95085e2daffe3bcd34cae3a9b1ac66f0"></a>
 short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a95085e2daffe3bcd34cae3a9b1ac66f0">RotStartVal</a></td></tr>
-<tr class="memdesc:a95085e2daffe3bcd34cae3a9b1ac66f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores start PWM value for rotation command. <br /></td></tr>
+<tr class="memdesc:a95085e2daffe3bcd34cae3a9b1ac66f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores startstarting PWM value for rotation command. <br /></td></tr>
 <tr class="separator:a95085e2daffe3bcd34cae3a9b1ac66f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fb56e1f51a4ec3ae19f2b894e984cdc"><td class="memItemLeft" align="right" valign="top"><a id="a2fb56e1f51a4ec3ae19f2b894e984cdc"></a>
 short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#a2fb56e1f51a4ec3ae19f2b894e984cdc">StopVal</a></td></tr>
-<tr class="memdesc:a2fb56e1f51a4ec3ae19f2b894e984cdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores stop value in meters for move command. <br /></td></tr>
+<tr class="memdesc:a2fb56e1f51a4ec3ae19f2b894e984cdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores stop condition value in meters for move command. <br /></td></tr>
 <tr class="separator:a2fb56e1f51a4ec3ae19f2b894e984cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee10d33653644c2749f2b1b39c4510f2"><td class="memItemLeft" align="right" valign="top"><a id="aee10d33653644c2749f2b1b39c4510f2"></a>
 short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMicromouse.html#aee10d33653644c2749f2b1b39c4510f2">Value</a></td></tr>
@@ -227,9 +223,9 @@ short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 </div><div class="memdoc">
 
 <p>When <a class="el" href="classMainWindow.html">MainWindow</a> gets return value from the robot just calls this function. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Return value will be saved and <a class="el" href="classMicromouse.html#acaf55e7b8912d2a169924b049e9a68cd">FunctionReurned</a> will be set to true. When <a class="el" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b">Move</a> and <a class="el" href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8">Rotate</a> functions are called, they will wait for returning value form the robot. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">returned</td><td>vale from robot. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>Returned vale from robot. </td></tr>
   </table>
   </dd>
 </dl>
@@ -242,7 +238,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="classMainWindow.html#a01af152106bfa1ab6c101420cf55dfef" title="Calls FunctionReturn(val) i Micromouse class instance." alt="" coords="772,13,964,39"/>
 <area shape="rect" href="classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="783,64,953,105"/>
 <area shape="rect" href="classMainWindow.html#a84af5cdf379765d0578340a8321d365a" title="This function recognises commands and calls corresponding function." alt="" coords="477,13,724,39"/>
-<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort. Detects if arrived data are command or normal mess..." alt="" coords="247,13,429,39"/>
+<area shape="rect" href="classMainWindow.html#a42f11195758f78967e670779c4535708" title="Its called when new data arrives from QSerialPort." alt="" coords="247,13,429,39"/>
 <area shape="rect" href="classMainWindow.html#a4b0c1bada9e194139e65ae07c581e41c" title="Its called when new dewice is sellected." alt="" coords="5,5,199,47"/>
 </map>
 </div>
@@ -275,10 +271,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Gets pointer to <a class="el" href="classMaze.html">Maze</a> and <a class="el" href="classAccelGyro.html" title="This class is obsolete, but in future can be useful.">AccelGyro</a> instance from <a class="el" href="classMainWindow.html">MainWindow</a>. </p>
+<p>Gets pointer to <a class="el" href="classMaze.html">Maze</a> and <a class="el" href="classAccelGyro.html" title="This class is obsolete, but in future can be useful.">AccelGyro</a> instance from <a class="el" href="classMainWindow.html">MainWindow</a> and stores it in <a class="el" href="classMicromouse.html#a29ba624bffc1139916cd2be3f8d647ad">MyMaze</a> and <a class="el" href="classMicromouse.html#a0c194eed25ad8c7015e237f2c177f04c">MyAg</a> . </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"></td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">maze</td><td><a class="el" href="classMaze.html">Maze</a> class instance, micromouse class need this pointer to operate on maze. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ag</td><td><a class="el" href="classAccelGyro.html">AccelGyro</a> class instance, obsolete functionality, only the robot can integrate data from IMU. </td></tr>
   </table>
   </dd>
 </dl>
@@ -287,8 +284,53 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6_icgraph.png" border="0" usemap="#classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6_icgraph" alt=""/></div>
 <map name="classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6_icgraph" id="classMicromouse_a0f42f7b8a3c40da7e0e86be76dacf5f6_icgraph">
-<area shape="rect" title="Gets pointer to Maze and AccelGyro instance from MainWindow." alt="" coords="223,13,341,39"/>
+<area shape="rect" title="Gets pointer to Maze and AccelGyro instance from MainWindow and stores it in MyMaze and MyAg ." alt="" coords="223,13,341,39"/>
 <area shape="rect" href="classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="5,5,175,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a380f12aca4d8898c5356e9b0871abf94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a380f12aca4d8898c5356e9b0871abf94">&#9670;&nbsp;</a></span>LogSig</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Micromouse::LogSig </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This slot is connetced to SLOT(<a class="el" href="classMainWindow.html#a9fece74ff69a9e1b50b079f778de9b2b">MainWindow::LogSlot(QString)</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Sends QString to append to tE_MicLog QTextEdit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">QString</td><td>Message to append to log window. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMicromouse_a380f12aca4d8898c5356e9b0871abf94_icgraph.png" border="0" usemap="#classMicromouse_a380f12aca4d8898c5356e9b0871abf94_icgraph" alt=""/></div>
+<map name="classMicromouse_a380f12aca4d8898c5356e9b0871abf94_icgraph" id="classMicromouse_a380f12aca4d8898c5356e9b0871abf94_icgraph">
+<area shape="rect" title="This slot is connetced to SLOT(MainWindow::LogSlot(QString)) in MainWindow. Sends QString to append t..." alt="" coords="359,56,500,83"/>
+<area shape="rect" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b" title="Sends to the robot move command by calling SendFunctionSig, Function wil repeat command untill ralue ..." alt="" coords="176,5,307,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,56,124,83"/>
+<area shape="rect" href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8" title="Sends to the robot rotation command by calling SendFunctionSig,." alt="" coords="172,107,311,133"/>
 </map>
 </div>
 
@@ -321,25 +363,25 @@ Here is the caller graph for this function:</div>
 <p>Sends to the robot move command by calling <a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a>, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">distance</td><td>value, range is +-1000 cm. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dist_cm</td><td>Distance value to move in straight line by the robot, range is +-1000 cm. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>traveled distance by the robot, same range. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Traveled distance by the robot, same range. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMicromouse_a3530504ddc23e5f33543867f8ac9538b_icgraph.png" border="0" usemap="#classMicromouse_a3530504ddc23e5f33543867f8ac9538b_icgraph" alt=""/></div>
 <map name="classMicromouse_a3530504ddc23e5f33543867f8ac9538b_icgraph" id="classMicromouse_a3530504ddc23e5f33543867f8ac9538b_icgraph">
 <area shape="rect" title="Sends to the robot move command by calling SendFunctionSig, Function wil repeat command untill ralue ..." alt="" coords="172,5,303,32"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a3d576b7701bc98c1aa6931cd521b164b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d576b7701bc98c1aa6931cd521b164b">&#9670;&nbsp;</a></span>Rotate()</h2>
+<a id="ad4831c069c2636d6d63479c2cbcc6cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4831c069c2636d6d63479c2cbcc6cf8">&#9670;&nbsp;</a></span>Rotate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,7 +393,7 @@ Here is the caller graph for this function:</div>
           <td class="memname">short Micromouse::Rotate </td>
           <td>(</td>
           <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>deg_deg</em></td><td>)</td>
+          <td class="paramname"><em>angle_deg</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -362,21 +404,112 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Sends to the robot rotation command by calling <a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a>, Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Sends to the robot rotation command by calling <a class="el" href="classMicromouse.html#ac4888aa4ef831c01e14c5d03531c31fb">SendFunctionSig</a>,. </p>
+<p>Function wil repeat command untill ralue will retunr from the robot, 6 sec timeout. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">deegres</td><td>value, range is +-500 deg. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">angle_deg</td><td>Angle to rotate by the robot, range is +-500 degrees. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>rotated degrees by the robot, same range. Better to ignore this value. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Rotated degrees by the robot, same range. Better to ignore this value. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMicromouse_a3d576b7701bc98c1aa6931cd521b164b_icgraph.png" border="0" usemap="#classMicromouse_a3d576b7701bc98c1aa6931cd521b164b_icgraph" alt=""/></div>
-<map name="classMicromouse_a3d576b7701bc98c1aa6931cd521b164b_icgraph" id="classMicromouse_a3d576b7701bc98c1aa6931cd521b164b_icgraph">
-<area shape="rect" title="Sends to the robot rotation command by calling SendFunctionSig, Function wil repeat command untill ra..." alt="" coords="172,5,311,32"/>
-<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop. Simple algorithm gets current distance and rotation to next path cell and simple se..." alt="" coords="5,5,124,32"/>
+<div class="center"><img src="classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8_icgraph.png" border="0" usemap="#classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8_icgraph" alt=""/></div>
+<map name="classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8_icgraph" id="classMicromouse_ad4831c069c2636d6d63479c2cbcc6cf8_icgraph">
+<area shape="rect" title="Sends to the robot rotation command by calling SendFunctionSig,." alt="" coords="172,5,311,32"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,5,124,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5104565b3e09b3624f7e6136f2304f3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5104565b3e09b3624f7e6136f2304f3f">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Micromouse::run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>main thread loop. </p>
+<p>Algorithm gets current distance and rotation to next path cell and simple sends command to the robot from <a class="el" href="classMaze.html">Maze</a> class instance. This function continuously check if <a class="el" href="classMicromouse.html#a2b061bd28fb66cb6ddc0e5956f7cf6e3">IsRunning</a> = true to execute algorithm. If you set IsRunning to false this function will execute to end and skip loop to finish thread, all informations are saved and you can start micromouse thread again. For better results of reaching to the target, improve this function. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMicromouse_a5104565b3e09b3624f7e6136f2304f3f_cgraph.png" border="0" usemap="#classMicromouse_a5104565b3e09b3624f7e6136f2304f3f_cgraph" alt=""/></div>
+<map name="classMicromouse_a5104565b3e09b3624f7e6136f2304f3f_cgraph" id="classMicromouse_a5104565b3e09b3624f7e6136f2304f3f_cgraph">
+<area shape="rect" title="main thread loop." alt="" coords="5,157,124,184"/>
+<area shape="rect" href="classMaze.html#a3d950f9d113109bdd8d1f1c6566ac9b2" title="Finds path from currnet robot field to the end." alt="" coords="368,107,483,133"/>
+<area shape="rect" href="classMaze.html#aeda787a62e587557c83d062e5394f6ba" title="Returns distance from the robot to last field of all same direction fields." alt="" coords="359,5,492,32"/>
+<area shape="rect" href="classMaze.html#ac62b495006239af7105ef57e63c3261e" title="Returns angle to next path field." alt="" coords="360,56,491,83"/>
+<area shape="rect" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b" title="Sends to the robot move command by calling SendFunctionSig, Function wil repeat command untill ralue ..." alt="" coords="176,208,307,235"/>
+<area shape="rect" href="classMaze.html#a01cf96ff1e9a4ee19161ba035afa7973" title="This function changes position in /link Maze /endlink and detects walls depending on differences betw..." alt="" coords="180,157,303,184"/>
+<area shape="rect" href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8" title="Sends to the robot rotation command by calling SendFunctionSig,." alt="" coords="172,259,311,285"/>
+<area shape="rect" href="classMaze.html#a721467b20f98ed20e588eeef947477b3" title="Sum value of RobotRot_deg with input parameter and trim this value to 360." alt="" coords="191,309,291,336"/>
+<area shape="rect" href="classMaze.html#af20ceee16cdfa33289e4256ddf384cb0" title="Gets vale of specified 2 bits." alt="" coords="540,81,643,108"/>
+<area shape="rect" href="classMaze.html#a3d9bd55fadf4f69e63d614785b7d38aa" title="Sets value of specified bits in single cell in cells." alt="" coords="541,132,642,159"/>
+<area shape="rect" href="classMaze.html#a1c4e0acd6d49a6d6550509abd1705076" title="Sets Wall in a cell." alt="" coords="371,157,479,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac4888aa4ef831c01e14c5d03531c31fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4888aa4ef831c01e14c5d03531c31fb">&#9670;&nbsp;</a></span>SendFunctionSig</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Micromouse::SendFunctionSig </td>
+          <td>(</td>
+          <td class="paramtype">QByteArray&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This signal is connected to SLOT(<a class="el" href="classMainWindow.html#a605dd357dd827de34e8fd07ba0a5ca14">MainWindow::SendFunctionSlot(QByteArray)</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Sends command to the robot. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">QByteArray</td><td>First byte is command definition value, other bytes depend on protocol definition. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb_icgraph.png" border="0" usemap="#classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb_icgraph" alt=""/></div>
+<map name="classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb_icgraph" id="classMicromouse_ac4888aa4ef831c01e14c5d03531c31fb_icgraph">
+<area shape="rect" title="This signal is connected to SLOT(MainWindow::SendFunctionSlot(QByteArray)) in MainWindow...." alt="" coords="359,31,559,57"/>
+<area shape="rect" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b" title="Sends to the robot move command by calling SendFunctionSig, Function wil repeat command untill ralue ..." alt="" coords="176,5,307,32"/>
+<area shape="rect" href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8" title="Sends to the robot rotation command by calling SendFunctionSig,." alt="" coords="172,56,311,83"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="5,31,124,57"/>
 </map>
 </div>
 
@@ -435,12 +568,12 @@ Here is the caller graph for this function:</div>
 <p>Initalize algorithm settings. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Move</td><td>start PWM value </td></tr>
-    <tr><td class="paramname">Move</td><td>maximum PWM value </td></tr>
-    <tr><td class="paramname">Acceleration</td><td>PWM value </td></tr>
-    <tr><td class="paramname">Acceleration</td><td>stop condition in meters per second squared </td></tr>
-    <tr><td class="paramname">Rotation</td><td>start PWM value </td></tr>
-    <tr><td class="paramname">Rotation</td><td>maximum PWM value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Mstart</td><td>Starting motor speed for <a class="el" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b">Move</a> command, PWM value range is 0-1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Mmax</td><td>Maximum motor speed for <a class="el" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b">Move</a> command, PWM value range is 0-1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">accel</td><td>Starting value is incremented every iteration by accel, for move and rotation command. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">stop</td><td>Condition value, if reached by accelerometer then <a class="el" href="classMicromouse.html#a3530504ddc23e5f33543867f8ac9538b">Move</a> command is stopped. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Rstart</td><td>Starting motor speed for <a class="el" href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8">Rotate</a> command, PWM value range is 0-1024. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Rmax</td><td>Maximum motor speed for <a class="el" href="classMicromouse.html#ad4831c069c2636d6d63479c2cbcc6cf8">Rotate</a> command, PWM value range is 0-1024. </td></tr>
   </table>
   </dd>
 </dl>
@@ -456,16 +589,59 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a366a965403e5366e30283c3972773b5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a366a965403e5366e30283c3972773b5b">&#9670;&nbsp;</a></span>UpdateMazeSig</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Micromouse::UpdateMazeSig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This signal is connected to SLOT(<a class="el" href="classMainWindow.html#aaac48b62952bdb774dc1f615b7c157b2">MainWindow::UpdateMazeSlot()</a>) in <a class="el" href="classMainWindow.html">MainWindow</a>. Calls repaint event to w_Maze QWidget. </p>
+<p>Use this function if something has changed in <a class="el" href="classMaze.html">Maze</a> instance. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMicromouse_a366a965403e5366e30283c3972773b5b_icgraph.png" border="0" usemap="#classMicromouse_a366a965403e5366e30283c3972773b5b_icgraph" alt=""/></div>
+<map name="classMicromouse_a366a965403e5366e30283c3972773b5b_icgraph" id="classMicromouse_a366a965403e5366e30283c3972773b5b_icgraph">
+<area shape="rect" title="This signal is connected to SLOT(MainWindow::UpdateMazeSlot()) in MainWindow. Calls repaint event to ..." alt="" coords="389,38,583,65"/>
+<area shape="rect" href="classMicromouse.html#a0f42f7b8a3c40da7e0e86be76dacf5f6" title="Gets pointer to Maze and AccelGyro instance from MainWindow and stores it in MyMaze and MyAg ." alt="" coords="223,13,341,39"/>
+<area shape="rect" href="classMicromouse.html#a5104565b3e09b3624f7e6136f2304f3f" title="main thread loop." alt="" coords="223,63,341,90"/>
+<area shape="rect" href="classMainWindow.html#a8731d8a43a953d2be2096df8e1143abd" title="Starts Micromouse thread class. Pauses thread if is running, but thread loop will perform to the end ..." alt="" coords="5,5,175,47"/>
+</map>
+</div>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="micromouse_8h_source.html">micromouse.h</a></li>
 <li>micromouse.cpp</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.18
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classMicromouse.html">Micromouse</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
 </body>
 </html>
